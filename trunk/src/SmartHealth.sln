@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.Web", "SmartHealth.Web\SmartHealth.Web.csproj", "{FDDD112A-827F-47C0-8A41-9021F5D1211C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonAssemblyInfo", "CommonAssemblyInfo", "{E801E6EB-BA6F-41B3-AC9F-ACF652668A65}"
+	ProjectSection(SolutionItems) = preProject
+		CommonAssemblyInfo\AssemblyVersion.cs = CommonAssemblyInfo\AssemblyVersion.cs
+		CommonAssemblyInfo\CommonAssemblyInfo.cs = CommonAssemblyInfo\CommonAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7D94593D-8F69-467D-8391-626DEBD7D0BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7AA52A4C-0FFD-4FE1-917E-BA4DEB95A906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.Infrastructure", "Infrastructure\SmartHealth.Infrastructure\SmartHealth.Infrastructure.csproj", "{AF683A7B-AFE4-4520-8429-BFD556F42C3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.Infrastructure.Nhibernate", "Infrastructure\SmartHealth.Infrastructure.Nhibernate\SmartHealth.Infrastructure.Nhibernate.csproj", "{396C5523-C7FC-4C75-B2C7-A0608B6E10E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.Infrastructure.Web", "Infrastructure\SmartHealth.Infrastructure.Web\SmartHealth.Infrastructure.Web.csproj", "{792C2214-AB06-4C9F-9BBA-688DCF1ECE22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{763C996B-8996-46FA-AB28-6CB3449B8F5B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A1F9D983-2C6F-4C29-9A57-6016E3BBE1AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.Core", "Core\SmartHealth.Core\SmartHealth.Core.csproj", "{0F42E2F3-49B6-4E90-A643-222911A842FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.SampleModule", "Modules\SmartHealth.SampleModule\SmartHealth.SampleModule.csproj", "{7B86261C-6F6F-455A-B696-37EBB57B3FA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHealth.Box", "Modules\SmartHealth.QoL\SmartHealth.Box.csproj", "{9B513F28-25FB-45AF-8C5B-B558BFCA15F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDDD112A-827F-47C0-8A41-9021F5D1211C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDDD112A-827F-47C0-8A41-9021F5D1211C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDDD112A-827F-47C0-8A41-9021F5D1211C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDDD112A-827F-47C0-8A41-9021F5D1211C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF683A7B-AFE4-4520-8429-BFD556F42C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF683A7B-AFE4-4520-8429-BFD556F42C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF683A7B-AFE4-4520-8429-BFD556F42C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF683A7B-AFE4-4520-8429-BFD556F42C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396C5523-C7FC-4C75-B2C7-A0608B6E10E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396C5523-C7FC-4C75-B2C7-A0608B6E10E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396C5523-C7FC-4C75-B2C7-A0608B6E10E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396C5523-C7FC-4C75-B2C7-A0608B6E10E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792C2214-AB06-4C9F-9BBA-688DCF1ECE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792C2214-AB06-4C9F-9BBA-688DCF1ECE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792C2214-AB06-4C9F-9BBA-688DCF1ECE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792C2214-AB06-4C9F-9BBA-688DCF1ECE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F42E2F3-49B6-4E90-A643-222911A842FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F42E2F3-49B6-4E90-A643-222911A842FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F42E2F3-49B6-4E90-A643-222911A842FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F42E2F3-49B6-4E90-A643-222911A842FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B86261C-6F6F-455A-B696-37EBB57B3FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B86261C-6F6F-455A-B696-37EBB57B3FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B86261C-6F6F-455A-B696-37EBB57B3FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B86261C-6F6F-455A-B696-37EBB57B3FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B513F28-25FB-45AF-8C5B-B558BFCA15F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B513F28-25FB-45AF-8C5B-B558BFCA15F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B513F28-25FB-45AF-8C5B-B558BFCA15F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B513F28-25FB-45AF-8C5B-B558BFCA15F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF683A7B-AFE4-4520-8429-BFD556F42C3F} = {7D94593D-8F69-467D-8391-626DEBD7D0BC}
+		{396C5523-C7FC-4C75-B2C7-A0608B6E10E4} = {7D94593D-8F69-467D-8391-626DEBD7D0BC}
+		{792C2214-AB06-4C9F-9BBA-688DCF1ECE22} = {7D94593D-8F69-467D-8391-626DEBD7D0BC}
+		{0F42E2F3-49B6-4E90-A643-222911A842FF} = {7AA52A4C-0FFD-4FE1-917E-BA4DEB95A906}
+		{7B86261C-6F6F-455A-B696-37EBB57B3FA6} = {A1F9D983-2C6F-4C29-9A57-6016E3BBE1AB}
+		{9B513F28-25FB-45AF-8C5B-B558BFCA15F4} = {A1F9D983-2C6F-4C29-9A57-6016E3BBE1AB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\HeartPulse.Infrastructure.Nhibernate.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\HeartPulse.Infrastructure.Nhibernate.pdb
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\FluentNHibernate.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\HeartPulse.Infrastructure.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\Iesi.Collections.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\Inflector.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\NHibernate.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\HeartPulse.Infrastructure.pdb
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\FluentNHibernate.xml
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\Iesi.Collections.xml
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\NHibernate.xml
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\obj\Debug\HeartPulse.Infrastructure.Nhibernate.dll
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\obj\Debug\HeartPulse.Infrastructure.Nhibernate.pdb
+D:\Projects\HeartFailure\Infrastructure\HeartPulse.Infrastructure.Nhibernate\obj\Debug\HeartPulse.Infrastructure.Nhibernate.csprojResolveAssemblyReference.cache
