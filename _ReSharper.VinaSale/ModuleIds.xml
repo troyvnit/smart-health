@@ -1,8 +1,0 @@
-<Modules>
-  <Module PersistentId="FDDD112A-827F-47C0-8A41-9021F5D1211C" ModuleId="VinaSale.Web" />
-  <Module PersistentId="396C5523-C7FC-4C75-B2C7-A0608B6E10E4" ModuleId="VinaSale.Infrastructure.Nhibernate" />
-  <Module PersistentId="9B513F28-25FB-45AF-8C5B-B558BFCA15F4" ModuleId="VinaSale.Box" />
-  <Module PersistentId="AF683A7B-AFE4-4520-8429-BFD556F42C3F" ModuleId="VinaSale.Infrastructure" />
-  <Module PersistentId="792C2214-AB06-4C9F-9BBA-688DCF1ECE22" ModuleId="VinaSale.Infrastructure.Web" />
-  <Module PersistentId="0F42E2F3-49B6-4E90-A643-222911A842FF" ModuleId="VinaSale.Core" />
-</Modules>
