@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="PackageArtefacts" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<SolutionName>HeartPulse</SolutionName>
+		<SolutionsPath Condition="'$(SolutionsPath)'==''">$(MSBuildProjectDirectory)\..</SolutionsPath>
+		<BuildPath Condition="'$(BuildPath)'==''">$(MSBuildProjectDirectory)</BuildPath>
+		<WebAppPath>$(SolutionsPath)\$(SolutionName).Web</WebAppPath>
+		<WebNotificationPath>$(SolutionsPath)\$(SolutionName).Notification</WebNotificationPath>
+		<PropertiesPath>$(BuildPath)\Properties</PropertiesPath>
+		<SolutionRoot>$(BuildPath)\..</SolutionRoot>
+		  
+		<IsDesktopBuild>true</IsDesktopBuild>
+		<AssemblyVersionFile>$(BuildPath)\..\CommonAssemblyInfo\AssemblyVersion.cs</AssemblyVersionFile>
+		<DropsPath>$(BuildPath)\..\_Drops</DropsPath>
+		<ForcedMSBuildProperties>Configuration=Release;Platform=Any CPU</ForcedMSBuildProperties>
+		<VersioningPath>$(BuildPath)\Versioning</VersioningPath>
+		<VersionXmlFile>$(VersioningPath)\VersionNumber.exe.config</VersionXmlFile>
+	
+  </PropertyGroup>
+  <ItemGroup>
+  <PackageFiles Include="$(WebAppPath)\**\*.*"
+                Exclude="$(WebAppPath)\**\*.cs;
+                             $(WebAppPath)\**\*.csproj;
+                             $(WebAppPath)\**\*.user;
+                             $(WebAppPath)\**\*.vspscc;
+                             $(WebAppPath)\**\bin\*.pdb;
+                             $(WebAppPath)\App_Data\logs\*.xml;
+                             $(WebAppPath)\**\Code\**;
+                             $(WebAppPath)\**\aspnet_client\**;
+                             $(WebAppPath)\**\obj\**;
+                             $(WebAppPath)\**\Properties\**;
+                             $(WebAppPath)\**\Registrars\**;
+                             $(WebAppPath)\**\ResourceFiles\**;
+							 $(WebAppPath)\**\.svn\**;
+							 $(WebAppPath)\**\CodeTemplates\**;
+							 $(WebAppPath)\**\_bin_deployableAssemblies\**;">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).$(GlobalBuildVersionNumber).zip</PackageName>
+      <WorkingDirectory>$(WebAppPath)</WorkingDirectory>
+    </PackageFiles>
+
+  <!--
+  Currently we don't need to package the source code
+    <PackageFiles Include="$(SolutionRoot)\**\*.*"
+                       Exclude="$(SolutionRoot)\**\bin\**;
+                                  $(SolutionRoot)\**\Logs\**;
+                                  $(SolutionRoot)\**\obj\**;
+                  $(SolutionRoot)\**\.svn\**;
+                  $(SolutionRoot)\Drops\**\*.*;
+                  $(SolutionRoot)\**\*.user;
+                  $(SolutionRoot)\**\*.dbmdl;
+                  $(SolutionRoot)\**\*.suo;
+                  $(SolutionRoot)\**\*.dbproj.schemaview;
+                  $(SolutionRoot)\**\*.dbproj.user";
+				  $(SolutionRoot)\_ReSharper.HeartPulse\**\*.*;>
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).Source.v$(GlobalBuildVersionNumber).zip</PackageName>
+      <WorkingDirectory>$(SolutionRoot)</WorkingDirectory>
+    </PackageFiles>
+  -->
+  </ItemGroup>
+
+  <Import Project="$(PropertiesPath)\Global.Imports" />
+
+  <Target Name="Build"
+        DependsOnTargets="CleanSolution;
+                            UpdateAssemblyVersion;
+                            BuildSolutions;" />
+
+  <Target Name="PackageArtefacts"
+          DependsOnTargets="Build;
+							Package;
+                            BuildSuccess" />
+ 
+</Project>

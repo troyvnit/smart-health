@@ -1,0 +1,27 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="396C5523-C7FC-4C75-B2C7-A0608B6E10E4/f:NHibernateSession.cs" caret="7316" fromTop="26" />
+    <File id="FDDD112A-827F-47C0-8A41-9021F5D1211C/f:NHibernate.config" caret="223" fromTop="3" />
+    <File id="FDDD112A-827F-47C0-8A41-9021F5D1211C/f:Web.config" caret="2295" fromTop="37" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/f:packages.config" caret="0" fromTop="0" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Infrastructure/d:Nhibernate/d:Mapping/f:SaleInfoMapping.cs" caret="474" fromTop="16" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:Dtos/f:SaleInfoDto.cs" caret="194" fromTop="9" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Infrastructure/d:Nhibernate/f:SaleInfoRepository.cs" caret="2593" fromTop="43" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:IRepository/f:ISaleInfoRepository.cs" caret="403" fromTop="10" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:ApplicationServices/f:SurveyService.cs" caret="0" fromTop="0" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:ApplicationServices/f:ISurveyService.cs" caret="0" fromTop="0" />
+    <File id="792C2214-AB06-4C9F-9BBA-688DCF1ECE22/d:Nhibernate/f:AutoPersistenceModelGenerator.cs" caret="0" fromTop="0" />
+    <File id="AF683A7B-AFE4-4520-8429-BFD556F42C3F/d:Domain/d:Models/f:Entity.cs" caret="0" fromTop="0" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:Models/f:SaleInfo.cs" caret="183" fromTop="8" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:Models/f:Comment.cs" caret="357" fromTop="15" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="FDDD112A-827F-47C0-8A41-9021F5D1211C/f:Web.config" caret="2295" fromTop="37" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:Dtos/f:SaleInfoDto.cs" caret="194" fromTop="9" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:IRepository/f:ISaleInfoRepository.cs" caret="405" fromTop="10" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Infrastructure/d:Nhibernate/d:Mapping/f:SaleInfoMapping.cs" caret="303" fromTop="9" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Infrastructure/d:Nhibernate/f:SaleInfoRepository.cs" caret="2593" fromTop="43" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:Models/f:SaleInfo.cs" caret="307" fromTop="13" />
+    <File id="9B513F28-25FB-45AF-8C5B-B558BFCA15F4/d:Domain/d:Models/f:Comment.cs" caret="357" fromTop="15" />
+  </RecentEdits>
+</RecentFiles>
