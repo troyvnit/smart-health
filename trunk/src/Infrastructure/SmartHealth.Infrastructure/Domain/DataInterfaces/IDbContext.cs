@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure.Domain.DataInterfaces
+namespace SmartHealth.Infrastructure.Domain.DataInterfaces
 {
     public interface IDbContext
     {

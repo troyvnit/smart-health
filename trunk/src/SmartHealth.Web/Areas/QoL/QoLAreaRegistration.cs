@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace VinaSale.Web.Areas.QoL
+namespace SmartHealth.Web.Areas.Box
 {
-    public class QoLAreaRegistration : AreaRegistration
+    public class BoxAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "QoL";
+                return "Box";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "QoL_default",
-                "QoL/{controller}/{action}/{id}",
+                "Box_default",
+                "Box/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

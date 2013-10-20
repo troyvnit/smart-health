@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace HeartPulse.Web.Areas.Admin
+namespace SmartHealth.Web.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration
     {

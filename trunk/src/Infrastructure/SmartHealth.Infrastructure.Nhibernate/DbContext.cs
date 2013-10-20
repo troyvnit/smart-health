@@ -2,9 +2,9 @@
 
 using NHibernate;
 
-using VinaSale.Infrastructure.Domain.DataInterfaces;
+using SmartHealth.Infrastructure.Domain.DataInterfaces;
 
-namespace VinaSale.Infrastructure.Nhibernate
+namespace SmartHealth.Infrastructure.Nhibernate
 {
     public class DbContext : IDbContext
     {

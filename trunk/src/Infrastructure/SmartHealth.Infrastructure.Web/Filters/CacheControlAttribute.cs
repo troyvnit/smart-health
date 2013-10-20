@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 
-namespace VinaSale.Infrastructure.Web.Filters
+namespace SmartHealth.Infrastructure.Web.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public sealed class CacheControlAttribute : ActionFilterAttribute

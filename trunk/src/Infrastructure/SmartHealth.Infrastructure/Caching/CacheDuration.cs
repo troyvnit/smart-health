@@ -1,4 +1,4 @@
-﻿namespace VinaSale.Infrastructure.Caching
+﻿namespace SmartHealth.Infrastructure.Caching
 {
     public enum CacheDuration
     {

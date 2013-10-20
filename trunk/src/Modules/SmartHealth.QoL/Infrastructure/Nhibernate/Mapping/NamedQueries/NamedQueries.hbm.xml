@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
-  <sql-query name="GetQolListByUser">
-    exec spGetQolListByUser :UserId, :OrderBy, :OrderDirection, :Page, :PageSize
+  <sql-query name="GetProductListByUser">
+    exec spGetProductListByUser :UserId, :OrderBy, :OrderDirection, :Page, :PageSize
   </sql-query>
 
-  <sql-query name="GetQolListByUserId">
+  <sql-query name="GetProductListByUserId">
     exec spGetHealthSurveysList :PatientId, :OrderBy, :OrderDirection, :Page, :PageSize, :IsShowOlder
   </sql-query>
 
-  <sql-query name="GetQolByDate">
-    exec spGetQolByDate :StartDate, :EndDate, :UserId, :UtcOffset
+  <sql-query name="GetProductByDate">
+    exec spGetProductByDate :StartDate, :EndDate, :UserId, :UtcOffset
   </sql-query>
 
-  <sql-query name="GetQolPatients">
-    exec spGetQolPatients :StartDate, :EndDate, :UserId, :UtcOffset
+  <sql-query name="GetSmartHealthPatients">
+    exec spGetSmartHealthPatients :StartDate, :EndDate, :UserId, :UtcOffset
   </sql-query>
 </hibernate-mapping>

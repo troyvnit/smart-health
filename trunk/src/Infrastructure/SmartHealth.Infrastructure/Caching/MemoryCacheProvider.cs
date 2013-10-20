@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Runtime.Caching;
 
-namespace VinaSale.Infrastructure.Caching
+namespace SmartHealth.Infrastructure.Caching
 {
     public class MemoryCacheProvider : CacheProvider
     {

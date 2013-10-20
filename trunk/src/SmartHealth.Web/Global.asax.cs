@@ -3,10 +3,11 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using VinaSale.Infrastructure.Web.Bootstrap;
-using VinaSale.Infrastructure.Web.Nhibernate;
+using SmartHealth.Infrastructure.Web.Bootstrap;
+using SmartHealth.Infrastructure.Web.Nhibernate;
+using SmartHealth.Web.Mappers;
 
-namespace VinaSale.Web
+namespace SmartHealth.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -22,10 +23,10 @@ namespace VinaSale.Web
 
         protected void Application_Start()
         {
-            ComponentRegistrar.RegisterComponents("VinaSale.Web");
+            ComponentRegistrar.RegisterComponents("SmartHealth.Web");
 
             AreaRegistration.RegisterAllAreas();
-
+            AutoMapperConfiguration.Configure(); 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VinaSale.Box.Domain.Dtos;
-using VinaSale.Box.Domain.Models;
+using SmartHealth.Box.Domain.Dtos;
+using SmartHealth.Box.Domain.Models;
 
-namespace VinaSale.Box.ApplicationServices
+namespace SmartHealth.Box.ApplicationServices
 {
     public interface ISurveyService 
     {
-        //IList<QOLDto> GetQolByDate(DateTime startDate, DateTime endDate, int userId);
-        //IList<QOLDto> GetQolListByUser(int userId, int currentPage, int pageSize, string orderBy, string orderDirection, out int totalRecords);
-        //IList<QOLDto> GetQolListByUserId(int userId, int currentPage, int pageSize, string orderBy, string direction, ref int totalRecords, bool isShowOlder);
+        //IList<QOLDto> GetProductByDate(DateTime startDate, DateTime endDate, int userId);
+        //IList<QOLDto> GetProductListByUser(int userId, int currentPage, int pageSize, string orderBy, string orderDirection, out int totalRecords);
+        //IList<QOLDto> GetProductListByUserId(int userId, int currentPage, int pageSize, string orderBy, string direction, ref int totalRecords, bool isShowOlder);
     }
 }

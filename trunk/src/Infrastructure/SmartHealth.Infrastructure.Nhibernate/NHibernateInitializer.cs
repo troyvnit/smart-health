@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure.Nhibernate
+namespace SmartHealth.Infrastructure.Nhibernate
 {
     /// <summary>
     ///     Invoked by Global.asax.cx, or wherever you can to initialize NHibernate, to guarentee that 

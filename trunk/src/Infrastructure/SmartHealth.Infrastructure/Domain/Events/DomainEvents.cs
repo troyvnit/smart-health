@@ -5,7 +5,7 @@ using System.Text;
 
 using Microsoft.Practices.ServiceLocation;
 
-namespace VinaSale.Infrastructure.Domain.Events
+namespace SmartHealth.Infrastructure.Domain.Events
 {
     public static class DomainEvents
     {

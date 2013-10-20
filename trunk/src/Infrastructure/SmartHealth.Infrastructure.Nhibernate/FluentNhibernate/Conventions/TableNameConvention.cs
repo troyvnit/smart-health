@@ -2,7 +2,7 @@
 
 using Inflector;
 
-namespace VinaSale.Infrastructure.Nhibernate.FluentNhibernate.Conventions
+namespace SmartHealth.Infrastructure.Nhibernate.FluentNhibernate.Conventions
 {
     public class TableNameConvention : IClassConvention
     {

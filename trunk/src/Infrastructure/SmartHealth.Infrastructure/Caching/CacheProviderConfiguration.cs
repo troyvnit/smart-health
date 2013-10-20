@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace VinaSale.Infrastructure.Caching
+namespace SmartHealth.Infrastructure.Caching
 {
     public class CacheProviderConfiguration : ConfigurationSection
     {

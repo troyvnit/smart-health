@@ -1,0 +1,382 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div id="image-window"></div>
+<div id="vertical">
+    <div id="top-pane">
+        <div id="horizontal" style="height: 100%; width: 100%;">
+            <div id="left-pane">
+                <div class="pane-content">
+                    <div class="articlecategory-listview-section">
+                        <a id="add-category" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Danh Mục</a>
+                    </div>
+
+                    <div class="articlecategory-listview-section">
+                        <div id="listView"></div>
+                        <div id="pager" class="k-pager-wrap"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="center-pane">
+                <div class="pane-content">
+                    <div class="article-grid">
+                        <a id="add-article" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Bài Viết</a>
+                    </div>
+
+                    <div class="article-grid">
+                        <div id="grid"></div>
+                    </div>
+                </div>
+            </div>
+            @Html.BeginForm("", "Article", FormMethod.Post)
+            {
+            <div id="right-pane">
+                <div class="pane-content">
+                    <div class="article-grid">
+                        <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-add"></span>Lưu Bài Viết</a>
+                    </div>
+
+                    <div class="article-grid">
+                        <div class="add-article-row">
+                            <div class="column-left">
+                                <a href="#" onclick="openImageWindow(); return false;">
+                                    <img id="avatar" src="~/Content/images/no-image.jpg" />
+                                    <input type="hidden" name="ImageUrl" id="ImageUrl" />
+                                </a>
+                            </div>
+                            <div class="column-right">
+                                <div class="add-article-row">
+                                    <p>Tiêu đề: </p>
+                                    <input type="text" class="k-textbox" id="Title" name="Title" />
+                                </div>
+                                <div class="add-article-row">
+                                    <p>Tác giả: </p>
+                                    <input type="text" class="k-textbox" id="Author" name="Author" />
+                                </div>
+                                <div class="add-article-row">
+                                    <p>Thứ tự: </p>
+                                    <input type="text" id="Priority" name="Priority" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-article-row">
+                            <p>Danh mục: </p>
+                            <select id="Category" name="Category"></select>
+                        </div>
+                        <div class="add-article-row">
+                            <p>Mô tả: </p>
+                            <textarea id="DescriptionEditor" style="height: 200px"></textarea>
+                        </div>
+                        <div class="add-article-row">
+                            <p>Nội dung: </p>
+                            <textarea id="ContentEditor"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/x-kendo-tmpl" id="template">
+        <div class="articlecategory-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            <dl>
+                <dt>Tên</dt>
+                <dd>#:Name#</dd>
+                <dt>Mô Tả</dt>
+                <dd>#:Description#</dd>
+            </dl>
+        </div>
+</script>
+
+<script type="text/x-kendo-tmpl" id="editTemplate">
+        <div class="articlecategory-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Tên</dt>
+                <dd>
+                    <input type="text" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
+                    <span data-for="Name" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Mô Tả</dt>
+                <dd>
+                    <input type="text" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
+
+<script>
+    $(document).ready(function () {
+        $.post('@Url.Action("Index", "Image")').done(function (data) {
+            $("#image-window").append(data).kendoWindow({
+                width: "960px",
+                height: "565px",
+                title: "Hình ảnh",
+                actions: [
+                    "Pin",
+                    "Minimize",
+                    "Maximize",
+                    "Close"
+                ]
+            });
+            $("#image-window").data("kendoWindow").close();
+        });
+        var articleCategoryDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetCategories", "Article")',
+                    type: "post",
+                    dataType: "json"
+                },
+                update: {
+                    url: '@Url.Action("CreateOrUpdateCategory", "Article")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                destroy: {
+                    url: '@Url.Action("DeleteCategory", "Article")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                create: {
+                    url: '@Url.Action("CreateOrUpdateCategory", "Article")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 6,
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, nullable: true },
+                        Name: { type: "string" },
+                        Description: { type: "string" }
+                    }
+                }
+            }
+        });
+
+
+        $("#pager").kendoPager({
+            dataSource: articleCategoryDataSource
+        });
+
+        var listView = $("#listView").kendoListView({
+            dataSource: articleCategoryDataSource,
+            template: kendo.template($("#template").html()),
+            editTemplate: kendo.template($("#editTemplate").html())
+        }).data("kendoListView");
+
+        $("#add-category").click(function (e) {
+            listView.add();
+            e.preventDefault();
+        });
+
+        $("#grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetArticles", "Article")',
+                        type: "post",
+                        dataType: "json"
+                    }
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            OrderID: { type: "number" },
+                            Freight: { type: "number" },
+                            ShipName: { type: "string" },
+                            OrderDate: { type: "date" },
+                            ShipCity: { type: "string" }
+                        }
+                    }
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            height: 710,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            columns: [{
+                field: "Title",
+                title: "Tiêu đề"
+            }, {
+                field: "Description",
+                title: "Mô tả"
+            }, {
+                field: "Author",
+                title: "Tác giả"
+            }, {
+                field: "Content",
+                title: "Nội dung"
+            }, {
+                field: "ImageUrl",
+                title: "Hình đại diện"
+            }, {
+                field: "Priority",
+                title: "Thứ tự"
+            }, {
+                field: "IsActived",
+                title: "Duyệt"
+            }
+            ]
+        });
+
+        var panes = $("#horizontal").children(),
+            getPane = function (index) {
+                index = Number(index);
+
+                if (!isNaN(index) && index < panes.length) {
+                    return panes[index];
+                }
+            };
+
+        $("#add-article").click(function (e) {
+            var pane = getPane(1);
+            if (!pane) return;
+
+            splitter.toggle(pane, $(pane).width() <= 0);
+        });
+
+        $("#save-article").click(function (e) {
+            var pane = getPane(1);
+            if (!pane) return;
+
+            splitter.toggle(pane, $(pane).width() <= 0);
+        });
+
+        $("#DescriptionEditor").kendoEditor({
+            tools: [
+                "bold",
+                "italic",
+                "underline",
+                "strikethrough",
+                "justifyLeft",
+                "justifyCenter",
+                "justifyRight",
+                "justifyFull",
+                "insertUnorderedList",
+                "insertOrderedList",
+                "indent",
+                "outdent",
+                "createLink",
+                "unlink",
+                "insertImage",
+                "subscript",
+                "superscript",
+                "createTable",
+                "addRowAbove",
+                "addRowBelow",
+                "addColumnLeft",
+                "addColumnRight",
+                "deleteRow",
+                "deleteColumn",
+                "viewHtml",
+                "formatting",
+                "fontName",
+                "fontSize",
+                "foreColor",
+                "backColor"
+            ]
+        });
+
+        $("#ContentEditor").kendoEditor({
+            tools: [
+                "bold",
+                "italic",
+                "underline",
+                "strikethrough",
+                "justifyLeft",
+                "justifyCenter",
+                "justifyRight",
+                "justifyFull",
+                "insertUnorderedList",
+                "insertOrderedList",
+                "indent",
+                "outdent",
+                "createLink",
+                "unlink",
+                "insertImage",
+                "subscript",
+                "superscript",
+                "createTable",
+                "addRowAbove",
+                "addRowBelow",
+                "addColumnLeft",
+                "addColumnRight",
+                "deleteRow",
+                "deleteColumn",
+                "viewHtml",
+                "formatting",
+                "fontName",
+                "fontSize",
+                "foreColor",
+                "backColor"
+            ]
+        });
+        
+        $("#Category").kendoMultiSelect({
+            placeholder: "Chọn danh mục...",
+            dataTextField: "Name",
+            dataValueField: "Id",
+            autoBind: false,
+            dataSource: {
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetCategories", "Article")',
+                        type: "post",
+                        dataType: "json"
+                    }
+                }
+            },
+            width: 300
+        });
+
+        $("#Priority").kendoNumericTextBox();
+
+        $("#vertical").kendoSplitter({
+            orientation: "vertical",
+            panes: [
+                { collapsible: false }
+            ]
+        });
+
+        var splitter = $("#horizontal").kendoSplitter({
+            orientation: "horizontal",
+            panes: [
+                { collapsible: true, size: "20%" },
+                { collapsible: true, size: "80%" },
+                { collapsible: true, size: "0%" }
+            ]
+        }).data("kendoSplitter");
+    });
+
+    function openImageWindow() {
+        $("#image-window").data("kendoWindow").open();
+        $("#image-window").data("kendoWindow").center();
+    }
+</script>
+

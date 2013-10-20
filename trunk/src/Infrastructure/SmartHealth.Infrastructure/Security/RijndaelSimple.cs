@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace VinaSale.Infrastructure.Security
+namespace SmartHealth.Infrastructure.Security
 {
     /// <summary>
     /// This class uses a symmetric key algorithm (Rijndael/AES) to encrypt and 

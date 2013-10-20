@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace VinaSale.Infrastructure
+namespace SmartHealth.Infrastructure
 {
     public class NotFoundException : Exception
     {

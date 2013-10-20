@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure.Caching
+namespace SmartHealth.Infrastructure.Caching
 {
     public class NoCacheProvider : CacheProvider
     {

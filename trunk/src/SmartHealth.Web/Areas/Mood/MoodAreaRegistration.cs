@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace VinaSale.Web.Areas.Mood
+namespace SmartHealth.Web.Areas.Mood
 {
     public class MoodAreaRegistration : AreaRegistration
     {

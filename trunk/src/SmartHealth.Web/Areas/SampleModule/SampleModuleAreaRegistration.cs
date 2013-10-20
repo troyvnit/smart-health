@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace VinaSale.Web.Areas.SampleModule
+namespace SmartHealth.Web.Areas.SampleModule
 {
     public class SampleModuleAreaRegistration : AreaRegistration
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure
+namespace SmartHealth.Infrastructure
 {
     public class TimeSpanHelper
     {

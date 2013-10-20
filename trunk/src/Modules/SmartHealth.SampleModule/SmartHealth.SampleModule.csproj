@@ -60,6 +60,7 @@
     <Compile Include="..\..\CommonAssemblyInfo\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Domain\Models\ProductTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,13 +68,22 @@
     <Folder Include="Domain\Dtos\" />
     <Folder Include="Domain\Events\" />
     <Folder Include="Domain\IRepository\" />
-    <Folder Include="Domain\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Infrastructure\Nhibernate\Mapping\NamedQueries\NamedQueries.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SmartHealth.Core\SmartHealth.Core.csproj">
+      <Project>{0f42e2f3-49b6-4e90-a643-222911a842ff}</Project>
+      <Name>SmartHealth.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\SmartHealth.Infrastructure\SmartHealth.Infrastructure.csproj">
+      <Project>{af683a7b-afe4-4520-8429-bfd556f42c3f}</Project>
+      <Name>SmartHealth.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

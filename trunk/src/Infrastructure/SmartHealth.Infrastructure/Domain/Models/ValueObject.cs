@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure.Domain.Models
+namespace SmartHealth.Infrastructure.Domain.Models
 {
     [Serializable]
     public abstract class ValueObject : ValidatableObject

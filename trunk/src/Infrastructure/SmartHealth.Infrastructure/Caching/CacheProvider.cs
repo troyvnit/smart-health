@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration.Provider;
 
-namespace VinaSale.Infrastructure.Caching
+namespace SmartHealth.Infrastructure.Caching
 {
     public abstract class CacheProvider : ProviderBase
     {

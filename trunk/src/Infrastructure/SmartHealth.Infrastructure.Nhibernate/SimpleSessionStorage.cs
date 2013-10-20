@@ -2,7 +2,7 @@
 
 using NHibernate;
 
-namespace VinaSale.Infrastructure.Nhibernate
+namespace SmartHealth.Infrastructure.Nhibernate
 {
     public class SimpleSessionStorage : ISessionStorage
     {

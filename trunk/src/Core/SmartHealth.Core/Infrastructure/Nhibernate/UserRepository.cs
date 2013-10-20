@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VinaSale.Core.Domain.IRepository;
-using VinaSale.Core.Domain.Models;
-using VinaSale.Infrastructure.Nhibernate;
+using SmartHealth.Core.Domain.IRepository;
+using SmartHealth.Core.Domain.Models;
+using SmartHealth.Infrastructure.Nhibernate;
 
-namespace VinaSale.Core.Infrastructure.Nhibernate
+namespace SmartHealth.Core.Infrastructure.Nhibernate
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
