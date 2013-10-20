@@ -56,6 +56,8 @@
     <Compile Include="..\..\CommonAssemblyInfo\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Bussiness\IService.cs" />
+    <Compile Include="Bussiness\Service.cs" />
     <Compile Include="Caching\CacheDuration.cs" />
     <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="Caching\CacheProvider.cs" />

@@ -1,13 +1,13 @@
 ﻿using System.IO;
 using System.Web.Mvc;
-using VinaSale.Core.ApplicationServices.Caching;
-using VinaSale.Core.Domain.Models;
-using VinaSale.Infrastructure;
-using VinaSale.Infrastructure.Caching;
-using VinaSale.Infrastructure.Domain.DataInterfaces;
+using SmartHealth.Core.ApplicationServices.Caching;
+using SmartHealth.Core.Domain.Models;
+using SmartHealth.Infrastructure;
+using SmartHealth.Infrastructure.Caching;
+using SmartHealth.Infrastructure.Domain.DataInterfaces;
 
 
-namespace VinaSale.Web.Controllers
+namespace SmartHealth.Web.Controllers
 {
     public class BaseController : Controller
     {

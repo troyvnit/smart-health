@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VinaSale.Core.Domain.Models;
+using SmartHealth.Core.Domain.Models;
 
-namespace VinaSale.Core.ApplicationServices.Caching
+namespace SmartHealth.Core.ApplicationServices.Caching
 {
     [Serializable]
     public class UserCache

@@ -1,4 +1,4 @@
-﻿namespace VinaSale.Infrastructure.Domain.Models
+﻿namespace SmartHealth.Infrastructure.Domain.Models
 {
     public interface IEntityWithTypedId<TId>
     {

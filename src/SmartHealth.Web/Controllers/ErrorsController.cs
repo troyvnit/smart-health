@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace VinaSale.Web.Controllers
+namespace SmartHealth.Web.Controllers
 {
     public class ErrorsController : BaseController
     {

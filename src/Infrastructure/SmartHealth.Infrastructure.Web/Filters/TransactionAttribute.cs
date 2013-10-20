@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-using VinaSale.Infrastructure.Nhibernate;
+using SmartHealth.Infrastructure.Nhibernate;
 
-namespace VinaSale.Infrastructure.Web.Filters
+namespace SmartHealth.Infrastructure.Web.Filters
 {
     public class TransactionAttribute : ActionFilterAttribute
     {

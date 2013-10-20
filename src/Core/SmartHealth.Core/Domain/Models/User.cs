@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VinaSale.Infrastructure.Domain.Models;
+using SmartHealth.Infrastructure.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace VinaSale.Core.Domain.Models
+namespace SmartHealth.Core.Domain.Models
 {
     [Serializable]
     public class User : Entity
@@ -81,7 +81,7 @@ namespace VinaSale.Core.Domain.Models
                 if (this.Gender.HasValue == false)
                     return "his/her";
 
-                return this.Gender.Value == VinaSale.Core.Domain.Models.Gender.Female ? "her" : "his";
+                return this.Gender.Value == SmartHealth.Core.Domain.Models.Gender.Female ? "her" : "his";
             }
         }
 
@@ -93,7 +93,7 @@ namespace VinaSale.Core.Domain.Models
                 if (this.Gender.HasValue == false)
                     return "HisHer";
 
-                return this.Gender.Value == VinaSale.Core.Domain.Models.Gender.Female ? "Her" : "His";
+                return this.Gender.Value == SmartHealth.Core.Domain.Models.Gender.Female ? "Her" : "His";
             }
         }
         public virtual Language Language { get; set; }

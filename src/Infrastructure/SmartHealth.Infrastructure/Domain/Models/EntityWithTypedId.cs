@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace VinaSale.Infrastructure.Domain.Models
+namespace SmartHealth.Infrastructure.Domain.Models
 {
     [Serializable]
     public abstract class EntityWithTypedId<TId> : ValidatableObject, IEntityWithTypedId<TId>

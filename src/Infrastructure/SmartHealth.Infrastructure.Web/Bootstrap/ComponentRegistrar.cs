@@ -7,11 +7,11 @@ using Autofac.Integration.Mvc;
 using AutofacContrib.CommonServiceLocator;
 
 using Microsoft.Practices.ServiceLocation;
+using SmartHealth.Infrastructure.Bussiness;
+using SmartHealth.Infrastructure.Domain.DataInterfaces;
+using SmartHealth.Infrastructure.Nhibernate;
 
-using VinaSale.Infrastructure.Domain.DataInterfaces;
-using VinaSale.Infrastructure.Nhibernate;
-
-namespace VinaSale.Infrastructure.Web.Bootstrap
+namespace SmartHealth.Infrastructure.Web.Bootstrap
 {
     public class ComponentRegistrar
     {
@@ -20,9 +20,11 @@ namespace VinaSale.Infrastructure.Web.Bootstrap
             var builder = new ContainerBuilder();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(RepositoryWithTypedId<,>)).As(typeof(IRepositoryWithTypedId<,>));
+            builder.RegisterGeneric(typeof(Service<>)).As(typeof(IService<>));
+            builder.RegisterGeneric(typeof(ServiceWithTypedId<,>)).As(typeof(IServiceWithTypedId<,>));
             
-            builder.RegisterAssemblyTypes(Assembly.Load("VinaSale.Core")).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(Assembly.Load("VinaSale.QoL")).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.Load("SmartHealth.Core")).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.Load("SmartHealth.Box")).AsImplementedInterfaces();
 
             builder.RegisterControllers(Assembly.Load(webAssembly));
 

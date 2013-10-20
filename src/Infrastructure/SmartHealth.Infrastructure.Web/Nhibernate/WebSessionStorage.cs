@@ -6,9 +6,9 @@ using System.Web;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 
-using VinaSale.Infrastructure.Nhibernate;
+using SmartHealth.Infrastructure.Nhibernate;
 
-namespace VinaSale.Infrastructure.Web.Nhibernate
+namespace SmartHealth.Infrastructure.Web.Nhibernate
 {
     public class WebSessionStorage : ISessionStorage
     {
@@ -69,8 +69,9 @@ namespace VinaSale.Infrastructure.Web.Nhibernate
                this,
                new []
                    {
-                       HttpContext.Current.Server.MapPath("~/bin/VinaSale.Core.dll"),
-                       HttpContext.Current.Server.MapPath("~/bin/VinaSale.QoL.dll"),
+                       HttpContext.Current.Server.MapPath("~/bin/SmartHealth.Core.dll"),
+                       HttpContext.Current.Server.MapPath("~/bin/SmartHealth.Box.dll"),
+                       HttpContext.Current.Server.MapPath("~/bin/SmartHealth.SampleModule.dll"),
                    },
                new AutoPersistenceModelGenerator().Generate(),
                HttpContext.Current.Server.MapPath("~/NHibernate.config"));

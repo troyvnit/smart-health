@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace VinaSale.Infrastructure.Domain.Validation
+namespace SmartHealth.Infrastructure.Domain.Validation
 {
     [Serializable]
     public class ValidationException : Exception

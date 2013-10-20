@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace VinaSale.Web.Areas.QoL.Controllers
+namespace SmartHealth.Web.Areas.Box.Controllers
 {
     public class HealthSurveyController : Controller
     {
         //
-        // GET: /QoL/HealthSurvey/
+        // GET: /Box/HealthSurvey/
 
         public ActionResult Index()
         {

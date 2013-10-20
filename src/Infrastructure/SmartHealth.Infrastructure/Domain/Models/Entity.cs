@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure.Domain.Models
+namespace SmartHealth.Infrastructure.Domain.Models
 {
     /// <summary>
     ///     Provides a base class for your objects which will be persisted to the database.

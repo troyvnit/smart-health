@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Configuration.Provider;
 
-namespace VinaSale.Infrastructure
+namespace SmartHealth.Infrastructure
 {
     public static class ProvidersHelper
     {

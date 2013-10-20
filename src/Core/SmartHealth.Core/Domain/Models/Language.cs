@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VinaSale.Infrastructure.Domain.Models;
+using SmartHealth.Infrastructure.Domain.Models;
 
-namespace VinaSale.Core.Domain.Models
+namespace SmartHealth.Core.Domain.Models
 {
     [Serializable]
     public class Language : Entity

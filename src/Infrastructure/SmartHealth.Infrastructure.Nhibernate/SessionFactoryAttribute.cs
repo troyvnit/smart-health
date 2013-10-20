@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VinaSale.Infrastructure.Nhibernate
+namespace SmartHealth.Infrastructure.Nhibernate
 {
     /// <summary>
     /// Provides the ability to decorate repositories with an attribute defining the factory key

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace VinaSale.Web
+namespace SmartHealth.Web
 {
     public class FilterConfig
     {

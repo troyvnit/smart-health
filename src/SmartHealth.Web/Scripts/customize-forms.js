@@ -378,7 +378,7 @@ jQuery.fn.extend({
 						}
 					});
 					jQuery(this).prev().prop("checked", "true");
-					// Thao edit 11/05/2012 fix bug QoL Survey
+					// Thao edit 11/05/2012 fix bug Box Survey
 				}
 				self.label.addClass(aC);
 				evt.stopPropagation();

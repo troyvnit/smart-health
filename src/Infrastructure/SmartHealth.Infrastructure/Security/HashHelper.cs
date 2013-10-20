@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace VinaSale.Infrastructure.Security
+namespace SmartHealth.Infrastructure.Security
 {
     public static class HashHelper
     {

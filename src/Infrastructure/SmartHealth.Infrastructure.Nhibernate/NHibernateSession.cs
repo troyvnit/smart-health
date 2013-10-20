@@ -10,7 +10,7 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 
-namespace VinaSale.Infrastructure.Nhibernate
+namespace SmartHealth.Infrastructure.Nhibernate
 {
     public class NHibernateSession
     {

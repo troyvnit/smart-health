@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Configuration.Provider;
 
-namespace VinaSale.Infrastructure.Caching
+namespace SmartHealth.Infrastructure.Caching
 {
     public static class CacheManager
     {

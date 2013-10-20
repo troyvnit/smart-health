@@ -1,6 +1,6 @@
-﻿using VinaSale.Infrastructure.Domain.Models;
+﻿using SmartHealth.Infrastructure.Domain.Models;
 
-namespace VinaSale.Infrastructure.Domain.DataInterfaces
+namespace SmartHealth.Infrastructure.Domain.DataInterfaces
 {
     public interface IRepository<T> : IRepositoryWithTypedId<T, int> where T : EntityWithTypedId<int>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace VinaSale.Infrastructure.Domain.Models
+namespace SmartHealth.Infrastructure.Domain.Models
 {
     public abstract class ValidatableObject
     {

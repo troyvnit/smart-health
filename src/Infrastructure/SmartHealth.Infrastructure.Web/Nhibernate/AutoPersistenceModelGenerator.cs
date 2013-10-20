@@ -4,33 +4,33 @@ using FluentNHibernate.Automapping;
 using FluentNHibernate.Conventions;
 
 
-using VinaSale.Infrastructure.Domain.Models;
-using VinaSale.Infrastructure.Nhibernate.FluentNhibernate;
-using VinaSale.Infrastructure.Nhibernate.FluentNhibernate.Conventions;
-using VinaSale.Core.Domain.Models;
+using SmartHealth.Infrastructure.Domain.Models;
+using SmartHealth.Infrastructure.Nhibernate.FluentNhibernate;
+using SmartHealth.Infrastructure.Nhibernate.FluentNhibernate.Conventions;
+using SmartHealth.Core.Domain.Models;
 
-namespace VinaSale.Infrastructure.Web.Nhibernate
+namespace SmartHealth.Infrastructure.Web.Nhibernate
 {
-    using VinaSale.Core.Infrastructure.Nhibernate.Mapping;
-    using VinaSale.Box.Domain.Models;
-    using VinaSale.Box.Infrastructure.Nhibernate.Mapping;
+    using SmartHealth.Core.Infrastructure.Nhibernate.Mapping;
+    using SmartHealth.Box.Domain.Models;
+    using SmartHealth.Box.Infrastructure.Nhibernate.Mapping;
 
     public class AutoPersistenceModelGenerator
     {
         public AutoPersistenceModel Generate()
         {
             return AutoMap.Assemblies(new AutomappingConfiguration(), new[]
-                {
-                    typeof(User).Assembly
-                    //,typeof(HealthSurvey).Assembly
-                    
-                })
+                                                                          {
+                                                                              typeof (User).Assembly
+                                                                              , typeof (Product).Assembly
+
+                                                                          })
                 .IgnoreBase<Entity>()
-                .IgnoreBase(typeof(EntityWithTypedId<>))
+                .IgnoreBase(typeof (EntityWithTypedId<>))
                 .Conventions.Setup(GetConventions())
                 .UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>()
-                .UseOverridesFromAssemblyOf<UserMapping>();
-                //.UseOverridesFromAssemblyOf<HealthSurveyMapping>();
+                .UseOverridesFromAssemblyOf<UserMapping>()
+                .UseOverridesFromAssemblyOf<ArticleCategoryMapping>();
         }
 
         private Action<IConventionFinder> GetConventions()

@@ -4,9 +4,9 @@ using System.Linq;
 using FluentNHibernate;
 using FluentNHibernate.Automapping;
 
-using VinaSale.Infrastructure.Domain.Models;
+using SmartHealth.Infrastructure.Domain.Models;
 
-namespace VinaSale.Infrastructure.Nhibernate.FluentNhibernate
+namespace SmartHealth.Infrastructure.Nhibernate.FluentNhibernate
 {
     public class AutomappingConfiguration: DefaultAutomappingConfiguration
     {

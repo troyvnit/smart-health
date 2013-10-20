@@ -1,4 +1,4 @@
-﻿namespace VinaSale.Infrastructure.Security
+﻿namespace SmartHealth.Infrastructure.Security
 {
     public class HashAndSalt
     {

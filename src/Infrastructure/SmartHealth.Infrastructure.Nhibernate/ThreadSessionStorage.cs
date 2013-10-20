@@ -5,7 +5,7 @@ using System.Threading;
 
 using NHibernate;
 
-namespace VinaSale.Infrastructure.Nhibernate
+namespace SmartHealth.Infrastructure.Nhibernate
 {
     public class ThreadSessionStorage : ISessionStorage
     {
