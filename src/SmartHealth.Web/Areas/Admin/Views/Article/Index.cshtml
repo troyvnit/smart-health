@@ -324,7 +324,7 @@
             var validator = $("#article-form").kendoValidator().data("kendoValidator");
             if (validator.validate()) {
                 $("#Description").val(descriptionEditor.value());
-                $("#ContentEditor").val(contentEditor.value());
+                $("#Content").val(contentEditor.value());
                 $.post($("#article-form").attr('action'), $("#article-form").serialize()).done(function (e) {
                     grid.dataSource.read();
                 });
