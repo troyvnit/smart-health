@@ -22,6 +22,8 @@
                 <div class="pane-content">
                     <div class="article-grid">
                         <a id="add-article" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Bài Viết</a>
+                        <a id="edit-article" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-edit"></span>Sửa Bài Viết</a>
+                        <a id="delete-article" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-delete"></span>Xóa Bài Viết</a>
                     </div>
 
                     <div class="article-grid">
@@ -29,53 +31,56 @@
                     </div>
                 </div>
             </div>
-            @Html.BeginForm("", "Article", FormMethod.Post)
-            {
-            <div id="right-pane">
-                <div class="pane-content">
-                    <div class="article-grid">
-                        <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-add"></span>Lưu Bài Viết</a>
-                    </div>
+                            @using (Html.BeginForm("CreateOrUpdateArticle", "Article", FormMethod.Post, new { id = "article-form" }))
+                            {
+                                <div id="right-pane">
+                                    <div class="pane-content">
+                                        <div class="article-grid">
+                                            <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
+                                            <a id="cancel-article" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-cancel"></span>Hủy</a>
+                                        </div>
 
-                    <div class="article-grid">
-                        <div class="add-article-row">
-                            <div class="column-left">
-                                <a href="#" onclick="openImageWindow(); return false;">
-                                    <img id="avatar" src="~/Content/images/no-image.jpg" />
-                                    <input type="hidden" name="ImageUrl" id="ImageUrl" />
-                                </a>
-                            </div>
-                            <div class="column-right">
-                                <div class="add-article-row">
-                                    <p>Tiêu đề: </p>
-                                    <input type="text" class="k-textbox" id="Title" name="Title" />
+                                        <div class="article-grid">
+                                            <div class="add-article-row">
+                                                <div class="column-left">
+                                                    <a href="#" onclick="openImageWindow(); return false;">
+                                                        <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
+                                                        <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
+                                                    </a>
+                                                </div>
+                                                <div class="column-right">
+                                                    <div class="add-article-row">
+                                                        <p>Tiêu đề: </p>
+                                                        <input type="hidden" id="Id" name="Id" />
+                                                        <input type="text" class="k-textbox" id="Title" name="Title" required validationMessage="Vui lòng nhập tiêu đề!"/>
+                                                    </div>
+                                                    <div class="add-article-row">
+                                                        <p>Tác giả: </p>
+                                                        <input type="text" class="k-textbox" id="Author" name="Author" />
+                                                        <p>Thứ tự: </p>
+                                                        <input type="text" id="Priority" name="Priority" />
+                                                    </div>
+                                                    <div class="add-article-row">
+                                                        <p>Danh mục: </p>
+                                                        <select id="Category" name="Category"></select>
+                                                        <input type="hidden" id="Categories" name="Categories" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="add-article-row">
+                                                <p>Mô tả: </p>
+                                                <textarea id="DescriptionEditor"></textarea>
+                                                <input type="hidden" id="Description" name="Description" />
+                                            </div>
+                                            <div class="add-article-row">
+                                                <p>Nội dung: </p>
+                                                <textarea id="ContentEditor"></textarea>
+                                                <input type="hidden" id="Content" name="Content" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="add-article-row">
-                                    <p>Tác giả: </p>
-                                    <input type="text" class="k-textbox" id="Author" name="Author" />
-                                </div>
-                                <div class="add-article-row">
-                                    <p>Thứ tự: </p>
-                                    <input type="text" id="Priority" name="Priority" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="add-article-row">
-                            <p>Danh mục: </p>
-                            <select id="Category" name="Category"></select>
-                        </div>
-                        <div class="add-article-row">
-                            <p>Mô tả: </p>
-                            <textarea id="DescriptionEditor" style="height: 200px"></textarea>
-                        </div>
-                        <div class="add-article-row">
-                            <p>Nội dung: </p>
-                            <textarea id="ContentEditor"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            }
+                            }
         </div>
     </div>
 </div>
@@ -190,24 +195,13 @@
             e.preventDefault();
         });
 
-        $("#grid").kendoGrid({
+        var grid = $("#grid").kendoGrid({
             dataSource: {
                 transport: {
                     read: {
                         url: '@Url.Action("GetArticles", "Article")',
                         type: "post",
                         dataType: "json"
-                    }
-                },
-                schema: {
-                    model: {
-                        fields: {
-                            OrderID: { type: "number" },
-                            Freight: { type: "number" },
-                            ShipName: { type: "string" },
-                            OrderDate: { type: "date" },
-                            ShipCity: { type: "string" }
-                        }
                     }
                 },
                 pageSize: 20,
@@ -219,7 +213,15 @@
             filterable: true,
             sortable: true,
             pageable: true,
+            selectable: "multiple",
             columns: [{
+                field: "Id",
+                hidden: true
+            },
+            {
+                field: "Categories",
+                hidden: true
+            }, {
                 field: "Title",
                 title: "Tiêu đề"
             }, {
@@ -242,7 +244,7 @@
                 title: "Duyệt"
             }
             ]
-        });
+        }).data("kendoGrid");
 
         var panes = $("#horizontal").children(),
             getPane = function (index) {
@@ -254,20 +256,85 @@
             };
 
         $("#add-article").click(function (e) {
-            var pane = getPane(1);
-            if (!pane) return;
-
-            splitter.toggle(pane, $(pane).width() <= 0);
+            $("#Id").val('');
+            $("#Title").val('');
+            $("#Author").val('');
+            categoryMultiSelect.value('');
+            priorityNumeric.value('');
+            setImageUrl('');
+            descriptionEditor.value('');
+            contentEditor.value('');
+            splitterToggle();
+        });
+        
+        $("#edit-article").click(function (e) {
+            if (grid.select().length > 0) {
+                grid.select().each(function () {
+                    var dataItem = grid.dataItem($(this));
+                    $("#Id").val(dataItem.Id);
+                    $("#Title").val(dataItem.Title);
+                    $("#Author").val(dataItem.Author);
+                    categoryMultiSelect.value(dataItem.Categories.toString().split(','));
+                    priorityNumeric.value(dataItem.Priority);
+                    setImageUrl(dataItem.ImageUrl);
+                    descriptionEditor.value(dataItem.Description);
+                    contentEditor.value(dataItem.Content);
+                });
+                splitterToggle();
+            } else {
+                alert("Vui lòng chọn bài viết cần sửa!");
+            }
+        });
+        
+        $("#delete-article").click(function (e) {
+            if (grid.select().length > 0) {
+                if (confirm("Bạn có chắc muốn xóa những bài viết đã chọn?")) {
+                    var Ids = [];
+                    grid.select().each(function() {
+                        var dataItem = grid.dataItem($(this));
+                        Ids.push(dataItem.Id);
+                    });
+                    $.post('@Url.Action("DeleteArticles", "Article")', { Ids: Ids.join(",") }).done(function (e) {
+                        grid.dataSource.read();
+                    });
+                }
+            } else {
+                alert("Vui lòng chọn bài viết muốn xóa!");
+            }
         });
 
         $("#save-article").click(function (e) {
+            if (submitCreateOrUpdateArticle()) {
+                splitterToggle();
+            }
+        });
+
+        $("#cancel-article").click(function (e) {
+            splitterToggle();
+        });
+
+        function splitterToggle() {
             var pane = getPane(1);
             if (!pane) return;
 
             splitter.toggle(pane, $(pane).width() <= 0);
-        });
+        }
 
-        $("#DescriptionEditor").kendoEditor({
+        function submitCreateOrUpdateArticle() {
+            var validator = $("#article-form").kendoValidator().data("kendoValidator");
+            if (validator.validate()) {
+                $("#Description").val(descriptionEditor.value());
+                $("#ContentEditor").val(contentEditor.value());
+                $.post($("#article-form").attr('action'), $("#article-form").serialize()).done(function (e) {
+                    grid.dataSource.read();
+                });
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        var descriptionEditor = $("#DescriptionEditor").kendoEditor({
             tools: [
                 "bold",
                 "italic",
@@ -300,9 +367,9 @@
                 "foreColor",
                 "backColor"
             ]
-        });
+        }).data("kendoEditor");
 
-        $("#ContentEditor").kendoEditor({
+        var contentEditor = $("#ContentEditor").kendoEditor({
             tools: [
                 "bold",
                 "italic",
@@ -335,9 +402,9 @@
                 "foreColor",
                 "backColor"
             ]
-        });
+        }).data("kendoEditor");
         
-        $("#Category").kendoMultiSelect({
+        var categoryMultiSelect = $("#Category").kendoMultiSelect({
             placeholder: "Chọn danh mục...",
             dataTextField: "Name",
             dataValueField: "Id",
@@ -352,10 +419,14 @@
                     }
                 }
             },
-            width: 300
-        });
+            change: onChangeCategory
+        }).data("kendoMultiSelect");
 
-        $("#Priority").kendoNumericTextBox();
+        function onChangeCategory() {
+            $("#Categories").val(categoryMultiSelect.value());
+        }
+
+        var priorityNumeric = $("#Priority").width(100).kendoNumericTextBox().data("kendoNumericTextBox");
 
         $("#vertical").kendoSplitter({
             orientation: "vertical",
@@ -374,9 +445,27 @@
         }).data("kendoSplitter");
     });
 
+    function setImageUrl(url) {
+        if (url != "" && url != null) {
+            $("#avatar").attr("src", url);
+        } else {
+            $("#avatar").attr("src", "@Url.Content("~/Content/images/no-image.jpg")");
+        }
+        $("#ImageUrl").val(url);
+    }
+
+    function closeImageWindow() {
+        $("#image-window").data("kendoWindow").close();
+    }
+
     function openImageWindow() {
         $("#image-window").data("kendoWindow").open();
         $("#image-window").data("kendoWindow").center();
+    }
+
+    function resetArticleForm() {
+        $('#article-form')[0].reset();
+        setImageUrl("@Url.Content("~/Content/images/no-image.jpg")");
     }
 </script>
 

@@ -13,6 +13,7 @@ namespace SmartHealth.Box.Domain.Models
             CreatedDate = DateTime.UtcNow;
             ProductProperties = new List<ProductProperty>();
             Tabs = new List<ProductTab>();
+            Images = new List<Image>();
         }
 
         public virtual string ProductName { get; set; }
@@ -40,5 +41,7 @@ namespace SmartHealth.Box.Domain.Models
         public virtual IList<ProductProperty> ProductProperties { get; set; }
 
         public virtual IList<ProductTab> Tabs { get; set; }
+
+        public virtual IList<Image> Images { get; set; } 
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="Domain\IRepository\IProductRepository.cs" />
     <Compile Include="Domain\Models\Article.cs" />
     <Compile Include="Domain\Models\ArticleCategory.cs" />
+    <Compile Include="Domain\Models\Folder.cs" />
     <Compile Include="Domain\Models\ProductTab.cs" />
     <Compile Include="Domain\Models\ProductComment.cs" />
     <Compile Include="Domain\Models\Product.cs" />

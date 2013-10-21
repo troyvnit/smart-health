@@ -14,6 +14,7 @@ namespace SmartHealth.Web.Mappers
         protected override void Configure()
         {
             Mapper.CreateMap<ArticleCategory, ArticleCategoryDto>();
+            Mapper.CreateMap<Article, ArticleDto>().ForMember(a => a.Categories, o => o.Ignore());
         }
     }
 }

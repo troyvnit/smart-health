@@ -139,6 +139,7 @@
 
     .add-article-row p, .add-article-row input {
         display: inline-block;
+        min-width: 70px;
     }
 
     .add-article-row {
@@ -147,7 +148,7 @@
     }
 
     .column-right {
-        width: 640px;
+        width: 500px;
         float: left;
         margin-left: 10px;
     }
@@ -164,7 +165,7 @@
     }
 
     #Title {
-        width: 500px;
+        width: 420px;
     }
     .image-list {
             float: left;
@@ -234,3 +235,10 @@
         #upload-image {
             margin-bottom: 10px;
         }
+        .k-multiselect {
+            width: 420px;
+            display: inline-block;
+        }
+        table.k-editor .k-content {
+  resize: vertical;
+}

@@ -29,7 +29,7 @@
 </div>
 <script type="text/x-kendo-template" id="image-template">
         <div class="image-list">
-            <a href="#:Url#" onclick="setImageUrl('#:Url#');" target="_blank" title="#:Url#"><img src="#:Url#" alt="#:Url#" /></a>
+            <a href="#:Url#" onclick="setImageUrl('#:Url#'); closeImageWindow(); return false;" target="_blank" title="#:Url#"><img src="#:Url#" alt="#:Url#" /></a>
         </div>
 </script>
 <script type="text/javascript">
@@ -83,11 +83,13 @@
         var folderTreeview = $("#folderTreeview").kendoTreeView({
             select: onSelect
         });
+        
         var pager = $("#image-pager").kendoPager().data("kendoPager");
 
         var listView = $("#image-listView").kendoListView({
             template: kendo.template($("#image-template").html())
         }).data("kendoListView");
+        
         $("#files").kendoUpload({
             multiple: false,
             async: {
@@ -106,22 +108,4 @@
             setImageDataSource(folder);
         }
     });
-
-    function setImageUrl(url) {
-        $("#avatar").attr("src", url);
-        $("#ImageUrl").val(url);
-        return false;
-    }
-
-    function copyUrl(url) {
-        $.ctrl('C'.charCodeAt(0), 'troy');
-    }
-
-    function showPage(classfolder, page) {
-        $(".fileListClass").hide();
-        $("." + classfolder + ".pageDiv").show();
-        $("." + classfolder + "." + page).show();
-        App.initHandleFancyBox();
-        return false;
-    }
 </script>

@@ -7,6 +7,8 @@ namespace SmartHealth.Box.Domain.Dtos
 {
     public class ArticleDto
     {
+        public virtual int Id { get; set; }
+
         public virtual string Title { get; set; }
 
         public virtual string Description { get; set; }
@@ -16,6 +18,8 @@ namespace SmartHealth.Box.Domain.Dtos
         public virtual string Author { get; set; }
 
         public virtual string ImageUrl { get; set; }
+
+        public virtual string Categories { get; set; }
 
         public virtual int Priority { get; set; }
 
