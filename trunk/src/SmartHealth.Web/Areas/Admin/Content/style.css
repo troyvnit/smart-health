@@ -49,7 +49,7 @@
         width: 250px;
     }
 
-    .article-grid {
+    .box-content {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.07) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 3px 3px 3px 3px;
@@ -137,18 +137,18 @@
         margin-left: 6px;
     }
 
-    .add-article-row p, .add-article-row input {
+    .input-row p, .input-row input {
         display: inline-block;
-        min-width: 70px;
+        min-width: 95px;
     }
 
-    .add-article-row {
+    .input-row {
         display: inline-block;
         width: 100%;
     }
 
     .column-right {
-        width: 500px;
+        width: 600px;
         float: left;
         margin-left: 10px;
     }
@@ -175,11 +175,19 @@
             margin: 0;
             padding: 0;
         }
-        .image-list img {
+    .product-image-list {
+            float: left;
+            position: relative;
+            width: 156px;
+            height: 100px;
+            margin: 0;
+            padding: 0;
+        }
+        .image-list img, .product-image-list img {
             width: 100%;
             height: 100px;
         }
-        .image-list h3 {
+        .image-list h3, .product-image-list h3 {
             margin: 0;
             padding: 3px 5px 0 0;
             max-width: 96px;
@@ -190,10 +198,10 @@
             text-transform: uppercase;
             color: #999;
         }
-        .image-list p {
+        .image-list p, .product-image-list p {
             visibility: hidden;
         }
-        .image-list:hover p {
+        .image-list:hover p, , .product-image-list:hover p {
             visibility: visible;
             position: absolute;
             width: 100%;
@@ -238,4 +246,22 @@
         .k-multiselect {
             width: 420px;
             display: inline-block;
+        }
+
+        #Author, #LanguageId {
+            width: 105px;
+        }
+        .delete-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            line-height: 1em;
+            padding: 0;
+        }
+        .set-imageurl{
+            position: absolute;
+            top: 19px;
+            right: 0;
+            line-height: 1em;
+            padding: 0;
         }

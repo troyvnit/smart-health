@@ -21,6 +21,8 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual string Categories { get; set; }
 
+        public virtual int LanguageId { get; set; }
+
         public virtual int Priority { get; set; }
 
         public virtual bool IsActived { get; set; }

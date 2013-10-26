@@ -55,7 +55,13 @@
     <Compile Include="ApplicationServices\SurveyService.cs" />
     <Compile Include="Domain\Dtos\ArticleCategoryDto.cs" />
     <Compile Include="Domain\Dtos\ArticleDto.cs" />
+    <Compile Include="Domain\Dtos\ImageDto.cs" />
+    <Compile Include="Domain\Dtos\FolderDto.cs" />
+    <Compile Include="Domain\Dtos\TagDto.cs" />
     <Compile Include="Domain\Dtos\ProductDto.cs" />
+    <Compile Include="Domain\IRepository\IImageRepository.cs" />
+    <Compile Include="Domain\IRepository\IFolderRepository.cs" />
+    <Compile Include="Domain\IRepository\ITagRepository.cs" />
     <Compile Include="Domain\IRepository\IArticleCategoryRepository.cs" />
     <Compile Include="Domain\IRepository\IArticleRepository.cs" />
     <Compile Include="Domain\IRepository\IProductRepository.cs" />
@@ -68,9 +74,12 @@
     <Compile Include="Domain\Models\ProductArticle.cs" />
     <Compile Include="Domain\Models\Image.cs" />
     <Compile Include="Domain\Models\ProductProperty.cs" />
-    <Compile Include="Domain\Models\ProductTag.cs" />
+    <Compile Include="Domain\Models\Tag.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleCategoryRepository.cs" />
+    <Compile Include="Infrastructure\Nhibernate\ImageRepository.cs" />
+    <Compile Include="Infrastructure\Nhibernate\FolderRepository.cs" />
+    <Compile Include="Infrastructure\Nhibernate\TagRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\Mapping\ArticleCategoryMapping.cs" />
     <Compile Include="Infrastructure\Nhibernate\Mapping\ProductMapping.cs" />
     <Compile Include="Infrastructure\Nhibernate\ProductRepository.cs" />

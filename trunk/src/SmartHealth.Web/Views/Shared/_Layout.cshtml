@@ -6,12 +6,173 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_Layout.cshtml</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Smart Health</title>
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/style-banner.css")" type="text/css" media="screen" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/danhmuc-menu-jquery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.4.3.min.js")"></script>
+    <!--tab--><script type="text/javascript" src="@Url.Content("~/Scripts/jqueryTab.js")"></script>
+    <!--zoom--><script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
+    <!--zoom--><script type="text/javascript" src="@Url.Content("~/Scripts/js/cloud-zoom.1.0.2.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/jquery.nivo.slider.pack.js")"></script>
+    <!--sn--><script type="text/javascript" src="@Url.Content("~/Scripts/js/jquery.jcarousel.min.js")"></script>
+    <!--sn--><script type="text/javascript" src="@Url.Content("~/Scripts/js/jquery.jcarousel.min_call.js")"></script>
 </head>
 <body>
-    <div>
-        
+
+<div class="index">
+	<div class="mainindex">
+    	<div class="header">
+            <div class="logo"><a href="#"><img src="@Url.Content("~/Content/images/logo.png")" alt="" /></a></div>
+            <div class="titcom"><img src="@Url.Content("~/Content/images/title.png")" alt="" /></div>
+            <div class="menuhead">
+            	<ul>
+                	<li class="language"><p>Ngôn ngữ</p>
+                        <a href="#"><img src="@Url.Content("~/Content/images/flag-vn.jpg")" alt="" /></a>
+                        <a href="#"><img src="@Url.Content("~/Content/images/flag-en.jpg")" alt="" /></a>
+                    </li>
+                    <li><span>|</span></li>
+                    <li class="butdk"><a href="#">&bull; Đăng ký</a><a href="#">&bull; Đăng nhập</a></li>
+                    <li><span>|</span></li>
+                    <li class="cart"><a href="#">Cart (5)</a></li>
+                </ul>
+            </div>
+        </div>
+		<div class="menuTop">
+            <ul>
+                <li class="home"><a href="#"><img src="@Url.Content("~/Content/images/m-1.png")" alt="" /><span>Trang chủ</span></a></li>
+                <li><a href="#"><img src="@Url.Content("~/Content/images/m-2.png")" alt="" /><span>Giới thiệu</span></a></li>
+                <li class="active"><a href="#"><img src="@Url.Content("~/Content/images/m-3.png")" alt="" /><span>Sản phẩm</span></a>
+                    @{Html.RenderAction("GetProductNames", "Home");}
+                </li>
+                <li><a href="#"><img src="@Url.Content("~/Content/images/m-4.png")" alt="" /><span>Chính sách<br/> bán hàng</span></a></li>
+                <li><a href="#"><img src="@Url.Content("~/Content/images/m-5.png")" alt="" /><span>Hệ thống<br/> phân phối</span></a></li>
+                <li><a href="#"><img src="@Url.Content("~/Content/images/m-6.png")" alt="" /><span>Quan hệ<br/> công chúng</span></a></li>
+                <li><a href="#"><img src="@Url.Content("~/Content/images/m-7.png")" alt="" /><span>Tuyển dụng</span></a></li>
+                <li><a href="#"><img src="@Url.Content("~/Content/images/m-8.png")" alt="" /><span>Liên hệ</span></a></li>
+            </ul>
+        </div>
+            @RenderBody()
     </div>
+    <div class="QMbottom">
+    	<div class="QM_bottom">
+        	<div class="boxTT">
+                	<ul>
+                    	<li class="tit"><p>Tin tức</p></li>
+                        <li><a href="#">Sức khỏe sinh sản</a></li>
+                        <li><a href="#">Tìm hiểu giới tính</a></li>
+                        <li><a href="#">Thực phẩm chức năng</a></li>
+                        <li><a href="#">Sức khỏe sinh sản</a></li>
+                        <li><a href="#">Tìm hiểu giới tính</a></li>
+                        <li><a href="#">Thực phẩm chức năng</a></li>
+                        <li><a href="#">Sức khỏe sinh sản</a></li>
+                        <li><a href="#">Tìm hiểu giới tính</a></li>
+                    </ul>
+                </div><!--boxTT-->
+            <div class="boxTT">
+                <ul>
+                    <li class="tit"><p>Hỗ trợ khách hàng</p></li>
+                    <li><a href="#">Điều khoản mua bán hàng hóa</a></li>
+                    <li><a href="#">Tra cứu thông tin đơn hàng</a></li>
+                    <li><a href="#">Giao hàng</a></li>
+                    <li><a href="#">Cách thức thanh toán</a></li>
+                    <li><a href="#">Hướng dẫn đặt hàng</a></li>
+                    <li><a href="#">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#">Hướng dẫn đổi hàng</a></li>
+                    <li><a href="#">Hỏi đáp</a></li>
+                </ul>
+            </div><!--boxTT-->
+            <div class="boxTTT">
+                <div class="boxTT">
+                    <ul>
+                        <li class="tit"><p>Cách thức thanh toán</p></li>
+                        <li>
+                            <a href="#"><img src="@Url.Content("~/Content/images/icon_15.jpg")" alt="" /></a>
+                            <a href="#"><img src="@Url.Content("~/Content/images/icon_16.jpg")" alt="" /></a>
+                            <a href="#"><img src="@Url.Content("~/Content/images/icon_17.png")" alt="" /></a>
+                        </li>
+                    </ul>
+                </div><!--boxTT-->
+                <div class="boxTT">
+                    <ul>
+                        <li class="tit"><p>Kết nối với chúng tôi</p></li>
+                        <li>
+                        	<a href="#"><img src="@Url.Content("~/Content/images/icon_18.png")" alt="" /></a>
+                            <a href="#"><img src="@Url.Content("~/Content/images/icon_19.png")" alt="" /></a>
+                            <a href="#"><img src="@Url.Content("~/Content/images/icon_20.png")" alt="" /></a>
+                            <a href="#"><img src="@Url.Content("~/Content/images/icon_21.png")" alt="" /></a>
+                        </li>                        
+                    </ul>
+                </div><!--boxTT-->
+            </div>
+            <div class="boxTT0">
+            	<p>Hỗ trợ</p>
+                <ul>
+                    <li class="ht-1"><a href="#">08-38111585</a></li>
+                    <li class="ht-2"><a href="#">08-38111585</a></li>
+                    <li class="ht-3"><a href="#">Smart-Health</a></li>
+                </ul>
+                <div class="boxTT">
+                    <ul>
+                        <li class="tit"><p>Thống kê truy cập</p></li>
+                        <li><span>Số người truy cập:</span><p>85,764</p></li>                        
+                        <li><span>Số thành viên:</span><p>18,764</p></li>                        
+                    </ul>
+                </div><!--boxTT-->
+            </div><!--boxTT0-->
+        </div>
+        <div class="Icopy">
+        	<div class="copy">
+            	<ul>
+                	<li><a href="#"><img src="@Url.Content("~/Content/images/logoz.jpg")" alt="" /></a></li>
+                    <li>
+                    	<span>Copyright &copy; 2013 Smart Health. All rights reserved</span>
+                        <p>Smart-Health Company</p>
+                        <p>27/13 Bis Hậu Giang, Phường 4, Quận Tân Bình, TP. Hồ Chí Minh</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</div>
+    
+
+</div>
+<!-- Start TAadv Floating -->
+	<div id="divAdLeft" style="width:160px; display:none; position:absolute;">
+    <div class="bannergroup">
+        <div class="banneritem">
+            <a href="#" target="_blank"><img src="@Url.Content("~/Content/images/qc-right.jpg")" alt="" /></a>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+<div id="divAdRight" style="width:160px; display:none; position:absolute;">
+    <div class="bannergroup">
+        <div class="banneritem">
+            <a href="#" target="_blank"><img src="@Url.Content("~/Content/images/qc-left.jpg")" alt="" /></a>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="@Url.Content("~/Scripts/js/taadv_floating.js")"></script>
+<script type="text/javascript">
+    var MainContentW = 1000;
+    var LeftBoxW = 160;
+    var RightBoxW = 160;
+    var LeftAdjust = 6;
+    var RightAdjust = 6;
+    var TopAdjust = 10;
+    ShowAdDiv();
+    window.onresize = ShowAdDiv;
+</script><!-- End TAadv Floating -->
 </body>
 </html>
+<style>
+.adv{
+float:left;
+width:160px;
+background-color:#e1e1e1;
+margin-top:20px;
+}
+</style>
