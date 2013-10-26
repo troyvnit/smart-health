@@ -1,0 +1,19 @@
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll.CodeAnalysisLog.xml
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll.lastcodeanalysissucceeded
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll.CodeAnalysisLog.xml
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll.lastcodeanalysissucceeded
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.csprojResolveAssemblyReference.cache

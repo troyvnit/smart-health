@@ -27,33 +27,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult Index(string folder)
         {
-            var result = "";
-            var directories = Directory.GetDirectories(Server.MapPath("~/Media/Images/" + folder), "*.*", SearchOption.TopDirectoryOnly).Select(directory => new DirectoryInfo(directory)).ToList();
-            result += ShowTree(directories);
-            ViewBag.Directories = result;
             return View();
         }
 
-        public string ShowTree(List<DirectoryInfo> infos)
+        public ActionResult GetFolders(int id = 0)
         {
-            var result = "<ul>";
-            foreach (var info in infos)
-            {
-                result += "<li data-expanded=\"true\"><span class=\"k-sprite folder\"></span>" + info.Name;
-                var directories = Directory.GetDirectories(info.FullName, "*.*", SearchOption.TopDirectoryOnly).Select(directory => new DirectoryInfo(directory)).Where(a => a.Parent != null && a.Parent.Name == info.Name).ToList();
-                if (directories.Any())
-                {
-                    result += ShowTree(directories);
-                }
-                result += "</li>";
-            }
-            result += "</ul>";
-            return result;
-        }
-
-        public ActionResult GetFolders(int Id = 0)
-        {
-            var folders = folderService.GetAll().Where(a => a.ParentId == Id).Select(Mapper.Map<Folder, FolderDto>).ToList();
+            var folders = folderService.GetAll().Where(a => a.ParentId == id).Select(Mapper.Map<Folder, FolderDto>).ToList();
             foreach (var folder in folders)
             {
                 folder.HasChildren = folderService.GetAll().Count(a => a.ParentId == folder.Id) > 0;
@@ -61,48 +40,35 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return Json(folders, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetImages(int Id)
+        public ActionResult GetImages(int? id)
         {
-            var images = imageService.GetAll().Where(a => a.Folder != null && a.Folder.Id == Id).Select(Mapper.Map<Image, ImageDto>).ToList();
+            var images = imageService.GetAll().Where(a => (a.Folder != null && a.Folder.Id == id) || id == null).Select(Mapper.Map<Image, ImageDto>).ToList();
             return Json(images, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetProductImages(int Id)
+        public ActionResult DeleteImage(int id)
         {
-            var images = imageService.GetAll().Where(a => a.Product != null && a.Product.Id == Id).Select(Mapper.Map<Image, ImageDto>).ToList();
+            imageService.Delete(imageService.Get(id), true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetProductImages(int id)
+        {
+            var images = imageService.GetAll().Where(a => a.Product != null && a.Product.Id == id).Select(Mapper.Map<Image, ImageDto>).ToList();
+            foreach (var image in images)
+            {
+                image.ProductId = id;
+            }
             return Json(images, JsonRequestBehavior.AllowGet);
         }
 
-        //public ActionResult GetDirectories(string folder = "images")
-        //{
-        //    if (!Directory.Exists(Server.MapPath("~/Media/" + folder)))
-        //    {
-        //        return Json(new { success = false });
-        //    }
-        //    string[] extensions = { ".jpg", ".gif", ".png", ".jpeg" };
-        //    var files = Directory.GetFiles(Server.MapPath("~/Media/" + folder), "*.*", SearchOption.TopDirectoryOnly).Where(a =>
-        //    {
-        //        var extension = Path.GetExtension(a);
-        //        return extension != null && extensions.Contains(extension.ToLower());
-        //    }).ToList();
-        //    var fileViewModels = new List<FileViewModel>();
-        //    foreach (var file in files)
-        //    {
-        //        var image = Image.FromFile(file);
-        //        var fileInfo = new FileInfo(file);
-        //        fileViewModels.Add(new FileViewModel
-        //        {
-        //            FileName = fileInfo.Name,
-        //            Size = fileInfo.Length.ToString(CultureInfo.InvariantCulture),
-        //            Height = image.Height.ToString(CultureInfo.InvariantCulture),
-        //            Width = image.Width.ToString(CultureInfo.InvariantCulture),
-        //            LastWriteDate = fileInfo.LastWriteTime,
-        //            Url = "/Media/" + folder + "/" + fileInfo.Name
-        //        });
-        //        image.Dispose();
-        //    }
-        //    return Json(fileViewModels.OrderByDescending(a => a.LastWriteDate), JsonRequestBehavior.AllowGet);
-        //}
+        public ActionResult DeleteProductImage(int id, int productId)
+        {
+            var product = imageService.Get<Product>(productId);
+            product.Images.Remove(imageService.Get(id));
+            imageService.SaveOrUpdate(product, true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Upload(IEnumerable<HttpPostedFileBase> files, int? folderId, int? productId)
         {

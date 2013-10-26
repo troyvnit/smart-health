@@ -178,6 +178,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Areas\Admin\Content\jquery.tagsinput.css" />
     <Content Include="Areas\Admin\Content\style.css" />
     <Content Include="Areas\Admin\KendoUI\content\dataviz\dashboards\area-chart.png" />
     <Content Include="Areas\Admin\KendoUI\content\dataviz\dashboards\car-dashboard.png" />
@@ -1569,6 +1570,7 @@
     <Content Include="Areas\Admin\LightBox\js\jquery-1.10.2.min.js" />
     <Content Include="Areas\Admin\LightBox\js\lightbox-2.6.min.js" />
     <Content Include="Areas\Admin\LightBox\js\modernizr.custom.js" />
+    <Content Include="Areas\Admin\Scripts\jquery.tagsinput.js" />
     <Content Include="Areas\Admin\Scripts\tinymce\classes\AddOnManager.js" />
     <Content Include="Areas\Admin\Scripts\tinymce\classes\Compat.js" />
     <Content Include="Areas\Admin\Scripts\tinymce\classes\dom\ControlSelection.js" />
@@ -2223,7 +2225,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>20735</DevelopmentServerPort>
+          <DevelopmentServerPort>20737</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

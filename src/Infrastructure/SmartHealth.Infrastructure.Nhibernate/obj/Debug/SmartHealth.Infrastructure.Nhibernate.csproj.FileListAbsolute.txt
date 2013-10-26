@@ -1,0 +1,34 @@
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.Nhibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.Nhibernate.pdb
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\FluentNHibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Iesi.Collections.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Inflector.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\NHibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\FluentNHibernate.xml
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Iesi.Collections.xml
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\NHibernate.xml
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\obj\Debug\SmartHealth.Infrastructure.Nhibernate.csprojResolveAssemblyReference.cache
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\obj\Debug\SmartHealth.Infrastructure.Nhibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\obj\Debug\SmartHealth.Infrastructure.Nhibernate.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.Nhibernate.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.Nhibernate.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\FluentNHibernate.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Iesi.Collections.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Inflector.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\NHibernate.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\FluentNHibernate.xml
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Iesi.Collections.xml
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\NHibernate.xml
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\obj\Debug\SmartHealth.Infrastructure.Nhibernate.dll
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\obj\Debug\SmartHealth.Infrastructure.Nhibernate.pdb
+E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure.Nhibernate\obj\Debug\SmartHealth.Infrastructure.Nhibernate.csprojResolveAssemblyReference.cache

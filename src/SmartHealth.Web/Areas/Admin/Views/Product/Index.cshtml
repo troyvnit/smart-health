@@ -3,20 +3,29 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div id="image-window"></div>
 <div id="vertical">
     <div id="top-pane">
         <div id="horizontal" style="height: 100%; width: 100%;">
             <div id="left-pane">
                 <div class="pane-content">
+                    <div class="box-section">
+                        <a id="add-tag" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Nhãn</a>
+                    </div>
+
+                    <div class="box-section">
+                        <div id="listView"></div>
+                        <div id="pager" class="k-pager-wrap"></div>
+                    </div>
                 </div>
             </div>
             <div id="center-pane">
                 <div class="pane-content">
                     <div class="box-content">
-                        <a id="add-product" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Sản Phẩm</a>
-                        <a id="edit-product" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-edit"></span>Sửa Sản Phẩm</a>
-                        <a id="delete-product" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-delete"></span>Xóa Sản Phẩm</a>
+                        <a id="add-product" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-i-plus"></span>Thêm</a>
+                        <a id="edit-product" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-i-pencil"></span>Sửa</a>
+                        <a id="delete-product" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-i-close"></span>Xóa</a>
+                        <a id="active-product" class="k-button k-button-icontext k-active-button" href="#"><span class="k-icon k-i-tick"></span>Duyệt</a>
+                        <a id="main-product" class="k-button k-button-icontext k-main-button" href="#"><span class="k-icon k-i-custom"></span>Tiêu Biểu</a>
                     </div>
 
                     <div class="box-content">
@@ -30,13 +39,15 @@
                     <div class="pane-content">
                         <div class="box-content">
                             <a id="save-product" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
-                            <a id="cancel-product" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-cancel"></span>Hủy</a>
+                            <a id="cancel-product" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-i-cancel"></span>Quay lại</a>
+                            <a id="message-product" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
                         </div>
 
                         <div class="box-content">
                             <div class="input-row">
                                 <div class="column-left">
-                                    <a href="#" onclick="openImageWindow(); return false;">
+                                    <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
+                                    <a href="#" onclick="return false;">
                                         <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
                                         <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
                                     </a>
@@ -45,9 +56,9 @@
                                     <div class="input-row">
                                         <p>Tên sản phẩm: </p>
                                         <input type="hidden" id="Id" name="Id" />
-                                        <input type="text" class="k-textbox" id="Name" name="Name" required validationMessage="Vui lòng nhập tên!"/>
+                                        <input type="text" class="k-textbox" id="Name" name="Name" required validationmessage="Vui lòng nhập tên!" />
                                         <p>Hãng sản xuất: </p>
-                                        <input type="text" class="k-textbox"  id="Brand" name="Brand" />
+                                        <input type="text" class="k-textbox" id="Brand" name="Brand" />
                                     </div>
                                     <div class="input-row">
                                         <p>Giá niêm yết: </p>
@@ -57,7 +68,7 @@
                                     </div>
                                     <div class="input-row">
                                         <p>Trọng lượng: </p>
-                                        <input type="text" class="k-textbox"  id="Weight" name="Weight" />
+                                        <input type="text" class="k-textbox" id="Weight" name="Weight" />
                                         <p>Ngôn ngữ: </p>
                                         <input type="text" id="LanguageId" name="LanguageId" />
                                     </div>
@@ -101,30 +112,99 @@
         </div>
     </div>
 </div>
+<script type="text/x-kendo-tmpl" id="template">
+        <div class="tag-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            <dl>
+                <dt>Tên</dt>
+                <dd>#:Name#</dd>
+            </dl>
+        </div>
+</script>
+
+<script type="text/x-kendo-tmpl" id="editTemplate">
+        <div class="tag-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Tên</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
+                    <span data-for="Name" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
 <script type="text/x-kendo-template" id="product-image-template">
         <div class="product-image-list">
             <a href="#:ImageUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:ImageUrl#" alt="#:ImageUrl#"  style="display: block; width: 100%;"/></a>
-            <a class="k-button delete-image" href="\\#"><span class="k-icon k-i-close"></span></a>
-            <a class="k-button set-imageurl" onclick="setImageUrl('#:ImageUrl#'); return false;"  href="\\#"><span class="k-icon k-i-restore"></span></a>
+            <a class="k-button delete-image" onclick="removeProductImage('#:Id#', '#:ProductId#'); return false;" href="\\#"><span class="k-icon k-i-close"></span></a>
+            <a class="k-button set-imageurl" onclick="setImageUrl('#:ImageUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
         </div>
 </script>
 <script>
     $(document).ready(function () {
-        $.post('@Url.Action("Index", "Image")').done(function (data) {
-            $("#image-window").append(data).kendoWindow({
-                width: "960px",
-                height: "565px",
-                title: "Hình ảnh",
-                visible: false,
-                actions: [
-                    "Pin",
-                    "Minimize",
-                    "Maximize",
-                    "Close"
-                ]
-            });
+        var tagDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetTags", "Product")',
+                    type: "post",
+                    dataType: "json"
+                },
+                update: {
+                    url: '@Url.Action("CreateOrUpdateTag", "Product")',
+                    type: "post",
+                    dataType: "json"
+                },
+                destroy: {
+                    url: '@Url.Action("DeleteTag", "Product")',
+                    type: "post",
+                    dataType: "json"
+                },
+                create: {
+                    url: '@Url.Action("CreateOrUpdateTag", "Product")',
+                    type: "post",
+                    dataType: "json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 6,
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, nullable: true },
+                        Name: { type: "string" }
+                    }
+                }
+            }
         });
 
+
+        $("#pager").kendoPager({
+            dataSource: tagDataSource
+        });
+
+        var tagListView = $("#listView").kendoListView({
+            dataSource: tagDataSource,
+            template: kendo.template($("#template").html()),
+            editTemplate: kendo.template($("#editTemplate").html())
+        }).data("kendoListView");
+
+        $("#add-tag").click(function (e) {
+            tagListView.add();
+            e.preventDefault();
+        });
         var grid = $("#grid").kendoGrid({
             dataSource: {
                 transport: {
@@ -152,6 +232,11 @@
                 field: "Tags",
                 hidden: true
             }, {
+                field: "ImageUrl",
+                width: 120,
+                title: "Hình đại diện",
+                template: "<img src='#= ImageUrl #' alt='#= ImageUrl #' style='width:100%' />"
+            }, {
                 field: "Name",
                 title: "Tên sản phẩm"
             }, {
@@ -165,13 +250,16 @@
                 title: "Hãng sản xuất"
             }, {
                 field: "Weight",
+                width: 120,
                 title: "Trọng lượng"
             }, {
-                field: "ImageUrl",
-                title: "Hình đại diện"
-            }, {
                 field: "IsActived",
+                width: 100,
                 title: "Duyệt"
+            }, {
+                field: "IsMainProduct",
+                width: 100,
+                title: "Tiêu biểu"
             }
             ]
         }).data("kendoGrid");
@@ -186,6 +274,9 @@
             };
 
         $("#add-product").click(function (e) {
+            var tab = tabStrip.tabGroup.children("li").eq(3);
+            tabStrip.disable(tab);
+            tabStrip.select(0);
             $("#Id").val('');
             $("#Name").val('');
             $("#SmartHealthPrice").val('');
@@ -200,13 +291,15 @@
             smartHealthPriceNumeric.value('');
             setImageUrl('');
             languageDropDownList.value(1);
-            getImageManager(0);
             splitterToggle();
         });
-        
+
         $("#edit-product").click(function (e) {
             if (grid.select().length > 0) {
                 grid.select().each(function () {
+                    var tab = tabStrip.tabGroup.children("li").eq(3);
+                    tabStrip.enable(tab);
+                    tabStrip.select(0);
                     var dataItem = grid.dataItem($(this));
                     $("#Id").val(dataItem.Id);
                     $("#Name").val(dataItem.Name);
@@ -226,67 +319,72 @@
                 });
                 splitterToggle();
             } else {
-                alert("Vui lòng chọn bài viết cần sửa!");
+                alert("Vui lòng chọn sản phẩm cần sửa!");
             }
         });
 
+        var pager = $("#product-image-pager").kendoPager().data("kendoPager");
+        
+        var listView = $("#product-image-listView").kendoListView({
+            template: kendo.template($("#product-image-template").html())
+        }).data("kendoListView");
+
+        var productId;
+        var uploader = $("#files").kendoUpload({
+            multiple: false,
+            async: {
+                saveUrl: '@Url.Action("Upload", "Image")',
+                    autoUpload: true
+                },
+                localization: {
+                    select: 'Thêm ảnh'
+                },
+                upload: function (e) {
+                    e.data = { productId: productId };
+                },
+                success: onSuccess
+        }).data("kendoUpload");
+        
+        function onSuccess(e) {
+            $(".k-upload-files").fadeOut(5000, function () {
+                $(this).remove();
+            });
+            listView.dataSource.read();
+        }
+        
         function getImageManager(id) {
-            var productDataSource = new kendo.data.DataSource({
+            productId = id;
+            var productImageDataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
                         url: '@Url.Action("GetProductImages", "Image")' + '?Id=' + id,
-                                type: "post",
-                                dataType: "json"
-                            },
-                            parameterMap: function (options, operation) {
-                                if (operation !== "read" && options.models) {
-                                    return { models: kendo.stringify(options.models), page: options.page, pageSize: 32 };
-                                }
-                                return null;
-                            }
-                        },
+                        type: "post",
+                        dataType: "json"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 32 };
+                        }
+                        return null;
+                    }
+                },
                 batch: true,
                 pageSize: 16
             });
-                    $("#product-image-pager").kendoPager({
-                        dataSource: productDataSource
-                    });
-
-                    var listView = $("#product-image-listView").kendoListView({
-                        dataSource: productDataSource,
-                        template: kendo.template($("#product-image-template").html())
-                    }).data("kendoListView");
-                    $("#files").kendoUpload({
-                        multiple: false,
-                        async: {
-                            saveUrl: '@Url.Action("Upload", "Image")',
-                            autoUpload: true
-                        },
-                        localization: {
-                            select: 'Thêm ảnh'
-                        },
-                        upload: function (e) {
-                            e.data = { productId: id };
-                        },
-                        success: onSuccess
-                    });
-                    function onSuccess(e) {
-                        $(".k-upload-files").fadeOut(5000, function () {
-                            $(this).remove();
-                        });
-                        listView.dataSource.read();
-                    }
+            listView.setDataSource(productImageDataSource);
+            pager.setDataSource(productImageDataSource);
+            uploader.data = { productId: id };
         }
 
         $("#delete-product").click(function (e) {
             if (grid.select().length > 0) {
                 if (confirm("Bạn có chắc muốn xóa những bài viết đã chọn?")) {
-                    var Ids = [];
-                    grid.select().each(function() {
+                    var ids = [];
+                    grid.select().each(function () {
                         var dataItem = grid.dataItem($(this));
-                        Ids.push(dataItem.Id);
+                        ids.push(dataItem.Id);
                     });
-                    $.post('@Url.Action("DeleteProducts", "Product")', { Ids: Ids.join(",") }).done(function (e) {
+                    $.post('@Url.Action("DeleteProducts", "Product")', { ids: ids.join(",") }).done(function (e) {
                         grid.dataSource.read();
                     });
                 }
@@ -294,11 +392,60 @@
                 alert("Vui lòng chọn bài viết muốn xóa!");
             }
         });
+        
+        $("#active-product").click(function (e) {
+            if (grid.select().length > 0) {
+                if (confirm("Bạn có chắc muốn thay đổi trạng thái duyệt những bài viết đã chọn?")) {
+                    var ids = [];
+                    grid.select().each(function () {
+                        var dataItem = grid.dataItem($(this));
+                        ids.push(dataItem.Id);
+                    });
+                    $.post('@Url.Action("ActiveProducts", "Product")', { ids: ids.join(",") }).done(function (e) {
+                        grid.dataSource.read();
+                    });
+                }
+            } else {
+                alert("Vui lòng chọn bài viết muốn thay đổi trạng thái duyệt!");
+            }
+        });
+        
+        $("#main-product").click(function (e) {
+            if (grid.select().length > 0) {
+                if (confirm("Bạn có chắc muốn thay đổi trạng thái tiêu biểu những bài viết đã chọn?")) {
+                    var ids = [];
+                    grid.select().each(function () {
+                        var dataItem = grid.dataItem($(this));
+                        ids.push(dataItem.Id);
+                    });
+                    $.post('@Url.Action("MakeMainProducts", "Product")', { ids: ids.join(",") }).done(function (e) {
+                        grid.dataSource.read();
+                    });
+                }
+            } else {
+                alert("Vui lòng chọn bài viết muốn thay đổi trạng thái tiêu biểu!");
+            }
+        });
 
         $("#save-product").click(function (e) {
-            if (submitCreateOrUpdateProduct()) {
-                splitterToggle();
+            var validator = $("#product-form").kendoValidator().data("kendoValidator");
+            if (validator.validate()) {
+                tinyMCE.triggerSave();
+                $.post($("#product-form").attr('action'), $("#product-form").serialize()).done(function (result) {
+                    grid.dataSource.read();
+                    var tab = tabStrip.tabGroup.children("li").eq(3);
+                    tabStrip.enable(tab);
+                    $("#Id").val(result.Id);
+                    getImageManager(result.Id);
+                    $("#message-product").html('<span class="k-icon k-i-note"></span>Lưu thành công!');
+                    $("#message-product").css('float', 'right');
+                    $("#message-product").show();
+                    $("#message-product").fadeOut(4000, function () {
+                        $(this).html('');
+                    });
+                });
             }
+            return false;
         });
 
         $("#cancel-product").click(function (e) {
@@ -312,19 +459,6 @@
             splitter.toggle(pane, $(pane).width() <= 0);
         }
 
-        function submitCreateOrUpdateProduct() {
-            var validator = $("#product-form").kendoValidator().data("kendoValidator");
-            if (validator.validate()) {
-                tinyMCE.triggerSave();
-                $.post($("#product-form").attr('action'), $("#product-form").serialize()).done(function (e) {
-                    grid.dataSource.read();
-                });
-                return true;
-            } else {
-                return false;
-            }
-        }
-        
         tinymce.init({
             selector: "#Description",
             theme: "modern",
@@ -337,9 +471,9 @@
             toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             toolbar2: "print preview media | forecolor backcolor emoticons",
             image_advtab: true,
-            height: 345
+            height: 305
         });
-        
+
         tinymce.init({
             selector: "#Property",
             theme: "modern",
@@ -352,9 +486,9 @@
             toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             toolbar2: "print preview media | forecolor backcolor emoticons",
             image_advtab: true,
-            height: 345
+            height: 305
         });
-        
+
         tinymce.init({
             selector: "#Review",
             theme: "modern",
@@ -367,9 +501,9 @@
             toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             toolbar2: "print preview media | forecolor backcolor emoticons",
             image_advtab: true,
-            height: 345
+            height: 305
         });
-        
+
         var tagMultiSelect = $("#Tag").kendoMultiSelect({
             placeholder: "Chọn nhãn...",
             dataTextField: "Name",
@@ -395,21 +529,30 @@
         var marketPriceNumeric = $("#MarketPrice").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
 
         var smartHealthPriceNumeric = $("#SmartHealthPrice").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
-        
-        var languageDropDownList = $("#LanguageId").width(70).kendoDropDownList({
+
+        var languageDropDownList = $("#LanguageId").width(120).kendoDropDownList({
             dataTextField: "text",
             dataValueField: "value",
             dataSource: [
-                        { text: "VI", value: "1" },
-                        { text: "EN", value: "2" }
+                        { text: "Tiếng Việt", value: "1" },
+                        { text: "English", value: "2" }
             ]
         }).data("kendoDropDownList");
 
-        $("#tabstrip").kendoTabStrip({
+        var tabStrip = $("#tabstrip").kendoTabStrip({
             animation: {
                 open: {
                     effects: "fadeIn"
                 }
+            }
+        }).data("kendoTabStrip");
+
+
+        $("#avatar").click(function () {
+            if (!tabStrip.tabGroup.children("li").eq(3).hasClass("k-state-disabled")) {
+                tabStrip.select(3);
+            } else {
+                alert("Bạn phải tạo sản phẩm trước khi chọn hình ảnh!");
             }
         });
 
@@ -439,17 +582,9 @@
         $("#ImageUrl").val(url);
     }
 
-    function closeImageWindow() {
-        $("#image-window").data("kendoWindow").close();
-    }
-
-    function openImageWindow() {
-        $("#image-window").data("kendoWindow").open();
-        $("#image-window").data("kendoWindow").center();
-    }
-
-    function resetProductForm() {
-        $('#product-form')[0].reset();
-        setImageUrl("@Url.Content("~/Content/images/no-image.jpg")");
+    function removeProductImage(id, productId) {
+        $.post('@Url.Action("DeleteProductImage", "Image")', { id: id, productId: productId }).done(function (result) {
+            $("#product-image-listView").data("kendoListView").dataSource.read();
+        });
     }
 </script>

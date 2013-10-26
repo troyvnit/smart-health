@@ -1,0 +1,42 @@
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Box.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Box.pdb
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\FluentNHibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\Iesi.Collections.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\NHibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Core.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.Nhibernate.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\Inflector.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Core.pdb
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.Nhibernate.pdb
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\FluentNHibernate.xml
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\Iesi.Collections.xml
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\NHibernate.xml
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\obj\Debug\SmartHealth.Box.csprojResolveAssemblyReference.cache
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\obj\Debug\SmartHealth.Box.dll
+E:\Windows\Working\Projects\Smart Health\src\Modules\SmartHealth.QoL\obj\Debug\SmartHealth.Box.pdb
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Box.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Box.pdb
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\FluentNHibernate.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\Iesi.Collections.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\NHibernate.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Core.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.Nhibernate.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\Inflector.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Core.pdb
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.Nhibernate.pdb
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\SmartHealth.Infrastructure.pdb
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\FluentNHibernate.xml
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\Iesi.Collections.xml
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\NHibernate.xml
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\obj\Debug\SmartHealth.Box.csprojResolveAssemblyReference.cache
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\obj\Debug\SmartHealth.Box.dll
+E:\Windows\Working\Projects\SH\src\Modules\SmartHealth.QoL\obj\Debug\SmartHealth.Box.pdb

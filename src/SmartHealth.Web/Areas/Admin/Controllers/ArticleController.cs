@@ -31,7 +31,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult GetCategories()
         {
-            var categories = articleCategoryService.GetAll().Where(a => a.IsDeleted != true).Select(Mapper.Map<ArticleCategory, ArticleCategoryDto>).ToList();
+            var categories = articleCategoryService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(Mapper.Map<ArticleCategory, ArticleCategoryDto>).ToList();
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
@@ -53,7 +53,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult GetArticles()
         {
-            var articles = articleService.GetAll().Where(a => a.IsDeleted != true).Select(article => new ArticleDto
+            var articles = articleService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.CreatedDate).Select(article => new ArticleDto
                                                             {
                                                                 Author = article.Author,
                                                                 Categories = string.Join(",", article.Categories.Select(a => a.Id)),
@@ -83,7 +83,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             }
             article.Language = articleService.Get<Language>(articleDto.LanguageId);
             articleService.SaveOrUpdate(article, true);
-            return Json("Success", JsonRequestBehavior.AllowGet);
+            return Json(article, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteArticles(string ids)
@@ -91,6 +91,16 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             foreach (var article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
             {
                 article.IsDeleted = true;
+                articleService.SaveOrUpdate(article, true);
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ActiveArticles(string ids)
+        {
+            foreach (var article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
+            {
+                article.IsActived = !article.IsActived;
                 articleService.SaveOrUpdate(article, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);
