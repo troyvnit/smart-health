@@ -13,5 +13,7 @@ namespace SmartHealth.Box.Domain.Dtos
         public virtual string Description { get; set; }
 
         public virtual int FolderId { get; set; }
+
+        public virtual int ProductId { get; set; }
     }
 }

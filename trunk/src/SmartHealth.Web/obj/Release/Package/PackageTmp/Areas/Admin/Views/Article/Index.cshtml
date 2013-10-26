@@ -20,13 +20,13 @@
             </div>
             <div id="center-pane">
                 <div class="pane-content">
-                    <div class="article-grid">
+                    <div class="box-content">
                         <a id="add-article" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Bài Viết</a>
                         <a id="edit-article" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-edit"></span>Sửa Bài Viết</a>
                         <a id="delete-article" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-delete"></span>Xóa Bài Viết</a>
                     </div>
 
-                    <div class="article-grid">
+                    <div class="box-content">
                         <div id="grid"></div>
                     </div>
                 </div>
@@ -35,47 +35,63 @@
                             {
                                 <div id="right-pane">
                                     <div class="pane-content">
-                                        <div class="article-grid">
+                                        <div class="box-content">
                                             <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
-                                            <a id="cancel-article" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-cancel"></span>Hủy</a>
+                                            <a id="cancel-article" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-i-cancel"></span>Quay lại</a>
+                                            <a id="message-article" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
                                         </div>
 
-                                        <div class="article-grid">
-                                            <div class="add-article-row">
+                                        <div class="box-content">
+                                            <div class="input-row">
                                                 <div class="column-left">
-                                                    <a href="#" onclick="openImageWindow(); return false;">
+                                                    <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
+                                                    <a href="#" onclick="return false;">
                                                         <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
                                                         <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
                                                     </a>
                                                 </div>
                                                 <div class="column-right">
-                                                    <div class="add-article-row">
+                                                    <div class="input-row">
                                                         <p>Tiêu đề: </p>
                                                         <input type="hidden" id="Id" name="Id" />
                                                         <input type="text" class="k-textbox" id="Title" name="Title" required validationMessage="Vui lòng nhập tiêu đề!"/>
                                                     </div>
-                                                    <div class="add-article-row">
+                                                    <div class="input-row">
                                                         <p>Tác giả: </p>
                                                         <input type="text" class="k-textbox" id="Author" name="Author" />
                                                         <p>Thứ tự: </p>
                                                         <input type="text" id="Priority" name="Priority" />
+                                                        <p>Ngôn ngữ: </p>
+                                                        <input type="text" id="LanguageId" name="LanguageId" />
                                                     </div>
-                                                    <div class="add-article-row">
+                                                    <div class="input-row">
                                                         <p>Danh mục: </p>
                                                         <select id="Category" name="Category"></select>
                                                         <input type="hidden" id="Categories" name="Categories" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="add-article-row">
-                                                <p>Mô tả: </p>
-                                                <textarea id="DescriptionEditor"></textarea>
-                                                <input type="hidden" id="Description" name="Description" />
-                                            </div>
-                                            <div class="add-article-row">
-                                                <p>Nội dung: </p>
-                                                <textarea id="ContentEditor"></textarea>
-                                                <input type="hidden" id="Content" name="Content" />
+                                            <div class="input-row">
+                                                <div id="tabstrip">
+                                                    <ul>
+                                                        <li class="k-state-active">Mô tả</li>
+                                                        <li>Nội dung</li>
+                                                        <li>Hình ảnh</li>
+                                                    </ul>
+                                                    <div>
+                                                        <textarea id="Description" name="Description"></textarea>
+                                                    </div>
+                                                    <div>
+                                                        <textarea id="Content" name="Content"></textarea>
+                                                    </div>
+                                                    <div>
+                                                        <div id="upload-image">
+                                                            <input name="files" id="files" type="file" />
+                                                        </div>
+                                                        <div id="article-image-listView"></div>
+                                                        <div id="article-image-pager" class="k-pager-wrap"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -121,22 +137,15 @@
         </div>
 </script>
 
+<script type="text/x-kendo-template" id="article-image-template">
+        <div class="article-image-list">
+            <a href="#:ImageUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:ImageUrl#" alt="#:ImageUrl#"  style="display: block; width: 100%;"/></a>
+            <a class="k-button delete-image" onclick="removeImage('#:Id#'); return false;" href="\\#"><span class="k-icon k-i-close"></span></a>
+            <a class="k-button set-imageurl" onclick="setImageUrl('#:ImageUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
+        </div>
+</script>
 <script>
     $(document).ready(function () {
-        $.post('@Url.Action("Index", "Image")').done(function (data) {
-            $("#image-window").append(data).kendoWindow({
-                width: "960px",
-                height: "565px",
-                title: "Hình ảnh",
-                actions: [
-                    "Pin",
-                    "Minimize",
-                    "Maximize",
-                    "Close"
-                ]
-            });
-            $("#image-window").data("kendoWindow").close();
-        });
         var articleCategoryDataSource = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -259,11 +268,12 @@
             $("#Id").val('');
             $("#Title").val('');
             $("#Author").val('');
+            $("#Description").val('');
+            $("#Content").val('');
             categoryMultiSelect.value('');
             priorityNumeric.value('');
             setImageUrl('');
-            descriptionEditor.value('');
-            contentEditor.value('');
+            languageDropDownList.value(1);
             splitterToggle();
         });
         
@@ -274,27 +284,72 @@
                     $("#Id").val(dataItem.Id);
                     $("#Title").val(dataItem.Title);
                     $("#Author").val(dataItem.Author);
+                    $("#Description").val(dataItem.Description);
+                    $("#Content").val(dataItem.Content);
                     categoryMultiSelect.value(dataItem.Categories.toString().split(','));
                     priorityNumeric.value(dataItem.Priority);
                     setImageUrl(dataItem.ImageUrl);
-                    descriptionEditor.value(dataItem.Description);
-                    contentEditor.value(dataItem.Content);
+                    languageDropDownList.value(dataItem.LanguageId);
                 });
                 splitterToggle();
             } else {
                 alert("Vui lòng chọn bài viết cần sửa!");
             }
         });
+        var articleImageDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetImages", "Image")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 32 };
+                        }
+                        return null;
+                    }
+                },
+            batch: true,
+            pageSize: 16
+        });
+        
+        $("#article-image-pager").kendoPager({
+            dataSource: articleImageDataSource
+        });
+
+        $("#article-image-listView").kendoListView({
+            dataSource: articleImageDataSource,
+            template: kendo.template($("#article-image-template").html())
+        }).data("kendoListView");
+
+        $("#files").kendoUpload({
+            multiple: false,
+            async: {
+                saveUrl: '@Url.Action("Upload", "Image")',
+                autoUpload: true
+            },
+            localization: {
+                select: 'Thêm ảnh'
+            },
+            success: onSuccess
+        });
+        function onSuccess(e) {
+            $(".k-upload-files").fadeOut(5000, function () {
+                $(this).remove();
+            });
+            listView.dataSource.read();
+        }
         
         $("#delete-article").click(function (e) {
             if (grid.select().length > 0) {
                 if (confirm("Bạn có chắc muốn xóa những bài viết đã chọn?")) {
-                    var Ids = [];
+                    var ids = [];
                     grid.select().each(function() {
                         var dataItem = grid.dataItem($(this));
-                        Ids.push(dataItem.Id);
+                        ids.push(dataItem.Id);
                     });
-                    $.post('@Url.Action("DeleteArticles", "Article")', { Ids: Ids.join(",") }).done(function (e) {
+                    $.post('@Url.Action("DeleteArticles", "Article")', { ids: ids.join(",") }).done(function (e) {
                         grid.dataSource.read();
                     });
                 }
@@ -304,9 +359,21 @@
         });
 
         $("#save-article").click(function (e) {
-            if (submitCreateOrUpdateArticle()) {
-                splitterToggle();
-            }
+            var validator = $("#article-form").kendoValidator().data("kendoValidator");
+            if (validator.validate()) {
+                tinyMCE.triggerSave();
+                $.post($("#article-form").attr('action'), $("#article-form").serialize()).done(function (result) {
+                    grid.dataSource.read();
+                    $("#Id").val(result.Id);
+                    $("#message-article").html('<span class="k-icon k-i-note"></span>Lưu thành công!');
+                    $("#message-article").css('float', 'right');
+                    $("#message-article").show();
+                    $("#message-article").fadeOut(4000, function () {
+                        $(this).html('');
+                    });
+                });
+            } 
+            return false;
         });
 
         $("#cancel-article").click(function (e) {
@@ -319,90 +386,36 @@
 
             splitter.toggle(pane, $(pane).width() <= 0);
         }
-
-        function submitCreateOrUpdateArticle() {
-            var validator = $("#article-form").kendoValidator().data("kendoValidator");
-            if (validator.validate()) {
-                $("#Description").val(descriptionEditor.value());
-                $("#Content").val(contentEditor.value());
-                $.post($("#article-form").attr('action'), $("#article-form").serialize()).done(function (e) {
-                    grid.dataSource.read();
-                });
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        var descriptionEditor = $("#DescriptionEditor").kendoEditor({
-            tools: [
-                "bold",
-                "italic",
-                "underline",
-                "strikethrough",
-                "justifyLeft",
-                "justifyCenter",
-                "justifyRight",
-                "justifyFull",
-                "insertUnorderedList",
-                "insertOrderedList",
-                "indent",
-                "outdent",
-                "createLink",
-                "unlink",
-                "insertImage",
-                "subscript",
-                "superscript",
-                "createTable",
-                "addRowAbove",
-                "addRowBelow",
-                "addColumnLeft",
-                "addColumnRight",
-                "deleteRow",
-                "deleteColumn",
-                "viewHtml",
-                "formatting",
-                "fontName",
-                "fontSize",
-                "foreColor",
-                "backColor"
-            ]
-        }).data("kendoEditor");
-
-        var contentEditor = $("#ContentEditor").kendoEditor({
-            tools: [
-                "bold",
-                "italic",
-                "underline",
-                "strikethrough",
-                "justifyLeft",
-                "justifyCenter",
-                "justifyRight",
-                "justifyFull",
-                "insertUnorderedList",
-                "insertOrderedList",
-                "indent",
-                "outdent",
-                "createLink",
-                "unlink",
-                "insertImage",
-                "subscript",
-                "superscript",
-                "createTable",
-                "addRowAbove",
-                "addRowBelow",
-                "addColumnLeft",
-                "addColumnRight",
-                "deleteRow",
-                "deleteColumn",
-                "viewHtml",
-                "formatting",
-                "fontName",
-                "fontSize",
-                "foreColor",
-                "backColor"
-            ]
-        }).data("kendoEditor");
+        
+        tinymce.init({
+            selector: "#Content",
+            theme: "modern",
+            plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor"
+            ],
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: "print preview media | forecolor backcolor emoticons",
+            image_advtab: true,
+            height: 345
+        });
+        
+        tinymce.init({
+            selector: "#Description",
+            theme: "modern",
+            plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor"
+            ],
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: "print preview media | forecolor backcolor emoticons",
+            image_advtab: true,
+            height: 345
+        });
         
         var categoryMultiSelect = $("#Category").kendoMultiSelect({
             placeholder: "Chọn danh mục...",
@@ -426,7 +439,24 @@
             $("#Categories").val(categoryMultiSelect.value());
         }
 
-        var priorityNumeric = $("#Priority").width(100).kendoNumericTextBox().data("kendoNumericTextBox");
+        var priorityNumeric = $("#Priority").width(130).kendoNumericTextBox().data("kendoNumericTextBox");
+
+        var languageDropDownList = $("#LanguageId").width(190).kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                        { text: "Tiếng Việt", value: "1" },
+                        { text: "English", value: "2" }
+            ]
+        }).data("kendoDropDownList");
+
+        var tabStrip = $("#tabstrip").kendoTabStrip({
+            animation: {
+                open: {
+                    effects: "fadeIn"
+                }
+            }
+        }).data("kendoTabStrip");
 
         $("#vertical").kendoSplitter({
             orientation: "vertical",
@@ -453,19 +483,11 @@
         }
         $("#ImageUrl").val(url);
     }
-
-    function closeImageWindow() {
-        $("#image-window").data("kendoWindow").close();
-    }
-
-    function openImageWindow() {
-        $("#image-window").data("kendoWindow").open();
-        $("#image-window").data("kendoWindow").center();
-    }
-
-    function resetArticleForm() {
-        $('#article-form')[0].reset();
-        setImageUrl("@Url.Content("~/Content/images/no-image.jpg")");
+    
+    function removeImage(id) {
+        $.post('@Url.Action("DeleteImage", "Image")', { id: id }).done(function () {
+            $("#article-image-listView").data("kendoListView").dataSource.read();
+        });
     }
 </script>
 

@@ -15,7 +15,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Areas/Admin/Content/style.css">
-      <publishTime>10/21/2013 11:37:04</publishTime>
+      <publishTime>10/26/2013 14:36:00</publishTime>
     </File>
     <File Include="Areas/Admin/KendoUI/content/dataviz/dashboards/area-chart.png">
       <publishTime>10/16/2013 11:51:09</publishTime>
@@ -4214,17 +4214,1046 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/KendoUI/styles/Uniform/sprite_2x.png">
       <publishTime>10/16/2013 11:50:52</publishTime>
     </File>
+    <File Include="Areas/Admin/LightBox/css/lightbox.css">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/css/screen.css">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/close.png">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/donate.png">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/favicon.ico">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/image-1.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/image-2.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/image-3.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/image-4.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/image-5.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/image-6.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/thumb-1.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/thumb-2.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/thumb-3.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/thumb-4.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/thumb-5.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/demopage/thumb-6.jpg">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/loading.gif">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/next.png">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/img/prev.png">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/index.html">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/js/jquery-1.10.2.min.js">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/js/lightbox-2.6.min.js">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/js/modernizr.custom.js">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/LightBox/README.markdown">
+      <publishTime>10/25/2013 11:01:40</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/AddOnManager.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/Compat.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/ControlSelection.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/DomQuery.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/DOMUtils.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/EventUtils.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/Range.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/RangeUtils.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/ScriptLoader.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/Selection.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/Serializer.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/Sizzle.jQuery.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/Sizzle.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/TreeWalker.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/dom/TridentSelection.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/Editor.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/EditorCommands.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/EditorManager.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/EnterKey.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/Env.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/FocusManager.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ForceBlocks.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/Formatter.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/DomParser.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/Entities.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/Node.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/SaxParser.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/Schema.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/Serializer.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/Styles.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/html/Writer.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/jquery.tinymce.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/LegacyInput.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/Shortcuts.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/AbsoluteLayout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Button.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/ButtonGroup.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Checkbox.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Collection.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/ColorButton.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/ComboBox.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Container.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Control.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/DomUtils.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/DragHelper.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/ElementPath.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Factory.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FieldSet.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FilePicker.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FitLayout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FlexLayout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FloatPanel.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FlowLayout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Form.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FormatControls.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/FormItem.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/GridLayout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Iframe.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/KeyboardNavigation.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Label.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Layout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/ListBox.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Menu.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/MenuBar.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/MenuButton.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/MenuItem.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/MessageBox.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Movable.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Panel.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/PanelButton.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Path.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Radio.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Resizable.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/ResizeHandle.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Scrollable.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Selector.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Spacer.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/SplitButton.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/StackLayout.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/TabPanel.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/TextBox.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Throbber.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Toolbar.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Tooltip.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Widget.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/ui/Window.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/UndoManager.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/Class.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/I18n.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/JSON.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/JSONP.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/JSONRequest.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/LocalStorage.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/Observable.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/Quirks.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/Tools.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/URI.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/VK.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/util/XHR.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/classes/WindowManager.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/jquery.tinymce.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/langs/readme.md">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/license.txt">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/advlist/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/advlist/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/anchor/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/anchor/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/autolink/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/autolink/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/autoresize/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/autoresize/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/autosave/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/autosave/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/bbcode/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/bbcode/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/charmap/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/charmap/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/code/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/code/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/css/dialog.css">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/img/buttons.png">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/img/items.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/img/menu_arrow.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/img/menu_check.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/img/progress.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/img/tabs.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/tiny_mce_popup.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/utils/editable_selects.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/utils/form_utils.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/utils/mctabs.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/compat3x/utils/validate.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/contextmenu/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/contextmenu/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/directionality/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/directionality/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-cool.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-cry.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-embarassed.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-foot-in-mouth.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-frown.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-innocent.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-kiss.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-laughing.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-money-mouth.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-sealed.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-smile.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-surprised.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-tongue-out.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-undecided.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-wink.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/img/smiley-yell.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/emoticons/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/example/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/example/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/example_dependency/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/example_dependency/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/fullpage/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/fullpage/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/fullscreen/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/fullscreen/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/hr/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/hr/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/image/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/image/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/importcss/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/importcss/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/insertdatetime/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/insertdatetime/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/layer/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/layer/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/legacyoutput/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/legacyoutput/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/link/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/link/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/lists/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/lists/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/media/moxieplayer.swf">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/media/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/media/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/nonbreaking/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/nonbreaking/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/noneditable/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/noneditable/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/pagebreak/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/pagebreak/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/classes/Clipboard.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/classes/Plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/classes/Quirks.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/classes/WordFilter.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/plugin.dev.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/paste/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/preview/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/preview/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/print/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/print/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/save/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/save/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/searchreplace/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/searchreplace/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/spellchecker/classes/DomTextMatcher.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/spellchecker/classes/Plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/spellchecker/plugin.dev.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/spellchecker/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/spellchecker/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/tabfocus/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/tabfocus/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/classes/CellSelection.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/classes/Plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/classes/Quirks.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/classes/TableGrid.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/plugin.dev.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/table/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/template/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/template/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/textcolor/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/textcolor/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/css/visualblocks.css">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/address.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/article.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/aside.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/blockquote.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/div.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/figure.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/h1.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/h2.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/h3.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/h4.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/h5.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/h6.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/hgroup.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/ol.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/p.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/pre.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/section.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/img/ul.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualblocks/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualchars/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/visualchars/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/wordcount/plugin.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/plugins/wordcount/plugin.min.js">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/AbsoluteLayout.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Animations.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Button.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/ButtonGroup.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Checkbox.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/ColorButton.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/ComboBox.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Container.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Content.Inline.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/content.inline.min.css">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Content.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/content.min.css">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Content.Objects.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/FieldSet.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/FitLayout.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/FloatPanel.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/FlowLayout.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon-small.dev.svg">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon-small.eot">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon-small.svg">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon-small.ttf">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon-small.woff">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon.dev.svg">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon.eot">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon.svg">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon.ttf">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/icomoon.woff">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/fonts/readme.md">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Icons.Ie7.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Icons.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Iframe.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/img/anchor.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/img/loader.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/img/object.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/img/trans.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/img/wline.gif">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Label.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/ListBox.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Menu.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/MenuBar.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/MenuButton.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/MenuItem.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Mixins.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Panel.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Path.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Radio.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Reset.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/ResizeHandle.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Scrollable.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/skin.dev.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/skin.ie7.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/skin.ie7.min.css">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/skin.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/skin.min.css">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Spacer.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/SplitButton.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/StackLayout.less">
+      <publishTime>10/22/2013 08:59:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/TabPanel.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/TextBox.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Throbber.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/TinyMCE.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/ToolTip.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Variables.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/skins/lightgray/Window.less">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/themes/modern/theme.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/themes/modern/theme.min.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/tinymce.dev.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/tinymce.jquery.dev.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/tinymce.jquery.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/tinymce.jquery.min.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/tinymce.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/tinymce/tinymce.min.js">
+      <publishTime>10/22/2013 08:59:17</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Article/Index.cshtml">
-      <publishTime>10/21/2013 11:36:12</publishTime>
+      <publishTime>10/26/2013 14:50:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Image/Index.cshtml">
-      <publishTime>10/21/2013 10:50:57</publishTime>
+      <publishTime>10/26/2013 11:56:18</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>10/16/2013 11:59:04</publishTime>
+      <publishTime>10/26/2013 14:51:18</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>10/19/2013 21:18:40</publishTime>
+      <publishTime>10/26/2013 14:26:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Web.config">
       <publishTime>10/15/2013 15:55:27</publishTime>
@@ -4284,7 +5313,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:05</publishTime>
     </File>
     <File Include="bin/SmartHealth.Box.dll">
-      <publishTime>10/21/2013 22:21:03</publishTime>
+      <publishTime>10/26/2013 14:51:41</publishTime>
     </File>
     <File Include="bin/SmartHealth.Core.dll">
       <publishTime>10/21/2013 22:21:02</publishTime>
@@ -4296,13 +5325,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 22:21:02</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Web.dll">
-      <publishTime>10/21/2013 22:21:04</publishTime>
+      <publishTime>10/26/2013 14:51:42</publishTime>
     </File>
     <File Include="bin/SmartHealth.SampleModule.dll">
       <publishTime>10/21/2013 22:21:03</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>10/21/2013 22:21:06</publishTime>
+      <publishTime>10/26/2013 14:51:43</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -4976,17 +6005,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/taadv_floating.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
+    <File Include="Views/Home/GetProductNames.cshtml">
+      <publishTime>10/25/2013 23:15:49</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>10/21/2013 16:58:34</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/21/2013 16:49:26</publishTime>
+      <publishTime>10/25/2013 23:17:41</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/21/2013 22:22:49</publishTime>
+      <publishTime>10/26/2013 14:51:55</publishTime>
     </File>
   </ItemGroup>
 </Project>

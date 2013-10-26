@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Newtonsoft.Json;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
 using SmartHealth.Core.Domain.Models;
@@ -29,13 +30,29 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult GetTags()
         {
-            var tags = tagService.GetAll().Select(Mapper.Map<Tag, TagDto>).ToList();
+            var tags = tagService.GetAll().OrderByDescending(a => a.Id).Select(Mapper.Map<Tag, TagDto>).ToList();
             return Json(tags, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CreateOrUpdateTag(string models)
+        {
+            var tagDto = JsonConvert.DeserializeObject<List<TagDto>>(models).FirstOrDefault();
+            var tag = Mapper.Map<TagDto, Tag>(tagDto);
+            tagService.SaveOrUpdate(tag, true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteTag(string models)
+        {
+            var tagDto = JsonConvert.DeserializeObject<List<TagDto>>(models).FirstOrDefault();
+            var tag = Mapper.Map<TagDto, Tag>(tagDto);
+            tagService.Delete(tag, true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetProducts()
         {
-            var products = productService.GetAll().Where(a => a.IsDeleted != true).Select(product => new ProductDto
+            var products = productService.GetAll().OrderByDescending(a => a.CreatedDate).Where(a => a.IsDeleted != true).Select(product => new ProductDto
             {
                 Brand = product.Brand,
                 Tags = string.Join(",", product.Tags.Select(a => a.Id)),
@@ -62,15 +79,15 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             var product = Mapper.Map<ProductDto, Product>(productDto);
             if (!string.IsNullOrEmpty(productDto.Tags))
             {
-                var categoryIds = productDto.Tags.Split(',');
-                foreach (var categoryId in categoryIds)
+                var tagIds = productDto.Tags.Split(',');
+                foreach (var tagId in tagIds)
                 {
-                    product.Tags.Add(tagService.Get(Convert.ToInt32(categoryId)));
+                    product.Tags.Add(tagService.Get(Convert.ToInt32(tagId)));
                 }
             }
             product.Language = productService.Get<Language>(productDto.LanguageId);
             productService.SaveOrUpdate(product, true);
-            return Json("Success", JsonRequestBehavior.AllowGet);
+            return Json(product, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteProducts(string ids)
@@ -78,6 +95,26 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
             {
                 product.IsDeleted = true;
+                productService.SaveOrUpdate(product, true);
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ActiveProducts(string ids)
+        {
+            foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
+            {
+                product.IsActived = !product.IsActived;
+                productService.SaveOrUpdate(product, true);
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult MakeMainProducts(string ids)
+        {
+            foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
+            {
+                product.IsMainProduct = !product.IsMainProduct;
                 productService.SaveOrUpdate(product, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);

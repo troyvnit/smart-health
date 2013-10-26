@@ -44,13 +44,7 @@
                 <li class="home"><a href="#"><img src="@Url.Content("~/Content/images/m-1.png")" alt="" /><span>Trang chủ</span></a></li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-2.png")" alt="" /><span>Giới thiệu</span></a></li>
                 <li class="active"><a href="#"><img src="@Url.Content("~/Content/images/m-3.png")" alt="" /><span>Sản phẩm</span></a>
-                    <ul>
-                        <li><a href="#">Conceive Plus</a><span>/</span></li>
-                        <li><a href="#">Sasmar</a><span>/</span></li>
-                        <li><a href="#">Conceive Plus</a><span>/</span></li>
-                        <li class="active"><a href="#">Smart Salt</a><span>/</span></li>
-                        <li><a href="#">Sasmar</a></li>
-                    </ul>
+                    @{Html.RenderAction("GetProductNames", "Home");}
                 </li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-4.png")" alt="" /><span>Chính sách<br/> bán hàng</span></a></li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-5.png")" alt="" /><span>Hệ thống<br/> phân phối</span></a></li>
