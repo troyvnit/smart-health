@@ -11,22 +11,29 @@ namespace SmartHealth.Box.Domain.Models
         public Product()
         {
             CreatedDate = DateTime.UtcNow;
-            ProductProperties = new List<ProductProperty>();
-            Tabs = new List<ProductTab>();
+            Tags = new List<Tag>();
             Images = new List<Image>();
         }
 
-        public virtual string ProductName { get; set; }
+        public virtual string Name { get; set; }
 
-        public virtual ProductArticle Description { get; set; }
+        public virtual string Description { get; set; }
+
+        public virtual string Property { get; set; }
+
+        public virtual string Review { get; set; }
 
         public virtual decimal MarketPrice { get; set; }
 
         public virtual decimal SmartHealthPrice { get; set; }
 
+        public virtual string Brand { get; set; }
+
+        public virtual string Weight { get; set; }
+
         public virtual int ViewCount { get; set; }
 
-        public virtual string AvatarUrl { get; set; }
+        public virtual string ImageUrl { get; set; }
 
         public virtual bool IsActived { get; set; }
 
@@ -38,9 +45,9 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual User CreatedUser { get; set; }
 
-        public virtual IList<ProductProperty> ProductProperties { get; set; }
+        public virtual Language Language { get; set; }
 
-        public virtual IList<ProductTab> Tabs { get; set; }
+        public virtual IList<Tag> Tags { get; set; }
 
         public virtual IList<Image> Images { get; set; } 
     }

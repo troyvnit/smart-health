@@ -14,7 +14,11 @@ namespace SmartHealth.Web.Mappers
         protected override void Configure()
         {
             Mapper.CreateMap<ArticleCategoryDto, ArticleCategory>();
-            Mapper.CreateMap<ArticleDto, Article>().ForMember(a => a.Categories, o => o.Ignore());
+            Mapper.CreateMap<ArticleDto, Article>().ForMember(a => a.Categories, o => o.Ignore()).ForMember(a => a.Language, o => o.Ignore());
+            Mapper.CreateMap<TagDto, Tag>();
+            Mapper.CreateMap<ProductDto, Product>().ForMember(a => a.Tags, o => o.Ignore()).ForMember(a => a.Language, o => o.Ignore());
+            Mapper.CreateMap<FolderDto, Folder>();
+            Mapper.CreateMap<ImageDto, Image>();
         }
     }
 }

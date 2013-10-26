@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.IRepository;
 using SmartHealth.Box.Domain.Models;
+using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using SmartHealth.Web.Controllers;
 
@@ -62,7 +63,8 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                                                                 ImageUrl = article.ImageUrl,
                                                                 IsActived = article.IsActived,
                                                                 Priority = article.Priority,
-                                                                Title = article.Title
+                                                                Title = article.Title,
+                                                                LanguageId = article.Language.Id
                                                             }).ToList();
             return Json(articles, JsonRequestBehavior.AllowGet);
         }
@@ -79,6 +81,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                     article.Categories.Add(articleCategoryService.Get(Convert.ToInt32(categoryId)));
                 }
             }
+            article.Language = articleService.Get<Language>(articleDto.LanguageId);
             articleService.SaveOrUpdate(article, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }

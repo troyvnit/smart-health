@@ -13,8 +13,5 @@ namespace SmartHealth.Box.Domain.IRepository
 
     public interface IProductRepository : IRepository<Product>
     {
-        IList<ProductDto> GetProductByDate(DateTime startDate, DateTime endDate, int userId);
-        IList<ProductDto> GetProductListByUser(int userId, int currentPage, int pageSize, string orderBy, string orderDirection, out int totalRecords);
-        IList<ProductDto> GetProductListByUserId(int userId, int currentPage, int pageSize, string orderBy, string direction, ref int totalRecords, bool isShowOlder);
     }
 }

@@ -36,6 +36,10 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual User CreatedUser { get; set; }
 
+        public virtual Language Language { get; set; }
+
+        public virtual IList<Tag> Tags { get; set; }
+
         public virtual IList<ArticleCategory> Categories { get; set; }
     }
 }

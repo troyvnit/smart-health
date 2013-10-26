@@ -4,12 +4,8 @@
             <div id="image-left-pane">
                 <div class="pane-content">
                     <div class="image-folder-section">
-                        <ul id="folderTreeview">
-                            <li data-expanded="true">
-                                <span class="k-sprite folder"></span>Images
-                                @Html.Raw(ViewBag.Directories)
-                            </li>
-                        </ul>
+                        <div id="folderTreeview">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -29,7 +25,7 @@
 </div>
 <script type="text/x-kendo-template" id="image-template">
         <div class="image-list">
-            <a href="#:Url#" onclick="setImageUrl('#:Url#'); closeImageWindow(); return false;" target="_blank" title="#:Url#"><img src="#:Url#" alt="#:Url#" /></a>
+            <a href="#:ImageUrl#" onclick="setImageUrl('#:ImageUrl#'); closeImageWindow(); return false;" target="_blank" title="#:ImageUrl#"><img src="#:ImageUrl#" alt="#:ImageUrl#" /></a>
         </div>
 </script>
 <script type="text/javascript">
@@ -48,22 +44,18 @@
                 { collapsible: true }
             ]
         }).data("kendoSplitter");
-        var folder = "Images";
+        var folderId;
         function onSelect(e) {
-            var kitems = $(e.node).add($(e.node).parentsUntil('.k-treeview', '.k-item'));
-            var texts = $.map(kitems, function (kitem) {
-                return $(kitem).find('>div span.k-in').text();
-            });
-            folder = texts.join('/');
-            setImageDataSource(folder);
+            folderId = folderTreeview.data('kendoTreeView').dataItem(e.node).Id;
+            setImageDataSource(folderId);
             return false;
         }
 
-        function setImageDataSource(e) {
+        function setImageDataSource(id) {
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: '@Url.Action("GetDirectories", "Image")' + '?folder=' + e,
+                        url: '@Url.Action("GetImages", "Image")' + '?Id=' + id,
                         type: "post",
                         dataType: "json"
                     },
@@ -80,7 +72,26 @@
             listView.setDataSource(dataSource);
             pager.setDataSource(dataSource);
         }
+        
+        var folderDataSource = new kendo.data.HierarchicalDataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetFolders", "Image")',
+                    type: "post",
+                    dataType: "json"
+                }
+            },
+            schema: {
+                model: {
+                    id: "Id",
+                    hasChildren: "HasChildren"
+                }
+            }
+        });
+
         var folderTreeview = $("#folderTreeview").kendoTreeView({
+            dataSource: folderDataSource,
+            dataTextField: "Name",
             select: onSelect
         });
         
@@ -93,11 +104,14 @@
         $("#files").kendoUpload({
             multiple: false,
             async: {
-                saveUrl: '@Url.Action("Upload", "Image")' + '?folder=' + folder,
+                saveUrl: '@Url.Action("Upload", "Image")',
                 autoUpload: true
             },
             localization: {
                 select: 'Thêm ảnh'
+            },
+            upload: function (e) {
+                e.data = { Id: folderId };
             },
             success: onSuccess
         });
@@ -105,7 +119,7 @@
             $(".k-upload-files").fadeOut(5000, function () {
                 $(this).remove();
             });
-            setImageDataSource(folder);
+            setImageDataSource(folderId);
         }
     });
 </script>

@@ -1,0 +1,111 @@
+﻿<div id="image-vertical">
+    <div id="image-top-pane">
+        <div id="image-horizontal" style="height: 100%; width: 100%;">
+            <div id="image-left-pane">
+                <div class="pane-content">
+                    <div class="image-folder-section">
+                        <ul id="folderTreeview">
+                            <li data-expanded="true">
+                                <span class="k-sprite folder"></span>Images
+                                @Html.Raw(ViewBag.Directories)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="image-right-pane">
+                <div class="pane-content">
+                    <div class="image-listview-section">
+                        <div id="upload-image">
+                            <input name="files" id="files" type="file" />
+                        </div>
+                        <div id="image-listView"></div>
+                        <div id="image-pager" class="k-pager-wrap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="image-template">
+        <div class="image-list">
+            <a href="#:Url#" onclick="setImageUrl('#:Url#'); closeImageWindow(); return false;" target="_blank" title="#:Url#"><img src="#:Url#" alt="#:Url#" /></a>
+        </div>
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#image-vertical").kendoSplitter({
+            orientation: "vertical",
+            panes: [
+                { collapsible: false }
+            ]
+        });
+
+        $("#image-horizontal").kendoSplitter({
+            orientation: "horizontal",
+            panes: [
+                { collapsible: true, size: "240px" },
+                { collapsible: true }
+            ]
+        }).data("kendoSplitter");
+        var folder = "Images";
+        function onSelect(e) {
+            var kitems = $(e.node).add($(e.node).parentsUntil('.k-treeview', '.k-item'));
+            var texts = $.map(kitems, function (kitem) {
+                return $(kitem).find('>div span.k-in').text();
+            });
+            folder = texts.join('/');
+            setImageDataSource(folder);
+            return false;
+        }
+
+        function setImageDataSource(e) {
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetDirectories", "Image")' + '?folder=' + e,
+                        type: "post",
+                        dataType: "json"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 32 };
+                        }
+                        return null;
+                    }
+                },
+                batch: true,
+                pageSize: 16
+            });
+            listView.setDataSource(dataSource);
+            pager.setDataSource(dataSource);
+        }
+        var folderTreeview = $("#folderTreeview").kendoTreeView({
+            select: onSelect
+        });
+        
+        var pager = $("#image-pager").kendoPager().data("kendoPager");
+
+        var listView = $("#image-listView").kendoListView({
+            template: kendo.template($("#image-template").html())
+        }).data("kendoListView");
+        
+        $("#files").kendoUpload({
+            multiple: false,
+            async: {
+                saveUrl: '@Url.Action("Upload", "Image")' + '?folder=' + folder,
+                autoUpload: true
+            },
+            localization: {
+                select: 'Thêm ảnh'
+            },
+            success: onSuccess
+        });
+        function onSuccess(e) {
+            $(".k-upload-files").fadeOut(5000, function () {
+                $(this).remove();
+            });
+            setImageDataSource(folder);
+        }
+    });
+</script>
