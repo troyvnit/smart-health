@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="vertical">
+    <div id="top-pane">
+        <div id="horizontal" style="height: 100%; width: 100%;">
+            <div id="center-pane">
+                <div class="pane-content">
+                    <div class="box-content">
+                        <div id="grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var grid = $("#grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetMenus", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateMenu", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                        destroy: {
+                            url: '@Url.Action("DeleteMenu", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                        create: {
+                            url: '@Url.Action("CreateOrUpdateMenu", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                        parameterMap: function (options, operation) {
+                            if (operation !== "read" && options.models) {
+                                return { models: kendo.stringify(options.models) };
+                            }
+                        }
+                },
+                    batch: true,
+            pageSize: 20,
+                    schema: {
+                        model: {
+                            id: "Id",
+                            fields: {
+                                Id: { editable: false, nullable: true },
+                                Name: { validation: { required: true } },
+                                Url: { type: "string" },
+                                Icon: { type: "string" },
+                                Priority: { type: "number" },
+                                ParentId: { type: "number" }
+                            }
+                        }
+                    }
+                },
+            height: 710,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            toolbar: ["create", "save", "cancel"],
+            columns: [{
+                editable: false,
+                width: 50,
+                field: "Id"
+            }, {
+                field: "Name",
+                width: 200,
+                title: "Tên"
+            }, {
+                field: "Url",
+                title: "Đường dẫn"
+            }, {
+                field: "Icon",
+                title: "Icon"
+            }, {
+                field: "Priority",
+                width: 100,
+                title: "Thứ tự"
+            }, {
+                field: "ParentId",
+                width: 100,
+                title: "Id cha"
+            }, { command: "destroy", title: "&nbsp;", width: 90 }
+            ],
+            editable: true
+        }).data("kendoGrid");
+
+        $("#vertical").kendoSplitter({
+            orientation: "vertical",
+            panes: [
+                { collapsible: false }
+            ]
+        });
+
+        var splitter = $("#horizontal").kendoSplitter({
+            orientation: "horizontal",
+            panes: [
+                { collapsible: true, size: "100%" }
+            ]
+        }).data("kendoSplitter");
+    });
+</script>

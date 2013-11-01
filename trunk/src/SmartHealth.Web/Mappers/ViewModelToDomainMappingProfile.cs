@@ -19,6 +19,7 @@ namespace SmartHealth.Web.Mappers
             Mapper.CreateMap<ProductDto, Product>().ForMember(a => a.Language, o => o.Ignore());
             Mapper.CreateMap<FolderDto, Folder>();
             Mapper.CreateMap<MediaDto, Media>();
+            Mapper.CreateMap<MenuDto, Menu>();
         }
     }
 }

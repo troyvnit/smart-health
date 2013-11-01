@@ -18,13 +18,15 @@ namespace SmartHealth.Web.Controllers
         private readonly IService<Tag> tagService;
         private readonly IService<Article> articleService;
         private readonly IService<ArticleCategory> articleCategoryService;
+        private readonly IService<Menu> menuService;
 
-        public HomeController(IService<Product> productService, IService<Tag> tagService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService)
+        public HomeController(IService<Product> productService, IService<Tag> tagService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService)
         {
             this.productService = productService;
             this.tagService = tagService;
             this.articleService = articleService;
             this.articleCategoryService = articleCategoryService;
+            this.menuService = menuService;
         }
 
         public ActionResult Index()
@@ -52,6 +54,13 @@ namespace SmartHealth.Web.Controllers
         {
             var productNames = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.IsMainProduct).Select(a => a.Name).ToList();
             ViewBag.ProductNames = productNames;
+            return View();
+        }
+
+        public ActionResult GetTopMenu()
+        {
+            var menus = menuService.GetAll().OrderBy(a => a.Priority).Select(Mapper.Map<Menu, MenuDto>).ToList();
+            ViewBag.Menus = menus;
             return View();
         }
 

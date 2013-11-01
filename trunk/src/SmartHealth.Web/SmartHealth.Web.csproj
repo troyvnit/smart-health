@@ -155,6 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Mood\MoodAreaRegistration.cs" />
@@ -2078,6 +2079,7 @@
     <Content Include="Areas\Admin\Scripts\tinymce\skins\lightgray\Variables.less" />
     <Content Include="Areas\Admin\Scripts\tinymce\skins\lightgray\Window.less" />
     <Content Include="Areas\Admin\LightBox\README.markdown" />
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Smart Health.pubxml" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\browsers.js" />
@@ -2160,6 +2162,7 @@
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\PublicRelation.cshtml" />
     <Content Include="Views\Home\ArticleDetail.cshtml" />
+    <Content Include="Views\Home\GetTopMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

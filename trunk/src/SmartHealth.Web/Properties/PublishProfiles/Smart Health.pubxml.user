@@ -18,7 +18,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/26/2013 22:41:21</publishTime>
     </File>
     <File Include="Areas/Admin/Content/style.css">
-      <publishTime>10/27/2013 00:12:20</publishTime>
+      <publishTime>11/01/2013 15:30:07</publishTime>
     </File>
     <File Include="Areas/Admin/KendoUI/content/dataviz/dashboards/area-chart.png">
       <publishTime>10/16/2013 11:51:09</publishTime>
@@ -5250,16 +5250,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2013 08:59:17</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/Index.cshtml">
-      <publishTime>10/31/2013 10:33:56</publishTime>
+      <publishTime>11/01/2013 17:06:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Image/Index.cshtml">
       <publishTime>10/26/2013 11:56:18</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/Media/Index.cshtml">
+      <publishTime>11/01/2013 14:09:12</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Menu/Index.cshtml">
+      <publishTime>11/01/2013 17:42:35</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>10/31/2013 10:51:56</publishTime>
+      <publishTime>11/01/2013 15:41:00</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>10/26/2013 22:48:20</publishTime>
+      <publishTime>11/01/2013 17:49:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Web.config">
       <publishTime>10/15/2013 15:55:27</publishTime>
@@ -5322,7 +5328,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:05</publishTime>
     </File>
     <File Include="bin/SmartHealth.Box.dll">
-      <publishTime>10/31/2013 12:26:06</publishTime>
+      <publishTime>11/01/2013 17:50:32</publishTime>
     </File>
     <File Include="bin/SmartHealth.Core.dll">
       <publishTime>10/30/2013 09:01:08</publishTime>
@@ -5334,13 +5340,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Web.dll">
-      <publishTime>10/31/2013 12:26:07</publishTime>
+      <publishTime>11/01/2013 17:50:32</publishTime>
     </File>
     <File Include="bin/SmartHealth.SampleModule.dll">
       <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>10/31/2013 12:26:08</publishTime>
+      <publishTime>11/01/2013 17:50:33</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -6014,26 +6020,32 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/taadv_floating.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
+    <File Include="Views/Home/ArticleDetail.cshtml">
+      <publishTime>10/31/2013 23:03:36</publishTime>
+    </File>
     <File Include="Views/Home/GetProductNames.cshtml">
       <publishTime>10/25/2013 23:15:49</publishTime>
     </File>
+    <File Include="Views/Home/GetTopMenu.cshtml">
+      <publishTime>11/01/2013 17:48:57</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/31/2013 10:23:26</publishTime>
+      <publishTime>10/31/2013 12:33:02</publishTime>
     </File>
     <File Include="Views/Home/ProductDetail.cshtml">
-      <publishTime>10/30/2013 15:25:11</publishTime>
+      <publishTime>11/01/2013 14:09:12</publishTime>
     </File>
     <File Include="Views/Home/PublicRelation.cshtml">
       <publishTime>10/31/2013 11:03:48</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/30/2013 14:34:45</publishTime>
+      <publishTime>11/01/2013 17:49:24</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/31/2013 12:26:24</publishTime>
+      <publishTime>11/01/2013 17:50:43</publishTime>
     </File>
   </ItemGroup>
 </Project>

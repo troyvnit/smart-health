@@ -2,7 +2,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div id="image-window"></div>
 <div id="vertical">
     <div id="top-pane">
         <div id="horizontal" style="height: 100%; width: 100%;">
@@ -161,9 +160,9 @@
 
 <script type="text/x-kendo-template" id="article-image-template">
         <div class="article-image-list">
-            <a href="#:ImageUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:ImageUrl#" alt="#:ImageUrl#"  style="display: block; width: 100%;"/></a>
+            <a href="#:MediaUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:MediaUrl#" alt="#:MediaUrl#"  style="display: block; width: 100%;"/></a>
             <a class="k-button delete-image" onclick="removeImage('#:Id#'); return false;" href="\\#"><span class="k-icon k-i-close"></span></a>
-            <a class="k-button set-imageurl" onclick="setImageUrl('#:ImageUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
+            <a class="k-button set-imageurl" onclick="setImageUrl('#:MediaUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
         </div>
 </script>
 <script>
@@ -247,49 +246,39 @@
             pageable: true,
             selectable: "multiple",
             columns: [{
-                editable: false,
                 field: "Id",
                 hidden: true
             },
             {
-                editable: false,
                 field: "Categories",
                 hidden: true
             }, {
-                editable: false,
                 field: "ImageUrl",
                 width: 120,
                 title: "Hình đại diện",
                 template: "<img src='#= ImageUrl #' alt='#= ImageUrl #' style='width:100%' />"
             }, {
-                editable: false,
                 field: "Title",
                 title: "Tiêu đề"
             }, {
-                editable: false,
                 field: "Description",
                 title: "Mô tả"
             }, {
-                editable: false,
                 field: "Author",
                 width: 100,
                 title: "Tác giả"
             }, {
-                editable: false,
                 field: "Tags",
                 title: "Nhãn"
             }, {
-                editable: false,
                 field: "FullUrl",
                 title: "Đường dẫn",
                 hidden: true
             }, {
-                editable: false,
                 field: "Priority",
                 width: 80,
                 title: "Thứ tự"
             }, {
-                editable: false,
                 field: "IsActived",
                 width: 80,
                 title: "Duyệt"

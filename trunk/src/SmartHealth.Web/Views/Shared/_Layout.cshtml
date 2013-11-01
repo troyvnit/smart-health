@@ -50,21 +50,8 @@
                 </ul>
             </div>
         </div>
-		<div class="menuTop">
-            <ul>
-                <li class="home"><a href="#"><img src="@Url.Content("~/Content/images/m-1.png")" alt="" /><span>Trang chủ</span></a></li>
-                <li><a href="#"><img src="@Url.Content("~/Content/images/m-2.png")" alt="" /><span>Giới thiệu</span></a></li>
-                <li class="active"><a href="#"><img src="@Url.Content("~/Content/images/m-3.png")" alt="" /><span>Sản phẩm</span></a>
-                    @{Html.RenderAction("GetProductNames", "Home");}
-                </li>
-                <li><a href="#"><img src="@Url.Content("~/Content/images/m-4.png")" alt="" /><span>Chính sách<br/> bán hàng</span></a></li>
-                <li><a href="#"><img src="@Url.Content("~/Content/images/m-5.png")" alt="" /><span>Hệ thống<br/> phân phối</span></a></li>
-                <li><a href="@Url.Action("PublicRelation", "Home")"><img src="@Url.Content("~/Content/images/m-6.png")" alt="" /><span>Quan hệ<br/> công chúng</span></a></li>
-                <li><a href="#"><img src="@Url.Content("~/Content/images/m-7.png")" alt="" /><span>Tuyển dụng</span></a></li>
-                <li><a href="#"><img src="@Url.Content("~/Content/images/m-8.png")" alt="" /><span>Liên hệ</span></a></li>
-            </ul>
-        </div>
-            @RenderBody()
+		@{Html.RenderAction("GetTopMenu", "Home");}
+        @RenderBody()
     </div>
     <div class="QMbottom">
     	<div class="QM_bottom">
