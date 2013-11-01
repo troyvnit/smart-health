@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Newtonsoft.Json;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
@@ -14,15 +15,15 @@ using SmartHealth.Web.Controllers;
 
 namespace SmartHealth.Web.Areas.Admin.Controllers
 {
-    public class ImageController : BaseController
+    public class MediaController : BaseController
     {
         private readonly IService<Folder> folderService;
-        private readonly IService<Image> imageService;
+        private readonly IService<Media> mediaService;
 
-        public ImageController(IService<Folder> folderService, IService<Image> imageService)
+        public MediaController(IService<Folder> folderService, IService<Media> mediaService)
         {
             this.folderService = folderService;
-            this.imageService = imageService;
+            this.mediaService = mediaService;
         }
 
         public ActionResult Index(string folder)
@@ -42,19 +43,19 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult GetImages(int? id)
         {
-            var images = imageService.GetAll().Where(a => (a.Folder != null && a.Folder.Id == id) || id == null).Select(Mapper.Map<Image, ImageDto>).ToList();
+            var images = mediaService.GetAll().Where(a => (a.Folder != null && a.Folder.Id == id) || id == null).Select(Mapper.Map<Media, MediaDto>).ToList();
             return Json(images, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteImage(int id)
         {
-            imageService.Delete(imageService.Get(id), true);
+            mediaService.Delete(mediaService.Get(id), true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetProductImages(int id)
         {
-            var images = imageService.GetAll().Where(a => a.Product != null && a.Product.Id == id).Select(Mapper.Map<Image, ImageDto>).ToList();
+            var images = mediaService.GetAll().Where(a => a.Product != null && a.Product.Id == id && a.Type == 1).Select(Mapper.Map<Media, MediaDto>).ToList();
             foreach (var image in images)
             {
                 image.ProductId = id;
@@ -62,11 +63,39 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return Json(images, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetProductVideos(int id)
+        {
+            var videos = mediaService.GetAll().Where(a => a.Product != null && a.Product.Id == id && a.Type == 2).Select(Mapper.Map<Media, MediaDto>).ToList();
+            foreach (var video in videos)
+            {
+                video.ProductId = id;
+            }
+            return Json(videos, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CreateOrUpdateVideo(string models)
+        {
+            var mediaDto = JsonConvert.DeserializeObject<List<MediaDto>>(models).FirstOrDefault();
+            var media = Mapper.Map<MediaDto, Media>(mediaDto);
+            media.Type = 2;
+            if (mediaDto != null) media.Product = mediaService.Get<Product>(mediaDto.ProductId);
+            mediaService.SaveOrUpdate(media, true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteVideo(string models)
+        {
+            var mediaDto = JsonConvert.DeserializeObject<List<MediaDto>>(models).FirstOrDefault();
+            var media = Mapper.Map<MediaDto, Media>(mediaDto);
+            mediaService.Delete(media, true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult DeleteProductImage(int id, int productId)
         {
-            var product = imageService.Get<Product>(productId);
-            product.Images.Remove(imageService.Get(id));
-            imageService.SaveOrUpdate(product, true);
+            var product = mediaService.Get<Product>(productId);
+            product.Images.Remove(mediaService.Get(id));
+            mediaService.SaveOrUpdate(product, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
@@ -77,14 +106,14 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                 foreach (var file in files)
                 {
                     var fileName = DateTime.Now.Ticks + "_" + Path.GetFileName(file.FileName);
-                    var pathString = Server.MapPath("~/Media/Images");
+                    var pathString = Server.MapPath("~/Media");
                     if (!Directory.Exists(pathString))
                     {
                         Directory.CreateDirectory(pathString);
                     }
                     var physicalPath = Path.Combine(pathString, fileName);
                     file.SaveAs(physicalPath);
-                    imageService.Save(new Image{ Folder = folderId != null ? folderService.Get((int)folderId) : null, Product = productId != null ? imageService.Get<Product>((int)productId) : null, ImageUrl = "/Media/Images/" + fileName });
+                    mediaService.Save(new Media{ Folder = folderId != null ? folderService.Get((int)folderId) : null, Product = productId != null ? mediaService.Get<Product>((int)productId) : null, MediaUrl = "/Media/" + fileName, Type = 1});
                 }
             }
             return Json("Success", JsonRequestBehavior.AllowGet);

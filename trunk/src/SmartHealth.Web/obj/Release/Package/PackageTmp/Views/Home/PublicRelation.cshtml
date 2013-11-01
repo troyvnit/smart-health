@@ -1,0 +1,112 @@
+﻿@using SmartHealth.Box.Domain.Dtos
+@{
+    ViewBag.Title = "PublicRelation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var publicRelationCategories = (List<ArticleCategoryDto>)ViewBag.PublicRelationCategories;
+    var saleOffProducts = (List<ProductDto>)ViewBag.SaleOffProducts;
+    var tags = (List<TagDto>)ViewBag.Tags;
+}
+
+
+<div class="leftContent">
+    <div class="boxLeft">
+        @foreach(var publicRelationCategory in publicRelationCategories)
+        {
+            var firstPublicRelationArticle = publicRelationCategory.ArticleDtos.FirstOrDefault();
+            <div class="AboxLeft">
+                <p>@publicRelationCategory.Name</p>
+                <div class="AABoxLeft">
+                    <div class="boxTin">
+                        <ul>
+                            @if (firstPublicRelationArticle != null)
+                            {
+                                <li class="pic">
+                                    <a href="@Url.Action("ArticleDetail", "Home", new { id = firstPublicRelationArticle.Id })"><img src="@firstPublicRelationArticle.ImageUrl" alt="" /></a>
+                                </li>
+                                <li class="tit"><a href="@Url.Action("ArticleDetail", "Home", new { id = firstPublicRelationArticle.Id })">@firstPublicRelationArticle.Title</a></li>
+                                <li>
+                                    @Html.Raw(firstPublicRelationArticle.Description)
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <ul class="list">
+                        @foreach (var publicRelationArticle in publicRelationCategory.ArticleDtos.Skip(1))
+                        {
+                            <li><a href="@Url.Action("ArticleDetail", "Home", new { id = publicRelationArticle.Id })">@publicRelationArticle.Title</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+        <div class="AboxLeft">
+            <p>Video</p>
+            <a href="#">Xem thêm</a>
+            <div class="AABoxLeft">
+                <div class="boxVideo">
+                    <img src="images/video-1.jpg" alt="" />
+                    <p>Số lượng bệnh tiêu hóa, hô hấp tăng mạnh</p>
+                </div>
+                <div class="boxVideo">
+                    <img src="images/video-1.jpg" alt="" />
+                    <p>Số lượng bệnh tiêu hóa, hô hấp tăng mạnh</p>
+                </div>
+                <div class="boxVideo">
+                    <img src="images/video-1.jpg" alt="" />
+                    <p>Số lượng bệnh tiêu hóa, hô hấp tăng mạnh</p>
+                </div>
+                <div class="boxVideo">
+                    <img src="images/video-1.jpg" alt="" />
+                    <p>Số lượng bệnh tiêu hóa, hô hấp tăng mạnh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--leftContent-->
+<div class="rightContent">
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>Khuyến mãi</p>
+            <ul>
+                @if(saleOffProducts != null)
+                        {
+                            foreach (var saleOffProduct in saleOffProducts)
+                            {
+                                <li>
+                                    <div class="picleft">
+                                        <table cellspacing="0" cellpadding="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pic_5">
+                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = saleOffProduct.Id })"><img src="@saleOffProduct.ImageUrl" alt="" /></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p>@saleOffProduct.Name<br/>@saleOffProduct.Weight</p>
+                                    <span>@saleOffProduct.SmartHealthPrice.ToString("N2") đ</span>
+                                </li>
+                            }
+                        }
+            </ul>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>Facebook</p>
+            <div class="facebook">
+                <img src="/content/images/facebook.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+    <div class="tukhoa">
+        <span>Từ khóa:</span>
+        @foreach(var tag in tags)
+        {
+            <a href="#">@tag.Name </a>
+        }
+    </div>
+</div>
+<!--rightContent-->

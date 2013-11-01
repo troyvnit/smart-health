@@ -155,7 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ImageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Mood\MoodAreaRegistration.cs" />
     <Compile Include="Areas\QoL\Controllers\HealthSurveyController.cs" />
@@ -2021,7 +2021,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Article\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Image\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Media\Index.cshtml" />
     <Content Include="Content\font\vhe\vhe.eot" />
     <Content Include="Content\font\vhe\vhe.TTF" />
     <Content Include="Content\font\vhe\vhe.woff" />
@@ -2157,6 +2157,9 @@
     <Content Include="Areas\SampleModule\Views\Web.config" />
     <Content Include="Areas\QoL\Views\Web.config" />
     <Content Include="Views\Home\GetProductNames.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\PublicRelation.cshtml" />
+    <Content Include="Views\Home\ArticleDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

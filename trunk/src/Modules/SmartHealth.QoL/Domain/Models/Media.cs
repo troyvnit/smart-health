@@ -7,18 +7,20 @@ using SmartHealth.Infrastructure.Domain.Models;
 namespace SmartHealth.Box.Domain.Models
 {
     [Serializable]
-    public class Image : Entity
+    public class Media : Entity
     {
-        public Image()
+        public Media()
         {
             Product = new Product();
         }
 
-        public virtual string ImageUrl { get; set; }
+        public virtual string MediaUrl { get; set; }
 
         public virtual string ThumbnailUrl { get; set; }
 
         public virtual string Description { get; set; }
+
+        public virtual int Type { get; set; }
 
         public virtual Folder Folder { get; set; }
 

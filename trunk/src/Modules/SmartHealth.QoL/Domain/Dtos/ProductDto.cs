@@ -13,6 +13,8 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual string Description { get; set; }
 
+        public virtual string Introduction { get; set; }
+
         public virtual string Property { get; set; }
 
         public virtual string Review { get; set; }
@@ -27,11 +29,17 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual int ViewCount { get; set; }
 
+        public virtual int Quantity { get; set; }
+
+        public virtual string Status { get; set; }
+
         public virtual string ImageUrl { get; set; }
 
         public virtual bool IsActived { get; set; }
 
         public virtual bool IsMainProduct { get; set; }
+
+        public virtual bool IsSaleOff { get; set; }
 
         public virtual int LanguageId { get; set; }
 

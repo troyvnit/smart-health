@@ -1,6 +1,11 @@
-﻿@{
+﻿@using SmartHealth.Box.Domain.Dtos
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var introductions = (List<ArticleDto>)ViewBag.Introductions;
+    var newses = (List<ArticleDto>)ViewBag.Newses;
+    var firstNews = newses.FirstOrDefault();
+    var mainProducts = (List<ProductDto>)ViewBag.MainProducts; 
 }
 
 <div class="banner">
@@ -24,105 +29,68 @@
         </div>
         <div class="viewhome">
         	<div class="viewhomeI">
-            	<div class="LviewI">
-                	<p>Chúng tôi là ai?</p>
-                    <span>Màu xanh và lá cây, giọt nước thể hiện sự tinh khiết, hướng về thiên nhiên và sức khỏe tinh thần; thể hiện tinh thàn hòa bình, sự cân bằng các giá trị cuộc sống và phát triền bình vững, bảo vệ trái đất, thiên nhiên loài người</span>
-                    <a href="#">Chi tiết</a>
+                <div class="LviewI">
+                    @if (introductions.Count() > 0)
+                    {
+                        <p>@introductions.ElementAt(0).Title</p>
+                        <span>@Html.Raw(introductions.ElementAt(0).Description)</span>
+                        <a href="@Url.Action("ArticleDetail", "Home", new { id = introductions.ElementAt(0).Id })">Chi tiết</a>
+                    }
                 </div>
                 <div class="RviewI">
-                	<p>Sự lựa chọn thông minh về giải pháp chăm sóc sức khỏe</p>
-                    <span>Màu xanh và lá cây, giọt nước thể hiện sự tinh khiết, hướng về thiên nhiên và sức khỏe tinh thần; thể hiện tinh thàn hòa bình, sự cân bằng các giá trị cuộc sống và phát triền bình vững, bảo vệ trái đất, thiên nhiên loài người</span>
-                    <a href="#">Chi tiết</a>
+                	@if (introductions.Count() > 1)
+                    {
+                        <p>@introductions.ElementAt(1).Title</p>
+                        <span>@Html.Raw(introductions.ElementAt(1).Description)</span>
+                        <a href="@Url.Action("ArticleDetail", "Home", new { id = introductions.ElementAt(1).Id })">Chi tiết</a>
+                    }
                 </div>
             	<div class="viewhomeII">
                 	<div class="CviewI">
-                    	<p>Tại sao nên chọn chúng tôi</p>
-                        <span>Màu xanh và lá cây, giọt nước thể hiện sự tinh khiết, hướng về thiên nhiên và sức khỏe tinh thần; thể hiện tinh thàn hòa bình, sự cân bằng các giá trị cuộc sống và phát triền bình vững, bảo vệ trái đất, thiên nhiên loài người</span>
-                        <a href="#">Chi tiết</a>
+                    	@if (introductions.Count() > 2)
+                        {
+                            <p>@introductions.ElementAt(2).Title</p>
+                            <span>@Html.Raw(introductions.ElementAt(2).Description)</span>
+                            <a href="@Url.Action("ArticleDetail", "Home", new { id = introductions.ElementAt(2).Id })">Chi tiết</a>
+                        }
                 	</div>
                 </div>
             </div>
         </div>
         <div class="viewIIhome">
-        	<div class="video"><img src="@Url.Content("~/Content/images/video.jpg")" alt="" /></div>
+        	<div class="video"><iframe id="ytplayer" type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://smart-health.com.vn" frameborder="0"/></div>
             <div class="news">
             	<p><span>Tin tức</span></p>
                 <ul>
-                	<li class="pic"><a href="#"><img src="@Url.Content("~/Content/images/pic-1.jpg")" alt="" /></a></li>
-                    <li class="tit"><a href="#">Phòng ngừa và xử trí đúng cách khi bị đột quỵ</a></li>
-                    <li class="con"><p>Đột qụy hoàn toàn có thể phòng ngừa bằng cách đột qụy hoàn toàn có thể phòng ngừa bằng cách</p></li>
+                    @if (firstNews != null)
+                    {
+                        <li class="pic"><a href="@Url.Action("ArticleDetail", "Home", new { id = firstNews.Id })"><img src="@firstNews.ImageUrl" alt="" /></a></li>
+                        <li class="tit"><a href="@Url.Action("ArticleDetail", "Home", new { id = firstNews.Id })">@firstNews.Title</a></li>
+                        <li class="con">@Html.Raw(firstNews.Description)</li>
+                    }
                 </ul>
-                <a href="#">Thảo dược "bí truyền" chế bài thuốc phòng the sắp cạn kiệt</a>
-                <a href="#">Để khỏe, bạn nên thay đổi 5 thói quen tưởng tốt hơn</a>
-                <a href="#">Thảo dược "bí truyền" chế bài thuốc phòng the sắp cạn kiệt</a>
-                <a href="#">Để khỏe, bạn nên thay đổi 5 thói quen tưởng tốt hơn</a>
-                <a href="#">Thảo dược "bí truyền" chế bài thuốc phòng the sắp cạn kiệt</a>
-                <a href="#">Để khỏe, bạn nên thay đổi 5 thói quen tưởng tốt hơn</a>
+                @foreach (var news in newses.Skip(1))
+                {
+                    <a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a>
+                }
             </div>
         </div>
         <div class="prohome">
         	<div class="Tprohone"><h3><p>Sản phẩm tiêu biểu</p></h3></div>
             <div class="Cprohone">
-            	<div class="boxPro">
-                	<ul>
-                    	<li class="pic">
-                        	<table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
-                                <a href="#"><img src="@Url.Content("~/Content/images/pro-1.jpg")" alt=""/></a>
-                            </td></tr></tbody></table>
-                        </li>
-                        <li class="tit"><a href="#">Smart Salt</a></li>
-                    </ul>
-                </div>
-                <div class="boxPro">
-                	<ul>
-                    	<li class="pic">
-                        	<table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
-                                <a href="#"><img src="@Url.Content("~/Content/images/pro-2.jpg")" alt=""/></a>
-                            </td></tr></tbody></table>
-                        </li>
-                        <li class="tit"><a href="#">Smart Salt</a></li>
-                    </ul>
-                </div>
-                <div class="boxPro">
-                	<ul>
-                    	<li class="pic">
-                        	<table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
-                                <a href="#"><img src="@Url.Content("~/Content/images/pro-3.jpg")" alt=""/></a>
-                            </td></tr></tbody></table>
-                        </li>
-                        <li class="tit"><a href="#">Smart Salt</a></li>
-                    </ul>
-                </div>
-                <div class="boxPro">
-                	<ul>
-                    	<li class="pic">
-                        	<table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
-                                <a href="#"><img src="@Url.Content("~/Content/images/pro-1.jpg")" alt=""/></a>
-                            </td></tr></tbody></table>
-                        </li>
-                        <li class="tit"><a href="#">Smart Salt</a></li>
-                    </ul>
-                </div>
-                <div class="boxPro">
-                	<ul>
-                    	<li class="pic">
-                        	<table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
-                                <a href="#"><img src="@Url.Content("~/Content/images/pro-2.jpg")" alt=""/></a>
-                            </td></tr></tbody></table>
-                        </li>
-                        <li class="tit"><a href="#">Smart Salt</a></li>
-                    </ul>
-                </div>
-                <div class="boxPro">
-                	<ul>
-                    	<li class="pic">
-                        	<table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
-                                <a href="#"><img src="@Url.Content("~/Content/images/pro-3.jpg")" alt=""/></a>
-                            </td></tr></tbody></table>
-                        </li>
-                        <li class="tit"><a href="#">Smart Salt</a></li>
-                    </ul>
-                </div>
+                @foreach (var mainProduct in mainProducts)
+                {
+                    <div class="boxPro">
+                        <ul>
+                            <li class="pic">
+                                <table cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td class="pic_1">
+                                                                                                   <a href="@Url.Action("ProductDetail", "Home", new { id = mainProduct.Id })"><img src="@mainProduct.ImageUrl" alt=""/></a>
+                                                                                               </td></tr></tbody></table>
+                            </li>
+                            <li class="tit"><a href="@Url.Action("ProductDetail", "Home", new { id = mainProduct.Id })">@mainProduct.Name</a></li>
+                        </ul>
+                    </div>
+                }
             </div>
         </div>
         <div class="prohome">

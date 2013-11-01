@@ -25,7 +25,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            return View("~/Areas/Admin/Views/Product/Index.cshtml");
         }
 
         public ActionResult GetTags()
@@ -55,20 +55,24 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             var products = productService.GetAll().OrderByDescending(a => a.CreatedDate).Where(a => a.IsDeleted != true).Select(product => new ProductDto
             {
                 Brand = product.Brand,
-                Tags = string.Join(",", product.Tags.Select(a => a.Id)),
+                Tags = product.Tags,
+                Introduction = product.Introduction,
                 Description = product.Description,
                 Id = product.Id,
                 ImageUrl = product.ImageUrl,
                 IsActived = product.IsActived,
-                LanguageId = product.Language.Id,
+                LanguageId = product.Language != null ? product.Language.Id : 1,
                 IsMainProduct = product.IsMainProduct,
+                IsSaleOff = product.IsSaleOff,
                 MarketPrice = product.MarketPrice,
                 Name = product.Name,
                 Property = product.Property,
                 Review = product.Review,
                 SmartHealthPrice = product.SmartHealthPrice,
                 ViewCount = product.ViewCount,
-                Weight = product.Weight
+                Weight = product.Weight,
+                Quantity = product.Quantity,
+                Status = product.Status
             }).ToList();
             return Json(products, JsonRequestBehavior.AllowGet);
         }
@@ -77,17 +81,9 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         public ActionResult CreateOrUpdateProduct(ProductDto productDto)
         {
             var product = Mapper.Map<ProductDto, Product>(productDto);
-            if (!string.IsNullOrEmpty(productDto.Tags))
-            {
-                var tagIds = productDto.Tags.Split(',');
-                foreach (var tagId in tagIds)
-                {
-                    product.Tags.Add(tagService.Get(Convert.ToInt32(tagId)));
-                }
-            }
             product.Language = productService.Get<Language>(productDto.LanguageId);
             productService.SaveOrUpdate(product, true);
-            return Json(product, JsonRequestBehavior.AllowGet);
+            return Json(Mapper.Map<Product, ProductDto>(product), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteProducts(string ids)
@@ -115,6 +111,16 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
             {
                 product.IsMainProduct = !product.IsMainProduct;
+                productService.SaveOrUpdate(product, true);
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SaleOffProducts(string ids)
+        {
+            foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
+            {
+                product.IsSaleOff = !product.IsSaleOff;
                 productService.SaveOrUpdate(product, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);

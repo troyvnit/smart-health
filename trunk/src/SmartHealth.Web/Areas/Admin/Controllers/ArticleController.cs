@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using System.Web.Mvc;
+using AutoMapper;
 using Newtonsoft.Json;
 using SmartHealth.Box.Domain.Dtos;
-using SmartHealth.Box.Domain.IRepository;
 using SmartHealth.Box.Domain.Models;
 using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
@@ -26,69 +25,81 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("~/Areas/Admin/Views/Article/Index.cshtml");
         }
 
         public ActionResult GetCategories()
         {
-            var categories = articleCategoryService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(Mapper.Map<ArticleCategory, ArticleCategoryDto>).ToList();
+            List<ArticleCategoryDto> categories =
+                articleCategoryService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(
+                    Mapper.Map<ArticleCategory, ArticleCategoryDto>).ToList();
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CreateOrUpdateCategory(string models)
         {
-            var categoryDto = JsonConvert.DeserializeObject<List<ArticleCategoryDto>>(models).FirstOrDefault();
-            var category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
+            ArticleCategoryDto categoryDto =
+                JsonConvert.DeserializeObject<List<ArticleCategoryDto>>(models).FirstOrDefault();
+            ArticleCategory category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
             articleCategoryService.SaveOrUpdate(category, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteCategory(string models)
         {
-            var categoryDto = JsonConvert.DeserializeObject<List<ArticleCategoryDto>>(models).FirstOrDefault();
-            var category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
+            ArticleCategoryDto categoryDto =
+                JsonConvert.DeserializeObject<List<ArticleCategoryDto>>(models).FirstOrDefault();
+            ArticleCategory category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
             articleCategoryService.Delete(category, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetArticles()
         {
-            var articles = articleService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.CreatedDate).Select(article => new ArticleDto
-                                                            {
-                                                                Author = article.Author,
-                                                                Categories = string.Join(",", article.Categories.Select(a => a.Id)),
-                                                                Content = article.Content,
-                                                                Description = article.Description,
-                                                                Id = article.Id,
-                                                                ImageUrl = article.ImageUrl,
-                                                                IsActived = article.IsActived,
-                                                                Priority = article.Priority,
-                                                                Title = article.Title,
-                                                                LanguageId = article.Language.Id
-                                                            }).ToList();
+            var url = HttpContext.Request.Url;
+            var articles =
+                articleService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.CreatedDate).Select(
+                    article => url != null
+                                   ? new ArticleDto
+                                         {
+                                             Author = article.Author,
+                                             Categories = string.Join(",", article.Categories.Select(a => a.Id)),
+                                             Content = article.Content,
+                                             Description = article.Description,
+                                             Id = article.Id,
+                                             ImageUrl = article.ImageUrl,
+                                             IsActived = article.IsActived,
+                                             Priority = article.Priority,
+                                             Title = article.Title,
+                                             Tags = article.Tags,
+                                             FullUrl = Url.Action("ArticleDetail", "Home", new {article.Id}, url.Scheme),
+                                             LanguageId = article.Language != null ? article.Language.Id : 1
+                                         }
+                                   : null).ToList();
             return Json(articles, JsonRequestBehavior.AllowGet);
         }
 
         [ValidateInput(false)]
         public ActionResult CreateOrUpdateArticle(ArticleDto articleDto)
         {
-            var article = Mapper.Map<ArticleDto, Article>(articleDto);
+            Article article = Mapper.Map<ArticleDto, Article>(articleDto);
+            article.Language = articleService.Get<Language>(articleDto.LanguageId);
             if (!string.IsNullOrEmpty(articleDto.Categories))
             {
-                var categoryIds = articleDto.Categories.Split(',');
-                foreach (var categoryId in categoryIds)
+                string[] categoryIds = articleDto.Categories.Split(',');
+                foreach (string categoryId in categoryIds)
                 {
-                    article.Categories.Add(articleCategoryService.Get(Convert.ToInt32(categoryId)));
+                    ArticleCategory category = articleCategoryService.Get(Convert.ToInt32(categoryId));
+                    article.Categories.Add(category);
                 }
             }
-            article.Language = articleService.Get<Language>(articleDto.LanguageId);
             articleService.SaveOrUpdate(article, true);
-            return Json(article, JsonRequestBehavior.AllowGet);
+            return Json(Mapper.Map<Article, ArticleDto>(article), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteArticles(string ids)
         {
-            foreach (var article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
+            foreach (Article article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
             {
                 article.IsDeleted = true;
                 articleService.SaveOrUpdate(article, true);
@@ -98,7 +109,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult ActiveArticles(string ids)
         {
-            foreach (var article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
+            foreach (Article article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
             {
                 article.IsActived = !article.IsActived;
                 articleService.SaveOrUpdate(article, true);

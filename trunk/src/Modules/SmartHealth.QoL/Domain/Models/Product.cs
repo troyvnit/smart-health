@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Domain.Models;
 
@@ -11,16 +12,20 @@ namespace SmartHealth.Box.Domain.Models
         public Product()
         {
             CreatedDate = DateTime.UtcNow;
-            Tags = new List<Tag>();
-            Images = new List<Image>();
+            Images = new List<Media>();
         }
 
         public virtual string Name { get; set; }
 
         public virtual string Description { get; set; }
 
+        [StringLength(4001)]
+        public virtual string Introduction { get; set; }
+
+        [StringLength(4001)]
         public virtual string Property { get; set; }
 
+        [StringLength(4001)]
         public virtual string Review { get; set; }
 
         public virtual decimal MarketPrice { get; set; }
@@ -33,6 +38,10 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual int ViewCount { get; set; }
 
+        public virtual int Quantity { get; set; }
+
+        public virtual string Status { get; set; }
+
         public virtual string ImageUrl { get; set; }
 
         public virtual bool IsActived { get; set; }
@@ -41,14 +50,16 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual bool IsMainProduct { get; set; }
 
+        public virtual bool IsSaleOff { get; set; }
+
         public virtual DateTime CreatedDate { get; set; }
 
         public virtual User CreatedUser { get; set; }
 
         public virtual Language Language { get; set; }
 
-        public virtual IList<Tag> Tags { get; set; }
+        public virtual string Tags { get; set; }
 
-        public virtual IList<Image> Images { get; set; } 
+        public virtual IList<Media> Images { get; set; } 
     }
 }

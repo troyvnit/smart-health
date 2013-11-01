@@ -327,7 +327,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .tukhoa { width:222px; height:auto; float:left; padding:20px 0 10px 0; line-height:18px;}
 .tukhoa span { font-weight:bold; float:left; padding-right:5px;}
-.tukhoa a { color:#015591; float:left; margin-right:3px;}
+.tukhoa a { color:#015591; float:left; margin-right:3px; text-decoration: underline;}
 
 .AboxLeft { width:698px; float:left; position:relative;}
 .AboxLeft > p { width:658px; height:40px; float:left; border-bottom:1px solid #ddd; font-size:16px; font-weight:bold; color:#333; line-height:40px; margin:10px 0 0 10px; padding-left:20px; background:url(/Content/images/icon_25.png) no-repeat top left;}

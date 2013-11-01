@@ -20,6 +20,8 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual bool IsDeleted { get; set; }
 
+        public virtual bool IsPublicRelation { get; set; }
+
         public virtual IList<Article> Articles { get; set; } 
     }
 }

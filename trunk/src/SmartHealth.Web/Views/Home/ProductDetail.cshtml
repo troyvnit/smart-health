@@ -1,0 +1,239 @@
+﻿@using SmartHealth.Box.Domain.Dtos
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var productDetail = (ProductDto) ViewBag.ProductDetail;
+    var productImages = (List<MediaDto>) ViewBag.ProductImages;
+    var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
+    var newses = (List<ArticleDto>)ViewBag.Newses;
+    if (Session["SmartHealthUser"] == null)
+    {
+        Session["SmartHealthUser"] = new SessionDto();
+    }
+    var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
+}
+
+<div class="leftContent">
+        	<div class="boxLeft">
+                <div class="chitietsanpham">
+                	<p>@productDetail.Name</p>
+                    <div class="hinhsanpham">
+                        <div id="lofslidecontent45">
+                            <div class="lof-main-outer">
+                                <ul class="lof-main-wapper">
+                                    @if(productImages != null)
+                                    {
+                                        foreach (var productImage in productImages)
+                                        {
+                                            <li>
+                                                <table cellspacing="0" cellpadding="0" width="100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="pic_3">
+                                                                 <img src="@productImage.ImageUrl" style="max-width:300px; max-height:240px;" alt="" />
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </li> 
+                                        }
+                                    }
+                                </ul>  	
+                            </div><!--End .lof-main-wapper-->
+                            <div class="lof-navigator-wapper">
+                                <div onclick="return false" class="lof-next"><a href="#"></a></div>
+                                <div onclick="return false" class="lof-previous"><a href="#"></a></div>
+                                <div class="lof-navigator-outer">
+                                    <ul class="lof-navigator">
+                                        @if(productImages != null)
+                                        {
+                                            foreach (var productImage in productImages)
+                                            {
+                                                <li>
+                                                    <table cellspacing="0" cellpadding="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="pic_4">
+                                                                     <img src="@productImage.ImageUrl" alt="" />
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </li> 
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div><!--End .lof-navigator-wapper-->
+                        </div><!--End #lofslidecontent45-->
+                    </div><!--hinhsanpham-->
+                    <div class="thongtinsp">
+                        <ul>
+                            <li class="Pr1">
+                                <input type="hidden" value="@productDetail.Id" id="ProductId"/>
+                                <span class="G-1"><p>Giá NY:</p>@productDetail.SmartHealthPrice.ToString("N2") ₫</span>
+                                <span class="G-2"><p>Giá thị trường:</p>@productDetail.MarketPrice.ToString("N2") ₫</span>
+                                <span><p>Hãng sản xuất:</p>@productDetail.Brand</span>
+                                <span><p>Trọng lượng:</p>@productDetail.Weight</span>
+                                <span><p>Lượt xem:</p>@productDetail.ViewCount</span>
+                            </li>
+                            <li class="Pr2">
+                                <span><p>SL mua:</p>
+                                    <input class="slu" type="text" id="Quantity" />
+                                    (@productDetail.Status)
+                                </span>
+                                <span><p>Số tiền thanh toán:</p><span id="CalculatedPrice">0 vnđ</span></span>
+                            </li>
+                            <li class="Pr3">
+                            	<a id="Buy" href="#"><img src="/Content/images/mua.png" alt="" /></a>
+                            </li>
+                        </ul>
+                    </div><!--thongtinsp-->
+                    <div class="thongtincanbiet">
+                        <div class="container">
+                            <ul class="tabs">
+                                <li><a href="#tab1"><span>Mô tả</span></a></li>
+                                <li><a href="#tab2"><span>Thuộc tính</span></a></li>
+                                <li><a href="#tab3"><span>Đánh giá</span></a></li>
+                            </ul>
+                            <div class="tab_container">
+                                <div style="display: block;" id="tab1" class="tab_content">
+                                    <div class="xanh">
+                                        <div class="mota">
+                                            @Html.Raw(productDetail.Introduction)
+                                        </div>
+                                    </div><!--End .xanh-->
+                                </div>
+                                <div style="display: block;" id="tab2" class="tab_content">
+                                    <div class="xanh">
+                                        <div class="thuoctinh">
+                                            @Html.Raw(productDetail.Property)
+                                        </div>
+                                    </div><!--End .xanh-->
+                                </div>
+                                <div style="display: none;" id="tab3" class="tab_content">
+                                    <div class="xanh">
+                                        <div class="danhgia">
+                                            @Html.Raw(productDetail.Review)
+                                        </div>
+                                    </div><!--End .xanh-->
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End .thongtincanbiet-->
+                </div><!--chitietsanpham-->
+            </div>
+        </div><!--leftContent-->
+        <div class="rightContent">
+        	<div class="boxRight">
+                <div class="boxRightI">
+                     <p>Sản phẩm liên quan</p>
+                     <ul>
+                        @if(relatedProducts != null)
+                        {
+                            foreach (var relatedProduct in relatedProducts)
+                            {
+                                <li>
+                                    <div class="picleft">
+                                        <table cellspacing="0" cellpadding="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pic_5">
+                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = relatedProduct.Id })"><img src="@relatedProduct.ImageUrl" alt="" /></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p>@relatedProduct.Name<br/>@relatedProduct.Weight</p>
+                                    <span>@relatedProduct.SmartHealthPrice.ToString("N2") đ</span>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="boxRight">
+                <div class="boxRightI">
+                     <p>Hỗ trợ khách hàng</p>
+                     <div class="htkhachhang">
+                         <ul>
+                             @if(newses != null)
+                             {
+                                 foreach (var news in newses)
+                                 {
+                                    <li><a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a></li>
+                                 }
+                             }
+                         </ul>
+                     </div>
+                </div>
+            </div>
+            <div class="boxRight">
+                <div class="boxRightI">
+                     <p>Chấp nhận thanh toán</p>
+                     <div class="thanhtoan">
+                     	<ul>
+                        	<li><a href="#"><img src="/content/images/tt-1.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-2.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-3.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-4.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-5.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-6.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-7.jpg" alt="" /></a></li>
+                            <li><a href="#"><img src="/content/images/tt-8.jpg" alt="" /></a></li>
+                        </ul>
+                     </div>
+                </div>
+            </div>
+            <div class="boxRight">
+                <div class="boxRightI">
+                     <p>Sản phẩm đã xem</p>
+                    <ul>
+                        @if(viewedProducts != null)
+                        {
+                            foreach (var viewedProduct in viewedProducts)
+                            {
+                                <li>
+                                    <div class="picleft">
+                                        <table cellspacing="0" cellpadding="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pic_5">
+                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = viewedProduct.Id })"><img src="@viewedProduct.ImageUrl" alt="" /></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p>@viewedProduct.Name<br/>@viewedProduct.Weight</p>
+                                    <span>@viewedProduct.SmartHealthPrice.ToString("N2") đ</span>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div><!--rightContent-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Buy").click(function (e) {
+            if ($("#Quantity").val() == '' || $("#Quantity").val() < 1) {
+                alert('Số lượng tối thiểu là 1!');
+                return false;
+            }
+            $.post('@Url.Action("AddOrderProduct", "Home")', { id: $("#ProductId").val(), quantity: $("#Quantity").val() }).done(function (result) {
+                $("#OrderProductCount").html(result);
+                return false;
+            });
+        });
+        $("#Quantity").change(function (e) {
+            $("#CalculatedPrice").html();
+            var quantity = parseFloat($("#Quantity").val());
+            var price = parseFloat('@productDetail.SmartHealthPrice.ToString("N2").Replace(",","")');
+            $("#CalculatedPrice").html(quantity * price);
+        });
+    });
+</script>

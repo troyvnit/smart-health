@@ -14,8 +14,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="App_Readme/Elmah.txt">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
+    <File Include="Areas/Admin/Content/jquery.tagsinput.css">
+      <publishTime>10/26/2013 22:41:21</publishTime>
+    </File>
     <File Include="Areas/Admin/Content/style.css">
-      <publishTime>10/26/2013 14:36:00</publishTime>
+      <publishTime>10/27/2013 00:12:20</publishTime>
     </File>
     <File Include="Areas/Admin/KendoUI/content/dataviz/dashboards/area-chart.png">
       <publishTime>10/16/2013 11:51:09</publishTime>
@@ -4289,6 +4292,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/LightBox/README.markdown">
       <publishTime>10/25/2013 11:01:40</publishTime>
     </File>
+    <File Include="Areas/Admin/Scripts/jquery.tagsinput.js">
+      <publishTime>10/26/2013 22:41:29</publishTime>
+    </File>
     <File Include="Areas/Admin/Scripts/tinymce/classes/AddOnManager.js">
       <publishTime>10/22/2013 08:59:16</publishTime>
     </File>
@@ -5244,19 +5250,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2013 08:59:17</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/Index.cshtml">
-      <publishTime>10/26/2013 14:50:56</publishTime>
+      <publishTime>10/31/2013 10:33:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Image/Index.cshtml">
       <publishTime>10/26/2013 11:56:18</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>10/26/2013 14:51:18</publishTime>
+      <publishTime>10/31/2013 10:51:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>10/26/2013 14:26:25</publishTime>
+      <publishTime>10/26/2013 22:48:20</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Web.config">
       <publishTime>10/15/2013 15:55:27</publishTime>
+    </File>
+    <File Include="Areas/Admin/Web.config">
+      <publishTime>10/29/2013 08:49:21</publishTime>
     </File>
     <File Include="Areas/Mood/Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
@@ -5313,25 +5322,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:05</publishTime>
     </File>
     <File Include="bin/SmartHealth.Box.dll">
-      <publishTime>10/26/2013 14:51:41</publishTime>
+      <publishTime>10/31/2013 12:26:06</publishTime>
     </File>
     <File Include="bin/SmartHealth.Core.dll">
-      <publishTime>10/21/2013 22:21:02</publishTime>
+      <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.dll">
       <publishTime>10/21/2013 22:21:01</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Nhibernate.dll">
-      <publishTime>10/21/2013 22:21:02</publishTime>
+      <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Web.dll">
-      <publishTime>10/26/2013 14:51:42</publishTime>
+      <publishTime>10/31/2013 12:26:07</publishTime>
     </File>
     <File Include="bin/SmartHealth.SampleModule.dll">
-      <publishTime>10/21/2013 22:21:03</publishTime>
+      <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>10/26/2013 14:51:43</publishTime>
+      <publishTime>10/31/2013 12:26:08</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -5655,7 +5664,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 16:55:48</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>10/21/2013 16:53:51</publishTime>
+      <publishTime>10/31/2013 11:08:04</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>10/15/2013 15:55:29</publishTime>
@@ -6009,16 +6018,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/25/2013 23:15:49</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/21/2013 16:58:34</publishTime>
+      <publishTime>10/31/2013 10:23:26</publishTime>
+    </File>
+    <File Include="Views/Home/ProductDetail.cshtml">
+      <publishTime>10/30/2013 15:25:11</publishTime>
+    </File>
+    <File Include="Views/Home/PublicRelation.cshtml">
+      <publishTime>10/31/2013 11:03:48</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/25/2013 23:17:41</publishTime>
+      <publishTime>10/30/2013 14:34:45</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/26/2013 14:51:55</publishTime>
+      <publishTime>10/31/2013 12:26:24</publishTime>
     </File>
   </ItemGroup>
 </Project>
