@@ -11,13 +11,24 @@
     <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="@Url.Content("~/Content/style-banner.css")" type="text/css" media="screen" />
     <script type="text/javascript" src="@Url.Content("~/Scripts/danhmuc-menu-jquery.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.4.3.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/LightBox/js/jquery-1.10.2.min.js")"></script>
     <!--tab--><script type="text/javascript" src="@Url.Content("~/Scripts/jqueryTab.js")"></script>
     <!--zoom--><script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
     <!--zoom--><script type="text/javascript" src="@Url.Content("~/Scripts/js/cloud-zoom.1.0.2.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/js/jquery.nivo.slider.pack.js")"></script>
     <!--sn--><script type="text/javascript" src="@Url.Content("~/Scripts/js/jquery.jcarousel.min.js")"></script>
     <!--sn--><script type="text/javascript" src="@Url.Content("~/Scripts/js/jquery.jcarousel.min_call.js")"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-45355701-1', 'smart-health.com.vn');
+        ga('send', 'pageview');
+    </script>
 </head>
 <body>
 
@@ -35,7 +46,7 @@
                     <li><span>|</span></li>
                     <li class="butdk"><a href="#">&bull; Đăng ký</a><a href="#">&bull; Đăng nhập</a></li>
                     <li><span>|</span></li>
-                    <li class="cart"><a href="#">Cart (5)</a></li>
+                    <li class="cart"><a href="#"><p id="OrderProductCount">0</p></a></li>
                 </ul>
             </div>
         </div>
@@ -48,7 +59,7 @@
                 </li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-4.png")" alt="" /><span>Chính sách<br/> bán hàng</span></a></li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-5.png")" alt="" /><span>Hệ thống<br/> phân phối</span></a></li>
-                <li><a href="#"><img src="@Url.Content("~/Content/images/m-6.png")" alt="" /><span>Quan hệ<br/> công chúng</span></a></li>
+                <li><a href="@Url.Action("PublicRelation", "Home")"><img src="@Url.Content("~/Content/images/m-6.png")" alt="" /><span>Quan hệ<br/> công chúng</span></a></li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-7.png")" alt="" /><span>Tuyển dụng</span></a></li>
                 <li><a href="#"><img src="@Url.Content("~/Content/images/m-8.png")" alt="" /><span>Liên hệ</span></a></li>
             </ul>

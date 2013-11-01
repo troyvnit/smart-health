@@ -55,7 +55,7 @@
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: '@Url.Action("GetImages", "Image")' + '?Id=' + id,
+                        url: '@Url.Action("GetImages", "Media")' + '?Id=' + id,
                         type: "post",
                         dataType: "json"
                     },
@@ -76,7 +76,7 @@
         var folderDataSource = new kendo.data.HierarchicalDataSource({
             transport: {
                 read: {
-                    url: '@Url.Action("GetFolders", "Image")',
+                    url: '@Url.Action("GetFolders", "Media")',
                     type: "post",
                     dataType: "json"
                 }
@@ -104,7 +104,7 @@
         $("#files").kendoUpload({
             multiple: false,
             async: {
-                saveUrl: '@Url.Action("Upload", "Image")',
+                saveUrl: '@Url.Action("Upload", "Media")',
                 autoUpload: true
             },
             localization: {

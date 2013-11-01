@@ -11,7 +11,7 @@ namespace SmartHealth.Box.Domain.IRepository
     using SmartHealth.Box.Domain.Dtos;
     using SmartHealth.Box.Domain.Models;
 
-    public interface IImageRepository : IRepository<Image>
+    public interface IMediaRepository : IRepository<Media>
     {
     }
 }

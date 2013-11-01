@@ -26,5 +26,9 @@ namespace SmartHealth.Box.Domain.Dtos
         public virtual int Priority { get; set; }
 
         public virtual bool IsActived { get; set; }
+
+        public virtual string Tags { get; set; }
+
+        public virtual string FullUrl { get; set; }
     }
 }

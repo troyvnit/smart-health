@@ -8,11 +8,11 @@
         <div id="horizontal" style="height: 100%; width: 100%;">
             <div id="left-pane">
                 <div class="pane-content">
-                    <div class="articlecategory-listview-section">
+                    <div class="box-section">
                         <a id="add-category" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Danh Mục</a>
                     </div>
 
-                    <div class="articlecategory-listview-section">
+                    <div class="box-section">
                         <div id="listView"></div>
                         <div id="pager" class="k-pager-wrap"></div>
                     </div>
@@ -21,9 +21,10 @@
             <div id="center-pane">
                 <div class="pane-content">
                     <div class="box-content">
-                        <a id="add-article" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Bài Viết</a>
-                        <a id="edit-article" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-edit"></span>Sửa Bài Viết</a>
-                        <a id="delete-article" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-delete"></span>Xóa Bài Viết</a>
+                        <a id="add-article" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm</a>
+                        <a id="edit-article" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-edit"></span>Sửa</a>
+                        <a id="delete-article" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-delete"></span>Xóa</a>
+                        <a id="active-article" class="k-button k-button-icontext k-active-button" href="#"><span class="k-icon k-i-tick"></span>Duyệt</a>
                     </div>
 
                     <div class="box-content">
@@ -112,6 +113,8 @@
                 <dd>#:Name#</dd>
                 <dt>Mô Tả</dt>
                 <dd>#:Description#</dd>
+                <dt>PR</dt>
+                <dd>#:IsPublicRelation#</dd>
             </dl>
         </div>
 </script>
@@ -125,13 +128,17 @@
             <dl>
                 <dt>Tên</dt>
                 <dd>
-                    <input type="text" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
                     <span data-for="Name" class="k-invalid-msg"></span>
                 </dd>
                 <dt>Mô Tả</dt>
                 <dd>
-                    <input type="text" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
                     <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+                <dt>PR</dt>
+                <dd>
+                    <input type="checkbox" class="k-checkbox" name="IsPublicRelation" data-bind="checked:IsPublicRelation">
                 </dd>
             </dl>
         </div>
@@ -180,9 +187,10 @@
                 model: {
                     id: "Id",
                     fields: {
-                        Id: { editable: false, nullable: true },
+                        Id: { editable: false },
                         Name: { type: "string" },
-                        Description: { type: "string" }
+                        Description: { type: "string" },
+                        IsPublicRelation: { type: "string" }
                     }
                 }
             }
@@ -231,6 +239,11 @@
                 field: "Categories",
                 hidden: true
             }, {
+                field: "ImageUrl",
+                width: 120,
+                title: "Hình đại diện",
+                template: "<img src='#= ImageUrl #' alt='#= ImageUrl #' style='width:100%' />"
+            }, {
                 field: "Title",
                 title: "Tiêu đề"
             }, {
@@ -238,18 +251,18 @@
                 title: "Mô tả"
             }, {
                 field: "Author",
+                width: 100,
                 title: "Tác giả"
             }, {
                 field: "Content",
                 title: "Nội dung"
             }, {
-                field: "ImageUrl",
-                title: "Hình đại diện"
-            }, {
                 field: "Priority",
+                width: 80,
                 title: "Thứ tự"
             }, {
                 field: "IsActived",
+                width: 80,
                 title: "Duyệt"
             }
             ]
@@ -357,6 +370,23 @@
                 alert("Vui lòng chọn bài viết muốn xóa!");
             }
         });
+        
+        $("#active-article").click(function (e) {
+            if (grid.select().length > 0) {
+                if (confirm("Bạn có chắc muốn thay đổi trạng thái duyệt những bài viết đã chọn?")) {
+                    var ids = [];
+                    grid.select().each(function () {
+                        var dataItem = grid.dataItem($(this));
+                        ids.push(dataItem.Id);
+                    });
+                    $.post('@Url.Action("ActiveArticles", "Article")', { ids: ids.join(",") }).done(function (e) {
+                        grid.dataSource.read();
+                    });
+                }
+            } else {
+                alert("Vui lòng chọn bài viết muốn thay đổi trạng thái duyệt!");
+            }
+        });
 
         $("#save-article").click(function (e) {
             var validator = $("#article-form").kendoValidator().data("kendoValidator");
@@ -399,7 +429,7 @@
             toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             toolbar2: "print preview media | forecolor backcolor emoticons",
             image_advtab: true,
-            height: 345
+            height: 305
         });
         
         tinymce.init({
@@ -414,7 +444,7 @@
             toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             toolbar2: "print preview media | forecolor backcolor emoticons",
             image_advtab: true,
-            height: 345
+            height: 305
         });
         
         var categoryMultiSelect = $("#Category").kendoMultiSelect({

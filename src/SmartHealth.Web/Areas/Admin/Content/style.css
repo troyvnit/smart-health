@@ -107,21 +107,21 @@
         width: 55px;
     }
 
-.tag-view {
+.product-video-view {
     float: left;
     position: relative;
     width: 250px;
-    height: 55px;
+    height: 150px;
     margin: -1px -1px 0 0;
 }
 
-    .tag-view dl {
+    .product-video-view dl {
         margin: 10px 0;
         padding: 0;
         min-width: 0;
     }
 
-    .tag-view dt, dd {
+    .product-video-view dt, dd {
         float: left;
         margin: 0;
         padding: 3px;
@@ -131,7 +131,7 @@
         overflow: hidden;
     }
 
-    .tag-view dt {
+    .product-video-view dt {
         clear: left;
         padding: 3px 5px 3px 0;
         text-align: right;
@@ -192,7 +192,8 @@ span.k-invalid-msg {
 
 .input-row p, .input-row input {
     display: inline-block;
-    min-width: 95px;
+    min-width: 100px;
+    margin-right: 10px;
 }
 
 .input-row {
@@ -217,8 +218,12 @@ span.k-invalid-msg {
         width: 200px;
     }
 
-#Title {
+#Title, #Name, #Brand {
     width: 420px;
+}
+
+#Weight, #Status, #Author, #LanguageId {
+    width: 150px;
 }
 
 .image-list {
@@ -312,10 +317,6 @@ span.k-invalid-msg {
     display: inline-block;
 }
 
-#Author, #LanguageId {
-    width: 190px;
-}
-
 .delete-image {
     position: absolute;
     top: 0;
@@ -336,4 +337,8 @@ span.k-invalid-msg {
     float: right;
     line-height: 1em;
     padding: 0;
+}
+
+.k-widget {
+    margin-right: 10px;
 }

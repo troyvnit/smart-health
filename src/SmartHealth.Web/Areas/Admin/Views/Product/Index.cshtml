@@ -6,7 +6,7 @@
 <div id="vertical">
     <div id="top-pane">
         <div id="horizontal" style="height: 100%; width: 100%;">
-            <div id="left-pane">
+            @*<div id="left-pane">
                 <div class="pane-content">
                     <div class="box-section">
                         <a id="add-tag" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Nhãn</a>
@@ -17,7 +17,7 @@
                         <div id="pager" class="k-pager-wrap"></div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div id="center-pane">
                 <div class="pane-content">
                     <div class="box-content">
@@ -26,6 +26,7 @@
                         <a id="delete-product" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-i-close"></span>Xóa</a>
                         <a id="active-product" class="k-button k-button-icontext k-active-button" href="#"><span class="k-icon k-i-tick"></span>Duyệt</a>
                         <a id="main-product" class="k-button k-button-icontext k-main-button" href="#"><span class="k-icon k-i-custom"></span>Tiêu Biểu</a>
+                        <a id="saleoff-product" class="k-button k-button-icontext k-saleoff-button" href="#"><span class="k-icon k-i-custom"></span>Khuyến Mãi</a>
                     </div>
 
                     <div class="box-content">
@@ -57,38 +58,29 @@
                                         <p>Tên sản phẩm: </p>
                                         <input type="hidden" id="Id" name="Id" />
                                         <input type="text" class="k-textbox" id="Name" name="Name" required validationmessage="Vui lòng nhập tên!" />
-                                        <p>Hãng sản xuất: </p>
+                                    </div>
+                                    <div class="input-row">
+                                                                  <p>Hãng sản xuất: </p>
                                         <input type="text" class="k-textbox" id="Brand" name="Brand" />
+                                        </div>
+                                        <div class="input-row">
+                                            <p>Mô tả: </p>
+                                            <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 420px"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="input-row">
-                                        <p>Giá niêm yết: </p>
-                                        <input type="text" id="SmartHealthPrice" name="SmartHealthPrice" />
-                                        <p>Giá thị trường: </p>
-                                        <input type="text" id="MarketPrice" name="MarketPrice" />
-                                    </div>
-                                    <div class="input-row">
-                                        <p>Trọng lượng: </p>
-                                        <input type="text" class="k-textbox" id="Weight" name="Weight" />
-                                        <p>Ngôn ngữ: </p>
-                                        <input type="text" id="LanguageId" name="LanguageId" />
-                                    </div>
-                                    <div class="input-row">
-                                        <p>Nhãn: </p>
-                                        <select id="Tag" name="Tag"></select>
-                                        <input type="hidden" id="Tags" name="Tags" />
-                                    </div>
-                                </div>
                             </div>
                             <div class="input-row">
                                 <div id="tabstrip">
                                     <ul>
-                                        <li class="k-state-active">Mô tả</li>
+                                        <li class="k-state-active">Giới thiệu</li>
                                         <li>Thuộc tính</li>
                                         <li>Đánh giá</li>
+                                        <li>Thông tin</li>
                                         <li>Hình ảnh</li>
+                                        <li>Video</li>
                                     </ul>
                                     <div>
-                                        <textarea id="Description" name="Description"></textarea>
+                                        <textarea id="Introduction" name="Introduction"></textarea>
                                     </div>
                                     <div>
                                         <textarea id="Property" name="Property"></textarea>
@@ -97,11 +89,42 @@
                                         <textarea id="Review" name="Review"></textarea>
                                     </div>
                                     <div>
+                                        <div class="input-row">
+                                            <p>Giá niêm yết: </p>
+                                            <input type="text" id="SmartHealthPrice" name="SmartHealthPrice" />
+                                            <p>Giá thị trường: </p>
+                                            <input type="text" id="MarketPrice" name="MarketPrice" />
+                                        </div>
+                                        <div class="input-row">
+                                            <p>Số lượng: </p>
+                                            <input type="text" id="Quantity" name="Quantity" />
+                                            <p>Trạng thái: </p>
+                                            <input type="text" class="k-textbox" id="Status" name="Status" />
+                                        </div>
+                                        <div class="input-row">
+                                            <p>Trọng lượng: </p>
+                                            <input type="text" class="k-textbox" id="Weight" name="Weight" />
+                                            <p>Ngôn ngữ: </p>
+                                            <input type="text" id="LanguageId" name="LanguageId" />
+                                        </div>
+                                        <div class="input-row">
+                                            <p>Nhãn: </p>
+                                            <textarea class="k-textbox" id="Tags" name="Tags" rows="4" cols="1" style="width: 100%"></textarea>
+                                        </div>
+                                    </div>
+                                    <div>
                                         <div id="upload-image">
                                             <input name="files" id="files" type="file" />
                                         </div>
                                         <div id="product-image-listView"></div>
                                         <div id="product-image-pager" class="k-pager-wrap"></div>
+                                    </div>
+                                    <div>
+                                        <div class="box-content">
+                                            <a id="add-video" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Video</a>
+                                        </div>
+                                        <div id="product-video-listView"></div>
+                                        <div id="product-video-pager" class="k-pager-wrap"></div>
                                     </div>
                                 </div>
                             </div>
@@ -142,14 +165,49 @@
 </script>
 <script type="text/x-kendo-template" id="product-image-template">
         <div class="product-image-list">
-            <a href="#:ImageUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:ImageUrl#" alt="#:ImageUrl#"  style="display: block; width: 100%;"/></a>
+            <a href="#:MediaUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:MediaUrl#" alt="#:MediaUrl#"  style="display: block; width: 100%;"/></a>
             <a class="k-button delete-image" onclick="removeProductImage('#:Id#', '#:ProductId#'); return false;" href="\\#"><span class="k-icon k-i-close"></span></a>
-            <a class="k-button set-imageurl" onclick="setImageUrl('#:ImageUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
+            <a class="k-button set-imageurl" onclick="setImageUrl('#:MediaUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
+        </div>
+</script>
+<script type="text/x-kendo-template" id="product-video-template">
+    <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            
+        <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="#:MediaUrl#" frameborder="0"></iframe>
+        </div>
+</script>
+<script type="text/x-kendo-tmpl" id="edit-product-video-template">
+        <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Url</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
+                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Avatar</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Mô tả</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
         </div>
 </script>
 <script>
     $(document).ready(function () {
-        var tagDataSource = new kendo.data.DataSource({
+        @*var tagDataSource = new kendo.data.DataSource({
             transport: {
                 read: {
                     url: '@Url.Action("GetTags", "Product")',
@@ -204,7 +262,7 @@
         $("#add-tag").click(function (e) {
             tagListView.add();
             e.preventDefault();
-        });
+        });*@
         var grid = $("#grid").kendoGrid({
             dataSource: {
                 transport: {
@@ -227,10 +285,6 @@
             columns: [{
                 field: "Id",
                 hidden: true
-            },
-            {
-                field: "Tags",
-                hidden: true
             }, {
                 field: "ImageUrl",
                 width: 120,
@@ -252,6 +306,10 @@
                 field: "Weight",
                 width: 120,
                 title: "Trọng lượng"
+            },
+            {
+                field: "Tags",
+                title: "Nhãn"
             }, {
                 field: "IsActived",
                 width: 100,
@@ -260,6 +318,10 @@
                 field: "IsMainProduct",
                 width: 100,
                 title: "Tiêu biểu"
+            }, {
+                field: "IsSaleOff",
+                width: 100,
+                title: "Khuyến mãi"
             }
             ]
         }).data("kendoGrid");
@@ -274,7 +336,7 @@
             };
 
         $("#add-product").click(function (e) {
-            var tab = tabStrip.tabGroup.children("li").eq(3);
+            var tab = tabStrip.tabGroup.children("li").eq(4);
             tabStrip.disable(tab);
             tabStrip.select(0);
             $("#Id").val('');
@@ -284,11 +346,14 @@
             $("#Brand").val('');
             $("#Weight").val('');
             $("#Description").val('');
-            $("#Property").val('');
-            $("#Review").val('');
-            tagMultiSelect.value('');
+            tinyMCE.get('Introduction').setContent('');
+            tinyMCE.get('Property').setContent('');
+            tinyMCE.get('Review').setContent('');
+            $("#Status").val('');
+            $("#Tags").val('');
             marketPriceNumeric.value('');
             smartHealthPriceNumeric.value('');
+            quantityNumeric.value('');
             setImageUrl('');
             languageDropDownList.value(1);
             splitterToggle();
@@ -297,7 +362,7 @@
         $("#edit-product").click(function (e) {
             if (grid.select().length > 0) {
                 grid.select().each(function () {
-                    var tab = tabStrip.tabGroup.children("li").eq(3);
+                    var tab = tabStrip.tabGroup.children("li").eq(4);
                     tabStrip.enable(tab);
                     tabStrip.select(0);
                     var dataItem = grid.dataItem($(this));
@@ -308,14 +373,18 @@
                     $("#Brand").val(dataItem.Brand);
                     $("#Weight").val(dataItem.Weight);
                     $("#Description").val(dataItem.Description);
-                    $("#Property").val(dataItem.Property);
-                    $("#Review").val(dataItem.Review);
-                    tagMultiSelect.value(dataItem.Tags.toString().split(','));
+                    tinyMCE.get('Introduction').setContent(dataItem.Introduction);
+                    tinyMCE.get('Property').setContent(dataItem.Property);
+                    tinyMCE.get('Review').setContent(dataItem.Review);
+                    $("#Status").val(dataItem.Status);
+                    $("#Tags").val(dataItem.Tags);
                     marketPriceNumeric.value(dataItem.MarketPrice);
                     smartHealthPriceNumeric.value(dataItem.SmartHealthPrice);
+                    quantityNumeric.value(dataItem.Quantity);
                     setImageUrl(dataItem.ImageUrl);
                     languageDropDownList.value(dataItem.LanguageId);
                     getImageManager(dataItem.Id);
+                    getVideoManager(dataItem.Id);
                 });
                 splitterToggle();
             } else {
@@ -323,41 +392,53 @@
             }
         });
 
-        var pager = $("#product-image-pager").kendoPager().data("kendoPager");
-        
-        var listView = $("#product-image-listView").kendoListView({
+        var productImagePager = $("#product-image-pager").kendoPager().data("kendoPager");
+
+        var productImageListView = $("#product-image-listView").kendoListView({
             template: kendo.template($("#product-image-template").html())
         }).data("kendoListView");
+        
+        var productVideoPager = $("#product-video-pager").kendoPager().data("kendoPager");
+
+        var productVideoListView = $("#product-video-listView").kendoListView({
+            template: kendo.template($("#product-video-template").html()),
+            editTemplate: kendo.template($("#edit-product-video-template").html())
+        }).data("kendoListView");
+        
+        $("#add-video").click(function (e) {
+            productVideoListView.add();
+            e.preventDefault();
+        });
 
         var productId;
         var uploader = $("#files").kendoUpload({
             multiple: false,
             async: {
-                saveUrl: '@Url.Action("Upload", "Image")',
-                    autoUpload: true
-                },
-                localization: {
-                    select: 'Thêm ảnh'
-                },
-                upload: function (e) {
-                    e.data = { productId: productId };
-                },
-                success: onSuccess
+                saveUrl: '@Url.Action("Upload", "Media")',
+                autoUpload: true
+            },
+            localization: {
+                select: 'Thêm ảnh'
+            },
+            upload: function (e) {
+                e.data = { productId: productId };
+            },
+            success: onSuccess
         }).data("kendoUpload");
-        
+
         function onSuccess(e) {
             $(".k-upload-files").fadeOut(5000, function () {
                 $(this).remove();
             });
-            listView.dataSource.read();
+            productImageListView.dataSource.read();
         }
-        
+
         function getImageManager(id) {
             productId = id;
             var productImageDataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: '@Url.Action("GetProductImages", "Image")' + '?Id=' + id,
+                        url: '@Url.Action("GetProductImages", "Media")' + '?Id=' + id,
                         type: "post",
                         dataType: "json"
                     },
@@ -371,14 +452,64 @@
                 batch: true,
                 pageSize: 16
             });
-            listView.setDataSource(productImageDataSource);
-            pager.setDataSource(productImageDataSource);
+            productImageListView.setDataSource(productImageDataSource);
+            productImagePager.setDataSource(productImageDataSource);
+            uploader.data = { productId: id };
+        }
+        
+        function getVideoManager(id) {
+            productId = id;
+            var productVideoDataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetProductVideos", "Media")' + '?Id=' + id,
+                        type: "post",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    destroy: {
+                        url: '@Url.Action("DeleteVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 6,
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, nullable: true },
+                            ProductId: { type: "number", defaultValue: productId },
+                            MediaUrl: { type: "string" },
+                            ThumbnailUrl: { type: "string" },
+                            Description: { type: "string" }
+                        }
+                    }
+                }
+            });
+            productVideoListView.setDataSource(productVideoDataSource);
+            productVideoPager.setDataSource(productVideoDataSource);
             uploader.data = { productId: id };
         }
 
         $("#delete-product").click(function (e) {
             if (grid.select().length > 0) {
-                if (confirm("Bạn có chắc muốn xóa những bài viết đã chọn?")) {
+                if (confirm("Bạn có chắc muốn xóa những sản phẩm đã chọn?")) {
                     var ids = [];
                     grid.select().each(function () {
                         var dataItem = grid.dataItem($(this));
@@ -389,13 +520,13 @@
                     });
                 }
             } else {
-                alert("Vui lòng chọn bài viết muốn xóa!");
+                alert("Vui lòng chọn sản phẩm muốn xóa!");
             }
         });
-        
+
         $("#active-product").click(function (e) {
             if (grid.select().length > 0) {
-                if (confirm("Bạn có chắc muốn thay đổi trạng thái duyệt những bài viết đã chọn?")) {
+                if (confirm("Bạn có chắc muốn thay đổi trạng thái duyệt những sản phẩm đã chọn?")) {
                     var ids = [];
                     grid.select().each(function () {
                         var dataItem = grid.dataItem($(this));
@@ -406,13 +537,13 @@
                     });
                 }
             } else {
-                alert("Vui lòng chọn bài viết muốn thay đổi trạng thái duyệt!");
+                alert("Vui lòng chọn sản phẩm muốn thay đổi trạng thái duyệt!");
             }
         });
-        
+
         $("#main-product").click(function (e) {
             if (grid.select().length > 0) {
-                if (confirm("Bạn có chắc muốn thay đổi trạng thái tiêu biểu những bài viết đã chọn?")) {
+                if (confirm("Bạn có chắc muốn thay đổi trạng thái tiêu biểu những sản phẩm đã chọn?")) {
                     var ids = [];
                     grid.select().each(function () {
                         var dataItem = grid.dataItem($(this));
@@ -423,7 +554,24 @@
                     });
                 }
             } else {
-                alert("Vui lòng chọn bài viết muốn thay đổi trạng thái tiêu biểu!");
+                alert("Vui lòng chọn sản phẩm muốn thay đổi trạng thái tiêu biểu!");
+            }
+        });
+
+        $("#saleoff-product").click(function (e) {
+            if (grid.select().length > 0) {
+                if (confirm("Bạn có chắc muốn thay đổi trạng thái khuyến mãi những sản phẩm đã chọn?")) {
+                    var ids = [];
+                    grid.select().each(function () {
+                        var dataItem = grid.dataItem($(this));
+                        ids.push(dataItem.Id);
+                    });
+                    $.post('@Url.Action("SaleOffProducts", "Product")', { ids: ids.join(",") }).done(function (e) {
+                        grid.dataSource.read();
+                    });
+                }
+            } else {
+                alert("Vui lòng chọn sản phẩm muốn thay đổi trạng thái khuyến mãi!");
             }
         });
 
@@ -437,6 +585,7 @@
                     tabStrip.enable(tab);
                     $("#Id").val(result.Id);
                     getImageManager(result.Id);
+                    getVideoManager(result.Id);
                     $("#message-product").html('<span class="k-icon k-i-note"></span>Lưu thành công!');
                     $("#message-product").css('float', 'right');
                     $("#message-product").show();
@@ -453,14 +602,14 @@
         });
 
         function splitterToggle() {
-            var pane = getPane(1);
+            var pane = getPane(0);
             if (!pane) return;
 
             splitter.toggle(pane, $(pane).width() <= 0);
         }
 
         tinymce.init({
-            selector: "#Description",
+            selector: "#Introduction",
             theme: "modern",
             plugins: [
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
@@ -504,31 +653,11 @@
             height: 305
         });
 
-        var tagMultiSelect = $("#Tag").kendoMultiSelect({
-            placeholder: "Chọn nhãn...",
-            dataTextField: "Name",
-            dataValueField: "Id",
-            autoBind: false,
-            dataSource: {
-                serverFiltering: true,
-                transport: {
-                    read: {
-                        url: '@Url.Action("GetTags", "Product")',
-                        type: "post",
-                        dataType: "json"
-                    }
-                }
-            },
-            change: onChangeTag
-        }).data("kendoMultiSelect");
-
-        function onChangeTag() {
-            $("#Tags").val(tagMultiSelect.value());
-        }
-
         var marketPriceNumeric = $("#MarketPrice").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
 
         var smartHealthPriceNumeric = $("#SmartHealthPrice").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
+
+        var quantityNumeric = $("#Quantity").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
 
         var languageDropDownList = $("#LanguageId").width(120).kendoDropDownList({
             dataTextField: "text",
@@ -566,8 +695,8 @@
         var splitter = $("#horizontal").kendoSplitter({
             orientation: "horizontal",
             panes: [
-                { collapsible: true, size: "20%" },
-                { collapsible: true, size: "80%" },
+                //{ collapsible: true, size: "20%" },
+                { collapsible: true, size: "100%" },
                 { collapsible: true, size: "0%" }
             ]
         }).data("kendoSplitter");
@@ -583,7 +712,7 @@
     }
 
     function removeProductImage(id, productId) {
-        $.post('@Url.Action("DeleteProductImage", "Image")', { id: id, productId: productId }).done(function (result) {
+        $.post('@Url.Action("DeleteProductImage", "Media")', { id: id, productId: productId }).done(function (result) {
             $("#product-image-listView").data("kendoListView").dataSource.read();
         });
     }

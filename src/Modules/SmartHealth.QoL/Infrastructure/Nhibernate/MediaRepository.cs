@@ -17,7 +17,7 @@ namespace SmartHealth.Box.Infrastructure.Nhibernate
     using SmartHealth.Box.Domain.IRepository;
     using SmartHealth.Box.Domain.Models;
 
-    public class ImageRepository : Repository<Image>, IImageRepository
+    public class MediaRepository : Repository<Media>, IMediaRepository
     {
     }
 }

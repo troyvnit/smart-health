@@ -9,7 +9,7 @@ namespace SmartHealth.Box.Domain.Models
     {
         public Folder()
         {
-            Images = new List<Image>();
+            Images = new List<Media>();
         }
 
         public virtual string Name { get; set; }
@@ -18,6 +18,6 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual int ParentId { get; set; }
 
-        public virtual IList<Image> Images { get; set; }
+        public virtual IList<Media> Images { get; set; }
     }
 }

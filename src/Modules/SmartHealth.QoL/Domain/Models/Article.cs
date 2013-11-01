@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using SmartHealth.Core.Domain.Models;
@@ -18,8 +19,10 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string Title { get; set; }
 
+        [StringLength(4001)]
         public virtual string Description { get; set; }
 
+        [StringLength(4001)]
         public virtual string Content { get; set; }
 
         public virtual string Author { get; set; }
@@ -32,13 +35,13 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual bool IsDeleted { get; set; }
 
+        public virtual string Tags { get; set; }
+
         public virtual DateTime CreatedDate { get; set; }
 
         public virtual User CreatedUser { get; set; }
 
         public virtual Language Language { get; set; }
-
-        public virtual IList<Tag> Tags { get; set; }
 
         public virtual IList<ArticleCategory> Categories { get; set; }
     }
