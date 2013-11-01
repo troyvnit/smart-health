@@ -3,7 +3,7 @@
     ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productDetail = (ProductDto) ViewBag.ProductDetail;
-    var productImages = (List<ImageDto>) ViewBag.ProductImages;
+    var productImages = (List<MediaDto>) ViewBag.ProductImages;
     var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
     var newses = (List<ArticleDto>)ViewBag.Newses;
     if (Session["SmartHealthUser"] == null)
@@ -102,7 +102,7 @@
                                 <div style="display: block;" id="tab1" class="tab_content">
                                     <div class="xanh">
                                         <div class="mota">
-                                            @Html.Raw(productDetail.Description)
+                                            @Html.Raw(productDetail.Introduction)
                                         </div>
                                     </div><!--End .xanh-->
                                 </div>
