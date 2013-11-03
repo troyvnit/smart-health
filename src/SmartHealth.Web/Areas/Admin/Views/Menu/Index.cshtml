@@ -2,14 +2,47 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 <div id="vertical">
     <div id="top-pane">
         <div id="horizontal" style="height: 100%; width: 100%;">
             <div id="center-pane">
                 <div class="pane-content">
                     <div class="box-content">
-                        <div id="grid"></div>
+                        <div id="grid">
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        URL Format
+                        <table>
+                            <tr>
+                                <td>
+                                    Danh sách bài viết
+                                </td>
+                                <td>
+                                    <input style="width:240px;" type="text" value="article/CategotyID" />
+                                </td>
+                                <td>
+                                    Chi tiết bài viết
+                                </td>
+                                <td>
+                                    <input style="width:240px;" type="text" value="/articledetail/id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Danh sách sản phẩm 
+                                </td>
+                                <td>
+                                    <input style="width:240px;" type="text" value="/product/categoryid" />
+                                </td>
+                                <td>
+                                    Chi tiết sản phẩm
+                                </td>
+                                <td>
+                                    <input style="width:240px;" type="text" value="/product/id" />
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -31,38 +64,38 @@
                         type: "post",
                         dataType: "json"
                     },
-                        destroy: {
-                            url: '@Url.Action("DeleteMenu", "Menu")',
+                    destroy: {
+                        url: '@Url.Action("DeleteMenu", "Menu")',
                         type: "post",
                         dataType: "json"
                     },
-                        create: {
-                            url: '@Url.Action("CreateOrUpdateMenu", "Menu")',
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateMenu", "Menu")',
                         type: "post",
                         dataType: "json"
                     },
-                        parameterMap: function (options, operation) {
-                            if (operation !== "read" && options.models) {
-                                return { models: kendo.stringify(options.models) };
-                            }
-                        }
-                },
-                    batch: true,
-            pageSize: 20,
-                    schema: {
-                        model: {
-                            id: "Id",
-                            fields: {
-                                Id: { editable: false, nullable: true },
-                                Name: { validation: { required: true } },
-                                Url: { type: "string" },
-                                Icon: { type: "string" },
-                                Priority: { type: "number" },
-                                ParentId: { type: "number" }
-                            }
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
                         }
                     }
                 },
+                batch: true,
+                pageSize: 20,
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, nullable: true },
+                            Name: { validation: { required: true} },
+                            Url: { type: "string" },
+                            Icon: { type: "string" },
+                            Priority: { type: "number" },
+                            ParentId: { type: "number" }
+                        }
+                    }
+                }
+            },
             height: 710,
             filterable: true,
             sortable: true,
@@ -90,7 +123,7 @@
                 field: "ParentId",
                 width: 100,
                 title: "Id cha"
-            }, { command: "destroy", title: "&nbsp;", width: 90 }
+            }, { command: "destroy", title: "&nbsp;", width: 120 }
             ],
             editable: true
         }).data("kendoGrid");
