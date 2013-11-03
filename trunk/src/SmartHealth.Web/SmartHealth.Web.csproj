@@ -2159,9 +2159,9 @@
     <Content Include="Areas\SampleModule\Views\Web.config" />
     <Content Include="Areas\QoL\Views\Web.config" />
     <Content Include="Views\Home\GetProductNames.cshtml" />
-    <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\PublicRelation.cshtml" />
-    <Content Include="Views\Home\ArticleDetail.cshtml" />
+    <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Home\GetTopMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>

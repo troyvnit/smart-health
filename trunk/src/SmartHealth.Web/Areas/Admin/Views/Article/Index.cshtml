@@ -57,8 +57,8 @@
                                                 <div class="column-right">
                                                     <div class="input-row">
                                                         <p>Tiêu đề: </p>
-                                                        <input type="hidden" id="Id" name="Id" />
-                                                        <input type="text" class="k-textbox" id="Title" name="Title" required validationMessage="Vui lòng nhập tiêu đề!"/>
+                                                        <input type="hidden" id="Id" name="Id"  />
+                                                        <input type="text" style="width: 520px" class="k-textbox" id="Title" name="Title" required validationMessage="Vui lòng nhập tiêu đề!"/>
                                                     </div>
                                                     <div class="input-row">
                                                         <p>Danh mục: </p>
@@ -67,8 +67,12 @@
                                                     </div>
                                                     <div class="input-row">
                                                         <p>Mô tả: </p>
-                                                        <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 420px"></textarea>
+                                                        <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 520px"></textarea>
                                                     </div>
+                                                    <div class="input-row">
+                                                            <p>Từ khóa: </p>
+                                                            <input type="text" class="k-textbox" style="width: 520px" id="Tags" name="Tags"></input>
+                                                        </div>
                                                 </div>
                                             </div>
                                             <div class="input-row">
@@ -94,10 +98,7 @@
                                                             <p>Ngôn ngữ: </p>
                                                             <input type="text" id="LanguageId" name="LanguageId" />
                                                          </div>   
-                                                        <div class="input-row">
-                                                            <p>Nhãn: </p>
-                                                            <textarea class="k-textbox" id="Tags" name="Tags" rows="4" cols="1" style="width: 100%"></textarea>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div>
                                                         <div id="upload-image">
@@ -266,10 +267,12 @@
             }, {
                 field: "Author",
                 width: 100,
-                title: "Tác giả"
+                title: "Tác giả",
+                hidden: true
             }, {
                 field: "Tags",
-                title: "Nhãn"
+                title: "Nhãn",
+                hidden: true
             }, {
                 field: "FullUrl",
                 title: "Đường dẫn",

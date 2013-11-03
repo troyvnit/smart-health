@@ -64,38 +64,44 @@ namespace SmartHealth.Web.Controllers
             return View();
         }
 
-        public ActionResult ProductDetail(int id)
+        public ActionResult Product(int id)
         {
             var product = productService.Get(id);
-            product.ViewCount += 1;
-            productService.SaveOrUpdate(product, true);
-
-            var tags = tagService.GetAll().Where(a => a.Products.Contains(product));
-
-            var productDetail = Mapper.Map<Product, ProductDto>(product);
-            ViewBag.ProductDetail = productDetail;
-
-            if (Session["SmartHealthUser"] != null)
+            if (product != null)
             {
-                var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
-                if (viewedProducts.All(a => a.Id != id))
+                product.ViewCount += 1;
+                productService.SaveOrUpdate(product, true);
+
+                var tags = tagService.GetAll().Where(a => a.Products.Contains(product));
+
+                var productDetail = Mapper.Map<Product, ProductDto>(product);
+                ViewBag.ProductDetail = productDetail;
+
+                if (Session["SmartHealthUser"] != null)
                 {
-                    viewedProducts.Add(productDetail);
+                    var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
+                    if (viewedProducts.All(a => a.Id != id))
+                    {
+                        viewedProducts.Add(productDetail);
+                    }
                 }
+
+                var productImages = product.Images.Select(Mapper.Map<Media, MediaDto>).ToList();
+                ViewBag.ProductImages = productImages;
+
+                var relatedProducts = productService.GetAll().Select(Mapper.Map<Product, ProductDto>).ToList();
+                ViewBag.RelatedProducts = relatedProducts;
+
+                var lstNews =
+                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
+                        Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.Newses = lstNews;
+                return View();
             }
-
-            var productImages = product.Images.Select(Mapper.Map<Media, MediaDto>).ToList();
-            ViewBag.ProductImages = productImages;
-
-            var relatedProducts = productService.GetAll().Select(Mapper.Map<Product, ProductDto>).ToList();
-            ViewBag.RelatedProducts = relatedProducts;
-
-            var newses =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
-                    Mapper.Map<Article, ArticleDto>).ToList();
-            ViewBag.Newses = newses;
-
-            return View();
+            else {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         public ActionResult AddOrderProduct(int id, int quantity)
@@ -134,7 +140,7 @@ namespace SmartHealth.Web.Controllers
             return View();
         }
 
-        public ActionResult ArticleDetail(int id)
+        public ActionResult Article(int id)
         {
             var article = Mapper.Map<Article, ArticleDto>(articleService.Get(id));
             ViewBag.Article = article;
