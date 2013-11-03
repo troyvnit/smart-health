@@ -57,7 +57,7 @@
                                     <div class="input-row">
                                         <p>Tên sản phẩm: </p>
                                         <input type="hidden" id="Id" name="Id" />
-                                        <input type="text" class="k-textbox" id="Name" name="Name" required validationmessage="Vui lòng nhập tên!" />
+                                        <input type="text" class="k-textbox" id="Name" name="Name" style="width: 520px" required validationmessage="Vui lòng nhập tên!" />
                                     </div>
                                     <div class="input-row">
                                                                   <p>Hãng sản xuất: </p>
@@ -65,17 +65,21 @@
                                         </div>
                                         <div class="input-row">
                                             <p>Mô tả: </p>
-                                            <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 420px"></textarea>
+                                            <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 520px"></textarea>
                                         </div>
+                                        <div class="input-row">
+                                                            <p>Từ khóa: </p>
+                                                            <input type="text" class="k-textbox" style="width: 520px" id="Tags" name="Tags"></input>
+                                                        </div>
                                     </div>
                             </div>
                             <div class="input-row">
                                 <div id="tabstrip">
                                     <ul>
                                         <li class="k-state-active">Giới thiệu</li>
+                                        <li>Thông tin thêm</li>
                                         <li>Thuộc tính</li>
-                                        <li>Đánh giá</li>
-                                        <li>Thông tin</li>
+                                        <li>Đánh giá</li>                                        
                                         <li>Hình ảnh</li>
                                         <li>Video</li>
                                     </ul>
@@ -83,16 +87,10 @@
                                         <textarea id="Introduction" name="Introduction"></textarea>
                                     </div>
                                     <div>
-                                        <textarea id="Property" name="Property"></textarea>
-                                    </div>
-                                    <div>
-                                        <textarea id="Review" name="Review"></textarea>
-                                    </div>
-                                    <div>
                                         <div class="input-row">
                                             <p>Giá niêm yết: </p>
                                             <input type="text" id="SmartHealthPrice" name="SmartHealthPrice" />
-                                            <p>Giá thị trường: </p>
+                                            <p>Giá bán: </p>
                                             <input type="text" id="MarketPrice" name="MarketPrice" />
                                         </div>
                                         <div class="input-row">
@@ -107,11 +105,15 @@
                                             <p>Ngôn ngữ: </p>
                                             <input type="text" id="LanguageId" name="LanguageId" />
                                         </div>
-                                        <div class="input-row">
-                                            <p>Nhãn: </p>
-                                            <textarea class="k-textbox" id="Tags" name="Tags" rows="4" cols="1" style="width: 100%"></textarea>
-                                        </div>
+                                        
                                     </div>
+                                    <div>
+                                        <textarea id="Property" name="Property"></textarea>
+                                    </div>
+                                    <div>
+                                        <textarea id="Review" name="Review"></textarea>
+                                    </div>
+                                    
                                     <div>
                                         <div id="upload-image">
                                             <input name="files" id="files" type="file" />
@@ -284,7 +286,7 @@
             selectable: "multiple",
             columns: [{
                 field: "Id",
-                hidden: true
+                width: 90,           
             }, {
                 field: "ImageUrl",
                 width: 120,
@@ -294,22 +296,30 @@
                 field: "Name",
                 title: "Tên sản phẩm"
             }, {
+                field: "Description",
+                title: "Giới thiệu"
+            },
+             {
                 field: "MarketPrice",
-                title: "Giá thị trường"
+                title: "Giá bán"
             }, {
                 field: "SmartHealthPrice",
-                title: "Giá niêm yết"
+                title: "Giá niêm yết",
+                hidden:true
             }, {
                 field: "Brand",
-                title: "Hãng sản xuất"
+                title: "Hãng sản xuất",
+                hidden:true
             }, {
                 field: "Weight",
                 width: 120,
-                title: "Trọng lượng"
+                title: "Trọng lượng",
+                hidden:true
             },
             {
                 field: "Tags",
-                title: "Nhãn"
+                title: "Nhãn",
+                hidden:true 
             }, {
                 field: "IsActived",
                 width: 100,

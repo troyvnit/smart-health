@@ -1,0 +1,90 @@
+﻿@using SmartHealth.Box.Domain.Dtos
+@{
+    ViewBag.Title = "ArticleDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var article = (ArticleDto)ViewBag.Article;
+    var newses = (List<ArticleDto>)ViewBag.Newses;
+    if (Session["SmartHealthUser"] == null)
+    {
+        Session["SmartHealthUser"] = new SessionDto();
+    }
+    var viewedArticles = ((SessionDto)Session["SmartHealthUser"]).ViewedArticles;
+}
+
+<div class="leftContent">
+    <div class="boxLeft">
+        <div class="chitietsanpham">
+            <p>@article.Title</p>
+        </div>
+        @Html.Raw(article.Content)
+        <!--chitietsanpham-->
+    </div>
+</div>
+<!--leftContent-->
+<div class="rightContent">
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>Tin tức</p>
+            <div class="htkhachhang">
+                <ul>
+                    @if (newses != null)
+                    {
+                        foreach (var news in newses)
+                        {
+                        <li><a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>Chấp nhận thanh toán</p>
+            <div class="thanhtoan">
+                <ul>
+                    <li><a href="#">
+                        <img src="/content/images/tt-1.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-2.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-3.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-4.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-5.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-6.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-7.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-8.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>Tin tức đã xem</p>
+            <div class="htkhachhang">
+                <ul>
+                    @if (viewedArticles != null)
+                    {
+                        foreach (var viewedArticle in viewedArticles)
+                        {
+                            <li><a href="@Url.Action("ArticleDetail", "Home", new { id = viewedArticle.Id })">@viewedArticle.Title</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>Facebbok</p>            
+            <div class="fb-facepile" data-app-id="173034079568243" data-href="https://www.facebook.com/pages/Smart-Health/173034079568243" data-action="Like,Follow,Share" data-width="220" data-max-rows="8" data-colorscheme="light" data-size="medium" data-show-count="true"></div>
+        </div>
+    </div>
+</div>
+<!--rightContent-->
