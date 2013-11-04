@@ -160,5 +160,26 @@ namespace SmartHealth.Web.Controllers
             }
             return View();
         }
+        public ActionResult ArticleList(int id)
+        {
+            var cat = articleCategoryService.Get(id);
+            if (cat != null)
+            {
+                var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.Title = cat.Name + " - " + cat.Description;
+                ViewBag.CategoryName = cat.Name;
+                ViewBag.Articles = articles;
+
+                var lstNews =
+                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
+                        Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.Newses = lstNews;
+
+                return View();
+            }
+            else {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

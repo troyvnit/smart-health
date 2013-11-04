@@ -2163,6 +2163,7 @@
     <Content Include="Views\Home\PublicRelation.cshtml" />
     <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Home\GetTopMenu.cshtml" />
+    <Content Include="Views\Home\ArticleList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
