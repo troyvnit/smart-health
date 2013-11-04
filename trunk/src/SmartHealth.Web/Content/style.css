@@ -45,9 +45,9 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .menuTop > ul > li { height:84px; float:left; background:url(/Content/images/me-2.jpg) no-repeat top left; padding-left:2px;}
 .menuTop > ul > li.home { background:none;}
-.menuTop > ul > li > a { float:left; height:84px;}
+.menuTop > ul > li > a { float:left; height:84px;max-width:125px;}
 .menuTop > ul > li > a > img { display:block; margin:0 auto; text-align:center; height:42px;}
-.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 17px; margin-top:5px; text-align:center;}
+.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 13px; margin-top:5px; text-align:center;}
 
 .menuTop > ul > li:hover > a, .menuTop > ul > li.active > a { float:left; background:url(/Content/images/me-1.jpg) repeat-x;}
 
