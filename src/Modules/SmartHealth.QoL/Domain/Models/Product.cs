@@ -13,6 +13,7 @@ namespace SmartHealth.Box.Domain.Models
         {
             CreatedDate = DateTime.UtcNow;
             Images = new List<Media>();
+            Groups = new List<ProductGroup>();
         }
 
         public virtual string Name { get; set; }
@@ -48,18 +49,14 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual bool IsDeleted { get; set; }
 
-        public virtual bool IsMainProduct { get; set; }
-
-        public virtual bool IsSaleOff { get; set; }
-
         public virtual DateTime CreatedDate { get; set; }
 
         public virtual User CreatedUser { get; set; }
 
-        public virtual Language Language { get; set; }
-
         public virtual string Tags { get; set; }
 
-        public virtual IList<Media> Images { get; set; } 
+        public virtual IList<Media> Images { get; set; }
+
+        public virtual IList<ProductGroup> Groups { get; set; } 
     }
 }

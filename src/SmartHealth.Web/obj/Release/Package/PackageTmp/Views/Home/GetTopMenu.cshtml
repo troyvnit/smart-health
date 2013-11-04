@@ -1,7 +1,7 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
 @{
     var menus = (List<MenuDto>)ViewBag.Menus;
-    var rootMenus = menus.Where(a => a.ParentId == 0);
+    var rootMenus = menus.Where(a => a.ParentId == 0).ToList();
     var firstRootMenu = rootMenus.FirstOrDefault();
 }
 <div class="menuTop">
@@ -10,7 +10,7 @@
         {
             var childMenus = menus.Where(a => a.ParentId == firstRootMenu.Id).ToList();
             <li class="home"><a href="@firstRootMenu.Url"><img src="@firstRootMenu.Icon" alt="" /><span>@firstRootMenu.Name</span></a>
-            if(childMenus.Any())
+            @if(childMenus.Any())
             {
                 <ul>
                     @foreach (var childMenu in childMenus)
@@ -21,11 +21,11 @@
             }
             </li>
         }
-        @foreach(var rootMenu in menus.Where(a => a.ParentId == 0))
+        @foreach (var rootMenu in rootMenus.Skip(1))
         {
             var childMenus = menus.Where(a => a.ParentId == rootMenu.Id).ToList();
             <li><a href="@rootMenu.Url"><img src="@rootMenu.Icon" alt="" /><span>@rootMenu.Name</span></a>
-            if(childMenus.Any())
+            @if(childMenus.Any())
             {
                 <ul>
                     @foreach (var childMenu in childMenus)

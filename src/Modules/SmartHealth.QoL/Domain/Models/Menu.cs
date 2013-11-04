@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Domain.Models;
 
 namespace SmartHealth.Box.Domain.Models
@@ -16,6 +17,8 @@ namespace SmartHealth.Box.Domain.Models
         public virtual int Priority { get; set; }
 
         public virtual string Icon { get; set; }
+
+        public virtual Language Language { get; set; }
 
         public virtual int ParentId { get; set; }
     }

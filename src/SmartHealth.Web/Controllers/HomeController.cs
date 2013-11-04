@@ -15,15 +15,15 @@ namespace SmartHealth.Web.Controllers
     public class HomeController : BaseController
     {
         private readonly IService<Product> productService;
-        private readonly IService<Tag> tagService;
+        private readonly IService<ProductGroup> productGroupService;
         private readonly IService<Article> articleService;
         private readonly IService<ArticleCategory> articleCategoryService;
         private readonly IService<Menu> menuService;
 
-        public HomeController(IService<Product> productService, IService<Tag> tagService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService)
+        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService)
         {
             this.productService = productService;
-            this.tagService = tagService;
+            this.productGroupService = productGroupService;
             this.articleService = articleService;
             this.articleCategoryService = articleCategoryService;
             this.menuService = menuService;
@@ -35,32 +35,48 @@ namespace SmartHealth.Web.Controllers
             {
                 Session["SmartHealthUser"] = new SessionDto();
             }
+            
             var introductions =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(1)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(3).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.HomeShortCut.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(3).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.Introductions = introductions;
 
             var newses =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(7).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(7).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.Newses = newses;
 
-            var mainProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.IsMainProduct).OrderByDescending(a => a.CreatedDate).Take(6).Select(Mapper.Map<Product, ProductDto>).ToList();
-            ViewBag.MainProducts = mainProducts;
+            var typicalProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(productGroupService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.TypicalProduct.ToUpper()))).OrderByDescending(a => a.CreatedDate).Take(6).Select(Mapper.Map<Product, ProductDto>).ToList();
+            ViewBag.TypicalProducts = typicalProducts;
             return View();
         }
 
         public ActionResult GetProductNames()
         {
-            var productNames = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.IsMainProduct).Select(a => a.Name).ToList();
+            var productNames = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true).Select(a => a.Name).ToList();
             ViewBag.ProductNames = productNames;
             return View();
         }
 
         public ActionResult GetTopMenu()
         {
-            var menus = menuService.GetAll().OrderBy(a => a.Priority).Select(Mapper.Map<Menu, MenuDto>).ToList();
+            var currentCultureInfo = this.Session != null && this.Session["Culture"] != null ? ((CultureInfo)this.Session["Culture"]).TextInfo.CultureName : "vi-vn";
+            var menus = menuService.GetAll().Where(a => a.Language.CultureInfo.ToUpper() == currentCultureInfo.ToUpper()).OrderBy(a => a.Priority).Select(Mapper.Map<Menu, MenuDto>).ToList();
             ViewBag.Menus = menus;
+            return View();
+        }
+
+        public ActionResult GetBottomMenu()
+        {
+            var newses =
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                    Mapper.Map<Article, ArticleDto>).ToList();
+            ViewBag.Newses = newses;
+
+            var clientSupportArticles =
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                    Mapper.Map<Article, ArticleDto>).ToList();
+            ViewBag.ClientSupportArticles = clientSupportArticles;
             return View();
         }
 
@@ -72,7 +88,7 @@ namespace SmartHealth.Web.Controllers
                 product.ViewCount += 1;
                 productService.SaveOrUpdate(product, true);
 
-                var tags = tagService.GetAll().Where(a => a.Products.Contains(product));
+                var productGroups = productGroupService.GetAll().Where(a => a.Products.Contains(product));
 
                 var productDetail = Mapper.Map<Product, ProductDto>(product);
                 ViewBag.ProductDetail = productDetail;
@@ -93,7 +109,7 @@ namespace SmartHealth.Web.Controllers
                 ViewBag.RelatedProducts = relatedProducts;
 
                 var lstNews =
-                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
+                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                         Mapper.Map<Article, ArticleDto>).ToList();
                 ViewBag.Newses = lstNews;
                 return View();
@@ -132,10 +148,10 @@ namespace SmartHealth.Web.Controllers
             }
             ViewBag.PublicRelationCategories = publicRelationCategories;
 
-            var saleOffProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.IsSaleOff).OrderByDescending(a => a.CreatedDate).Take(5).Select(Mapper.Map<Product, ProductDto>).ToList();
+            var saleOffProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(productGroupService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.SaleOff.ToUpper()))).OrderByDescending(a => a.CreatedDate).Take(5).Select(Mapper.Map<Product, ProductDto>).ToList();
             ViewBag.SaleOffProducts = saleOffProducts;
 
-            var tags = tagService.GetAll().Select(Mapper.Map<Tag, TagDto>).ToList();
+            var tags = productGroupService.GetAll().Select(Mapper.Map<ProductGroup, ProductGroupDto>).ToList();
             ViewBag.Tags = tags;
             return View();
         }
@@ -146,7 +162,7 @@ namespace SmartHealth.Web.Controllers
             ViewBag.Article = article;
 
             var newses =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.Newses = newses;
 
@@ -162,24 +178,30 @@ namespace SmartHealth.Web.Controllers
         }
         public ActionResult ArticleList(int id)
         {
-            var cat = articleCategoryService.Get(id);
-            if (cat != null)
+            var category = articleCategoryService.Get(id);
+            if (category != null)
             {
                 var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).Select(Mapper.Map<Article, ArticleDto>).ToList();
-                ViewBag.Title = cat.Name + " - " + cat.Description;
-                ViewBag.CategoryName = cat.Name;
+                ViewBag.Title = category.Name + " - " + category.Description;
+                ViewBag.CategoryName = category.Name;
                 ViewBag.Articles = articles;
 
-                var lstNews =
-                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.Get(2)) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
+                var newses =
+                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                         Mapper.Map<Article, ArticleDto>).ToList();
-                ViewBag.Newses = lstNews;
+                ViewBag.Newses = newses;
 
                 return View();
             }
             else {
                 return RedirectToAction("Index", "Home");
             }
+        }
+
+        public ActionResult ChangeCulture(string lang, string returnUrl)
+        {
+            Session["Culture"] = new CultureInfo(lang);
+            return Redirect(returnUrl);
         }
     }
 }

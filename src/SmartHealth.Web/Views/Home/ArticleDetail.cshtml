@@ -15,8 +15,11 @@
     <div class="boxLeft">
         <div class="chitietsanpham">
             <p>@article.Title</p>
+            <div style="margin:10px;">@Html.Raw(article.Content)</div>
+            <div style="margin:10px;">
+            <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="8" data-width="640"></div>
+            </div>
         </div>
-        @Html.Raw(article.Content)
         <!--chitietsanpham-->
     </div>
 </div>

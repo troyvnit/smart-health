@@ -11,14 +11,842 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH3MoepTW7E2i2tPMKh0LEwAAAAACAAAAAAAQZgAAAAEAACAAAABxwHEr+86thulmHEnZ0TEyDRWYrJN8tR9AkK3680VwugAAAAAOgAAAAAIAACAAAAAcX+Q16TL4+mrpU4DOp55mfQgJ+3I3qa+pJZjoT9D/piAAAACUTnDer2t/uozDtO83t/hz737QYb11tRykRQ6gn3G+F0AAAACw6ev6f6NY7x75TYTEnnjqe5SXOpmYR94J8roiVvGiBGLbMZcQvLEJIbOwATgXlJA0ADlwDzgMX2TGjoMo3TjF</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="App_GlobalResources/SH.en-us.resx">
+      <publishTime>11/04/2013 11:52:36</publishTime>
+    </File>
+    <File Include="App_GlobalResources/SH.resx">
+      <publishTime>11/04/2013 14:41:59</publishTime>
+    </File>
     <File Include="App_Readme/Elmah.txt">
       <publishTime>10/15/2013 15:55:28</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/main-responsive.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/main.css">
+      <publishTime>11/03/2013 20:55:30</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/theme_black_and_white.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/theme_dark.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/theme_green.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/theme_light.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/css/theme_navy.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/clip-font.eot">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/clip-font.eot%40">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/clip-font.svg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/clip-font.ttf">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/clip-font.woff">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/clip-fontd41d.eot">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/fonts/Descr.WD3">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/fonts/style.css">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-1-small.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-1-xl.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-1.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-2.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-3.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-4.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/avatar-5.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/back-error-page.jpg">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/bg.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/bg_2.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/bg_3.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/bg_4.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/bg_5.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/blackandwhite.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/darkgrey.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/Descr.WD3">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/green.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/lightgrey.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/loading.gif">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/menu-white-arrow.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/navy.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/images/timer-piece.png">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/charts.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/form-calendar.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/form-dropzone.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/form-elements.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/form-image-cropping.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/form-validation.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/form-wizard.js">
+      <publishTime>11/03/2013 22:32:00</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/index.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/login.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/main.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/maps.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/pages-gallery.js">
+      <publishTime>11/03/2013 20:42:48</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/table-data.js">
+      <publishTime>11/03/2013 16:06:14</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/ui-buttons.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/ui-elements.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/ui-modals.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/ui-nestable.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/ui-sliders.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/ui-treeview.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/utility-coming-soon.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/js/utility-error404.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/autosize/jquery.autosize.min.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/blockUI/jquery.blockUI.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-colorpicker/img/bootstrap-colorpicker/alpha.png">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-colorpicker/img/bootstrap-colorpicker/hue.png">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-colorpicker/img/bootstrap-colorpicker/saturation.png">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-colorpicker/js/commits.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-daterangepicker/daterangepicker.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-daterangepicker/moment.min.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-modal/css/bootstrap-modal.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-modal/js/bootstrap-modal.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-modal/js/bootstrap-modalmanager.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-paginator/src/bootstrap-paginator.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-social-buttons/social-buttons-3.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-switch/static/js/bootstrap-switch.min.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/css/bootstrap.min.css">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/css/kendo.bootstrap.min.css">
+      <publishTime>11/03/2013 17:16:42</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/fonts/glyphicons-halflings-regulard41d.eot">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/bootstrap/js/bootstrap.min.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/ckeditor/adapters/jquery.js">
+      <publishTime>11/03/2013 16:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/ckeditor/ckeditor.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/ckeditor/contents.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/colorbox/colorbox.css">
+      <publishTime>11/03/2013 20:37:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/colorbox/jquery.colorbox-min.js">
+      <publishTime>11/03/2013 20:39:11</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/css/DT_bootstrap.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/css/images/sort_asc.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/css/images/sort_asc_disabled.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/css/images/sort_both.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/css/images/sort_desc.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/css/images/sort_desc_disabled.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/js/DT_bootstrap.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/DataTables/media/js/jquery.dataTables.min.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/datepicker/css/datepicker.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dropzone/downloads/css/dropzone.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dropzone/downloads/dropzone.min.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dropzone/downloads/images/spritemap%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dropzone/downloads/images/spritemap.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dynatree/src/jquery.dynatree.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dynatree/src/skin-vista/icons.gif">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dynatree/src/skin-vista/loading.gif">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/dynatree/src/skin-vista/ui.dynatree.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/flot/jquery.flot.categories.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/flot/jquery.flot.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/flot/jquery.flot.pie.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/flot/jquery.flot.resize.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/flot/jquery.flot.resize.min.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/font-awesome/css/font-awesome.min.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/font-awesome/font/fontawesome-webfont.svg">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/font-awesome/font/fontawesome-webfontd41d.eot">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/font-awesome/font/fontawesome-webfontf77b.eot">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/font-awesome/font/fontawesome-webfontf77b.ttf">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/font-awesome/font/fontawesome-webfontf77b.woff">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/fullcalendar/fullcalendar/fullcalendar.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/gmaps/gmaps.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/gritter/css/jquery.gritter.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/gritter/images/gritter-light.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/gritter/images/gritter.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/gritter/images/ie-spacer.gif">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/gritter/js/jquery.gritter.min.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/jquery.icheck.min.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/all.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/aero%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/aero.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/blue%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/blue.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/flat%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/flat.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/green%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/green.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/grey%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/grey.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/orange%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/orange.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/pink%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/pink.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/purple%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/purple.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/red%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/red.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/yellow%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/yellow.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/flat/_all.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/futurico/futurico%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/futurico/futurico.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/futurico/futurico.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/line/line%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/line/line.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/line/_all.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/aero%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/aero.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/blue%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/blue.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/green%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/green.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/grey%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/grey.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/minimal%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/minimal.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/orange%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/orange.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/pink%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/pink.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/purple%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/purple.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/red%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/red.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/yellow%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/yellow.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/minimal/_all.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/polaris/polaris%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/polaris/polaris.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/polaris/polaris.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/aero%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/aero.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/blue%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/blue.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/green%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/green.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/grey%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/grey.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/orange%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/orange.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/pink%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/pink.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/purple%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/purple.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/red%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/red.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/square%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/square.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/yellow%402x.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/yellow.png">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/iCheck/skins/square/_all.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/Jcrop/css/Jcrop.gif">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/Jcrop/css/jquery.Jcrop.min.css">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/Jcrop/demos/demo_files/pool.jpg">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/Jcrop/demos/demo_files/sago.jpg">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/Jcrop/js/jquery.color.js">
+      <publishTime>11/03/2013 16:06:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/Jcrop/js/jquery.Jcrop.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQRangeSlider/css/classic-min.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQRangeSlider/css/icons-classic/label.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQRangeSlider/css/icons-classic/resultset_next.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQRangeSlider/css/icons-classic/resultset_previous.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQRangeSlider/jQAllRangeSliders-min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/css/jquery.fileupload-ui.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/img/loading.gif">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/img/progressbar.gif">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload-audio.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload-image.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload-process.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload-ui.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload-validate.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload-video.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.fileupload.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/jquery.iframe-transport.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/main.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-File-Upload/js/vendor/jquery.ui.widget.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-Knob/js/jquery.knob.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-Smart-Wizard/js/jquery.smartWizard.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-Tags-Input/jquery.tagsinput.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jQuery-Tags-Input/jquery.tagsinput.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/animated-overlay.gif">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_diagonals-thick_18_b81900_40x40.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_diagonals-thick_20_666666_40x40.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_flat_10_000000_40x100.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_glass_100_f6f6f6_1x400.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_glass_100_fdf5ce_1x400.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_gloss-wave_35_f6a828_500x100.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_highlight-soft_100_eeeeee_1x100.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-bg_highlight-soft_75_ffe45c_1x100.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-icons_222222_256x240.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-icons_228ef1_256x240.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-icons_ef8c08_256x240.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-icons_ffd27a_256x240.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/images/ui-icons_ffffff_256x240.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery.maskedinput/src/jquery.maskedinput.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery.pulsate/jquery.pulsate.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/jquery.sparkline/jquery.sparkline.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/ladda-bootstrap/dist/ladda-themeless.min.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/ladda-bootstrap/dist/ladda.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/ladda-bootstrap/dist/spin.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/nestable/jquery.nestable.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/perfect-scrollbar/src/jquery.mousewheel.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/perfect-scrollbar/src/perfect-scrollbar.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/rainyday/rainyday.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/select2/select2-spinner.gif">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/select2/select2.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/select2/select2.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/select2/select2.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/select2/select2x2.png">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/summernote/build/summernote.css">
+      <publishTime>11/03/2013 16:06:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/ClipOne/plugins/summernote/build/summernote.min.js">
+      <publishTime>11/03/2013 16:06:17</publishTime>
     </File>
     <File Include="Areas/Admin/Content/jquery.tagsinput.css">
       <publishTime>10/26/2013 22:41:21</publishTime>
     </File>
     <File Include="Areas/Admin/Content/style.css">
-      <publishTime>11/01/2013 15:30:07</publishTime>
+      <publishTime>11/04/2013 09:38:59</publishTime>
     </File>
     <File Include="Areas/Admin/KendoUI/content/dataviz/dashboards/area-chart.png">
       <publishTime>10/16/2013 11:51:09</publishTime>
@@ -5249,8 +6077,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/Scripts/tinymce/tinymce.min.js">
       <publishTime>10/22/2013 08:59:17</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/Article/CreateOrUpdateArticle.cshtml">
+      <publishTime>11/03/2013 23:03:56</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Article/Index.cshtml">
-      <publishTime>11/01/2013 17:06:25</publishTime>
+      <publishTime>11/04/2013 17:12:34</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Article/ManageArticle.cshtml">
+      <publishTime>11/03/2013 19:54:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Image/Index.cshtml">
       <publishTime>10/26/2013 11:56:18</publishTime>
@@ -5259,13 +6093,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2013 14:09:12</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Menu/Index.cshtml">
-      <publishTime>11/01/2013 17:42:35</publishTime>
+      <publishTime>11/04/2013 11:26:45</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>11/01/2013 15:41:00</publishTime>
+      <publishTime>11/04/2013 17:11:55</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>11/01/2013 17:49:56</publishTime>
+      <publishTime>11/03/2013 16:12:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Shared/_ReponsiveLayout.cshtml">
+      <publishTime>11/03/2013 22:58:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Web.config">
       <publishTime>10/15/2013 15:55:27</publishTime>
@@ -5303,6 +6140,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Elmah.dll">
       <publishTime>10/15/2013 15:55:12</publishTime>
     </File>
+    <File Include="bin/en-us/SmartHealth.Web.resources.dll">
+      <publishTime>11/04/2013 17:53:46</publishTime>
+    </File>
     <File Include="bin/FluentNHibernate.dll">
       <publishTime>10/15/2013 15:55:12</publishTime>
     </File>
@@ -5327,11 +6167,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/NHibernate.dll">
       <publishTime>10/15/2013 15:55:05</publishTime>
     </File>
+    <File Include="bin/Resources/SH.Designer.cs">
+      <publishTime>11/04/2013 17:34:51</publishTime>
+    </File>
+    <File Include="bin/Resources/SH.en-us.resx">
+      <publishTime>11/04/2013 17:34:51</publishTime>
+    </File>
+    <File Include="bin/Resources/SH.resx">
+      <publishTime>11/04/2013 17:34:51</publishTime>
+    </File>
     <File Include="bin/SmartHealth.Box.dll">
-      <publishTime>11/01/2013 17:50:32</publishTime>
+      <publishTime>11/04/2013 14:01:51</publishTime>
     </File>
     <File Include="bin/SmartHealth.Core.dll">
-      <publishTime>10/30/2013 09:01:08</publishTime>
+      <publishTime>11/04/2013 14:01:51</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.dll">
       <publishTime>10/21/2013 22:21:01</publishTime>
@@ -5340,13 +6189,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Web.dll">
-      <publishTime>11/01/2013 17:50:32</publishTime>
+      <publishTime>11/04/2013 14:01:52</publishTime>
     </File>
     <File Include="bin/SmartHealth.SampleModule.dll">
-      <publishTime>10/30/2013 09:01:08</publishTime>
+      <publishTime>11/04/2013 14:01:51</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>11/01/2013 17:50:33</publishTime>
+      <publishTime>11/04/2013 17:53:45</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -5670,7 +6519,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 16:55:48</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>10/31/2013 11:08:04</publishTime>
+      <publishTime>11/04/2013 13:54:36</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>10/15/2013 15:55:29</publishTime>
@@ -5838,7 +6687,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:59:39</publishTime>
     </File>
     <File Include="NHibernate.config">
-      <publishTime>10/17/2013 13:26:07</publishTime>
+      <publishTime>11/04/2013 14:24:50</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>10/18/2013 10:56:53</publishTime>
@@ -6020,17 +6869,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/taadv_floating.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
+    <File Include="Views/Home/Article.cshtml">
+      <publishTime>11/04/2013 13:54:36</publishTime>
+    </File>
     <File Include="Views/Home/ArticleDetail.cshtml">
       <publishTime>10/31/2013 23:03:36</publishTime>
+    </File>
+    <File Include="Views/Home/ArticleList.cshtml">
+      <publishTime>11/04/2013 13:54:36</publishTime>
+    </File>
+    <File Include="Views/Home/GetBottomMenu.cshtml">
+      <publishTime>11/04/2013 17:35:03</publishTime>
     </File>
     <File Include="Views/Home/GetProductNames.cshtml">
       <publishTime>10/25/2013 23:15:49</publishTime>
     </File>
     <File Include="Views/Home/GetTopMenu.cshtml">
-      <publishTime>11/01/2013 17:48:57</publishTime>
+      <publishTime>11/01/2013 18:02:07</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/31/2013 12:33:02</publishTime>
+      <publishTime>11/04/2013 11:38:59</publishTime>
+    </File>
+    <File Include="Views/Home/Product.cshtml">
+      <publishTime>11/04/2013 13:54:36</publishTime>
     </File>
     <File Include="Views/Home/ProductDetail.cshtml">
       <publishTime>11/01/2013 14:09:12</publishTime>
@@ -6039,13 +6900,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/31/2013 11:03:48</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/01/2013 17:49:24</publishTime>
+      <publishTime>11/04/2013 17:33:14</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/01/2013 17:50:43</publishTime>
+      <publishTime>11/04/2013 17:54:49</publishTime>
     </File>
   </ItemGroup>
 </Project>

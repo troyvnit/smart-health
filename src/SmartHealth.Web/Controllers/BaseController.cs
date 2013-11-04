@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Web.Mvc;
 using SmartHealth.Core.ApplicationServices.Caching;
 using SmartHealth.Core.Domain.Models;
@@ -28,7 +29,6 @@ namespace SmartHealth.Web.Controllers
                      CacheDuration.Long);
 
                 ViewBag.CurrentUser = currentUser;
-
             }
         }
 

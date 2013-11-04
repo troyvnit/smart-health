@@ -16,4 +16,3 @@ E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin
 E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.dll
 E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.pdb
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.csprojResolveAssemblyReference.cache

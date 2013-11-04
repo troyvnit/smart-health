@@ -16,37 +16,41 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         private readonly IService<Product> productService;
-        private readonly IService<Tag> tagService;
+        private readonly IService<ProductGroup> productGroupService;
 
-        public ProductController(IService<Product> productService, IService<Tag> tagService)
+        public ProductController(IService<Product> productService, IService<ProductGroup> productGroupService)
         {
             this.productService = productService;
-            this.tagService = tagService;
+            this.productGroupService = productGroupService;
         }
         public ActionResult Index()
         {
             return View("~/Areas/Admin/Views/Product/Index.cshtml");
         }
 
-        public ActionResult GetTags()
+        public ActionResult GetGroups()
         {
-            var tags = tagService.GetAll().OrderByDescending(a => a.Id).Select(Mapper.Map<Tag, TagDto>).ToList();
-            return Json(tags, JsonRequestBehavior.AllowGet);
+            var groups = productGroupService.GetAll().OrderByDescending(a => a.Id).Select(Mapper.Map<ProductGroup, ProductGroupDto>).ToList();
+            return Json(groups, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult CreateOrUpdateTag(string models)
+        public ActionResult CreateOrUpdateGroup(string models)
         {
-            var tagDto = JsonConvert.DeserializeObject<List<TagDto>>(models).FirstOrDefault();
-            var tag = Mapper.Map<TagDto, Tag>(tagDto);
-            tagService.SaveOrUpdate(tag, true);
+            var groupDto = JsonConvert.DeserializeObject<List<ProductGroupDto>>(models).FirstOrDefault();
+            if(groupDto != null)
+            {
+                groupDto.Language = productService.GetAll<Language>().FirstOrDefault(a => a.CultureInfo == groupDto.Language.CultureInfo);
+                var group = Mapper.Map<ProductGroupDto, ProductGroup>(groupDto);
+                productGroupService.SaveOrUpdate(group, true);
+            }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeleteTag(string models)
+        public ActionResult DeleteGroup(string models)
         {
-            var tagDto = JsonConvert.DeserializeObject<List<TagDto>>(models).FirstOrDefault();
-            var tag = Mapper.Map<TagDto, Tag>(tagDto);
-            tagService.Delete(tag, true);
+            var groupDto = JsonConvert.DeserializeObject<List<ProductGroupDto>>(models).FirstOrDefault();
+            var group = Mapper.Map<ProductGroupDto, ProductGroup>(groupDto);
+            productGroupService.Delete(group, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
@@ -56,14 +60,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             {
                 Brand = product.Brand,
                 Tags = product.Tags,
+                Groups = string.Join(",", product.Groups.Select(a => a.Id)),
                 Introduction = product.Introduction,
                 Description = product.Description,
                 Id = product.Id,
-                ImageUrl = product.ImageUrl,
+                MediaUrl = product.MediaUrl,
                 IsActived = product.IsActived,
-                LanguageId = product.Language != null ? product.Language.Id : 1,
-                IsMainProduct = product.IsMainProduct,
-                IsSaleOff = product.IsSaleOff,
                 MarketPrice = product.MarketPrice,
                 Name = product.Name,
                 Property = product.Property,
@@ -81,7 +83,15 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         public ActionResult CreateOrUpdateProduct(ProductDto productDto)
         {
             var product = Mapper.Map<ProductDto, Product>(productDto);
-            product.Language = productService.Get<Language>(productDto.LanguageId);
+            if (!string.IsNullOrEmpty(productDto.Groups))
+            {
+                string[] groupIds = productDto.Groups.Split(',');
+                foreach (string groupId in groupIds)
+                {
+                    var group = productGroupService.Get(Convert.ToInt32(groupId));
+                    product.Groups.Add(group);
+                }
+            }
             productService.SaveOrUpdate(product, true);
             return Json(Mapper.Map<Product, ProductDto>(product), JsonRequestBehavior.AllowGet);
         }
@@ -101,26 +111,6 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
             {
                 product.IsActived = !product.IsActived;
-                productService.SaveOrUpdate(product, true);
-            }
-            return Json("Success", JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult MakeMainProducts(string ids)
-        {
-            foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
-            {
-                product.IsMainProduct = !product.IsMainProduct;
-                productService.SaveOrUpdate(product, true);
-            }
-            return Json("Success", JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult SaleOffProducts(string ids)
-        {
-            foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
-            {
-                product.IsSaleOff = !product.IsSaleOff;
                 productService.SaveOrUpdate(product, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);

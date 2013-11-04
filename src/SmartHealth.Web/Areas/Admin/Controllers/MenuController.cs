@@ -38,9 +38,13 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         {
             MenuDto menuDto =
                 JsonConvert.DeserializeObject<List<MenuDto>>(models).FirstOrDefault();
-            Menu menu = Mapper.Map<MenuDto, Menu>(menuDto);
-            menuService.SaveOrUpdate(menu, true);
-            if (menuDto != null) menuDto.Id = menu.Id;
+            if(menuDto != null)
+            {
+                menuDto.Language = menuService.GetAll<Language>().FirstOrDefault(a => a.CultureInfo == menuDto.Language.CultureInfo);
+                Menu menu = Mapper.Map<MenuDto, Menu>(menuDto);
+                menuService.SaveOrUpdate(menu, true);
+                menuDto.Id = menu.Id;
+            }
             return Json(menuDto, JsonRequestBehavior.AllowGet);
         }
 

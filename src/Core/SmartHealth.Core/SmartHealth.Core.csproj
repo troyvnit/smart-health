@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="ApplicationServices\Caching\CacheKeys.cs" />
     <Compile Include="ApplicationServices\Caching\UserCache.cs" />
+    <Compile Include="Domain\Dtos\LanguageDto.cs" />
     <Compile Include="Domain\IRepository\IUserRepository.cs" />
     <Compile Include="Domain\Models\Language.cs" />
     <Compile Include="Domain\Models\User.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\Dtos\" />
     <Folder Include="Domain\Events\" />
   </ItemGroup>
   <ItemGroup>
