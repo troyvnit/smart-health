@@ -25,7 +25,7 @@
                 <div>
                     <div>
                         <div style="float: left; width: 140px">
-                            <img src="@article.ImageUrl"  style="width:140px" />
+                            <img src="@article.MediaUrl"  style="width:140px" />
                         </div>
                         <div style="float: left; width: 500px; margin-left: 10px;">
                             <a href="@Url.Action("Article", "Home", new { id = article.Id })">
@@ -56,7 +56,7 @@
                     {
                         foreach (var news in newses)
                         {
-                        <li><a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a></li>
+                        <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
                         }
                     }
                 </ul>
@@ -99,7 +99,7 @@
                     {
                         foreach (var viewedArticle in viewedArticles)
                         {
-                        <li><a href="@Url.Action("ArticleDetail", "Home", new { id = viewedArticle.Id })">@viewedArticle.Title</a></li>
+                        <li><a href="@Url.Action("Article", "Home", new { id = viewedArticle.Id })">@viewedArticle.Title</a></li>
                         }
                     }
                 </ul>

@@ -48,10 +48,10 @@
                         <div class="box-content">
                             <div class="input-row">
                                 <div class="column-left">
-                                    <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
+                                    <a class="k-button delete-imageurl" onclick="setMediaUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
                                     <a href="#" onclick="return false;">
                                         <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
-                                        <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
+                                        <input type="hidden" name="MediaUrl" id="MediaUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
                                     </a>
                                 </div>
                                 <div class="column-right">
@@ -128,6 +128,8 @@
                 <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
             </div>
             <dl>
+                <dt>Id</dt>
+                <dd>#:Id#</dd>
                 <dt>Tên</dt>
                 <dd>#:Name#</dd>
                 <dt>Mô Tả</dt>
@@ -171,7 +173,7 @@
         <div class="article-image-list">
             <a href="#:MediaUrl#" data-lightbox="roadtrip" title="#:Description#"><img src="#:MediaUrl#" alt="#:MediaUrl#"  style="display: block; width: 100%;"/></a>
             <a class="k-button delete-image" onclick="removeImage('#:Id#'); return false;" href="\\#"><span class="k-icon k-i-close"></span></a>
-            <a class="k-button set-imageurl" onclick="setImageUrl('#:MediaUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
+            <a class="k-button set-imageurl" onclick="setMediaUrl('#:MediaUrl#'); return false;" href="\\#"><span class="k-icon k-i-restore"></span></a>
         </div>
 </script>
 <script>
@@ -262,10 +264,10 @@
                 field: "Categories",
                 hidden: true
             }, {
-                field: "ImageUrl",
+                field: "MediaUrl",
                 width: 120,
                 title: "Hình đại diện",
-                template: "<img src='#= ImageUrl #' alt='#= ImageUrl #' style='width:100%' />"
+                template: "<img src='#= MediaUrl #' alt='#= MediaUrl #' style='width:100%' />"
             }, {
                 field: "Title",
                 title: "Tiêu đề"
@@ -322,7 +324,7 @@
             $("#IsActived").prop('checked', false);
             categoryMultiSelect.value('');
             priorityNumeric.value('');
-            setImageUrl('');
+            setMediaUrl('');
             languageDropDownList.value(1);
             splitterToggle();
         });
@@ -340,7 +342,7 @@
                     $("#IsActived").prop('checked', dataItem.IsActived);
                     categoryMultiSelect.value(dataItem.Categories.toString().split(','));
                     priorityNumeric.value(dataItem.Priority);
-                    setImageUrl(dataItem.ImageUrl);
+                    setMediaUrl(dataItem.MediaUrl);
                     languageDropDownList.value(dataItem.LanguageId);
                 });
                 splitterToggle();
@@ -529,13 +531,13 @@
         }).data("kendoSplitter");
     });
 
-        function setImageUrl(url) {
+        function setMediaUrl(url) {
             if (url != "" && url != null) {
                 $("#avatar").attr("src", url);
             } else {
                 $("#avatar").attr("src", "@Url.Content("~/Content/images/no-image.jpg")");
         }
-        $("#ImageUrl").val(url);
+        $("#MediaUrl").val(url);
     }
 
     function removeImage(id) {

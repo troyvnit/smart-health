@@ -6078,25 +6078,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/22/2013 08:59:17</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/CreateOrUpdateArticle.cshtml">
-      <publishTime>11/03/2013 23:03:56</publishTime>
+      <publishTime>11/04/2013 23:28:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/Index.cshtml">
-      <publishTime>11/04/2013 17:12:34</publishTime>
+      <publishTime>11/04/2013 23:28:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Article/ManageArticle.cshtml">
-      <publishTime>11/03/2013 19:54:52</publishTime>
+      <publishTime>11/04/2013 23:28:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Image/Index.cshtml">
       <publishTime>10/26/2013 11:56:18</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Media/Index.cshtml">
-      <publishTime>11/01/2013 14:09:12</publishTime>
+      <publishTime>11/04/2013 23:22:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Menu/Index.cshtml">
-      <publishTime>11/04/2013 11:26:45</publishTime>
+      <publishTime>11/04/2013 23:38:15</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>11/04/2013 17:11:55</publishTime>
+      <publishTime>11/04/2013 23:33:14</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
       <publishTime>11/03/2013 16:12:58</publishTime>
@@ -6141,7 +6141,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:12</publishTime>
     </File>
     <File Include="bin/en-us/SmartHealth.Web.resources.dll">
-      <publishTime>11/04/2013 17:53:46</publishTime>
+      <publishTime>11/04/2013 23:47:51</publishTime>
     </File>
     <File Include="bin/FluentNHibernate.dll">
       <publishTime>10/15/2013 15:55:12</publishTime>
@@ -6168,16 +6168,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:05</publishTime>
     </File>
     <File Include="bin/Resources/SH.Designer.cs">
-      <publishTime>11/04/2013 17:34:51</publishTime>
+      <publishTime>11/04/2013 22:46:41</publishTime>
     </File>
     <File Include="bin/Resources/SH.en-us.resx">
-      <publishTime>11/04/2013 17:34:51</publishTime>
+      <publishTime>11/04/2013 22:46:41</publishTime>
     </File>
     <File Include="bin/Resources/SH.resx">
-      <publishTime>11/04/2013 17:34:51</publishTime>
+      <publishTime>11/04/2013 22:46:41</publishTime>
     </File>
     <File Include="bin/SmartHealth.Box.dll">
-      <publishTime>11/04/2013 14:01:51</publishTime>
+      <publishTime>11/04/2013 23:47:48</publishTime>
     </File>
     <File Include="bin/SmartHealth.Core.dll">
       <publishTime>11/04/2013 14:01:51</publishTime>
@@ -6189,13 +6189,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2013 09:01:08</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Web.dll">
-      <publishTime>11/04/2013 14:01:52</publishTime>
+      <publishTime>11/04/2013 23:47:49</publishTime>
     </File>
     <File Include="bin/SmartHealth.SampleModule.dll">
       <publishTime>11/04/2013 14:01:51</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>11/04/2013 17:53:45</publishTime>
+      <publishTime>11/04/2013 23:47:50</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -6870,13 +6870,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
     <File Include="Views/Home/Article.cshtml">
-      <publishTime>11/04/2013 13:54:36</publishTime>
+      <publishTime>11/04/2013 23:30:32</publishTime>
     </File>
     <File Include="Views/Home/ArticleDetail.cshtml">
       <publishTime>10/31/2013 23:03:36</publishTime>
     </File>
     <File Include="Views/Home/ArticleList.cshtml">
-      <publishTime>11/04/2013 13:54:36</publishTime>
+      <publishTime>11/04/2013 23:30:32</publishTime>
     </File>
     <File Include="Views/Home/GetBottomMenu.cshtml">
       <publishTime>11/04/2013 17:35:03</publishTime>
@@ -6888,16 +6888,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2013 18:02:07</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/04/2013 11:38:59</publishTime>
+      <publishTime>11/04/2013 23:47:05</publishTime>
     </File>
     <File Include="Views/Home/Product.cshtml">
-      <publishTime>11/04/2013 13:54:36</publishTime>
+      <publishTime>11/04/2013 23:30:32</publishTime>
     </File>
     <File Include="Views/Home/ProductDetail.cshtml">
       <publishTime>11/01/2013 14:09:12</publishTime>
     </File>
     <File Include="Views/Home/PublicRelation.cshtml">
-      <publishTime>10/31/2013 11:03:48</publishTime>
+      <publishTime>11/04/2013 23:30:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>11/04/2013 17:33:14</publishTime>
@@ -6906,7 +6906,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/04/2013 17:54:49</publishTime>
+      <publishTime>11/04/2013 23:47:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var publicRelationCategories = (List<ArticleCategoryDto>)ViewBag.PublicRelationCategories;
     var saleOffProducts = (List<ProductDto>)ViewBag.SaleOffProducts;
-    var tags = (List<TagDto>)ViewBag.Tags;
 }
 
 
@@ -21,9 +20,9 @@
                             @if (firstPublicRelationArticle != null)
                             {
                                 <li class="pic">
-                                    <a href="@Url.Action("ArticleDetail", "Home", new { id = firstPublicRelationArticle.Id })"><img src="@firstPublicRelationArticle.ImageUrl" alt="" /></a>
+                                    <a href="@Url.Action("Article", "Home", new { id = firstPublicRelationArticle.Id })"><img src="@firstPublicRelationArticle.MediaUrl" alt="" /></a>
                                 </li>
-                                <li class="tit"><a href="@Url.Action("ArticleDetail", "Home", new { id = firstPublicRelationArticle.Id })">@firstPublicRelationArticle.Title</a></li>
+                                <li class="tit"><a href="@Url.Action("Article", "Home", new { id = firstPublicRelationArticle.Id })">@firstPublicRelationArticle.Title</a></li>
                                 <li>
                                     @Html.Raw(firstPublicRelationArticle.Description)
                                 </li>
@@ -33,7 +32,7 @@
                     <ul class="list">
                         @foreach (var publicRelationArticle in publicRelationCategory.ArticleDtos.Skip(1))
                         {
-                            <li><a href="@Url.Action("ArticleDetail", "Home", new { id = publicRelationArticle.Id })">@publicRelationArticle.Title</a></li>
+                            <li><a href="@Url.Action("Article", "Home", new { id = publicRelationArticle.Id })">@publicRelationArticle.Title</a></li>
                         }
                     </ul>
                 </div>
@@ -79,7 +78,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="pic_5">
-                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = saleOffProduct.Id })"><img src="@saleOffProduct.ImageUrl" alt="" /></a>
+                                                        <a href="@Url.Action("Product", "Home", new { id = saleOffProduct.Id })"><img src="@saleOffProduct.MediaUrl" alt="" /></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -103,10 +102,6 @@
     </div>
     <div class="tukhoa">
         <span>Từ khóa:</span>
-        @foreach(var tag in tags)
-        {
-            <a href="#">@tag.Name </a>
-        }
     </div>
 </div>
 <!--rightContent-->

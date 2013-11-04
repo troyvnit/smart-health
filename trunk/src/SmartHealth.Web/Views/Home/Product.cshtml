@@ -1,6 +1,6 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
 @{
-    ViewBag.Title = "ProductDetail";
+    ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productDetail = (ProductDto)ViewBag.ProductDetail;
     var productImages = (List<MediaDto>)ViewBag.ProductImages;
@@ -160,8 +160,8 @@
                                 <tbody>
                                     <tr>
                                         <td class="pic_5">
-                                            <a href="@Url.Action("ProductDetail", "Home", new { id = relatedProduct.Id })">
-                                                <img src="@relatedProduct.ImageUrl" alt="" /></a>
+                                            <a href="@Url.Action("Product", "Home", new { id = relatedProduct.Id })">
+                                                <img src="@relatedProduct.MediaUrl" alt="" /></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -184,7 +184,7 @@
                     {
                         foreach (var news in newses)
                         {
-                        <li><a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a></li>
+                        <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
                         }
                     }
                 </ul>
@@ -239,8 +239,8 @@
                                 <tbody>
                                     <tr>
                                         <td class="pic_5">
-                                            <a href="@Url.Action("ProductDetail", "Home", new { id = viewedProduct.Id })">
-                                                <img src="@viewedProduct.ImageUrl" alt="" /></a>
+                                            <a href="@Url.Action("Product", "Home", new { id = viewedProduct.Id })">
+                                                <img src="@viewedProduct.MediaUrl" alt="" /></a>
                                         </td>
                                     </tr>
                                 </tbody>

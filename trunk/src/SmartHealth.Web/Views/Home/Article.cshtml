@@ -1,6 +1,6 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
 @{
-    ViewBag.Title = "ArticleDetail";
+    ViewBag.Title = "Article";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var article = (ArticleDto)ViewBag.Article;
     var newses = (List<ArticleDto>)ViewBag.Newses;
@@ -34,7 +34,7 @@
                     {
                         foreach (var news in newses)
                         {
-                        <li><a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a></li>
+                        <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
                         }
                     }
                 </ul>
@@ -75,7 +75,7 @@
                     {
                         foreach (var viewedArticle in viewedArticles)
                         {
-                            <li><a href="@Url.Action("ArticleDetail", "Home", new { id = viewedArticle.Id })">@viewedArticle.Title</a></li>
+                            <li><a href="@Url.Action("Article", "Home", new { id = viewedArticle.Id })">@viewedArticle.Title</a></li>
                         }
                     }
                 </ul>
