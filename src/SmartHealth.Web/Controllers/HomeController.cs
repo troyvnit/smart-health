@@ -19,14 +19,16 @@ namespace SmartHealth.Web.Controllers
         private readonly IService<Article> articleService;
         private readonly IService<ArticleCategory> articleCategoryService;
         private readonly IService<Menu> menuService;
+        private readonly IService<Media> mediaService;
 
-        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService)
+        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService)
         {
             this.productService = productService;
             this.productGroupService = productGroupService;
             this.articleService = articleService;
             this.articleCategoryService = articleCategoryService;
             this.menuService = menuService;
+            this.mediaService = mediaService;
         }
 
         public ActionResult Index()
@@ -48,6 +50,9 @@ namespace SmartHealth.Web.Controllers
 
             var typicalProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(productGroupService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.TypicalProduct.ToUpper()))).OrderByDescending(a => a.CreatedDate).Take(6).Select(Mapper.Map<Product, ProductDto>).ToList();
             ViewBag.TypicalProducts = typicalProducts;
+
+            var videoLink = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).FirstOrDefault(a => a.Type == 3);
+            ViewBag.VideoLink = videoLink;
             return View();
         }
 
@@ -118,6 +123,23 @@ namespace SmartHealth.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
             
+        }
+
+        public ActionResult ProductList(int? id)
+        {
+            if(id == null)
+            {
+                var products = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.CreatedDate).Select(Mapper.Map<Product, ProductDto>).ToList();
+                ViewBag.Products = products;
+            }
+            else
+            {
+                var group = productGroupService.GetAll().FirstOrDefault(b => b.Id == id);
+                var products = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(group)).OrderByDescending(a => a.CreatedDate).Select(Mapper.Map<Product, ProductDto>).ToList();
+                ViewBag.Products = products;
+                if (@group != null) ViewBag.GroupName = @group.Name;
+            }
+            return View();
         }
 
         public ActionResult AddOrderProduct(int id, int quantity)

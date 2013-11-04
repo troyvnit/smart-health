@@ -45,10 +45,10 @@
                         <div class="box-content">
                             <div class="input-row">
                                 <div class="column-left">
-                                    <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
+                                    <a class="k-button delete-imageurl" onclick="setMediaUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
                                     <a href="#" onclick="return false;">
                                         <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
-                                        <input type="hidden" name="MediaUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
+                                        <input type="hidden" name="MediaUrl" id="MediaUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
                                     </a>
                                 </div>
                                 <div class="column-right">
@@ -151,6 +151,8 @@
                 <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
             </div>
             <dl>
+                <dt>Id</dt>
+                <dd>#:Id#</dd>
                 <dt>Tên</dt>
                 <dd>#:Name#</dd>
                 <dt>Mô Tả</dt>
@@ -364,8 +366,8 @@
             };
 
         $("#add-product").click(function (e) {
-            var tab = tabStrip.tabGroup.children("li").eq(4);
-            tabStrip.disable(tab);
+            tabStrip.disable(tabStrip.tabGroup.children("li").eq(4));
+            tabStrip.disable(tabStrip.tabGroup.children("li").eq(5));
             tabStrip.select(0);
             $("#Id").val('');
             $("#Name").val('');
@@ -384,7 +386,7 @@
             marketPriceNumeric.value('');
             smartHealthPriceNumeric.value('');
             quantityNumeric.value('');
-            setImageUrl('');
+            setMediaUrl('');
             languageDropDownList.value(1);
             splitterToggle();
         });
@@ -392,8 +394,8 @@
         $("#edit-product").click(function (e) {
             if (grid.select().length > 0) {
                 grid.select().each(function () {
-                    var tab = tabStrip.tabGroup.children("li").eq(4);
-                    tabStrip.enable(tab);
+                    tabStrip.enable(tabStrip.tabGroup.children("li").eq(4));
+                    tabStrip.enable(tabStrip.tabGroup.children("li").eq(5));
                     tabStrip.select(0);
                     var dataItem = grid.dataItem($(this));
                     $("#Id").val(dataItem.Id);
@@ -413,7 +415,7 @@
                     marketPriceNumeric.value(dataItem.MarketPrice);
                     smartHealthPriceNumeric.value(dataItem.SmartHealthPrice);
                     quantityNumeric.value(dataItem.Quantity);
-                    setImageUrl(dataItem.ImageUrl);
+                    setMediaUrl(dataItem.MediaUrl);
                     languageDropDownList.value(dataItem.LanguageId);
                     getImageManager(dataItem.Id);
                     getVideoManager(dataItem.Id);
@@ -722,7 +724,7 @@
         }).data("kendoSplitter");
     });
 
-        function setImageUrl(url) {
+        function setMediaUrl(url) {
             if (url != "" && url != null) {
                 $("#avatar").attr("src", url);
             } else {
