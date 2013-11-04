@@ -60,7 +60,7 @@
     <Compile Include="Domain\Dtos\MediaDto.cs" />
     <Compile Include="Domain\Dtos\FolderDto.cs" />
     <Compile Include="Domain\Dtos\SessionDto.cs" />
-    <Compile Include="Domain\Dtos\TagDto.cs" />
+    <Compile Include="Domain\Dtos\ProductGroupDto.cs" />
     <Compile Include="Domain\Dtos\ProductDto.cs" />
     <Compile Include="Domain\IRepository\IMenuRepository.cs" />
     <Compile Include="Domain\IRepository\IMediaRepository.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Domain\Models\ProductArticle.cs" />
     <Compile Include="Domain\Models\Media.cs" />
     <Compile Include="Domain\Models\ProductProperty.cs" />
-    <Compile Include="Domain\Models\Tag.cs" />
+    <Compile Include="Domain\Models\ProductGroup.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleCategoryRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\MenuRepository.cs" />

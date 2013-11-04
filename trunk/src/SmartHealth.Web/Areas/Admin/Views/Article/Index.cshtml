@@ -26,7 +26,7 @@
                         <a id="active-article" class="k-button k-button-icontext k-active-button" href="#"><span class="k-icon k-i-tick"></span>Duyệt</a>
                         <span class="k-space-left">
                             <a class="k-button k-button-icontext" href="#">Url: </a>
-                           <input type="text" class="k-textbox" id="FullUrl" style="width: 420px"/>
+                            <input type="text" class="k-textbox" id="FullUrl" style="width: 420px" />
                         </span>
                     </div>
 
@@ -35,84 +35,88 @@
                     </div>
                 </div>
             </div>
-                            @using (Html.BeginForm("CreateOrUpdateArticle", "Article", FormMethod.Post, new { id = "article-form" }))
-                            {
-                                <div id="right-pane">
-                                    <div class="pane-content">
-                                        <div class="box-content">
-                                            <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
-                                            <a id="cancel-article" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-i-cancel"></span>Quay lại</a>
-                                            <a id="message-article" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
-                                        </div>
+            @using (Html.BeginForm("CreateOrUpdateArticle", "Article", FormMethod.Post, new { id = "article-form" }))
+            {
+                <div id="right-pane">
+                    <div class="pane-content">
+                        <div class="box-content">
+                            <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
+                            <a id="cancel-article" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-i-cancel"></span>Quay lại</a>
+                            <a id="message-article" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
+                        </div>
 
-                                        <div class="box-content">
-                                            <div class="input-row">
-                                                <div class="column-left">
-                                                    <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
-                                                    <a href="#" onclick="return false;">
-                                                        <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
-                                                        <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
-                                                    </a>
-                                                </div>
-                                                <div class="column-right">
-                                                    <div class="input-row">
-                                                        <p>Tiêu đề: </p>
-                                                        <input type="hidden" id="Id" name="Id"  />
-                                                        <input type="text" style="width: 520px" class="k-textbox" id="Title" name="Title" required validationMessage="Vui lòng nhập tiêu đề!"/>
-                                                    </div>
-                                                    <div class="input-row">
-                                                        <p>Danh mục: </p>
-                                                        <select id="Category" name="Category"></select>
-                                                        <input type="hidden" id="Categories" name="Categories" />
-                                                    </div>
-                                                    <div class="input-row">
-                                                        <p>Mô tả: </p>
-                                                        <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 520px"></textarea>
-                                                    </div>
-                                                    <div class="input-row">
-                                                            <p>Từ khóa: </p>
-                                                            <input type="text" class="k-textbox" style="width: 520px" id="Tags" name="Tags"></input>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="input-row">
-                                                <div id="tabstrip">
-                                                    <ul>
-                                                        <li class="k-state-active">Nội dung</li>
-                                                        <li>Thông tin</li>
-                                                        <li>Hình ảnh</li>
-                                                    </ul>
-                                                    <div>
-                                                        <textarea id="Content" name="Content"></textarea>
-                                                    </div>
-                                                    <div>
-                                                        <div class="input-row">
-                                                            <p>Tác giả: </p>
-                                                            <input type="text" class="k-textbox" id="Author" name="Author" />
-                                                         </div>   
-                                                        <div class="input-row">
-                                                            <p>Thứ tự: </p>
-                                                            <input type="text" id="Priority" name="Priority" />
-                                                         </div>   
-                                                        <div class="input-row">
-                                                            <p>Ngôn ngữ: </p>
-                                                            <input type="text" id="LanguageId" name="LanguageId" />
-                                                         </div>   
-                                                        
-                                                    </div>
-                                                    <div>
-                                                        <div id="upload-image">
-                                                            <input name="files" id="files" type="file" />
-                                                        </div>
-                                                        <div id="article-image-listView"></div>
-                                                        <div id="article-image-pager" class="k-pager-wrap"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="box-content">
+                            <div class="input-row">
+                                <div class="column-left">
+                                    <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
+                                    <a href="#" onclick="return false;">
+                                        <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
+                                        <input type="hidden" name="ImageUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
+                                    </a>
+                                </div>
+                                <div class="column-right">
+                                    <div class="input-row">
+                                        <p>Tiêu đề: </p>
+                                        <input type="hidden" id="Id" name="Id" />
+                                        <input type="text" style="width: 520px" class="k-textbox" id="Title" name="Title" required validationmessage="Vui lòng nhập tiêu đề!" />
+                                    </div>
+                                    <div class="input-row">
+                                        <p>Danh mục: </p>
+                                        <select id="Category" name="Category"></select>
+                                        <input type="hidden" id="Categories" name="Categories" />
+                                    </div>
+                                    <div class="input-row">
+                                        <p>Duyệt: </p>
+                                        <input type="checkbox" id="IsActived" name="IsActived" value="true" />
+                                    </div>
+                                    <div class="input-row">
+                                        <p>Mô tả: </p>
+                                        <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 520px"></textarea>
+                                    </div>
+                                    <div class="input-row">
+                                        <p>Từ khóa: </p>
+                                        <input type="text" class="k-textbox" style="width: 520px" id="Tags" name="Tags"></input>
                                     </div>
                                 </div>
-                            }
+                            </div>
+                            <div class="input-row">
+                                <div id="tabstrip">
+                                    <ul>
+                                        <li class="k-state-active">Nội dung</li>
+                                        <li>Thông tin</li>
+                                        <li>Hình ảnh</li>
+                                    </ul>
+                                    <div>
+                                        <textarea id="Content" name="Content"></textarea>
+                                    </div>
+                                    <div>
+                                        <div class="input-row">
+                                            <p>Tác giả: </p>
+                                            <input type="text" class="k-textbox" id="Author" name="Author" />
+                                        </div>
+                                        <div class="input-row">
+                                            <p>Thứ tự: </p>
+                                            <input type="text" id="Priority" name="Priority" />
+                                        </div>
+                                        <div class="input-row">
+                                            <p>Ngôn ngữ: </p>
+                                            <input type="text" id="LanguageId" name="LanguageId" />
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <div id="upload-image">
+                                            <input name="files" id="files" type="file" />
+                                        </div>
+                                        <div id="article-image-listView"></div>
+                                        <div id="article-image-pager" class="k-pager-wrap"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -128,8 +132,8 @@
                 <dd>#:Name#</dd>
                 <dt>Mô Tả</dt>
                 <dd>#:Description#</dd>
-                <dt>PR</dt>
-                <dd>#:IsPublicRelation#</dd>
+                <dt>Ngôn ngữ</dt>
+                <dd>#:Language.Name#</dd>
             </dl>
         </div>
 </script>
@@ -151,9 +155,13 @@
                     <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
                     <span data-for="Description" class="k-invalid-msg"></span>
                 </dd>
-                <dt>PR</dt>
+                <dt>Ngôn ngữ</dt>
                 <dd>
-                    <input type="checkbox" class="k-checkbox" name="IsPublicRelation" data-bind="checked:IsPublicRelation">
+                    <select data-role="dropdownlist" data-bind="value:Language" data-value-field="CultureInfo" data-text-field="Name" name="Language" required="required" validationMessage="không được trống">  
+                       <option value="vi-vn">Tiếng Việt</option>  
+                       <option value="en-us">English</option>
+                    </select>
+                    <span data-for="Language" class="k-invalid-msg"></span>
                 </dd>
             </dl>
         </div>
@@ -177,19 +185,19 @@
                 },
                 update: {
                     url: '@Url.Action("CreateOrUpdateCategory", "Article")',
-                        type: "post",
-                        dataType: "json"
-                    },
+                    type: "post",
+                    dataType: "json"
+                },
                 destroy: {
                     url: '@Url.Action("DeleteCategory", "Article")',
-                        type: "post",
-                        dataType: "json"
-                    },
+                    type: "post",
+                    dataType: "json"
+                },
                 create: {
                     url: '@Url.Action("CreateOrUpdateCategory", "Article")',
-                        type: "post",
-                        dataType: "json"
-                    },
+                    type: "post",
+                    dataType: "json"
+                },
                 parameterMap: function (options, operation) {
                     if (operation !== "read" && options.models) {
                         return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
@@ -205,7 +213,7 @@
                         Id: { editable: false },
                         Name: { type: "string" },
                         Description: { type: "string" },
-                        IsPublicRelation: { type: "string" }
+                        Language: { defaultValue: { Name: "Tiếng Việt", CultureInfo: "vi-vn" } }
                     }
                 }
             }
@@ -288,7 +296,7 @@
             }
             ],
             change: function (e) {
-                grid.select().each(function() {
+                grid.select().each(function () {
                     var dataItem = grid.dataItem($(this));
                     $("#FullUrl").val(dataItem.FullUrl);
                 });
@@ -311,13 +319,14 @@
             tinyMCE.get('Content').setContent('');
             $("#Description").val('');
             $("#Tags").val('');
+            $("#IsActived").prop('checked', false);
             categoryMultiSelect.value('');
             priorityNumeric.value('');
             setImageUrl('');
             languageDropDownList.value(1);
             splitterToggle();
         });
-        
+
         $("#edit-article").click(function (e) {
             if (grid.select().length > 0) {
                 grid.select().each(function () {
@@ -328,6 +337,7 @@
                     $("#Description").val(dataItem.Description);
                     $("#Tags").val(dataItem.Tags);
                     tinyMCE.get('Content').setContent(dataItem.Content);
+                    $("#IsActived").prop('checked', dataItem.IsActived);
                     categoryMultiSelect.value(dataItem.Categories.toString().split(','));
                     priorityNumeric.value(dataItem.Priority);
                     setImageUrl(dataItem.ImageUrl);
@@ -342,25 +352,25 @@
             transport: {
                 read: {
                     url: '@Url.Action("GetImages", "Media")',
-                        type: "post",
-                        dataType: "json"
-                    },
-                    parameterMap: function (options, operation) {
-                        if (operation !== "read" && options.models) {
-                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 32 };
-                        }
-                        return null;
-                    }
+                    type: "post",
+                    dataType: "json"
                 },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models), page: options.page, pageSize: 32 };
+                    }
+                    return null;
+                }
+            },
             batch: true,
             pageSize: 16
         });
-        
+
         $("#article-image-pager").kendoPager({
             dataSource: articleImageDataSource
         });
 
-        $("#article-image-listView").kendoListView({
+        var articleImageListView = $("#article-image-listView").kendoListView({
             dataSource: articleImageDataSource,
             template: kendo.template($("#article-image-template").html())
         }).data("kendoListView");
@@ -380,14 +390,14 @@
             $(".k-upload-files").fadeOut(5000, function () {
                 $(this).remove();
             });
-            listView.dataSource.read();
+            articleImageListView.dataSource.read();
         }
-        
+
         $("#delete-article").click(function (e) {
             if (grid.select().length > 0) {
                 if (confirm("Bạn có chắc muốn xóa những bài viết đã chọn?")) {
                     var ids = [];
-                    grid.select().each(function() {
+                    grid.select().each(function () {
                         var dataItem = grid.dataItem($(this));
                         ids.push(dataItem.Id);
                     });
@@ -399,7 +409,7 @@
                 alert("Vui lòng chọn bài viết muốn xóa!");
             }
         });
-        
+
         $("#active-article").click(function (e) {
             if (grid.select().length > 0) {
                 if (confirm("Bạn có chắc muốn thay đổi trạng thái duyệt những bài viết đã chọn?")) {
@@ -431,7 +441,7 @@
                         $(this).html('');
                     });
                 });
-            } 
+            }
             return false;
         });
 
@@ -445,7 +455,7 @@
 
             splitter.toggle(pane, $(pane).width() <= 0);
         }
-        
+
         tinymce.init({
             selector: "#Content",
             theme: "modern",
@@ -460,7 +470,7 @@
             image_advtab: true,
             height: 305
         });
-        
+
         var categoryMultiSelect = $("#Category").kendoMultiSelect({
             placeholder: "Chọn danh mục...",
             dataTextField: "Name",
@@ -519,15 +529,15 @@
         }).data("kendoSplitter");
     });
 
-    function setImageUrl(url) {
-        if (url != "" && url != null) {
-            $("#avatar").attr("src", url);
-        } else {
-            $("#avatar").attr("src", "@Url.Content("~/Content/images/no-image.jpg")");
+        function setImageUrl(url) {
+            if (url != "" && url != null) {
+                $("#avatar").attr("src", url);
+            } else {
+                $("#avatar").attr("src", "@Url.Content("~/Content/images/no-image.jpg")");
         }
         $("#ImageUrl").val(url);
     }
-    
+
     function removeImage(id) {
         $.post('@Url.Action("DeleteImage", "Media")', { id: id }).done(function () {
             $("#article-image-listView").data("kendoListView").dataSource.read();

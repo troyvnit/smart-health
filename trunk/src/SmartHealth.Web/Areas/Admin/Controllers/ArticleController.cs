@@ -28,6 +28,16 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return View("~/Areas/Admin/Views/Article/Index.cshtml");
         }
 
+        public ActionResult ManageArticle()
+        {
+            return View("~/Areas/Admin/Views/Article/ManageArticle.cshtml");
+        }
+
+        public ActionResult CreateOrUpdateArticle(int? id)
+        {
+            return View("~/Areas/Admin/Views/Article/CreateOrUpdateArticle.cshtml");
+        }
+
         public ActionResult GetCategories()
         {
             List<ArticleCategoryDto> categories =
@@ -40,8 +50,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         {
             ArticleCategoryDto categoryDto =
                 JsonConvert.DeserializeObject<List<ArticleCategoryDto>>(models).FirstOrDefault();
-            ArticleCategory category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
-            articleCategoryService.SaveOrUpdate(category, true);
+            if(categoryDto != null)
+            {
+                categoryDto.Language = articleService.GetAll<Language>().FirstOrDefault(a => a.CultureInfo == categoryDto.Language.CultureInfo);
+                ArticleCategory category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
+                articleCategoryService.SaveOrUpdate(category, true);
+            }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 
@@ -72,18 +86,17 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                                              Priority = article.Priority,
                                              Title = article.Title,
                                              Tags = article.Tags,
-                                             FullUrl = Url.Action("ArticleDetail", "Home", new {article.Id}, url.Scheme),
-                                             LanguageId = article.Language != null ? article.Language.Id : 1
+                                             FullUrl = Url.Action("Article", "Home", new {article.Id}, url.Scheme)
                                          }
                                    : null).ToList();
             return Json(articles, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         [ValidateInput(false)]
         public ActionResult CreateOrUpdateArticle(ArticleDto articleDto)
         {
             Article article = Mapper.Map<ArticleDto, Article>(articleDto);
-            article.Language = articleService.Get<Language>(articleDto.LanguageId);
             if (!string.IsNullOrEmpty(articleDto.Categories))
             {
                 string[] categoryIds = articleDto.Categories.Split(',');

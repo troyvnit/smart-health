@@ -63,3 +63,11 @@ E:\Windows\Working\Projects\SH\src\SmartHealth.Web\bin\Autofac.xml
 E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\SmartHealth.Web.csprojResolveAssemblyReference.cache
 E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\SmartHealth.Web.dll
 E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\SmartHealth.Web.pdb
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\bin\en-us\SmartHealth.Web.resources.dll
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\SmartHealth.Web.Resources.SH.resources
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\SmartHealth.Web.Resources.SH.en-us.resources
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\SmartHealth.Web.csproj.GenerateResource.Cache
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\obj\Release\en-us\SmartHealth.Web.resources.dll
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\bin\Resources\SH.resx
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\bin\Resources\SH.en-us.resx
+E:\Windows\Working\Projects\SH\src\SmartHealth.Web\bin\Resources\SH.Designer.cs

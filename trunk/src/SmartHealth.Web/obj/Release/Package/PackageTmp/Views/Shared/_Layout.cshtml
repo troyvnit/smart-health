@@ -29,8 +29,17 @@
         ga('create', 'UA-45355701-1', 'smart-health.com.vn');
         ga('send', 'pageview');
     </script>
+
 </head>
 <body>
+<div id="fb-root"></div>
+<script>    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));</script>
 
 <div class="index">
 	<div class="mainindex">
@@ -39,12 +48,12 @@
             <div class="titcom"><img src="@Url.Content("~/Content/images/title.png")" alt="" /></div>
             <div class="menuhead">
             	<ul>
-                	<li class="language"><p>Ngôn ngữ</p>
-                        <a href="#"><img src="@Url.Content("~/Content/images/flag-vn.jpg")" alt="" /></a>
-                        <a href="#"><img src="@Url.Content("~/Content/images/flag-en.jpg")" alt="" /></a>
+                	<li class="language"><p>@SmartHealth.Web.Resources.SH.Language</p>
+                        <a href="@Url.Action("ChangeCulture", "Home", new { lang = "vi-vn", returnUrl = this.Request.RawUrl })"><img src="@Url.Content("~/Content/images/flag-vn.jpg")" alt="" /></a>
+                        <a href="@Url.Action("ChangeCulture", "Home", new { lang = "en-us", returnUrl = this.Request.RawUrl })"><img src="@Url.Content("~/Content/images/flag-en.jpg")" alt="" /></a>
                     </li>
                     <li><span>|</span></li>
-                    <li class="butdk"><a href="#">&bull; Đăng ký</a><a href="#">&bull; Đăng nhập</a></li>
+                    <li class="butdk"><a href="#">&bull; @SmartHealth.Web.Resources.SH.Register</a><a href="#">&bull; @SmartHealth.Web.Resources.SH.Login</a></li>
                     <li><span>|</span></li>
                     <li class="cart"><a href="#"><p id="OrderProductCount">0</p></a></li>
                 </ul>
@@ -55,32 +64,7 @@
     </div>
     <div class="QMbottom">
     	<div class="QM_bottom">
-        	<div class="boxTT">
-                	<ul>
-                    	<li class="tit"><p>Tin tức</p></li>
-                        <li><a href="#">Sức khỏe sinh sản</a></li>
-                        <li><a href="#">Tìm hiểu giới tính</a></li>
-                        <li><a href="#">Thực phẩm chức năng</a></li>
-                        <li><a href="#">Sức khỏe sinh sản</a></li>
-                        <li><a href="#">Tìm hiểu giới tính</a></li>
-                        <li><a href="#">Thực phẩm chức năng</a></li>
-                        <li><a href="#">Sức khỏe sinh sản</a></li>
-                        <li><a href="#">Tìm hiểu giới tính</a></li>
-                    </ul>
-                </div><!--boxTT-->
-            <div class="boxTT">
-                <ul>
-                    <li class="tit"><p>Hỗ trợ khách hàng</p></li>
-                    <li><a href="#">Điều khoản mua bán hàng hóa</a></li>
-                    <li><a href="#">Tra cứu thông tin đơn hàng</a></li>
-                    <li><a href="#">Giao hàng</a></li>
-                    <li><a href="#">Cách thức thanh toán</a></li>
-                    <li><a href="#">Hướng dẫn đặt hàng</a></li>
-                    <li><a href="#">Chính sách đổi trả hàng</a></li>
-                    <li><a href="#">Hướng dẫn đổi hàng</a></li>
-                    <li><a href="#">Hỏi đáp</a></li>
-                </ul>
-            </div><!--boxTT-->
+        	@{Html.RenderAction("GetBottomMenu", "Home");}
             <div class="boxTTT">
                 <div class="boxTT">
                     <ul>

@@ -11,7 +11,7 @@ namespace SmartHealth.Box.Domain.IRepository
     using SmartHealth.Box.Domain.Dtos;
     using SmartHealth.Box.Domain.Models;
 
-    public interface ITagRepository : IRepository<Tag>
+    public interface ITagRepository : IRepository<ProductGroup>
     {
     }
 }

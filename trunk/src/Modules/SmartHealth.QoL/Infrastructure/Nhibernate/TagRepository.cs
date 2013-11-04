@@ -17,7 +17,7 @@ namespace SmartHealth.Box.Infrastructure.Nhibernate
     using SmartHealth.Box.Domain.IRepository;
     using SmartHealth.Box.Domain.Models;
 
-    public class TagRepository : Repository<Tag>, ITagRepository
+    public class TagRepository : Repository<ProductGroup>, ITagRepository
     {
     }
 }

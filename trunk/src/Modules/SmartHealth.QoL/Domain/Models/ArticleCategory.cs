@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Domain.Models;
 
 namespace SmartHealth.Box.Domain.Models
@@ -21,6 +22,8 @@ namespace SmartHealth.Box.Domain.Models
         public virtual bool IsDeleted { get; set; }
 
         public virtual bool IsPublicRelation { get; set; }
+
+        public virtual Language Language { get; set; }
 
         public virtual IList<Article> Articles { get; set; } 
     }

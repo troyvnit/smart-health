@@ -45,9 +45,9 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .menuTop > ul > li { height:84px; float:left; background:url(/Content/images/me-2.jpg) no-repeat top left; padding-left:2px;}
 .menuTop > ul > li.home { background:none;}
-.menuTop > ul > li > a { float:left; height:84px;}
+.menuTop > ul > li > a { float:left; height:84px;max-width:128px;}
 .menuTop > ul > li > a > img { display:block; margin:0 auto; text-align:center; height:42px;}
-.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 17px; margin-top:5px; text-align:center;}
+.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 15px; margin-top:5px; text-align:center;}
 
 .menuTop > ul > li:hover > a, .menuTop > ul > li.active > a { float:left; background:url(/Content/images/me-1.jpg) repeat-x;}
 
@@ -58,7 +58,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 .menuTop > ul > li > ul > li > span { float:right; padding-left:20px;}
 .menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:bold;}
 
-.banner { width:940px; height:370px; float:left; margin-top:10px; background:url(/Content/images/BG-Banner.png) no-repeat top; padding:0 15px; position:relative; margin-left:-15px;}
+.banner { width:940px; height:370px; float:left; margin-top:10px; background:url(/Content/images/BG-Banner.png) no-repeat top; padding:0 14px; position:relative; margin-left:-15px;}
 #zalen { width:924px; height:354px; float:left; padding:7px; background:white; border:1px solid #ddd;}
 
 .viewhome { width:940px; float:left; margin-top:40px; border-top:6px #1cbf34 solid;}
@@ -290,6 +290,7 @@ ul.tabs li:hover a span, ul.tabs li.active a span { background:url(/Content/imag
 .rightContent { width:222px; float:right;}
 
 .boxRight { width:222px; float:left; margin-top:20px; border-top:3px #1cbf34 solid;}
+.boxRightF { width:222px; float:left; margin-top:20px; border:1px #1cbf34 solid;border-top:3px #1cbf34 solid; background-color:White;  }
 .boxRightI { width:220px; float:left; border:1px solid #c7dfe4; border-top:none; background:url(/Content/images/icon_27.png) repeat-x bottom white; position:relative; padding-bottom:10px;
 border-top-left-radius:0px;
 border-top-right-radius:0px;

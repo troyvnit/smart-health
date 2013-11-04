@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SmartHealth.Core.Domain.Models;
 
 namespace SmartHealth.Box.Domain.Dtos
 {
@@ -17,6 +18,8 @@ namespace SmartHealth.Box.Domain.Dtos
         public virtual string Description { get; set; }
 
         public virtual bool IsPublicRelation { get; set; }
+
+        public virtual Language Language { get; set; }
 
         public virtual IList<ArticleDto> ArticleDtos { get; set; }
     }

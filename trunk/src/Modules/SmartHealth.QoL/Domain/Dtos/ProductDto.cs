@@ -33,15 +33,11 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual string Status { get; set; }
 
-        public virtual string ImageUrl { get; set; }
+        public virtual string MediaUrl { get; set; }
 
         public virtual bool IsActived { get; set; }
 
-        public virtual bool IsMainProduct { get; set; }
-
-        public virtual bool IsSaleOff { get; set; }
-
-        public virtual int LanguageId { get; set; }
+        public virtual string Groups { get; set; }
 
         public virtual string Tags { get; set; }
     }

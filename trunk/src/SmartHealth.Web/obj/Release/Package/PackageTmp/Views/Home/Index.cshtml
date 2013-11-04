@@ -5,7 +5,7 @@
     var introductions = (List<ArticleDto>)ViewBag.Introductions;
     var newses = (List<ArticleDto>)ViewBag.Newses;
     var firstNews = newses.FirstOrDefault();
-    var mainProducts = (List<ProductDto>)ViewBag.MainProducts; 
+    var typicalProducts = (List<ProductDto>)ViewBag.TypicalProducts; 
 }
 
 <div class="banner">
@@ -40,7 +40,7 @@
             {
                 <p>@introductions.ElementAt(0).Title</p>
                 <span>@Html.Raw(introductions.ElementAt(0).Description)</span>
-                <a href="@Url.Action("ArticleDetail", "Home", new { id = introductions.ElementAt(0).Id })">Chi tiết</a>
+                <a href="@Url.Action("Article", "Home", new { id = introductions.ElementAt(0).Id })">Chi tiết</a>
             }
         </div>
         <div class="RviewI">
@@ -48,7 +48,7 @@
             {
                 <p>@introductions.ElementAt(1).Title</p>
                 <span>@Html.Raw(introductions.ElementAt(1).Description)</span>
-                <a href="@Url.Action("ArticleDetail", "Home", new { id = introductions.ElementAt(1).Id })">Chi tiết</a>
+                <a href="@Url.Action("Article", "Home", new { id = introductions.ElementAt(1).Id })">Chi tiết</a>
             }
         </div>
         <div class="viewhomeII">
@@ -57,7 +57,7 @@
                 {
                     <p>@introductions.ElementAt(2).Title</p>
                     <span>@Html.Raw(introductions.ElementAt(2).Description)</span>
-                    <a href="@Url.Action("ArticleDetail", "Home", new { id = introductions.ElementAt(2).Id })">Chi tiết</a>
+                    <a href="@Url.Action("Article", "Home", new { id = introductions.ElementAt(2).Id })">Chi tiết</a>
                 }
             </div>
         </div>
@@ -72,15 +72,15 @@
         <ul>
             @if (firstNews != null)
             {
-                <li class="pic"><a href="@Url.Action("ArticleDetail", "Home", new { id = firstNews.Id })">
+                <li class="pic"><a href="@Url.Action("Article", "Home", new { id = firstNews.Id })">
                     <img src="@firstNews.ImageUrl" alt="" /></a></li>
-                <li class="tit"><a href="@Url.Action("ArticleDetail", "Home", new { id = firstNews.Id })">@firstNews.Title</a></li>
+                <li class="tit"><a href="@Url.Action("Article", "Home", new { id = firstNews.Id })">@firstNews.Title</a></li>
                 <li class="con">@Html.Raw(firstNews.Description)</li>
             }
         </ul>
         @foreach (var news in newses.Skip(1))
         {
-            <a href="@Url.Action("ArticleDetail", "Home", new { id = news.Id })">@news.Title</a>
+            <a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a>
         }
     </div>
 </div>
@@ -91,7 +91,7 @@
         </h3>
     </div>
     <div class="Cprohone">
-        @foreach (var mainProduct in mainProducts)
+        @foreach (var typicalProduct in typicalProducts)
         {
             <div class="boxPro">
                 <ul>
@@ -100,14 +100,14 @@
                             <tbody>
                                 <tr>
                                     <td class="pic_1">
-                                        <a href="@Url.Action("ProductDetail", "Home", new { id = mainProduct.Id })">
-                                            <img src="@mainProduct.ImageUrl" alt=""/></a>
+                                        <a href="@Url.Action("Product", "Home", new { id = typicalProduct.Id })">
+                                            <img src="@typicalProduct.ImageUrl" alt=""/></a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </li>
-                    <li class="tit"><a href="@Url.Action("ProductDetail", "Home", new { id = mainProduct.Id })">@mainProduct.Name</a></li>
+                    <li class="tit"><a href="@Url.Action("Product", "Home", new { id = typicalProduct.Id })">@typicalProduct.Name</a></li>
                 </ul>
             </div>
         }

@@ -19,13 +19,19 @@
                                     Danh sách bài viết
                                 </td>
                                 <td>
-                                    <input style="width:240px;" type="text" value="Home/articleList/CategotyID" />
+                                    <input style="width:240px;" type="text" value="Home/articleList/CategotyID" readonly="readonly"/>
                                 </td>
                                 <td>
                                     Chi tiết bài viết
                                 </td>
                                 <td>
-                                    <input style="width:240px;" type="text" value="/Home/article/id" />
+                                    <input style="width:240px;" type="text" value="/Home/article/id"  readonly="readonly"/>
+                                </td>
+                                <td>
+                                    Link video trang chủ
+                                </td>
+                                <td>
+                                    <input style="width:240px;" type="text" value="/Home/article/id"  readonly="readonly"/>
                                 </td>
                             </tr>
                             <tr>
@@ -33,13 +39,13 @@
                                     Danh sách sản phẩm 
                                 </td>
                                 <td>
-                                    <input style="width:240px;" type="text" value="/home/productlist/categoryid" />
+                                    <input style="width:240px;" type="text" value="/home/productlist/categoryid"  readonly="readonly"/>
                                 </td>
                                 <td>
                                     Chi tiết sản phẩm
                                 </td>
                                 <td>
-                                    <input style="width:240px;" type="text" value="/home/product/id" />
+                                    <input style="width:240px;" type="text" value="/home/product/id"  readonly="readonly"/>
                                 </td>
                             </tr>
                         </table>
@@ -91,7 +97,8 @@
                             Url: { type: "string" },
                             Icon: { type: "string" },
                             Priority: { type: "number" },
-                            ParentId: { type: "number" }
+                            ParentId: { type: "number" },
+                            Language: { defaultValue: { CultureInfo: "vi-vn", Name: "Tiếng Việt" } }
                         }
                     }
                 }
@@ -123,7 +130,13 @@
                 field: "ParentId",
                 width: 100,
                 title: "Id cha"
-            }, { command: "destroy", title: "&nbsp;", width: 120 }
+            }, {
+                field: "Language",
+                title: "Ngôn ngữ",
+                editor: languageDropDownEditor,
+                template: "#=Language.Name#"
+            },
+            { command: "destroy", title: "&nbsp;", width: 120 }
             ],
             editable: true
         }).data("kendoGrid");
@@ -142,4 +155,16 @@
             ]
         }).data("kendoSplitter");
     });
+    
+    function languageDropDownEditor(container, options) {
+        $('<input required data-text-field="Name" data-value-field="CultureInfo" data-bind="value:' + options.field + '"/>')
+            .appendTo(container)
+            .kendoDropDownList({
+                autoBind: false,
+                dataSource: [
+                        { Name: "Tiếng Việt", CultureInfo: "vi-vn" },
+                        { Name: "English", CultureInfo: "en-us" }
+                ]
+            });
+    }
 </script>
