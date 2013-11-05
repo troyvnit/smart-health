@@ -116,6 +116,10 @@
                                 <div class="mota">
                                     @Html.Raw(productDetail.Introduction)
                                 </div>
+                                <div style="margin: 10px 20px;">
+                                    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="12" data-width="660">
+                                    </div>
+                                </div>
                             </div>
                             <!--End .xanh-->
                         </div>
@@ -131,6 +135,10 @@
                             <div class="xanh">
                                 <div class="danhgia">
                                     @Html.Raw(productDetail.Review)
+                                </div>
+                                <div style="margin: 10px 20px;">
+                                    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="12" data-width="660">
+                                    </div>
                                 </div>
                             </div>
                             <!--End .xanh-->
@@ -165,6 +173,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
+
                             </table>
                         </div>
                         <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
@@ -218,7 +227,6 @@
         </div>
     </div>
     <div class="boxRightF">
-
         <div class="fb-like-box" data-href="https://www.facebook.com/pages/Smart-Health/173034079568243"
             data-width="220px" data-colorscheme="light" data-show-faces="true" data-header="true"
             data-stream="false" data-show-border="false">
