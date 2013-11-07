@@ -13,6 +13,7 @@ using SmartHealth.Web.Controllers;
 
 namespace SmartHealth.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductController : BaseController
     {
         private readonly IService<Product> productService;

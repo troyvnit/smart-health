@@ -48,6 +48,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,9 +67,11 @@
     <Compile Include="ApplicationServices\Caching\CacheKeys.cs" />
     <Compile Include="ApplicationServices\Caching\UserCache.cs" />
     <Compile Include="Domain\Dtos\LanguageDto.cs" />
+    <Compile Include="Domain\Dtos\UserDto.cs" />
     <Compile Include="Domain\IRepository\IUserRepository.cs" />
     <Compile Include="Domain\Models\Language.cs" />
     <Compile Include="Domain\Models\User.cs" />
+    <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Infrastructure\Nhibernate\Mapping\UserMapping.cs" />
     <Compile Include="Infrastructure\Nhibernate\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

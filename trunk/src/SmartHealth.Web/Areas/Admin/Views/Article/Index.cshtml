@@ -136,6 +136,8 @@
                 <dd>#:Description#</dd>
                 <dt>Ngôn ngữ</dt>
                 <dd>#:Language.Name#</dd>
+                <dt>PR</dt>
+                <dd>#:IsPublicRelation#</dd>
             </dl>
         </div>
 </script>
@@ -164,6 +166,10 @@
                        <option value="en-us">English</option>
                     </select>
                     <span data-for="Language" class="k-invalid-msg"></span>
+                </dd>
+                <dt>PR</dt>
+                <dd>
+                    <input type="checkbox" class="k-checkbox" name="IsPublicRelation" data-bind="checked:IsPublicRelation">
                 </dd>
             </dl>
         </div>
@@ -215,6 +221,7 @@
                         Id: { editable: false },
                         Name: { type: "string" },
                         Description: { type: "string" },
+                        IsPublicRelation: { type: "boolean" },
                         Language: { defaultValue: { Name: "Tiếng Việt", CultureInfo: "vi-vn" } }
                     }
                 }

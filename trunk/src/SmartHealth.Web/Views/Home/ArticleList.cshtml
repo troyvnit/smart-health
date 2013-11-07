@@ -12,36 +12,25 @@
 }
 <div class="leftContent">
     <div class="boxLeft">
-        <div class="chitietsanpham">
-            <p>@ViewBag.CategoryName</p>
-        </div>
-        <div style="margin: 10px 20px;">
-            @if (articles != null)
-            {
-                foreach (var article in articles)
-                {
-                <div style="clear: both; margin-top: 20px;">
+        <div class="AboxLeft">
+                <p>@ViewBag.CategoryName</p>
+                            @foreach (var article in articles)
+                            {
+                <div class="AABoxLeft">
+                                <div class="boxTin">
+                                    <ul>
+                                        <li class="pic">
+                                            <a href="@Url.Action("Article", "Home", new {id = article.Id})"><img src="@article.MediaUrl" alt="" /></a>
+                                        </li>
+                                        <li class="tit"><a href="@Url.Action("Article", "Home", new {id = article.Id})">@article.Title</a></li>
+                                        <li>
+                                            @Html.Raw(article.Description)
+                                        </li>
+                                    </ul>
+                                </div>
                 </div>
-                <div>
-                    <div>
-                        <div style="float: left; width: 140px">
-                            <img src="@article.MediaUrl"  style="width:140px" />
-                        </div>
-                        <div style="float: left; width: 500px; margin-left: 10px;">
-                            <a href="@Url.Action("Article", "Home", new { id = article.Id })">
-                                <h3>
-                                    @article.Title</h3>
-                            </a>
-                            @article.Description
-                            <div style="float: right; margin-right: 20px;">
-                                <a href="@Url.Action("Article", "Home", new { id = article.Id })">Xem chi tiết </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                }
-            }
-        </div>
+                            }
+            </div>
     </div>
 </div>
 <!--leftContent-->

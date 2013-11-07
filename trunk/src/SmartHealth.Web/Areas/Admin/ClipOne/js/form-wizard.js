@@ -1,6 +1,6 @@
 var FormWizard = function () {
     var wizardContent = $('#wizard');
-    var wizardForm = $('#form');
+    var wizardForm = $('#troy');
     var initWizard = function () {
         // function to initiate Wizard Form
         wizardContent.smartWizard({
