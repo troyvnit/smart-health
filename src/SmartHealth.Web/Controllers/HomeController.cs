@@ -12,6 +12,7 @@ using AutoMapper;
 
 namespace SmartHealth.Web.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : BaseController
     {
         private readonly IService<Product> productService;
@@ -65,8 +66,7 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult GetTopMenu()
         {
-            var currentCultureInfo = this.Session != null && this.Session["Culture"] != null ? ((CultureInfo)this.Session["Culture"]).TextInfo.CultureName : "vi-vn";
-            var menus = menuService.GetAll().Where(a => a.Language.CultureInfo.ToUpper() == currentCultureInfo.ToUpper()).OrderBy(a => a.Priority).Select(Mapper.Map<Menu, MenuDto>).ToList();
+            var menus = menuService.GetAll().Where(a => a.Language.CultureInfo.ToUpper() == RouteData.Values["lang"].ToString().ToUpper()).OrderBy(a => a.Priority).Select(Mapper.Map<Menu, MenuDto>).ToList();
             ViewBag.Menus = menus;
             return View();
         }
@@ -79,7 +79,7 @@ namespace SmartHealth.Web.Controllers
             ViewBag.Newses = newses;
 
             var clientSupportArticles =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.ClientSupportArticles = clientSupportArticles;
             return View();
@@ -218,12 +218,6 @@ namespace SmartHealth.Web.Controllers
             else {
                 return RedirectToAction("Index", "Home");
             }
-        }
-
-        public ActionResult ChangeCulture(string lang, string returnUrl)
-        {
-            Session["Culture"] = new CultureInfo(lang);
-            return Redirect(returnUrl);
         }
     }
 }

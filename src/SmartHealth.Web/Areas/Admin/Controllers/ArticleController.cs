@@ -12,6 +12,7 @@ using SmartHealth.Web.Controllers;
 
 namespace SmartHealth.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ArticleController : BaseController
     {
         private readonly IService<Article> articleService;
@@ -81,7 +82,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                                              Content = article.Content,
                                              Description = article.Description,
                                              Id = article.Id,
-                                             ImageUrl = article.ImageUrl,
+                                             MediaUrl = article.MediaUrl,
                                              IsActived = article.IsActived,
                                              Priority = article.Priority,
                                              Title = article.Title,

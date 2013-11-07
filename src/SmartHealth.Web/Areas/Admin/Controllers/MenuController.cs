@@ -12,6 +12,7 @@ using SmartHealth.Web.Controllers;
 
 namespace SmartHealth.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class MenuController : BaseController
     {
         private readonly IService<Menu> menuService;

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using SmartHealth.Core.Helpers
+@{
     Layout = null;
 }
 
@@ -49,8 +50,8 @@
             <div class="menuhead">
             	<ul>
                 	<li class="language"><p>@SmartHealth.Web.Resources.SH.Language</p>
-                        <a href="@Url.Action("ChangeCulture", "Home", new { lang = "vi-vn", returnUrl = this.Request.RawUrl })"><img src="@Url.Content("~/Content/images/flag-vn.jpg")" alt="" /></a>
-                        <a href="@Url.Action("ChangeCulture", "Home", new { lang = "en-us", returnUrl = this.Request.RawUrl })"><img src="@Url.Content("~/Content/images/flag-en.jpg")" alt="" /></a>
+                        @Html.LanguageSelectorLink("vi-vn", Url.Content("~/Content/images/flag-vn.jpg"), null)
+                        @Html.LanguageSelectorLink("en-us", Url.Content("~/Content/images/flag-en.jpg"), null)
                     </li>
                     <li><span>|</span></li>
                     <li class="butdk"><a href="#">&bull; @SmartHealth.Web.Resources.SH.Register</a><a href="#">&bull; @SmartHealth.Web.Resources.SH.Login</a></li>

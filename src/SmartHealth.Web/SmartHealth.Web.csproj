@@ -152,6 +152,7 @@
     <Compile Include="..\CommonAssemblyInfo\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Resources\SH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2449,6 +2450,7 @@
     <Content Include="Views\Home\ArticleList.cshtml" />
     <Content Include="Views\Home\GetBottomMenu.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
+    <Content Include="Views\Account\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

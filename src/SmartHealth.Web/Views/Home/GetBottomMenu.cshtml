@@ -1,6 +1,6 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
 @{
-    var newses = (List<ArticleDto>)ViewBag.Newes;
+    var newses = (List<ArticleDto>)ViewBag.Newses;
     var clientSupportArticles = (List<ArticleDto>)ViewBag.ClientSupportArticles;
 }
 <div class="boxTT">
@@ -23,7 +23,7 @@
         <li class="tit">
             <p>@SmartHealth.Web.Resources.SH.ClientSupport</p>
         </li>
-        @if (newses != null)
+        @if (clientSupportArticles != null)
         {
             foreach (var clientSupportArticle in clientSupportArticles)
             {
