@@ -1,8 +1,0 @@
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Release\SmartHealth.Infrastructure.dll
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Release\SmartHealth.Infrastructure.pdb
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.dll
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.pdb
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.xml
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Release\SmartHealth.Infrastructure.csprojResolveAssemblyReference.cache
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Release\SmartHealth.Infrastructure.dll
-E:\Windows\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Release\SmartHealth.Infrastructure.pdb

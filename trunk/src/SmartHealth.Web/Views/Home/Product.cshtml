@@ -17,61 +17,28 @@
         <div class="chitietsanpham">
             <p>@productDetail.Name</p>
             <div class="hinhsanpham">
-                <div id="lofslidecontent45">
-                    <div class="lof-main-outer">
-                        <ul class="lof-main-wapper">
+                        <div id="bigPic">
                             @if (productImages != null)
                             {
                                 foreach (var productImage in productImages)
                                 {
-                                <li>
-                                    <table cellspacing="0" cellpadding="0" width="100%">
-                                        <tbody>
-                                            <tr>
-                                                <td class="pic_3">
-                                                    <img src="@productImage.MediaUrl" style="max-width:300px; max-height:240px;" alt="" />
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </li> 
+                                     <img src="@productImage.MediaUrl" style="max-width:300px; max-height:240px;" alt="" />
                                 }
                             }
-                        </ul>
-                    </div>
-                    <!--End .lof-main-wapper-->
-                    <div class="lof-navigator-wapper">
-                        <div onclick="return false" class="lof-next">
-                            <a href="#"></a>
                         </div>
-                        <div onclick="return false" class="lof-previous">
-                            <a href="#"></a>
-                        </div>
-                        <div class="lof-navigator-outer">
-                            <ul class="lof-navigator">
+                            <ul id="thumbs">
                                 @if (productImages != null)
                                 {
+                                    int i = 1;
                                     foreach (var productImage in productImages)
                                     {
-                                    <li>
-                                        <table cellspacing="0" cellpadding="0" width="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="pic_4">
-                                                        <img src="@productImage.MediaUrl" alt="" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </li> 
+                                        <li rel='@i'>
+                                            <img src="@productImage.MediaUrl" alt="" />
+                                        </li>
+                                        i++;
                                     }
                                 }
                             </ul>
-                        </div>
-                    </div>
-                    <!--End .lof-navigator-wapper-->
-                </div>
-                <!--End #lofslidecontent45-->
             </div>
             <!--hinhsanpham-->
             <div class="thongtinsp">
@@ -264,6 +231,44 @@
 </div>
 <!--rightContent-->
 <script type="text/javascript">
+    var currentImage;
+    var currentIndex = -1;
+    var interval;
+    function showImage(index) {
+        if (index < $('#bigPic img').length) {
+            var indexImage = $('#bigPic img')[index];
+            if (currentImage) {
+                if (currentImage != indexImage) {
+                    clearTimeout(myTimer);
+                    $(currentImage).fadeOut(250, function () {
+                        myTimer = setTimeout("showNext()", 3000);
+                        $(this).css({ 'display': 'none'});
+                        $(indexImage).css({ 'display': 'block', 'opacity': 1 });
+                    });
+                }
+            }
+            currentImage = indexImage;
+            currentIndex = index;
+            $('#thumbs li').removeClass('active');
+            $('#thumbs li').css({ 'display': 'none' });
+            $($('#thumbs li')[index]).addClass('active');
+            $($('#thumbs li')[index]).css({ 'display': 'block' });
+            var nextIndex = index < $('#thumbs li').length - 1 ? index + 1 : 0;
+            var prevIndex = index != 0 ? index - 1 : $('#thumbs li').length - 1;
+            console.log(prevIndex + " " + index + " " + nextIndex);
+            $($('#thumbs li')[nextIndex]).css({ 'display': 'block' });
+            $($('#thumbs li')[prevIndex]).css({ 'display': 'block' });
+        }
+    }
+
+    function showNext() {
+        var len = $('#bigPic img').length;
+        var next = currentIndex < (len - 1) ? currentIndex + 1 : 0;
+        showImage(next);
+    }
+
+    var myTimer;
+    
     $(document).ready(function () {
         $("#Buy").click(function (e) {
             if ($("#Quantity").val() == '' || $("#Quantity").val() < 1) {
@@ -280,6 +285,12 @@
             var quantity = parseFloat($("#Quantity").val());
             var price = parseFloat('@productDetail.SmartHealthPrice.ToString("N2").Replace(",", "")');
             $("#CalculatedPrice").html(quantity * price);
+        });
+        myTimer = setTimeout("showNext()", 3000);
+        showNext(); //loads first image
+        $('#thumbs li').bind('click', function (e) {
+            var count = $(this).attr('rel');
+            showImage(parseInt(count) - 1);
         });
     });
 </script>

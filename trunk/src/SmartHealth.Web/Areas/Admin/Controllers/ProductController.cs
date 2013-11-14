@@ -50,8 +50,14 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         public ActionResult DeleteGroup(string models)
         {
             var groupDto = JsonConvert.DeserializeObject<List<ProductGroupDto>>(models).FirstOrDefault();
-            var group = Mapper.Map<ProductGroupDto, ProductGroup>(groupDto);
-            productGroupService.Delete(group, true);
+            if (groupDto != null)
+            {
+                groupDto.Language =
+                    productService.GetAll<Language>().FirstOrDefault(a => a.CultureInfo == groupDto.Language.CultureInfo);
+                var group = Mapper.Map<ProductGroupDto, ProductGroup>(groupDto);
+                group.IsDeleted = true;
+                productGroupService.SaveOrUpdate(group, true);
+            }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 

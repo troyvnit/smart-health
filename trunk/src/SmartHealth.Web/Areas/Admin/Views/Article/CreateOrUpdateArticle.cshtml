@@ -1,15 +1,45 @@
-﻿@{
+﻿@using SmartHealth.Box.Domain.Dtos
+@{
     ViewBag.Title = "CreateOrUpdateArticle";
     Layout = "~/Areas/Admin/Views/Shared/_ReponsiveLayout.cshtml";
+    var categories = (List<ArticleCategoryDto>) ViewBag.Categories;
 }
 
-@using (Html.BeginForm("CreateOrUpdateArticle", "Article", FormMethod.Post, new { id = "article-form" }))
-{
+@*@using (Html.BeginForm("CreateOrUpdateArticle", "Article", FormMethod.Post, new { id = "article-form" }))
+{*@
+<a href="#responsive" data-toggle="modal" class="demo btn btn-blue">
+													View Demo
+												</a>
+<div id="responsive" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title">Hình ảnh</h4>
+			</div>
+			<div class="modal-body">
+					<div class="col-md-12">
+						<div id="upload-image">
+                                                            <input name="files" id="files" type="file" />
+                                                        </div>
+                                                        <div id="article-image-listView" class="row"></div>
+                                                        <div id="article-image-pager" class="k-pager-wrap"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+					Close
+				</button>
+				<button type="button" class="btn btn-blue">
+					Save changes
+				</button>
+			</div>
+		</div>
     <div class="col-sm-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="clip-grid"></i>
-                                Hình ảnh
+                                <i class="clip-checkbox"></i>
+                                Biên soạn bài viết
                                 <div class="panel-tools">
                                     <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
                                     </a>
@@ -21,8 +51,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="panel-body panel-scroll" style="height:300px">
-                                <form action="#" role="form" class="smart-wizard form-horizontal" id="troy">
+                            <div class="panel-body panel-scroll">
+                                <form action="@Url.Action("CreateOrUpdateArticle", "Article")" role="form" class="smart-wizard form-horizontal" id="form">
 										<div id="wizard" class="swMain">
 											<ul>
 												<li>
@@ -30,9 +60,9 @@
 														<div class="stepNumber">
 															1
 														</div>
-														<span class="stepDesc"> Step 1
+														<span class="stepDesc"> Bước 1
 															<br />
-															<small>Step 1 description</small> </span>
+															<small>Thông tin cơ bản</small> </span>
 													</a>
 												</li>
 												<li>
@@ -40,9 +70,9 @@
 														<div class="stepNumber">
 															2
 														</div>
-														<span class="stepDesc"> Step 2
+														<span class="stepDesc"> Bước 2
 															<br />
-															<small>Step 2 description</small> </span>
+															<small>Nội dung</small> </span>
 													</a>
 												</li>
 												<li>
@@ -50,9 +80,9 @@
 														<div class="stepNumber">
 															3
 														</div>
-														<span class="stepDesc"> Step 3
+														<span class="stepDesc"> Bước 3
 															<br />
-															<small>Step 3 description</small> </span>
+															<small>Hình ảnh</small> </span>
 													</a>
 												</li>
 												<li>
@@ -71,40 +101,94 @@
 													<span class="sr-only"> 0% Complete (success)</span>
 												</div>
 											</div>
-											<div id="step-1">
-												<h2 class="StepTitle">Step 1 Content</h2>
+											<div id="step-1" class="col-md-12">
+												<h3>Bước 1 Thông tin cơ bản</h3>
+                                                <hr/>
 												<div class="form-group">
 													<label class="col-sm-3 control-label">
-														Username <span class="symbol required"></span>
+														Tiêu đề <span class="symbol required"></span>
+													</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="hidden" id="Id" name="Id" />
+                                                        <input type="text" class="form-control" id="Title" name="Title" placeholder="Tiêu đề..." />
+                                                    </div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-3 control-label">
+														Mô tả <span class="symbol required"></span>
 													</label>
 													<div class="col-sm-7">
-														<input type="text" class="form-control" id="username" name="username" placeholder="Text Field">
+														<textarea class="form-control" id="Description" name="Description" placeholder="Mô tả..."></textarea>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label">
-														Email <span class="symbol required"></span>
+														Danh mục <span class="symbol required"></span>
 													</label>
-													<div class="col-sm-7">
-														<input type="email" class="form-control" id="email" name="email" placeholder="Text Field">
-													</div>
+                                                    <div class="col-sm-7">
+                                                        <select multiple="multiple" id="Categories" name="Categories" class="form-control search-select">
+                                                            @foreach(var category in categories)
+                                                            {
+                                                                <option value="@category.Id">@category.Name</option>
+                                                            }
+                                                        </select>
+                                                    </div>
 												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Password <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="password" class="form-control" id="password" name="password" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Confirm Password <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="password" class="form-control" id="password_again" name="password_again" placeholder="Text Field">
-													</div>
-												</div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">
+                                                        Tác giả <span class="symbol required"></span>
+                                                    </label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" id="Author" name="Author" placeholder="Tác giả...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">
+                                                        Nhãn <span class="symbol required"></span>
+                                                    </label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" id="Tags" name="Tags" placeholder="Nhãn...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">
+                                                        Thứ tự <span class="symbol required"></span>
+                                                    </label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" id="Priority" name="Priority" placeholder="Thứ tự...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">
+                                                        Ngôn ngữ <span class="symbol required"></span>
+                                                    </label>
+                                                    <div class="col-sm-7">
+                                                        <select class="form-control" id="LanguageId" name="LanguageId">
+                                                            <option value="1">Tiếng Việt</option>
+                                                            <option value="2">English</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">
+													    Ảnh đại diện <span class="symbol required"></span>
+												    </label>
+                                                    <div class="col-sm-7">
+                                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=no+image" alt=""/>
+                                                            </div>
+                                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                            <div>
+                                                                <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="icon-picture"></i> Select image</span><span class="fileupload-exists"><i class="icon-picture"></i> Change</span>
+                                                                    <input type="file">
+                                                                </span>
+                                                                <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
+                                                                    <i class="icon-remove"></i> Remove
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 												<div class="form-group">
 													<div class="col-sm-2 col-sm-offset-8">
 														<button class="btn btn-blue next-step btn-block">
@@ -114,68 +198,13 @@
 												</div>
 											</div>
 											<div id="step-2">
-												<h2 class="StepTitle">Step 2 Content</h2>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														full_name <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Phone Number <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="text" class="form-control" id="phone" name="phone" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Gender <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<label class="radio-inline">
-															<input type="radio" class="grey" value="f" name="gender" id="gender_female" >
-															Female
-														</label>
-														<label class="radio-inline">
-															<input type="radio" class="grey" value="m" name="gender"  id="gender_male">
-															Male
-														</label>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Address <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="text" class="form-control" id="address" name="address" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Country <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<select class="form-control" id="country" name="country">
-															<option value="">&nbsp;</option>
-															<option value="Country 1">Country 1</option>
-															<option value="Country 2">Country 2</option>
-															<option value="Country 3">Country 3</option>
-														</select>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														City <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="text" class="form-control" id="city" name="city" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
+												<h2 class="StepTitle">Bước 2 Nội dung</h2>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <textarea id="Content" name="Content"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
 													<div class="col-sm-2 col-sm-offset-3">
 														<button class="btn btn-light-grey back-step btn-block">
 															<i class="icon-circle-arrow-left"></i> Back
@@ -189,77 +218,10 @@
 												</div>
 											</div>
 											<div id="step-3">
-												<h2 class="StepTitle">Step 3 Title</h2>
+												<h2 class="StepTitle">Bước 3 Hình ảnh</h2>
 												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Card Holder Name <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="text" class="form-control" id="card_name" name="card_name" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Card Number <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<input type="text" class="form-control" id="card_number" name="card_number" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														CVC <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-4">
-														<input type="text" class="form-control" id="card_cvc" name="card_cvc" placeholder="Text Field">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Expiration(MM/YYYY) <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-4">
-														<div class="row">
-															<div class="col-sm-4">
-																<select class="form-control" id="card_expiry_mm" name="card_expiry_mm">
-																	<option value="">MM</option>
-																	<option value="01">1</option>
-																	<option value="02">2</option>
-																	<option value="03">3</option>
-																	<option value="04">4</option>
-																	<option value="05">5</option>
-																	<option value="06">6</option>
-																	<option value="07">7</option>
-																	<option value="08">8</option>
-																	<option value="09">9</option>
-																	<option value="10">10</option>
-																	<option value="11">11</option>
-																	<option value="12">12</option>
-																</select>
-															</div>
-															<div class="col-sm-4">
-																<input type="text" class="form-control" name="card_expiry_yyyy" id="card_expiry_yyyy" placeholder="YYYY">
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-3 control-label">
-														Payment Options <span class="symbol required"></span>
-													</label>
-													<div class="col-sm-7">
-														<div class="checkbox">
-															<label>
-																<input type="checkbox" class="grey" value="" name="payment" id="payment1">
-																Auto-Pay with this Credit Card
-															</label>
-														</div>
-														<div class="checkbox">
-															<label>
-																<input type="checkbox" class="grey" value="" name="payment"  id="payment2">
-																Email me monthly billing
-															</label>
-														</div>
+													<div class="col-sm-12">
+														 
 													</div>
 												</div>
 												<div class="form-group">
@@ -394,98 +356,11 @@
 											</div>
 										</div>
 									</form>
-                               @* <div id="upload-image">
-                                    <input name="files" id="files" type="file" />
-                                </div>
-                                <div id="article-image-listView" class="row"></div>
-                                <div id="article-image-pager" class="k-pager-wrap"></div>*@
+                               
                             </div>
                         </div>
                     </div>
-    <div class="col-sm-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="clip-checkbox"></i>
-                Biên soạn bài viết
-                                    <div class="panel-tools">
-                                        <a id="save-article" class="btn btn-xs btn-link" href="#">
-                                            <i class="clip-checkmark-2"></i>
-                                        </a>
-                                        <a id="cancel-article" class="btn btn-xs btn-link" href="#">
-                                            <i class="clip-arrow-left-3"></i>
-                                        </a>
-                                        <a id="message-article" class="btn btn-xs btn-link" style="display: none" href="#"></a>
-                                        <a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
-                                        <a class="btn btn-xs btn-link panel-close" href="#">
-                                            <i class="icon-remove"></i>
-                                        </a>
-                                    </div>
-            </div>
-            <div class="panel-body panel-scroll" style="height: 300px">
-                <div class="box-content">
-                    <div class="input-row">
-                        <div class="column-left">
-                            <a class="k-button delete-imageurl" onclick="setMediaUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
-                            <a href="#" onclick="return false;">
-                                <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
-                                <input type="hidden" name="MediaUrl" id="MediaUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
-                            </a>
-                        </div>
-                        <div class="column-right">
-                            <div class="input-row">
-                                <p>Tiêu đề: </p>
-                                <input type="hidden" id="Id" name="Id" />
-                                <input type="text" class="k-textbox" id="Title" name="Title" required validationmessage="Vui lòng nhập tiêu đề!" />
-                            </div>
-                            <div class="input-row">
-                                <p>Danh mục: </p>
-                                <select id="Category" name="Category"></select>
-                                <input type="hidden" id="Categories" name="Categories" />
-                            </div>
-                            <div class="input-row">
-                                <p>Mô tả: </p>
-                                <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 420px"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-row">
-                        <div id="tabstrip">
-                            <ul>
-                                <li class="k-state-active">Nội dung</li>
-                                <li>Thông tin</li>
-                                <li>Hình ảnh</li>
-                            </ul>
-                            <div>
-                                <textarea id="Content" name="Content"></textarea>
-                            </div>
-                            <div>
-                                <div class="input-row">
-                                    <p>Tác giả: </p>
-                                    <input type="text" class="k-textbox" id="Author" name="Author" />
-                                </div>
-                                <div class="input-row">
-                                    <p>Thứ tự: </p>
-                                    <input type="text" id="Priority" name="Priority" />
-                                </div>
-                                <div class="input-row">
-                                    <p>Ngôn ngữ: </p>
-                                    <input type="text" id="LanguageId" name="LanguageId" />
-                                </div>
-                                <div class="input-row">
-                                    <p>Nhãn: </p>
-                                    <textarea class="k-textbox" id="Tags" name="Tags" rows="4" cols="1" style="width: 100%"></textarea>
-                                </div>
-                            </div>
-                            <div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-}
+@*}*@
 <script type="text/x-kendo-template" id="article-image-template">
     <div class="col-md-3 col-sm-4 gallery-img">
 							<div class="wrap-image">
@@ -619,16 +494,16 @@
             $("#Categories").val(categoryMultiSelect.value());
         }
 
-        var priorityNumeric = $("#Priority").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
+        //var priorityNumeric = $("#Priority").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
 
-        var languageDropDownList = $("#LanguageId").width(150).kendoDropDownList({
-            dataTextField: "text",
-            dataValueField: "value",
-            dataSource: [
-                        { text: "Tiếng Việt", value: "1" },
-                        { text: "English", value: "2" }
-            ]
-        }).data("kendoDropDownList");
+        //var languageDropDownList = $("#LanguageId").width(150).kendoDropDownList({
+        //    dataTextField: "text",
+        //    dataValueField: "value",
+        //    dataSource: [
+        //                { text: "Tiếng Việt", value: "1" },
+        //                { text: "English", value: "2" }
+        //    ]
+        //}).data("kendoDropDownList");
 
         var tabStrip = $("#tabstrip").kendoTabStrip({
             animation: {

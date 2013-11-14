@@ -36,6 +36,10 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult CreateOrUpdateArticle(int? id)
         {
+            var categories =
+                articleCategoryService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(
+                    Mapper.Map<ArticleCategory, ArticleCategoryDto>).ToList();
+            ViewBag.Categories = categories;
             return View("~/Areas/Admin/Views/Article/CreateOrUpdateArticle.cshtml");
         }
 
@@ -64,8 +68,15 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         {
             ArticleCategoryDto categoryDto =
                 JsonConvert.DeserializeObject<List<ArticleCategoryDto>>(models).FirstOrDefault();
-            ArticleCategory category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
-            articleCategoryService.Delete(category, true);
+            if (categoryDto != null)
+            {
+                categoryDto.Language =
+                    articleService.GetAll<Language>().FirstOrDefault(
+                        a => a.CultureInfo == categoryDto.Language.CultureInfo);
+                ArticleCategory category = Mapper.Map<ArticleCategoryDto, ArticleCategory>(categoryDto);
+                category.IsDeleted = true;
+                articleCategoryService.SaveOrUpdate(category, true);
+            }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 

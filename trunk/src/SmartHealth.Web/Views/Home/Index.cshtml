@@ -6,7 +6,7 @@
     var newses = (List<ArticleDto>)ViewBag.Newses;
     var firstNews = newses.FirstOrDefault();
     var typicalProducts = (List<ProductDto>)ViewBag.TypicalProducts;
-    var videoLink = (MediaDto) ViewBag.VideoLink; 
+    var videoLinks = (List<MediaDto>) ViewBag.VideoLinks; 
 }
 
 <div class="banner">
@@ -66,10 +66,19 @@
 </div>
 <div class="viewIIhome">
     <div class="video">
-        @if(videoLink != null)
-        {
-        <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="@videoLink.MediaUrl" frameborder="0"></iframe>
-        }
+        <div class="callbacks_container">
+            <ul class="rslides" id="videoSlide">
+                @foreach(var videoLink in videoLinks)
+                {
+                    <li>
+                        @if (videoLink != null)
+                        {
+                            <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="@videoLink.MediaUrl" frameborder="0"></iframe>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
     <div class="news">
         <p><span>Tin tức</span></p>
@@ -248,3 +257,22 @@
         </div>
     </div>
 </div>
+<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+        $("#videoSlide").responsiveSlides({
+            auto: true,
+            pager: false,
+            nav: true,
+            speed: 10000,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+        });
+
+    });
+  </script>
