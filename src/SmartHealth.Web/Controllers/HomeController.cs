@@ -52,8 +52,8 @@ namespace SmartHealth.Web.Controllers
             var typicalProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(productGroupService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.TypicalProduct.ToUpper()))).OrderByDescending(a => a.CreatedDate).Take(6).Select(Mapper.Map<Product, ProductDto>).ToList();
             ViewBag.TypicalProducts = typicalProducts;
 
-            var videoLink = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).FirstOrDefault(a => a.Type == 3);
-            ViewBag.VideoLink = videoLink;
+            var videoLinks = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 3).ToList();
+            ViewBag.VideoLinks = videoLinks;
             return View();
         }
 

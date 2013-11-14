@@ -1,6 +1,6 @@
 var FormWizard = function () {
     var wizardContent = $('#wizard');
-    var wizardForm = $('#troy');
+    var wizardForm = $('#form');
     var initWizard = function () {
         // function to initiate Wizard Form
         wizardContent.smartWizard({
@@ -45,7 +45,7 @@ var FormWizard = function () {
             },
             ignore: ':hidden',
             rules: {
-                username: {
+                Title: {
                     minlength: 2,
                     required: true
                 },

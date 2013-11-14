@@ -239,6 +239,8 @@
     <Content Include="Areas\Admin\ClipOne\js\utility-error404.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\autosize\jquery.autosize.min.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\blockUI\jquery.blockUI.js" />
+    <Content Include="Areas\Admin\ClipOne\plugins\bootstrap-colorpalette\css\bootstrap-colorpalette.css" />
+    <Content Include="Areas\Admin\ClipOne\plugins\bootstrap-colorpalette\js\bootstrap-colorpalette.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Areas\Admin\ClipOne\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha.png" />
     <Content Include="Areas\Admin\ClipOne\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\hue.png" />
@@ -387,6 +389,7 @@
     <Content Include="Areas\Admin\ClipOne\plugins\jQRangeSlider\css\icons-classic\resultset_next.png" />
     <Content Include="Areas\Admin\ClipOne\plugins\jQRangeSlider\css\icons-classic\resultset_previous.png" />
     <Content Include="Areas\Admin\ClipOne\plugins\jQRangeSlider\jQAllRangeSliders-min.js" />
+    <Content Include="Areas\Admin\ClipOne\plugins\jquery-cookie\jquery.cookie.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\jQuery-File-Upload\css\jquery.fileupload-ui-noscript.css" />
     <Content Include="Areas\Admin\ClipOne\plugins\jQuery-File-Upload\css\jquery.fileupload-ui.css" />
@@ -433,6 +436,7 @@
     <Content Include="Areas\Admin\ClipOne\plugins\ladda-bootstrap\dist\ladda-themeless.min.css" />
     <Content Include="Areas\Admin\ClipOne\plugins\ladda-bootstrap\dist\ladda.min.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\ladda-bootstrap\dist\spin.min.js" />
+    <Content Include="Areas\Admin\ClipOne\plugins\less\less-1.5.0.min.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\nestable\jquery.nestable.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\perfect-scrollbar\src\jquery.mousewheel.js" />
     <Content Include="Areas\Admin\ClipOne\plugins\perfect-scrollbar\src\perfect-scrollbar.css" />
@@ -2180,6 +2184,7 @@
     <Content Include="Content\images\pro-3.jpg" />
     <Content Include="Content\images\qc-left.jpg" />
     <Content Include="Content\images\qc-right.jpg" />
+    <Content Include="Content\images\themes.gif" />
     <Content Include="Content\images\title.png" />
     <Content Include="Content\images\tt-1.jpg" />
     <Content Include="Content\images\tt-2.jpg" />
@@ -2194,6 +2199,7 @@
     <Content Include="Content\images\xa-1.png" />
     <Content Include="Content\images\xa-2.png" />
     <Content Include="Content\images\xa-3.png" />
+    <Content Include="Content\responsiveslides.css" />
     <Content Include="Content\style-banner.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -2423,6 +2429,7 @@
     <Content Include="Scripts\m2xn.js" />
     <Content Include="Scripts\main-jquery.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\responsiveslides.min.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\slider-hot.js" />
     <Content Include="Scripts\taadv_floating.js" />

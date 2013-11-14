@@ -73,15 +73,18 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return Json(videos, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult SetHomePageVideoLink(string videoLink)
+        public ActionResult SetHomePageVideoLink(string videoLinks)
         {
-            var video = mediaService.GetAll().FirstOrDefault(a => a.Type == 3);
-            if(video == null)
+            foreach (var videoLink in videoLinks.Split(' '))
             {
-                video = new Media { Type = 3, Product = mediaService.Get<Product>(1) };
+                var video = mediaService.GetAll().FirstOrDefault(a => a.Type == 3 && a.MediaUrl.Contains(videoLink));
+                if (video == null)
+                {
+                    video = new Media { Type = 3, Product = mediaService.Get<Product>(1) };
+                }
+                video.MediaUrl = videoLink;
+                mediaService.SaveOrUpdate(video, true);
             }
-            video.MediaUrl = videoLink;
-            mediaService.SaveOrUpdate(video, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
 

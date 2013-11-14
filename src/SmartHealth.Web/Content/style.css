@@ -349,3 +349,139 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .boxVideo { width:145px; height:auto; float:left; margin:0 7px;}
 .boxVideo p { color:#333; margin-top:5px;}
+
+ #push {
+	height: 43px; /* .push must be the same height as .footer */
+    padding-top:10px;
+}
+#wrapper{
+    width:979px;
+    min-height: 96%;
+	height: auto !important;
+	height: 96%;
+	text-align:left;
+    margin: 0 auto -30px;
+    padding:0 10px 0px 10px;
+}
+
+.clearfix{
+	clear:both;
+	float:none;
+}
+#bigPic{
+	width:285px;
+	height:200px;
+	padding:1px;
+	border:1px solid #CCC;
+	background-color:#FFF;
+	margin-bottom:10px;
+    overflow: hidden;
+}
+#bigPic img{
+	display:none;
+    height: 200px;
+    margin: auto auto;
+}
+ul#thumbs li.active{
+	border:2px solid #000;	
+	background:#fff;
+	padding:2px;
+}
+ul#thumbs, ul#thumbs li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+	
+ul#thumbs li{
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	border:1px solid #CCC;	
+	padding:3px;
+	cursor:pointer;
+}
+ul#thumbs img{
+	float:left;
+	width:85px;
+	height:85px;
+	line-height:85px;
+	overflow:hidden;
+	position:relative;
+	z-index:1;		
+}
+
+.callbacks_container {
+  margin-bottom: 50px;
+  position: relative;
+  float: left;
+  width: 100%;
+  }
+
+.callbacks {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.callbacks li {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.callbacks iframe {
+  display: block;
+  position: relative;
+  z-index: 1;
+  height: 392px;
+  width: 100%;
+  border: 0;
+  }
+
+.callbacks .caption {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: 20px;
+  text-shadow: none;
+  color: #fff;
+  background: #000;
+  background: rgba(0,0,0, .8);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 20px;
+  margin: 0;
+  max-width: none;
+  }
+
+.callbacks_nav {
+  position: absolute;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  top: 52%;
+  left: 0;
+  opacity: 0.7;
+  z-index: 3;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-decoration: none;
+  height: 61px;
+  width: 38px;
+  background: transparent url("/Content/images/themes.gif") no-repeat left top;
+  margin-top: -45px;
+  }
+
+.callbacks_nav:active {
+  opacity: 1.0;
+  }
+
+.callbacks_nav.next {
+  left: auto;
+  background-position: right top;
+  right: 0;
+  }
