@@ -109,7 +109,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         public ActionResult DeleteProductImage(int id, int productId)
         {
             var product = mediaService.Get<Product>(productId);
-            product.Images.Remove(mediaService.Get(id));
+            product.Medias.Remove(mediaService.Get(id));
             mediaService.SaveOrUpdate(product, true);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
