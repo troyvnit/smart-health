@@ -107,8 +107,8 @@ namespace SmartHealth.Web.Controllers
                     }
                 }
 
-                var productImages = product.Images.Select(Mapper.Map<Media, MediaDto>).ToList();
-                ViewBag.ProductImages = productImages;
+                var productMedias = product.Medias.Select(Mapper.Map<Media, MediaDto>).ToList();
+                ViewBag.ProductMedias = productMedias;
 
                 var relatedProducts = productService.GetAll().Select(Mapper.Map<Product, ProductDto>).ToList();
                 ViewBag.RelatedProducts = relatedProducts;

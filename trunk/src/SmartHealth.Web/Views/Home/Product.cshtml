@@ -3,7 +3,7 @@
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productDetail = (ProductDto)ViewBag.ProductDetail;
-    var productImages = (List<MediaDto>)ViewBag.ProductImages;
+    var productMedias = (List<MediaDto>)ViewBag.ProductMedias;
     var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
     var newses = (List<ArticleDto>)ViewBag.Newses;
     if (Session["SmartHealthUser"] == null)
@@ -18,19 +18,19 @@
             <p>@productDetail.Name</p>
             <div class="hinhsanpham">
                         <div id="bigPic">
-                            @if (productImages != null)
+                            @if (productMedias != null)
                             {
-                                foreach (var productImage in productImages)
+                                foreach (var productImage in productMedias.Where(a => a.Type == 1))
                                 {
                                      <img src="@productImage.MediaUrl" style="max-width:300px; max-height:240px;" alt="" />
                                 }
                             }
                         </div>
                             <ul id="thumbs">
-                                @if (productImages != null)
+                                @if (productMedias != null)
                                 {
                                     int i = 1;
-                                    foreach (var productImage in productImages)
+                                    foreach (var productImage in productMedias.Where(a => a.Type == 1))
                                     {
                                         <li rel='@i'>
                                             <img src="@productImage.MediaUrl" alt="" />
@@ -76,6 +76,7 @@
                         <li><a href="#tab1"><span>Mô tả</span></a></li>
                         <li><a href="#tab2"><span>Thuộc tính</span></a></li>
                         <li><a href="#tab3"><span>Đánh giá</span></a></li>
+                        <li><a href="#tab4"><span>Video</span></a></li>
                     </ul>
                     <div class="tab_container">
                         <div style="display: block;" id="tab1" class="tab_content">
@@ -102,6 +103,26 @@
                             <div class="xanh">
                                 <div class="danhgia">
                                     @Html.Raw(productDetail.Review)
+                                </div>
+                                <div style="margin: 10px 20px;">
+                                    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="12" data-width="660">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End .xanh-->
+                        </div>
+                        <div style="display: none;" id="tab4" class="tab_content">
+                            <div class="xanh">
+                                <div class="video">
+                                    <p>
+                                        @if (productMedias != null)
+                                        {
+                                            foreach (var productVideo in productMedias.Where(a => a.Type == 2))
+                                            {
+                                                <a class="fancybox-media" href="@productVideo.MediaUrl"><img src="@productVideo.ThumbnailUrl" style="max-width:200px; max-height:100px;" alt="" /></a>
+                                            }
+                                        }
+                                    </p>
                                 </div>
                                 <div style="margin: 10px 20px;">
                                     <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="12" data-width="660">
@@ -292,5 +313,19 @@
             var count = $(this).attr('rel');
             showImage(parseInt(count) - 1);
         });
+        $('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+				    openEffect: 'none',
+				    closeEffect: 'none',
+				    prevEffect: 'none',
+				    nextEffect: 'none',
+
+				    arrows: false,
+				    helpers: {
+				        media: {},
+				        buttons: {}
+				    }
+				});
     });
 </script>
