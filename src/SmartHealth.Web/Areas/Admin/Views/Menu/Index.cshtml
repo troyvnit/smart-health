@@ -8,7 +8,24 @@
             <div id="center-pane">
                 <div class="pane-content">
                     <div class="box-content">
-                        <div id="grid">
+                        <div class="input-row">
+                            <div id="tabstrip">
+                                <ul>
+                                    <li class="k-state-active">Menu</li>
+                                    <li>Video trang chủ</li>
+                                </ul>
+                                <div>
+                                    <div id="grid">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="box-content">
+                                        <a id="add-video" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Video</a>
+                                    </div>
+                                    <div id="product-video-listView"></div>
+                                    <div id="product-video-pager" class="k-pager-wrap"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="box-content">
@@ -26,15 +43,6 @@
                                 </td>
                                 <td>
                                     <input style="width:240px;" type="text" value="/Home/article/id"  readonly="readonly"/>
-                                </td>
-                                <td>
-                                    Link video trang chủ
-                                </td>
-                                <td>
-                                    <form action="@Url.Action("SetHomePageVideoLink", "Media")" method="POST">
-                                        <input style="width:240px;" type="text" name="VideoLinks"/>
-                                        <input type="submit" value="Gửi" />
-                                    </form>
                                 </td>
                             </tr>
                             <tr>
@@ -58,10 +66,46 @@
         </div>
     </div>
 </div>
+<script type="text/x-kendo-template" id="product-video-template">
+    <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            
+        <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="#:MediaUrl#" frameborder="0"></iframe>
+        </div>
+</script>
+<script type="text/x-kendo-tmpl" id="edit-product-video-template">
+        <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Url</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
+                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Avatar</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Mô tả</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
 <script>
     $(document).ready(function () {
         var grid = $("#grid").kendoGrid({
             dataSource: {
+                autoSync: true,
                 transport: {
                     read: {
                         url: '@Url.Action("GetMenus", "Menu")',
@@ -110,7 +154,7 @@
             filterable: true,
             sortable: true,
             pageable: true,
-            toolbar: ["create", "save", "cancel"],
+            toolbar: ["create"],
             columns: [{
                 editable: false,
                 width: 50,
@@ -144,6 +188,73 @@
             editable: true
         }).data("kendoGrid");
 
+        var tabStrip = $("#tabstrip").kendoTabStrip({
+            animation: {
+                open: {
+                    effects: "fadeIn"
+                }
+            }
+        }).data("kendoTabStrip");
+
+        var productVideoPager = $("#product-video-pager").kendoPager().data("kendoPager");
+
+        var productVideoListView = $("#product-video-listView").kendoListView({
+            template: kendo.template($("#product-video-template").html()),
+            editTemplate: kendo.template($("#edit-product-video-template").html())
+        }).data("kendoListView");
+
+        $("#add-video").click(function (e) {
+            productVideoListView.add();
+            e.preventDefault();
+        });
+
+            var productVideoDataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetHomePageVideos", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                update: {
+                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                destroy: {
+                    url: '@Url.Action("DeleteVideo", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                create: {
+                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 6,
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, nullable: true },
+                        ProductId: { type: "number", defaultValue: 1 },
+                        MediaUrl: { type: "string" },
+                        ThumbnailUrl: { type: "string" },
+                        Description: { type: "string" },
+                        Type: { type: "number", defaultValue: 3 }
+                    }
+                }
+            }
+        });
+            productVideoListView.setDataSource(productVideoDataSource);
+            productVideoPager.setDataSource(productVideoDataSource);
+
         $("#vertical").kendoSplitter({
             orientation: "vertical",
             panes: [
@@ -170,4 +281,5 @@
                 ]
             });
     }
+    
 </script>

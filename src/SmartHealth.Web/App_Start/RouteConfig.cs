@@ -13,6 +13,12 @@ namespace SmartHealth.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                "Home Controller", // Route name
+                "{lang}/{action}/{id}", // URL with parameters
+                new { controller = "Home", id = UrlParameter.Optional }, // Parameter defaults
+                new { lang = "[a-z]{2}-[a-z]{2}" }
+            );
 
             routes.MapRoute(
                 "Localization", // Route name

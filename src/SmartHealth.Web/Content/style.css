@@ -287,7 +287,7 @@ ul.tabs li:hover a span, ul.tabs li.active a span { background:url(/Content/imag
 .mota { width:746px; float:left; margin:10px;}
 .thuoctinh { width:746px; height:auto; float:left; margin:10px;}
 .danhgia { width:746px; height:auto; float:left; margin:10px;}
-.video { width:746px; height:auto; float:left; margin:10px;}
+.product-video-tab { width:746px; height:auto; float:left; margin:10px;}
 
 .rightContent { width:222px; float:right;}
 
@@ -328,7 +328,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .facebook { width:190px; height:auto; float:left; margin:10px 0 0 15px; padding-bottom:20px;}
 
-.tukhoa { width:222px; height:auto; float:left; padding:20px 0 10px 0; line-height:18px;}
+.tukhoa { width:676px; height:auto; float:left; padding:10px; line-height:18px;}
 .tukhoa span { font-weight:bold; float:left; padding-right:5px;}
 .tukhoa a { color:#015591; float:left; margin-right:3px; text-decoration: underline;}
 
@@ -486,3 +486,12 @@ ul#thumbs img{
   background-position: right top;
   right: 0;
   }
+.slider-wrapper { 
+	width: 330px; 
+	margin: 10px;
+    display: inline-block;
+}
+#carousel li {margin-right: 5px;}
+#carousel img {display: block; opacity: .5; cursor: pointer;}
+#carousel img:hover {opacity: 1;}
+#carousel .flex-active-slide img {opacity: 1; cursor: default;}
