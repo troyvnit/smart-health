@@ -36,7 +36,35 @@ namespace SmartHealth.Web
                        "~/Scripts/combobox.js"
                         ));
 
+            bundles.Add(new ScriptBundle("~/bundles/master/js/header").Include(
+                       "~/Scripts/jqueryTab.js",
+                       "~/Scripts/jquery-ui.min.js",
+                       "~/Scripts/js/cloud-zoom.1.0.2.js",
+                       "~/Scripts/js/jquery.nivo.slider.pack.js",
+                       "~/Scripts/js/jquery.flexslider-min.js",
+                       "~/Scripts/js/jquery.jcarousel.min.js",
+                       "~/Scripts/js/jquery.jcarousel.min_call.js",
+                       "~/Scripts/jquery.lazyload.min.js"
+                        ));
 
+            bundles.Add(new ScriptBundle("~/bundles/master/js/footer").Include(
+                       "~/Scripts/js/taadv_floating.js",
+                       "~/FancyBox/jquery.fancybox.js",
+                       "~/FancyBox/helpers/jquery.fancybox-buttons.js",
+                       "~/FancyBox/helpers/jquery.fancybox-thumbs.js",
+                       "~/FancyBox/helpers/jquery.fancybox-media.js"
+                        ));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/style.css",
+                "~/Content/style-banner.css",
+                "~/Content/nivo-slider.css",
+                "~/Content/nivo-slider/themes/default/default.css",
+                "~/Content/flexslider.css",
+                "~/FancyBox/jquery.fancybox.css",
+                "~/FancyBox/helpers/jquery.fancybox-buttons.css",
+                "~/FancyBox/helpers/jquery.fancybox-thumbs.css"
+                ));
 
             BundleTable.EnableOptimizations = true;
         }

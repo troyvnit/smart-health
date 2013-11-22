@@ -858,7 +858,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/26/2013 22:41:21</publishTime>
     </File>
     <File Include="Areas/Admin/Content/style.css">
-      <publishTime>11/11/2013 10:14:08</publishTime>
+      <publishTime>11/22/2013 13:21:54</publishTime>
     </File>
     <File Include="Areas/Admin/KendoUI/content/dataviz/dashboards/area-chart.png">
       <publishTime>10/16/2013 11:51:09</publishTime>
@@ -6105,13 +6105,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/04/2013 23:22:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Menu/Index.cshtml">
-      <publishTime>11/14/2013 15:14:42</publishTime>
+      <publishTime>11/21/2013 14:26:50</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Product/Index.cshtml">
-      <publishTime>11/08/2013 11:12:06</publishTime>
+      <publishTime>11/21/2013 14:24:17</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>11/06/2013 15:50:55</publishTime>
+      <publishTime>11/22/2013 22:26:16</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_ReponsiveLayout.cshtml">
       <publishTime>11/13/2013 16:12:09</publishTime>
@@ -6153,7 +6153,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:12</publishTime>
     </File>
     <File Include="bin/en-us/SmartHealth.Web.resources.dll">
-      <publishTime>11/14/2013 15:49:38</publishTime>
+      <publishTime>11/22/2013 22:43:34</publishTime>
     </File>
     <File Include="bin/FluentNHibernate.dll">
       <publishTime>10/15/2013 15:55:12</publishTime>
@@ -6189,10 +6189,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/14/2013 09:12:51</publishTime>
     </File>
     <File Include="bin/SmartHealth.Box.dll">
-      <publishTime>11/14/2013 15:49:36</publishTime>
+      <publishTime>11/19/2013 19:48:45</publishTime>
     </File>
     <File Include="bin/SmartHealth.Core.dll">
-      <publishTime>11/14/2013 15:49:35</publishTime>
+      <publishTime>11/19/2013 19:48:43</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.dll">
       <publishTime>11/14/2013 15:49:34</publishTime>
@@ -6201,13 +6201,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/14/2013 15:49:35</publishTime>
     </File>
     <File Include="bin/SmartHealth.Infrastructure.Web.dll">
-      <publishTime>11/14/2013 15:49:37</publishTime>
+      <publishTime>11/19/2013 19:48:46</publishTime>
     </File>
     <File Include="bin/SmartHealth.SampleModule.dll">
-      <publishTime>11/14/2013 15:49:36</publishTime>
+      <publishTime>11/19/2013 19:48:44</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>11/14/2013 15:49:38</publishTime>
+      <publishTime>11/22/2013 22:43:34</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -6248,6 +6248,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/WebGrease.dll">
       <publishTime>10/15/2013 15:55:04</publishTime>
     </File>
+    <File Include="Content/flexslider.css">
+      <publishTime>11/22/2013 22:31:46</publishTime>
+    </File>
     <File Include="Content/font/vhe/vhe.eot">
       <publishTime>10/21/2013 11:45:06</publishTime>
     </File>
@@ -6257,29 +6260,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/font/vhe/vhe.woff">
       <publishTime>10/21/2013 11:45:06</publishTime>
     </File>
+    <File Include="Content/fonts/flexslider-icon.eot">
+      <publishTime>11/22/2013 22:30:18</publishTime>
+    </File>
+    <File Include="Content/fonts/flexslider-icon.svg">
+      <publishTime>11/22/2013 22:30:18</publishTime>
+    </File>
+    <File Include="Content/fonts/flexslider-icon.ttf">
+      <publishTime>11/22/2013 22:30:18</publishTime>
+    </File>
+    <File Include="Content/fonts/flexslider-icon.woff">
+      <publishTime>11/22/2013 22:30:18</publishTime>
+    </File>
     <File Include="Content/images/arrows.png">
       <publishTime>10/21/2013 11:45:30</publishTime>
     </File>
     <File Include="Content/images/ban-1.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:43:33</publishTime>
     </File>
     <File Include="Content/images/ban-2.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:45:39</publishTime>
     </File>
     <File Include="Content/images/BG-Banner.png">
       <publishTime>10/21/2013 11:45:30</publishTime>
     </File>
     <File Include="Content/images/BG-Body.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:57:24</publishTime>
     </File>
     <File Include="Content/images/BG-Content.png">
       <publishTime>10/21/2013 11:45:30</publishTime>
     </File>
     <File Include="Content/images/BG-Index.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:54:22</publishTime>
     </File>
     <File Include="Content/images/BG-Menu.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:58:02</publishTime>
     </File>
     <File Include="Content/images/bullets.png">
       <publishTime>10/21/2013 11:45:30</publishTime>
@@ -6306,7 +6321,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:45:30</publishTime>
     </File>
     <File Include="Content/images/icon_12.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:58:25</publishTime>
     </File>
     <File Include="Content/images/icon_13.jpg">
       <publishTime>10/21/2013 11:45:30</publishTime>
@@ -6384,19 +6399,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:45:30</publishTime>
     </File>
     <File Include="Content/images/logo-1.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:54:43</publishTime>
     </File>
     <File Include="Content/images/logo-2.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:55:27</publishTime>
     </File>
     <File Include="Content/images/logo-3.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:55:09</publishTime>
     </File>
     <File Include="Content/images/logo.png">
       <publishTime>10/21/2013 11:45:30</publishTime>
     </File>
     <File Include="Content/images/logoz.jpg">
-      <publishTime>10/21/2013 11:45:30</publishTime>
+      <publishTime>11/19/2013 22:55:56</publishTime>
     </File>
     <File Include="Content/images/m-1.png">
       <publishTime>10/21/2013 11:45:30</publishTime>
@@ -6480,10 +6495,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:45:31</publishTime>
     </File>
     <File Include="Content/images/qc-left.jpg">
-      <publishTime>10/21/2013 11:45:31</publishTime>
+      <publishTime>11/19/2013 22:53:59</publishTime>
     </File>
     <File Include="Content/images/qc-right.jpg">
-      <publishTime>10/21/2013 11:45:31</publishTime>
+      <publishTime>11/19/2013 22:53:18</publishTime>
     </File>
     <File Include="Content/images/themes.gif">
       <publishTime>11/14/2013 14:52:31</publishTime>
@@ -6530,14 +6545,71 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/xa-3.png">
       <publishTime>10/21/2013 11:45:31</publishTime>
     </File>
+    <File Include="Content/nivo-slider.css">
+      <publishTime>11/21/2013 09:41:13</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/.DS_Store">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/bar/arrows.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/bar/bar.css">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/bar/bullets.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/bar/loading.gif">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/dark/.DS_Store">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/dark/arrows.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/dark/bullets.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/dark/dark.css">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/dark/loading.gif">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/default/arrows.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/default/bullets.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/default/default.css">
+      <publishTime>11/22/2013 15:36:09</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/default/loading.gif">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/light/arrows.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/light/bullets.png">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/light/light.css">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
+    <File Include="Content/nivo-slider/themes/light/loading.gif">
+      <publishTime>11/22/2013 15:17:47</publishTime>
+    </File>
     <File Include="Content/responsiveslides.css">
       <publishTime>11/14/2013 14:27:54</publishTime>
     </File>
     <File Include="Content/style-banner.css">
-      <publishTime>10/21/2013 16:55:48</publishTime>
+      <publishTime>11/21/2013 10:09:53</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>11/14/2013 15:05:02</publishTime>
+      <publishTime>11/22/2013 18:48:41</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>10/15/2013 15:55:29</publishTime>
@@ -6701,6 +6773,51 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/themes/base/minified/jquery.ui.theme.min.css">
       <publishTime>10/15/2013 15:55:29</publishTime>
     </File>
+    <File Include="FancyBox/blank.gif">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/fancybox_loading%402x.gif">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/fancybox_loading.gif">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/fancybox_overlay.png">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/fancybox_sprite%402x.png">
+      <publishTime>11/17/2013 23:05:26</publishTime>
+    </File>
+    <File Include="FancyBox/fancybox_sprite.png">
+      <publishTime>11/17/2013 23:05:26</publishTime>
+    </File>
+    <File Include="FancyBox/helpers/fancybox_buttons.png">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/helpers/jquery.fancybox-buttons.css">
+      <publishTime>11/21/2013 14:53:06</publishTime>
+    </File>
+    <File Include="FancyBox/helpers/jquery.fancybox-buttons.js">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/helpers/jquery.fancybox-media.js">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/helpers/jquery.fancybox-thumbs.css">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/helpers/jquery.fancybox-thumbs.js">
+      <publishTime>11/17/2013 23:05:27</publishTime>
+    </File>
+    <File Include="FancyBox/jquery.fancybox.css">
+      <publishTime>11/21/2013 14:54:41</publishTime>
+    </File>
+    <File Include="FancyBox/jquery.fancybox.js">
+      <publishTime>11/17/2013 23:05:26</publishTime>
+    </File>
+    <File Include="FancyBox/jquery.fancybox.pack.js">
+      <publishTime>11/17/2013 23:05:26</publishTime>
+    </File>
     <File Include="Global.asax">
       <publishTime>10/15/2013 15:59:39</publishTime>
     </File>
@@ -6774,13 +6891,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
     <File Include="Scripts/jquery.jcarousel.min.js">
-      <publishTime>10/21/2013 11:46:07</publishTime>
+      <publishTime>11/21/2013 11:17:14</publishTime>
     </File>
     <File Include="Scripts/jquery.jcarousel.min_call.js">
       <publishTime>11/06/2013 15:55:53</publishTime>
     </File>
     <File Include="Scripts/jquery.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery.lazyload.min.js">
+      <publishTime>11/19/2013 22:26:45</publishTime>
     </File>
     <File Include="Scripts/jquery.nivo.slider.pack.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
@@ -6813,7 +6933,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
     <File Include="Scripts/js/danhmuc-menu-jquery.js">
-      <publishTime>10/21/2013 11:46:07</publishTime>
+      <publishTime>11/21/2013 11:34:07</publishTime>
     </File>
     <File Include="Scripts/js/jcarousellite-1.0.1.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
@@ -6830,8 +6950,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/js/jquery.easing.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
+    <File Include="Scripts/js/jquery.flexslider-min.js">
+      <publishTime>11/22/2013 18:08:46</publishTime>
+    </File>
     <File Include="Scripts/js/jquery.jcarousel.min.js">
-      <publishTime>10/21/2013 11:46:07</publishTime>
+      <publishTime>11/21/2013 11:17:56</publishTime>
     </File>
     <File Include="Scripts/js/jquery.jcarousel.min_call.js">
       <publishTime>11/06/2013 15:55:33</publishTime>
@@ -6840,7 +6963,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
     <File Include="Scripts/js/jquery.nivo.slider.pack.js">
-      <publishTime>10/21/2013 11:46:07</publishTime>
+      <publishTime>11/21/2013 09:40:25</publishTime>
     </File>
     <File Include="Scripts/js/jqueryTab.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
@@ -6894,7 +7017,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2013 10:21:37</publishTime>
     </File>
     <File Include="Views/Home/Article.cshtml">
-      <publishTime>11/04/2013 23:30:32</publishTime>
+      <publishTime>11/22/2013 22:44:00</publishTime>
     </File>
     <File Include="Views/Home/ArticleDetail.cshtml">
       <publishTime>10/31/2013 23:03:36</publishTime>
@@ -6912,10 +7035,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2013 18:02:07</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/14/2013 15:49:00</publishTime>
+      <publishTime>11/21/2013 10:13:46</publishTime>
     </File>
     <File Include="Views/Home/Product.cshtml">
-      <publishTime>11/14/2013 13:35:54</publishTime>
+      <publishTime>11/22/2013 22:44:00</publishTime>
     </File>
     <File Include="Views/Home/ProductDetail.cshtml">
       <publishTime>11/01/2013 14:09:12</publishTime>
@@ -6924,16 +7047,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2013 00:40:19</publishTime>
     </File>
     <File Include="Views/Home/PublicRelation.cshtml">
-      <publishTime>11/04/2013 23:30:30</publishTime>
+      <publishTime>11/22/2013 22:44:00</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/14/2013 14:45:18</publishTime>
+      <publishTime>11/21/2013 13:31:24</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/14/2013 15:49:52</publishTime>
+      <publishTime>11/22/2013 22:45:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

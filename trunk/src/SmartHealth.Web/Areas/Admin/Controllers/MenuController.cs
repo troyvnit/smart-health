@@ -58,7 +58,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                 menuDto.Language =
                     menuService.GetAll<Language>().FirstOrDefault(a => a.CultureInfo == menuDto.Language.CultureInfo);
                 Menu menu = Mapper.Map<MenuDto, Menu>(menuDto);
-                menuService.SaveOrUpdate(menu, true);
+                menuService.Delete(menu, true);
                 menuDto.Id = menu.Id;
             }
             return Json(menuDto, JsonRequestBehavior.AllowGet);
