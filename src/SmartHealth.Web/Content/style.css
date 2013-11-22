@@ -204,7 +204,7 @@ ul#mycarousel li { width:175px; height:70px; float:left; display:block;}
 
 .leftContent { width:700px; float:left; margin-top:20px; background:url(/Content/images/BG-Content.png) no-repeat; padding:0 15px; position:relative; margin-left:-15px;}
 .boxLeft { width:698px; float:left; border:1px solid #ddd; background:white;}
-
+.boxLeft img { max-width:658px;}
 /*sanpham*/
 /*___chitietsanpham___*/
 
