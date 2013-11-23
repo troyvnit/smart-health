@@ -127,7 +127,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             foreach (Article article in ids.Split(',').Select(id => articleService.Get(Convert.ToInt32(id))))
             {
                 article.IsDeleted = true;
-                articleService.SaveOrUpdate(article, true);
+                articleService.Delete(article, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
