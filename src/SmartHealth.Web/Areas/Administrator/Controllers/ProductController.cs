@@ -108,7 +108,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             foreach (var product in ids.Split(',').Select(id => productService.Get(Convert.ToInt32(id))))
             {
                 product.IsDeleted = true;
-                productService.SaveOrUpdate(product, true);
+                productService.Delete(product, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);
         }

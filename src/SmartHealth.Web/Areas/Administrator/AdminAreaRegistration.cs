@@ -1,14 +1,14 @@
 ﻿using System.Web.Mvc;
 
-namespace SmartHealth.Web.Areas.Admin
+namespace SmartHealth.Web.Areas.Administrator
 {
-    public class AdminAreaRegistration : AreaRegistration
+    public class AdministratorAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Admin";
+                return "Administrator";
             }
         }
 

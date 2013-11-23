@@ -91,9 +91,16 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         public ActionResult DeleteVideo(string models)
         {
             var mediaDto = JsonConvert.DeserializeObject<List<MediaDto>>(models).FirstOrDefault();
-            var media = Mapper.Map<MediaDto, Media>(mediaDto);
-            mediaService.Delete(media, true);
-            return Json("Success", JsonRequestBehavior.AllowGet);
+            if (mediaDto != null)
+            {
+                if (mediaDto.Id != null)
+                {
+                    var media = mediaService.Get((int)mediaDto.Id);
+                    mediaService.Delete(media, true);
+                }
+                return Json("Success", JsonRequestBehavior.AllowGet);
+            }
+            return Json("Error", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteProductImage(int id, int productId)

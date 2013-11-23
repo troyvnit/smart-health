@@ -96,10 +96,10 @@
                                     <div class="box-content">
                                         <div class="input-row">
                                             <div class="column-left">
-                                                <a class="k-button delete-imageurl" onclick="setImageUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
+                                                <a class="k-button delete-imageurl" onclick="setMediaUrl(''); return false;" href="#"><span class="k-icon k-i-close"></span></a>
                                                 <a href="#" onclick="return false;">
                                                     <img id="avatar" src="@Url.Content("~/Content/images/no-image.jpg")" />
-                                                    <input type="hidden" name="MediaUrl" id="ImageUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
+                                                    <input type="hidden" name="MediaUrl" id="MediaUrl" value="@Url.Content("~/Content/images/no-image.jpg")" />
                                                 </a>
                                             </div>
                                             <div class="column-right">
@@ -359,7 +359,7 @@
             $("#Tags").val('');
             categoryMultiSelect.value('');
             priorityNumeric.value('');
-            setImageUrl('');
+            setMediaUrl('');
             languageDropDownList.value(1);
             splitterToggle();
         });
@@ -376,7 +376,7 @@
                     tinyMCE.get('Content').setContent(dataItem.Content);
                     categoryMultiSelect.value(dataItem.Categories.toString().split(','));
                     priorityNumeric.value(dataItem.Priority);
-                    setImageUrl(dataItem.ImageUrl);
+                    setMediaUrl(dataItem.MediaUrl);
                     languageDropDownList.value(dataItem.LanguageId);
                 });
                 splitterToggle();
@@ -565,7 +565,7 @@
         }).data("kendoSplitter");
     });
 
-    function setImageUrl(url) {
+    function setMediaUrl(url) {
         if (url != "" && url != null) {
             $("#avatar").attr("src", url);
         } else {

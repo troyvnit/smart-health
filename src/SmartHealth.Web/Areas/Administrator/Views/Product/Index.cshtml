@@ -25,6 +25,7 @@
                         <a id="edit-product" class="k-button k-button-icontext k-edit-button" href="#"><span class="k-icon k-i-pencil"></span>Sửa</a>
                         <a id="delete-product" class="k-button k-button-icontext k-delete-button" href="#"><span class="k-icon k-i-close"></span>Xóa</a>
                         <a id="active-product" class="k-button k-button-icontext k-active-button" href="#"><span class="k-icon k-i-tick"></span>Duyệt</a>
+                        <a id="message-product" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
                     </div>
 
                     <div class="box-content">
@@ -39,7 +40,7 @@
                         <div class="box-content">
                             <a id="save-product" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
                             <a id="cancel-product" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-i-cancel"></span>Quay lại</a>
-                            <a id="message-product" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
+                            
                         </div>
 
                         <div class="box-content">
@@ -205,7 +206,7 @@
                 <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
             </div>
             
-        <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="#:MediaUrl#" frameborder="0"></iframe>
+        <img width="100%" height="100%" src="#:ThumbnailUrl#" frameborder="0"/>
         </div>
 </script>
 <script type="text/x-kendo-tmpl" id="edit-product-video-template">
@@ -405,8 +406,11 @@
                     $("#Brand").val(dataItem.Brand);
                     $("#Weight").val(dataItem.Weight);
                     $("#Description").val(dataItem.Description);
-                    tinyMCE.get('Introduction').setContent(dataItem.Introduction);
-                    tinyMCE.get('Property').setContent(dataItem.Property);
+                    if (dataItem.Introduction != null)
+                        tinyMCE.get('Introduction').setContent(dataItem.Introduction);
+                    if (dataItem.Property != null)
+                        tinyMCE.get('Property').setContent(dataItem.Property);
+                    if (dataItem.Review != null)
                     tinyMCE.get('Review').setContent(dataItem.Review);
                     $("#Status").val(dataItem.Status);
                     $("#Tags").val(dataItem.Tags);
@@ -584,9 +588,10 @@
                     grid.dataSource.read();
                     var tab = tabStrip.tabGroup.children("li").eq(3);
                     tabStrip.enable(tab);
-                    $("#Id").val(result.Id);
-                    getImageManager(result.Id);
-                    getVideoManager(result.Id);
+                    //$("#Id").val(result.Id);
+                    //getImageManager(result.Id);
+                    //getVideoManager(result.Id);
+                    splitterToggle();
                     $("#message-product").html('<span class="k-icon k-i-note"></span>Lưu thành công!');
                     $("#message-product").css('float', 'right');
                     $("#message-product").show();

@@ -26,8 +26,9 @@
                         <a id="active-article" class="k-button k-button-icontext k-active-button" href="#"><span class="k-icon k-i-tick"></span>Duyệt</a>
                         <span class="k-space-left">
                             <a class="k-button k-button-icontext" href="#">Url: </a>
-                            <input type="text" class="k-textbox" id="FullUrl" style="width: 420px" />
+                            <input type="text" class="k-textbox" id="FullUrl" style="width: 300px" />
                         </span>
+                        <a id="message-article" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
                     </div>
 
                     <div class="box-content">
@@ -42,7 +43,7 @@
                         <div class="box-content">
                             <a id="save-article" class="k-button k-button-icontext k-save-button" href="#"><span class="k-icon k-i-tick"></span>Lưu</a>
                             <a id="cancel-article" class="k-button k-button-icontext k-cancel-button" href="#"><span class="k-icon k-i-cancel"></span>Quay lại</a>
-                            <a id="message-article" class="k-button k-button-icontext k-note-button" style="display: none" href="#"></a>
+                            
                         </div>
 
                         <div class="box-content">
@@ -345,6 +346,7 @@
                     $("#Author").val(dataItem.Author);
                     $("#Description").val(dataItem.Description);
                     $("#Tags").val(dataItem.Tags);
+                    if (dataItem.Content != null)
                     tinyMCE.get('Content').setContent(dataItem.Content);
                     $("#IsActived").prop('checked', dataItem.IsActived);
                     categoryMultiSelect.value(dataItem.Categories.toString().split(','));
@@ -442,7 +444,8 @@
                 tinyMCE.triggerSave();
                 $.post($("#article-form").attr('action'), $("#article-form").serialize()).done(function (result) {
                     grid.dataSource.read();
-                    $("#Id").val(result.Id);
+                    //$("#Id").val(result.Id);
+                    splitterToggle();
                     $("#message-article").html('<span class="k-icon k-i-note"></span>Lưu thành công!');
                     $("#message-article").css('float', 'right');
                     $("#message-article").show();
