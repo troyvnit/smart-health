@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
 }
 
 <div id="vertical">
@@ -303,10 +303,7 @@
                         dataType: "json"
                     }
                 },
-                pageSize: 20,
-                serverPaging: true,
-                serverFiltering: true,
-                serverSorting: true
+                pageSize: 20
             },
             height: 710,
             filterable: true,
@@ -399,6 +396,19 @@
                     tabStrip.enable(tabStrip.tabGroup.children("li").eq(5));
                     tabStrip.select(0);
                     var dataItem = grid.dataItem($(this));
+                    $.ajax({
+                        type: "GET",
+                        url: '@Url.Action("GetProductContent", "Product")',
+                        data: { id: dataItem.Id },
+                        async: false,
+                        success: function (result) {
+                            if (result != null) {
+                                dataItem.Introduction = result.Introduction;
+                                dataItem.Property = result.Property;
+                                dataItem.Review = result.Review;
+                            }
+                        }
+                    });
                     $("#Id").val(dataItem.Id);
                     $("#Name").val(dataItem.Name);
                     $("#SmartHealthPrice").val(dataItem.SmartHealthPrice);

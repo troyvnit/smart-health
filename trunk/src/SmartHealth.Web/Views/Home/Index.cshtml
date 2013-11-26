@@ -6,7 +6,8 @@
     var newses = (List<ArticleDto>)ViewBag.Newses;
     var firstNews = newses.FirstOrDefault();
     var typicalProducts = (List<ProductDto>)ViewBag.TypicalProducts;
-    var videoLinks = (List<MediaDto>) ViewBag.VideoLinks; 
+    var videoLinks = (List<MediaDto>)ViewBag.VideoLinks;
+    var partners = (List<MediaDto>)ViewBag.Partners; 
 }
 
 <div class="banner">
@@ -129,116 +130,42 @@
         <div class="sliderproducts">
             <div class="jcarousel-skin-tango">
                 <div class="jcarousel-container jcarousel-container-horizontal">
-                    <div class="jcarousel-clip jcarousel-clip-horizontal">
-                        <ul id="mycarousel" class="jcarousel-list jcarousel-list-horizontal">
-                            <li>
+                    @*<div id="carousel" class="flexslider">
+                        <ul class="slides">
+                            @if (partners != null)
+                            {
+                                foreach (var partner in partners)
+                                {
+                                
+                                <li>
+                                    <img src="@partner.ThumbnailUrl" />
+                                </li>
+                                }
+                            }
+                        </ul>
+                    </div>  *@
+                    <div id="mycarousel" class="flexslider partnerslider jcarousel-clip jcarousel-clip-horizontal">
+                        <ul class="slides jcarousel-list jcarousel-list-horizontal">
+                            @if (partners != null)
+                            {
+                                foreach (var partner in partners)
+                                {
+                                
+                                <li>
+                                    
                                 <table cellspacing="0" cellpadding="0" width="100%">
                                     <tbody>
                                         <tr>
                                             <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-1.jpg")" alt=""/></a>
+                                                <a href="@partner.MediaUrl">
+                                                    <img  src="@partner.ThumbnailUrl" style="width: auto;" alt=""/></a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-2.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-3.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-1.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-2.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-3.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-1.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-2.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a href="#">
-                                                    <img  src="@Url.Content("~/Content/images/logo-3.jpg")" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
+                                </li>
+                                }
+                            }
                         </ul>
                     </div>
                     <div class="jcarousel-prev jcarousel-prev-horizontal">
@@ -270,6 +197,14 @@
         $('#videoSlide').nivoSlider({
             animSpeed: 500,
             pauseTime: 10000
+        });
+        $('#mycarousel').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: true,
+            slideshow: true,
+            itemWidth: 175,
+            itemMargin: 15
         });
         $('.fancybox-media')
 				.attr('rel', 'media-gallery')

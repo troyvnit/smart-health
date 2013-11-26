@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
 }
 <div id="vertical">
     <div id="top-pane">
@@ -254,10 +254,7 @@
                         dataType: "json"
                     }
                 },
-                pageSize: 20,
-                serverPaging: true,
-                serverFiltering: true,
-                serverSorting: true
+                pageSize: 20
             },
             height: 710,
             filterable: true,
@@ -341,6 +338,17 @@
             if (grid.select().length > 0) {
                 grid.select().each(function () {
                     var dataItem = grid.dataItem($(this));
+                    $.ajax({
+                        type: "GET",
+                        url: '@Url.Action("GetArticleContent", "Article")',
+                        data: { id: dataItem.Id },
+                        async: false,
+                        success: function (result) {
+                            if(result != null) {
+                                dataItem.Content = result.Content;
+                            }
+                        }
+                    });
                     $("#Id").val(dataItem.Id);
                     $("#Title").val(dataItem.Title);
                     $("#Author").val(dataItem.Author);

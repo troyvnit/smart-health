@@ -14,10 +14,9 @@ namespace SmartHealth.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Home Controller No Id", // Route name
-                "{lang}/{controller}", // URL with parameters
-                new { action = "Index" }, // Parameter defaults
-                new { lang = "[a-z]{2}-[a-z]{2}" }
+                "Admin Controller", // Route name
+                "Admin/{controller}", // URL with parameters
+                new { action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(
@@ -31,7 +30,7 @@ namespace SmartHealth.Web
                 "Localization", // Route name
                 "{lang}/{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
-                new { lang = "[a-z]{2}-[a-z]{2}", id = "[0-9]" }
+                new { lang = "[a-z]{2}-[a-z]{2}" }
             );
 
             routes.MapRoute(

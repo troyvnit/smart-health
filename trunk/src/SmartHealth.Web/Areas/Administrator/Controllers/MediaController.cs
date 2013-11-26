@@ -79,6 +79,18 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return Json(videos, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetBannerImages()
+        {
+            var videos = mediaService.GetAll().Where(a => a.Type == 41 || a.Type == 42).Select(Mapper.Map<Media, MediaDto>).ToList();
+            return Json(videos, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetPartnerIcons()
+        {
+            var videos = mediaService.GetAll().Where(a => a.Type == 5).Select(Mapper.Map<Media, MediaDto>).ToList();
+            return Json(videos, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CreateOrUpdateVideo(string models)
         {
             var mediaDto = JsonConvert.DeserializeObject<List<MediaDto>>(models).FirstOrDefault();

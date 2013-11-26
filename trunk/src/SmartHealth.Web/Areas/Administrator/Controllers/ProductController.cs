@@ -26,7 +26,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
-            return View("~/Areas/Admin/Views/Product/Index.cshtml");
+            return View("~/Areas/Administrator/Views/Product/Index.cshtml");
         }
 
         public ActionResult GetGroups()
@@ -68,15 +68,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                 Brand = product.Brand,
                 Tags = product.Tags,
                 Groups = string.Join(",", product.Groups.Select(a => a.Id)),
-                Introduction = product.Introduction,
                 Description = product.Description,
                 Id = product.Id,
                 MediaUrl = product.MediaUrl,
                 IsActived = product.IsActived,
                 MarketPrice = product.MarketPrice,
                 Name = product.Name,
-                Property = product.Property,
-                Review = product.Review,
                 SmartHealthPrice = product.SmartHealthPrice,
                 ViewCount = product.ViewCount,
                 Weight = product.Weight,
@@ -84,6 +81,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                 Status = product.Status
             }).ToList();
             return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetProductContent(int id)
+        {
+            var product = productService.GetAll().Where(a => a.Id == id).Select(a => new ProductDto { Introduction = a.Introduction, Property = a.Property, Review = a.Review }).FirstOrDefault();
+            return product != null ? Json(product, JsonRequestBehavior.AllowGet) : null;
         }
 
         [ValidateInput(false)]

@@ -120,6 +120,9 @@
   <data name="ClientSupport" xml:space="preserve">
     <value>Chính sách bán hàng</value>
   </data>
+  <data name="FooterNews" xml:space="preserve">
+    <value>Tin tức footer</value>
+  </data>
   <data name="HomeShortCut" xml:space="preserve">
     <value>Đường tắt trang chủ</value>
   </data>

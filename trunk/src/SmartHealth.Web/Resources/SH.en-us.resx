@@ -120,6 +120,9 @@
   <data name="ClientSupport" xml:space="preserve">
     <value>Client Support Articles</value>
   </data>
+  <data name="FooterNews" xml:space="preserve">
+    <value>Footer News</value>
+  </data>
   <data name="HomeShortCut" xml:space="preserve">
     <value>Home ShortCuts</value>
   </data>

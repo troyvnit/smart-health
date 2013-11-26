@@ -26,12 +26,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View("~/Areas/Admin/Views/Article/Index.cshtml");
+            return View("~/Areas/Administrator/Views/Article/Index.cshtml");
         }
 
         public ActionResult ManageArticle()
         {
-            return View("~/Areas/Admin/Views/Article/ManageArticle.cshtml");
+            return View("~/Areas/Administrator/Views/Article/ManageArticle.cshtml");
         }
 
         public ActionResult CreateOrUpdateArticle(int? id)
@@ -40,7 +40,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                 articleCategoryService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(
                     Mapper.Map<ArticleCategory, ArticleCategoryDto>).ToList();
             ViewBag.Categories = categories;
-            return View("~/Areas/Admin/Views/Article/CreateOrUpdateArticle.cshtml");
+            return View("~/Areas/Administrator/Views/Article/CreateOrUpdateArticle.cshtml");
         }
 
         public ActionResult GetCategories()
@@ -90,7 +90,6 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                                          {
                                              Author = article.Author,
                                              Categories = string.Join(",", article.Categories.Select(a => a.Id)),
-                                             Content = article.Content,
                                              Description = article.Description,
                                              Id = article.Id,
                                              MediaUrl = article.MediaUrl,
@@ -102,6 +101,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                                          }
                                    : null).ToList();
             return Json(articles, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetArticleContent(int id)
+        {
+            var article = articleService.GetAll().Where(a => a.Id == id).Select(a => new ArticleDto{ Content = a.Content }).FirstOrDefault();
+            return article != null ? Json(article, JsonRequestBehavior.AllowGet) : null;
         }
 
         [HttpPost]

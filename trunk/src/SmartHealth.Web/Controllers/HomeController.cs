@@ -52,6 +52,9 @@ namespace SmartHealth.Web.Controllers
 
             var videoLinks = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 3).ToList();
             ViewBag.VideoLinks = videoLinks;
+
+            var partners = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 5).ToList();
+            ViewBag.Partners = partners;
             return View();
         }
 
@@ -72,7 +75,7 @@ namespace SmartHealth.Web.Controllers
         public ActionResult GetBottomMenu()
         {
             var newses =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.FooterNews.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.Newses = newses;
 
@@ -216,6 +219,13 @@ namespace SmartHealth.Web.Controllers
             else {
                 return RedirectToAction("Index", "Home");
             }
+        }
+
+        public ActionResult AdvertisementBanner()
+        {
+            var banners = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 41 || a.Type == 42).ToList();
+            ViewBag.Banners = banners;
+            return View();
         }
     }
 }

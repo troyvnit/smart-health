@@ -1,0 +1,27 @@
+﻿@using SmartHealth.Box.Domain.Dtos
+@{
+    var banners = (List<MediaDto>)ViewBag.Banners;
+}
+
+<div id="divAdLeft" style="width:160px; display:none; position:absolute;">
+    <div class="bannergroup">
+        @foreach(var banner in banners.Where(a => a.Type == 41))
+        {
+            <div class="banneritem">
+                <a href="@banner.MediaUrl" target="_blank"><img src="@banner.MediaUrl" alt="" /></a>
+                <div class="clr"></div>
+            </div>  
+        }
+    </div>
+</div>
+<div id="divAdRight" style="width:160px; display:none; position:absolute;">
+    <div class="bannergroup">
+        @foreach(var banner in banners.Where(a => a.Type == 42))
+        {
+            <div class="banneritem">
+                <a href="@banner.MediaUrl" target="_blank"><img src="@banner.MediaUrl" alt="" /></a>
+                <div class="clr"></div>
+            </div>  
+        }
+    </div>
+</div>
