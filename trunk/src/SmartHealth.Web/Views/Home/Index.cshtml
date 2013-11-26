@@ -31,8 +31,21 @@
     </div>
 </div>
 <div class="viewhome">
+	<script type="text/javascript">
+        $(document).ready(function () {
+            $(".viewhomeI .viewhomeTab").hover(
+            function () {
+                $('.viewhomeTab').removeClass('onViewHover');
+                $(this).addClass('onViewHover');
+            },
+            function () {
+                $('.viewhomeTab').removeClass('onViewHover');
+                $('.CviewI').addClass('onViewHover');
+            });
+        });
+    </script>
     <div class="viewhomeI">
-        <div class="LviewI">
+        <div class="viewhomeTab LviewI">
             @if (introductions.Count() > 0)
             {
                 <p>@introductions.ElementAt(0).Title</p>
@@ -40,7 +53,7 @@
                 <a href="@Url.Action("Article", "Home", new { id = introductions.ElementAt(0).Id })">Chi tiết</a>
             }
         </div>
-        <div class="RviewI">
+        <div class="viewhomeTab RviewI">
             @if (introductions.Count() > 1)
             {
                 <p>@introductions.ElementAt(1).Title</p>
@@ -48,15 +61,15 @@
                 <a href="@Url.Action("Article", "Home", new { id = introductions.ElementAt(1).Id })">Chi tiết</a>
             }
         </div>
-        <div class="viewhomeII">
-            <div class="CviewI">
+        <div class="viewhomeTab CviewI onViewHover">
+            
                 @if (introductions.Count() > 2)
                 {
                     <p>@introductions.ElementAt(2).Title</p>
                     <span>@Html.Raw(introductions.ElementAt(2).Description)</span>
                     <a href="@Url.Action("Article", "Home", new { id = introductions.ElementAt(2).Id })">Chi tiết</a>
                 }
-            </div>
+           
         </div>
     </div>
 </div>
