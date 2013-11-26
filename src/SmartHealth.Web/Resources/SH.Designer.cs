@@ -70,6 +70,15 @@ namespace SmartHealth.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tin tức footer.
+        /// </summary>
+        public static string FooterNews {
+            get {
+                return ResourceManager.GetString("FooterNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đường tắt trang chủ.
         /// </summary>
         public static string HomeShortCut {

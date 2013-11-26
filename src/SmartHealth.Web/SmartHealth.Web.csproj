@@ -2498,6 +2498,7 @@
     <Content Include="Views\Home\GetBottomMenu.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Home\AdvertisementBanner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

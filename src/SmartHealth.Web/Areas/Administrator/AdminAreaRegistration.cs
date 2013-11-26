@@ -15,8 +15,8 @@ namespace SmartHealth.Web.Areas.Administrator
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "Administrator_default",
+                "Administrator/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

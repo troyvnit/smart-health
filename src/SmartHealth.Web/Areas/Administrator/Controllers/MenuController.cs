@@ -24,7 +24,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View("~/Areas/Admin/Views/Menu/Index.cshtml");
+            return View("~/Areas/Administrator/Views/Menu/Index.cshtml");
         }
 
         public ActionResult GetMenus()

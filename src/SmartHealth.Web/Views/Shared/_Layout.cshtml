@@ -115,23 +115,8 @@
     
 
 </div>
-<!-- Start TAadv Floating -->
-	<div id="divAdLeft" style="width:160px; display:none; position:absolute;">
-    <div class="bannergroup">
-        <div class="banneritem">
-            <a href="#" target="_blank"><img src="@Url.Content("~/Content/images/qc-right.jpg")" alt="" /></a>
-            <div class="clr"></div>
-        </div>
-    </div>
-</div>
-<div id="divAdRight" style="width:160px; display:none; position:absolute;">
-    <div class="bannergroup">
-        <div class="banneritem">
-            <a href="#" target="_blank"><img src="@Url.Content("~/Content/images/qc-left.jpg")" alt="" /></a>
-            <div class="clr"></div>
-        </div>
-    </div>
-</div>
+    <!-- Start TAadv Floating -->
+    @{Html.RenderAction("AdvertisementBanner", "Home");}
 @Scripts.Render("~/bundles/master/js/footer")
 <script type="text/javascript">
     var MainContentW = 1000;

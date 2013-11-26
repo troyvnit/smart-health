@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
 }
 <div id="vertical">
     <div id="top-pane">
@@ -13,6 +13,8 @@
                                 <ul>
                                     <li class="k-state-active">Menu</li>
                                     <li>Video trang chủ</li>
+                                    <li>Banner quảng cáo</li>
+                                    <li>Đối tác phân phối</li>
                                 </ul>
                                 <div>
                                     <div id="grid">
@@ -24,6 +26,20 @@
                                     </div>
                                     <div id="product-video-listView"></div>
                                     <div id="product-video-pager" class="k-pager-wrap"></div>
+                                </div>
+                                <div>
+                                    <div class="box-content">
+                                        <a id="add-banner" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Banner</a>
+                                    </div>
+                                    <div id="banner-listView"></div>
+                                    <div id="banner-pager" class="k-pager-wrap"></div>
+                                </div>
+                                <div>
+                                    <div class="box-content">
+                                        <a id="add-partner" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Partner</a>
+                                    </div>
+                                    <div id="partner-listView"></div>
+                                    <div id="partner-pager" class="k-pager-wrap"></div>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +82,7 @@
         </div>
     </div>
 </div>
-<script type="text/x-kendo-template" id="product-video-template">
+<script type="text/x-kendo-template" id="view-template">
     <div class="product-video-view k-widget">
             <div class="edit-buttons">
                 <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
@@ -76,7 +92,7 @@
         <img width="100%" height="100%" src="#:ThumbnailUrl#" frameborder="0"/>
         </div>
 </script>
-<script type="text/x-kendo-tmpl" id="edit-product-video-template">
+<script type="text/x-kendo-tmpl" id="edit-template">
         <div class="product-video-view k-widget">
             <div class="edit-buttons">
                 <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
@@ -89,6 +105,79 @@
                     <span data-for="MediaUrl" class="k-invalid-msg"></span>
                 </dd>
                 <dt>Avatar</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Mô tả</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
+<script type="text/x-kendo-template" id="view-banner-template">
+    <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            
+        <img width="100%" height="100%" src="#:ThumbnailUrl#" frameborder="0"/>
+        </div>
+</script>
+<script type="text/x-kendo-tmpl" id="edit-banner-template">
+        <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Url</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
+                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Icon</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Vị trí</dt>
+                <dd>
+                    <select data-role="dropdownlist" data-bind="value:Type" data-value-field="Type" name="Type" required="required" validationMessage="không được trống">  
+                       <option value="41">Bên trái</option>  
+                       <option value="42">Bên phải</option>
+                    </select>
+                    <span data-for="Type" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
+<script type="text/x-kendo-template" id="view-partner-template">
+    <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            
+        <img width="100%" height="100%" src="#:ThumbnailUrl#" frameborder="0"/>
+        </div>
+</script>
+<script type="text/x-kendo-tmpl" id="edit-partner-template">
+        <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Link</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
+                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Icon</dt>
                 <dd>
                     <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
                     <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
@@ -199,8 +288,8 @@
         var productVideoPager = $("#product-video-pager").kendoPager().data("kendoPager");
 
         var productVideoListView = $("#product-video-listView").kendoListView({
-            template: kendo.template($("#product-video-template").html()),
-            editTemplate: kendo.template($("#edit-product-video-template").html())
+            template: kendo.template($("#view-template").html()),
+            editTemplate: kendo.template($("#edit-template").html())
         }).data("kendoListView");
 
         $("#add-video").click(function (e) {
@@ -254,6 +343,124 @@
         });
             productVideoListView.setDataSource(productVideoDataSource);
             productVideoPager.setDataSource(productVideoDataSource);
+        
+            var bannerPager = $("#banner-pager").kendoPager().data("kendoPager");
+
+            var bannerListView = $("#banner-listView").kendoListView({
+                template: kendo.template($("#view-banner-template").html()),
+                editTemplate: kendo.template($("#edit-banner-template").html())
+            }).data("kendoListView");
+
+            $("#add-banner").click(function (e) {
+                bannerListView.add();
+                e.preventDefault();
+            });
+
+            var bannerDataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetBannerImages", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    destroy: {
+                        url: '@Url.Action("DeleteVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 6,
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, nullable: true },
+                            ProductId: { type: "number", defaultValue: 1 },
+                            MediaUrl: { type: "string" },
+                            ThumbnailUrl: { type: "string" },
+                            Description: { type: "string", defaultValue: "" },
+                            Type: { type: "number", defaultValue: 41 }
+                        }
+                    }
+                }
+            });
+        bannerListView.setDataSource(bannerDataSource);
+        bannerPager.setDataSource(bannerDataSource);
+        
+        var partnerPager = $("#partner-pager").kendoPager().data("kendoPager");
+
+        var partnerListView = $("#partner-listView").kendoListView({
+            template: kendo.template($("#view-partner-template").html()),
+            editTemplate: kendo.template($("#edit-partner-template").html())
+        }).data("kendoListView");
+
+        $("#add-partner").click(function (e) {
+            partnerListView.add();
+            e.preventDefault();
+        });
+
+        var partnerDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetPartnerIcons", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    destroy: {
+                        url: '@Url.Action("DeleteVideo", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 6,
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, nullable: true },
+                            ProductId: { type: "number", defaultValue: 1 },
+                            MediaUrl: { type: "string" },
+                            ThumbnailUrl: { type: "string" },
+                            Description: { type: "string", defaultValue: "" },
+                            Type: { type: "number", defaultValue: 5 }
+                        }
+                    }
+                }
+            });
+        partnerListView.setDataSource(partnerDataSource);
+        partnerPager.setDataSource(partnerDataSource);
 
         $("#vertical").kendoSplitter({
             orientation: "vertical",
