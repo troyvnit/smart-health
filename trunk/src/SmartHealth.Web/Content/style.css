@@ -88,31 +88,51 @@ box-shadow:3px 3px 3px #ddd; /* Opera 10.5+, future browsers and IE6+ */
 behavior: url(ie-css3.htc); /* hack for IE */
 }
 
-.LviewI { width:280px; height:298px; float:left; margin:10px 20px; overflow:hidden; background:url(/Content/images/icon_3.png) no-repeat top center; position:relative;}
-.LviewI p { width:280px; font-weight:bold; color:#333; margin-top:110px; font-size:18px; font-family:tahoma;}
+.LviewI { width:280px; height:298px; float:left; padding:10px 20px; overflow:hidden; background:url(/Content/images/icon_3.png) no-repeat top center; position:relative; border-right:1px solid #C7DFE4}
+.LviewI p { width:280px; font-weight:bold; color:#333; margin-top:88px; font-size:18px; font-family:tahoma;}
 .LviewI span { width:280px; color:#333; display:block; line-height:18px; margin-top:10px; text-align:justify;}
-.LviewI a { width:255px; height:auto; position:absolute; left:0; bottom:0; text-align:right; border-top:1px solid #ddd; color:#333; background:url(/Content/images/icon_6.png) no-repeat top right; padding:20px 25px 10px 0;}
-.RviewI { width:280px; height:298px; float:right; margin:10px 20px; overflow:hidden; background:url(/Content/images/icon_4.png) no-repeat top center; position:relative;}
-.RviewI p { width:280px; font-weight:bold; color:#333; margin-top:110px; font-size:18px; font-family:tahoma;}
+.LviewI a { margin-left:20px; width:255px; height:auto; position:absolute; left:0; bottom:0; text-align:right; border-top:1px solid #ddd; color:#333; background:url(/Content/images/icon_6.png) no-repeat top right; padding:20px 25px 10px 0;}
+.RviewI { width:280px; height:298px; padding:10px 20px; overflow:hidden; background:url(/Content/images/icon_4.png) no-repeat top center; position:absolute; right:0px; border-left:1px solid #C7DFE4}
+.RviewI p { width:280px; font-weight:bold; color:#333; margin-top:88px; font-size:18px; font-family:tahoma;}
 .RviewI span { width:280px; color:#333; display:block; line-height:18px; margin-top:10px; text-align:justify;}
-.RviewI a { width:255px; height:auto; position:absolute; left:0; bottom:0; text-align:right; border-top:1px solid #ddd; color:#333; background:url(/Content/images/icon_6.png) no-repeat top right; padding:20px 25px 10px 0;}
-.CviewI { width:250px; height:325px; float:right; margin:10px 20px; overflow:hidden; background:url(/Content/images/icon_5.png) no-repeat top center; position:relative;}
-.CviewI p { width:250px; font-weight:bold; color:#333; margin-top:120px; font-size:18px; font-family:tahoma;}
+.RviewI a {margin-left:20px; width:255px; height:auto; position:absolute; left:0; bottom:0; text-align:right; border-top:1px solid #ddd; color:#333; background:url(/Content/images/icon_6.png) no-repeat top right; padding:20px 25px 10px 0;}
+.CviewI { width:256px; height:298px; float:right; padding:10px 20px; overflow:hidden; background:url(/Content/images/icon_5.png) no-repeat top center; position:absolute;  left:320px !important; }
+.CviewI p { width:250px; font-weight:bold; color:#333; margin-top:88px; font-size:18px; font-family:tahoma;}
 .CviewI span { width:250px; color:#333; display:block; line-height:18px; margin-top:10px; text-align:justify;}
-.CviewI a { width:225px; height:auto; position:absolute; left:0; bottom:0; text-align:right; border-top:1px solid #ddd; color:#333; background:url(/Content/images/icon_6.png) no-repeat top right; padding:20px 25px 10px 0;}
+.CviewI a {margin-left:20px; width:225px; height:auto; position:absolute; left:0; bottom:0; text-align:right; border-top:1px solid #ddd; color:#333; background:url(/Content/images/icon_6.png) no-repeat top right; padding:20px 25px 10px 0;}
 
 .viewIIhome { width:939px; height:392px; margin-top:50px; float:left; border-bottom:1px solid #b4cacf; border-right:1px solid #b4cacf;
 border-top-left-radius:0px;
 border-top-right-radius:0px;
 border-bottom-left-radius:0px;
 border-bottom-right-radius:5px;
-
+background-color:#fff;
 -moz-box-shadow:3px 3px 3px #ddd; /* Firefox */
 -webkit-box-shadow:3px 3px 3px #ddd; /* Safari and Chrome */
 box-shadow:3px 3px 3px #ddd; /* Opera 10.5+, future browsers and IE6+ */
+ behavior: url(ie-css3.htc); /* hack for IE */
  
-behavior: url(ie-css3.htc); /* hack for IE */
 }
+
+.onViewHover{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color:#fff ;
+    border-color: #FFC416 #C7DFE4 #C7DFE4;
+    border-image: none;
+    border-radius: 0 0 5px 5px;
+    border-style: solid;
+    border-width: 6px 1px 1px;
+    box-shadow: 3px 3px 3px #DDDDDD;
+    height: 325px;
+    position: absolute;
+    top: -16px;
+	margin: 0px;
+	  
+}
+
 
 .video { width:619px; height:392px; float:left;}
 .news { width:320px; height:392px; float:right;}
@@ -495,3 +515,4 @@ ul#thumbs img{
 #carousel img {display: block; opacity: .5; cursor: pointer;}
 #carousel img:hover {opacity: 1;}
 #carousel .flex-active-slide img {opacity: 1; cursor: default;}
+.banner #zalen .nivo-controlNav{ right:30px !important}
