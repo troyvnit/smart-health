@@ -159,6 +159,7 @@
     <Compile Include="Areas\Administrator\Controllers\ProductController.cs" />
     <Compile Include="Areas\Administrator\Models\FileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\EMail.cs" />
     <Compile Include="Resources\SH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2108,6 +2109,7 @@
     <Content Include="Areas\Administrator\Scripts\tinymce\tinymce.jquery.min.js" />
     <Content Include="Areas\Administrator\Scripts\tinymce\tinymce.js" />
     <Content Include="Areas\Administrator\Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Content\contact.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\fonts\flexslider-icon.svg" />
     <Content Include="Content\images\arrows.png" />
@@ -2119,9 +2121,13 @@
     <Content Include="Content\images\BG-Index.jpg" />
     <Content Include="Content\images\BG-Menu.jpg" />
     <Content Include="Content\images\bullets.png" />
+    <Content Include="Content\images\contact_icos.png" />
     <Content Include="Content\images\facebook.jpg" />
     <Content Include="Content\images\flag-en.jpg" />
     <Content Include="Content\images\flag-vn.jpg" />
+    <Content Include="Content\images\formmail.png" />
+    <Content Include="Content\images\formname.png" />
+    <Content Include="Content\images\formphone.png" />
     <Content Include="Content\images\icon-1.png" />
     <Content Include="Content\images\icon_1.jpg" />
     <Content Include="Content\images\icon_10.png" />
@@ -2411,6 +2417,7 @@
     <Content Include="Areas\Administrator\Views\Web.config" />
     <None Include="Properties\PublishProfiles\Smart Health.pubxml" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="MailFormat.xml" />
     <Content Include="Scripts\browsers.js" />
     <Content Include="Scripts\bx-slider.js" />
     <Content Include="Scripts\call.js" />
@@ -2499,6 +2506,7 @@
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Home\AdvertisementBanner.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2514,7 +2522,6 @@
     <Folder Include="Media\avatar\" />
     <Folder Include="Media\Images\" />
     <Folder Include="Media\TempUpload\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

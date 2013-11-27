@@ -9,6 +9,7 @@ using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using AutoMapper;
+using SmartHealth.Web.Helpers;
 
 namespace SmartHealth.Web.Controllers
 {
@@ -226,6 +227,35 @@ namespace SmartHealth.Web.Controllers
             var banners = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 41 || a.Type == 42).ToList();
             ViewBag.Banners = banners;
             return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendContactMessage(string email, string phone, string name, string message)
+        {
+            var eMail = new EMail
+                            {
+                                Phone = phone,
+                                Name = name,
+                                Message = message,
+                                Email = email,
+                                FromAddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromAddress"),
+                                ToAddress = System.Configuration.ConfigurationManager.AppSettings.Get("ToAddress"),
+                                SMTPClient = System.Configuration.ConfigurationManager.AppSettings.Get("SmtpClient"),
+                                UserName = System.Configuration.ConfigurationManager.AppSettings.Get("UserName"),
+                                Password = System.Configuration.ConfigurationManager.AppSettings.Get("Password"),
+                                ReplyTo = System.Configuration.ConfigurationManager.AppSettings.Get("ReplyTo"),
+                                SMTPPort = System.Configuration.ConfigurationManager.AppSettings.Get("SMTPPort"),
+                                isEnableSSL =
+                                    System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
+                                    "YES"
+                            };
+            eMail.SendMail("Email", new String[] { "Smart Health Contact", eMail.Name, eMail.Phone, eMail.Email, eMail.Message });
+            return Content("Success");
         }
     }
 }
