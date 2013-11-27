@@ -21,6 +21,13 @@ namespace SmartHealth.Web
 
             routes.MapRoute(
                 "Home Controller", // Route name
+                "{lang}/{action}", // URL with parameters
+                new { controller = "Home" }, // Parameter defaults
+                new { lang = "[a-z]{2}-[a-z]{2}" }
+            );
+
+            routes.MapRoute(
+                "Home Controller With Id", // Route name
                 "{lang}/{action}/{id}", // URL with parameters
                 new { controller = "Home", id = UrlParameter.Optional }, // Parameter defaults
                 new { lang = "[a-z]{2}-[a-z]{2}", id = "[0-9]" }

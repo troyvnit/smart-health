@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MailFormats>
+  <MailFormat Id="Email">
+    <Subject>0?</Subject>
+    <Body>
+      <![CDATA[ 
+      Tên: 1?
+     <br/>
+     Điện thoại: 2?
+     <br/>
+     Email: 3?
+     <br/>
+     Tin nhắn: 4?
+     ]]>
+    </Body>
+  </MailFormat>
+</MailFormats>
