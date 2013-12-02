@@ -12195,7 +12195,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/25/2013 10:04:01</publishTime>
     </File>
     <File Include="Areas/Administrator/Views/Article/Index.cshtml">
-      <publishTime>11/26/2013 09:52:14</publishTime>
+      <publishTime>12/02/2013 09:21:10</publishTime>
     </File>
     <File Include="Areas/Administrator/Views/Article/ManageArticle.cshtml">
       <publishTime>11/25/2013 10:03:48</publishTime>
@@ -12207,7 +12207,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2013 19:58:12</publishTime>
     </File>
     <File Include="Areas/Administrator/Views/Product/Index.cshtml">
-      <publishTime>11/26/2013 09:52:05</publishTime>
+      <publishTime>12/02/2013 09:22:17</publishTime>
     </File>
     <File Include="Areas/Administrator/Views/Shared/_Layout.cshtml">
       <publishTime>11/25/2013 10:06:24</publishTime>
@@ -12249,7 +12249,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/15/2013 15:55:12</publishTime>
     </File>
     <File Include="bin/en-us/SmartHealth.Web.resources.dll">
-      <publishTime>11/28/2013 14:21:44</publishTime>
+      <publishTime>12/02/2013 11:00:20</publishTime>
     </File>
     <File Include="bin/FluentNHibernate.dll">
       <publishTime>10/15/2013 15:55:12</publishTime>
@@ -12303,7 +12303,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2013 19:48:44</publishTime>
     </File>
     <File Include="bin/SmartHealth.Web.dll">
-      <publishTime>11/28/2013 14:21:43</publishTime>
+      <publishTime>12/02/2013 11:00:20</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>10/15/2013 15:55:13</publishTime>
@@ -13019,6 +13019,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery.nivo.slider.pack.js">
       <publishTime>10/21/2013 11:46:07</publishTime>
     </File>
+    <File Include="Scripts/jquery.sharrre.js">
+      <publishTime>12/02/2013 09:51:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery.sharrre.min.js">
+      <publishTime>12/02/2013 10:32:19</publishTime>
+    </File>
     <File Include="Scripts/jquery.unobtrusive-ajax.js">
       <publishTime>10/15/2013 15:55:30</publishTime>
     </File>
@@ -13134,7 +13140,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/25/2013 23:08:45</publishTime>
     </File>
     <File Include="Views/Home/Article.cshtml">
-      <publishTime>11/22/2013 23:52:38</publishTime>
+      <publishTime>12/02/2013 09:43:50</publishTime>
     </File>
     <File Include="Views/Home/ArticleDetail.cshtml">
       <publishTime>10/31/2013 23:03:36</publishTime>
@@ -13170,13 +13176,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2013 22:44:00</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/27/2013 20:13:17</publishTime>
+      <publishTime>12/02/2013 09:24:34</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/15/2013 15:55:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/28/2013 14:21:51</publishTime>
+      <publishTime>12/02/2013 11:00:26</publishTime>
     </File>
   </ItemGroup>
 </Project>
