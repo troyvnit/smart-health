@@ -254,7 +254,15 @@
                         dataType: "json"
                     }
                 },
-                pageSize: 20
+                pageSize: 20,
+                schema: {
+                    model: {
+                        fields: {
+                            Priority: { type: "number" },
+                            IsActived: { type: "boolean" }
+                        }
+                    }
+                }
             },
             height: 710,
             filterable: true,

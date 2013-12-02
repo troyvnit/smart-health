@@ -2439,6 +2439,8 @@
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.colorbox.js" />
     <Content Include="Scripts\jquery.easing.js" />
+    <Content Include="Scripts\jquery.sharrre.js" />
+    <Content Include="Scripts\jquery.sharrre.min.js" />
     <Content Include="Scripts\js\jquery.flexslider-min.js" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Scripts\jquery.jcarousel.min_call.js" />
@@ -2480,6 +2482,7 @@
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\slider-hot.js" />
     <Content Include="Scripts\taadv_floating.js" />
+    <None Include="Scripts\sharrre.php" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

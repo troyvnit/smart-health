@@ -303,7 +303,14 @@
                         dataType: "json"
                     }
                 },
-                pageSize: 20
+                pageSize: 20,
+                schema: {
+                    model: {
+                        fields: {
+                            IsActived: { type: "boolean" }
+                        }
+                    }
+                }
             },
             height: 710,
             filterable: true,

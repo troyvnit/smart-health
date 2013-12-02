@@ -45,6 +45,7 @@ namespace SmartHealth.Web
                        "~/Scripts/js/jquery.jcarousel.min.js",
                        "~/Scripts/js/jquery.jcarousel.min_call.js",
                        "~/Scripts/jquery.lazyload.min.js",
+                       "~/Scripts/jquery.sharrre.min.js",
                        "~/Areas/Administrator/ClipOne/plugins/bootstrap/js/bootstrap.min.js"
                         ));
 
@@ -64,9 +65,12 @@ namespace SmartHealth.Web
                 "~/Content/flexslider.css",
                 "~/FancyBox/jquery.fancybox.css",
                 "~/FancyBox/helpers/jquery.fancybox-buttons.css",
-                "~/FancyBox/helpers/jquery.fancybox-thumbs.css",
-                "~/Areas/Administrator/ClipOne/plugins/bootstrap/css/bootstrap.min.css",
-                "~/Content/contact.css"
+                "~/FancyBox/helpers/jquery.fancybox-thumbs.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Content/css/contact").Include(
+                "~/Content/contact.css",
+                "~/Areas/Administrator/ClipOne/plugins/bootstrap/css/bootstrap.min.css"
                 ));
 
             BundleTable.EnableOptimizations = true;
