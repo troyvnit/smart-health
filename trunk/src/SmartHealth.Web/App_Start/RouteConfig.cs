@@ -15,7 +15,7 @@ namespace SmartHealth.Web
 
             routes.MapRoute(
                 "Admin Controller", // Route name
-                "Admin/{controller}", // URL with parameters
+                "BackOffice/{controller}", // URL with parameters
                 new { action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
