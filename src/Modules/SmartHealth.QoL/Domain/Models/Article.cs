@@ -15,6 +15,7 @@ namespace SmartHealth.Box.Domain.Models
         {
             CreatedDate = DateTime.UtcNow;
             Categories = new List<ArticleCategory>();
+            Products = new List<Product>();
         }
 
         public virtual string Title { get; set; }
@@ -27,7 +28,7 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string Author { get; set; }
 
-        public virtual string ImageUrl { get; set; }
+        public virtual string MediaUrl { get; set; }
 
         public virtual int Priority { get; set; }
 
@@ -42,5 +43,7 @@ namespace SmartHealth.Box.Domain.Models
         public virtual User CreatedUser { get; set; }
 
         public virtual IList<ArticleCategory> Categories { get; set; }
+
+        public virtual IList<Product> Products { get; set; } 
     }
 }

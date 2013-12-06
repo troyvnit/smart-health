@@ -51,6 +51,14 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetProducts()
+        {
+            List<ProductDto> products =
+                articleCategoryService.GetAll<Product>().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(
+                    Mapper.Map<Product, ProductDto>).ToList();
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CreateOrUpdateCategory(string models)
         {
             ArticleCategoryDto categoryDto =
@@ -90,6 +98,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                                          {
                                              Author = article.Author,
                                              Categories = string.Join(",", article.Categories.Select(a => a.Id)),
+                                             Products = string.Join(",", article.Products.Select(a => a.Id)),
                                              Description = article.Description,
                                              Id = article.Id,
                                              MediaUrl = article.MediaUrl,
@@ -121,6 +130,15 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
                 {
                     ArticleCategory category = articleCategoryService.Get(Convert.ToInt32(categoryId));
                     article.Categories.Add(category);
+                }
+            }
+            if (!string.IsNullOrEmpty(articleDto.Products))
+            {
+                string[] productIds = articleDto.Products.Split(',');
+                foreach (string productId in productIds)
+                {
+                    var product = articleCategoryService.Get<Product>(Convert.ToInt32(productId));
+                    article.Products.Add(product);
                 }
             }
             articleService.SaveOrUpdate(article, true);

@@ -56,6 +56,9 @@ namespace SmartHealth.Web.Controllers
 
             var partners = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 5).ToList();
             ViewBag.Partners = partners;
+
+            var imageSliders = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 6).ToList();
+            ViewBag.ImageSliders = imageSliders;
             return View();
         }
 
@@ -182,8 +185,10 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult Article(int id)
         {
-            var article = Mapper.Map<Article, ArticleDto>(articleService.Get(id));
-            ViewBag.Article = article;
+            var article = articleService.Get(id);
+            ViewBag.Article = Mapper.Map<Article, ArticleDto>(article);
+            ViewBag.Products = article.Products.Select(Mapper.Map<Product, ProductDto>).ToList();
+
 
             var newses =
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
@@ -195,7 +200,7 @@ namespace SmartHealth.Web.Controllers
                 var viewedArticles = ((SessionDto)Session["SmartHealthUser"]).ViewedArticles;
                 if (viewedArticles.All(a => a.Id != id))
                 {
-                    viewedArticles.Add(article);
+                    viewedArticles.Add(Mapper.Map<Article, ArticleDto>(article));
                 }
             }
             return View();

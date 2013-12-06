@@ -91,6 +91,12 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
             return Json(videos, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetSliderImages()
+        {
+            var videos = mediaService.GetAll().Where(a => a.Type == 6).Select(Mapper.Map<Media, MediaDto>).ToList();
+            return Json(videos, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CreateOrUpdateVideo(string models)
         {
             var mediaDto = JsonConvert.DeserializeObject<List<MediaDto>>(models).FirstOrDefault();

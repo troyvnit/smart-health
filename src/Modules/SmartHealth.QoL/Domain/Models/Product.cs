@@ -58,5 +58,7 @@ namespace SmartHealth.Box.Domain.Models
         public virtual IList<Media> Medias { get; set; }
 
         public virtual IList<ProductGroup> Groups { get; set; } 
+
+        public virtual IList<Article> Articles { get; set; } 
     }
 }

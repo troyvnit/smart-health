@@ -17,9 +17,11 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual string Author { get; set; }
 
-        public virtual string ImageUrl { get; set; }
+        public virtual string MediaUrl { get; set; }
 
         public virtual string Categories { get; set; }
+
+        public virtual string Products { get; set; }
 
         public virtual int Priority { get; set; }
 
