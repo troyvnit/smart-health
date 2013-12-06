@@ -3,6 +3,7 @@
     ViewBag.Title = "Article";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var article = (ArticleDto)ViewBag.Article;
+    var products = (List<ProductDto>)ViewBag.Products;
     var newses = (List<ArticleDto>)ViewBag.Newses;
     if (Session["SmartHealthUser"] == null)
     {
@@ -22,6 +23,13 @@
         <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="12" data-width="660"></div>
         </div>*@
         <!--chitietsanpham-->
+        <div class="tukhoa">
+            <span>Từ khóa:</span>
+            @foreach (var tag in article.Tags.Split(','))
+            {
+                <a href="@Url.Action("ArticleList", "Home", new { search = tag })">@tag</a>
+            }
+        </div>
     </div>
 </div>
 <!--leftContent-->
@@ -40,6 +48,36 @@
                     }
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>
+                Sản phẩm liên quan</p>
+            <ul>
+                @if (products != null)
+                {
+                    foreach (var relatedProduct in products)
+                    {
+                    <li>
+                        <div class="picleft">
+                            <table cellspacing="0" cellpadding="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pic_5">
+                                            <a href="@Url.Action("Product", "Home", new { id = relatedProduct.Id })">
+                                                <img src="@relatedProduct.MediaUrl" alt="" /></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
+                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span> </li>
+                    }
+                }
+            </ul>
         </div>
     </div>
     <div class="boxRight">
@@ -91,90 +129,31 @@
 <!--rightContent-->
 <script>
   $(function(){
-    $('#social').sharrre({
-      share: {
-        googlePlus: true,
-        facebook: true,
-        twitter: true,
-        delicious: true
-      },
-      buttons: {
-        googlePlus: {size: 'tall'},
-        facebook: {layout: 'box_count'},
-        twitter: {count: 'vertical'},
-        delicious: {size: 'tall'}
-      },
-      hover: function(api, options){
-        $(api.element).find('.buttons').show();      
-      },
-      hide: function(api, options){
-        $(api.element).find('.buttons').hide();
-      }
-    });
-    
-    $('#demo2').sharrre({
-      share: {
-        googlePlus: true,
-        facebook: true,
-        twitter: true
-      },
-      url: 'http://sharrre.com',
-      enableHover: false
-    });
+      $('#social').sharrre({
+          share: {
+              googlePlus: true,
+              facebook: true,
+              twitter: true
+          },
+          buttons: {
+              googlePlus: {size: 'tall', annotation:'bubble'},
+              facebook: {layout: 'box_count'},
+              twitter: {count: 'vertical'}
+          },
+          enableHover: false,
+          enableCounter: false,
+          enableTracking: true
+      });
   });
   </script>
-  <style type="text/css">
-  #social.sharrre {
-    width:100%;
-    display:inline-block;
-  }
-  #demo2.sharrre {
-    width:50px;
-  }
-  .sharrre .box{
-    float:left;
-  }
-  .sharrre .count {
-    color:#444444;
-    display:block;
-    font-size:17px;
-    line-height:34px;
-    height:34px;
-    padding:4px 0;
-    position:relative;
-    text-align:center;
-    text-decoration:none;
-    width:50px;
-    background-color:#eee;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px; 
-  }
-  .sharrre .share {
-    color:#FFFFFF;
-    display:block;
-    font-size:11px;
-    height:16px;
-    line-height:16px;
-    margin-top:3px;
-    padding:0;
-    text-align:center;
-    text-decoration:none;
-    width:50px;
-    background-color:#9CCE39;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px; 
-  }
-  .sharrre .buttons {
-    display:none;
-    float:left;
-    width:300px;
-  }
-  .sharrre .button {
-    float:left;
-    max-width:50px;
-    height:50px;
-    margin-left:10px;
-  }
+<style type="text/css">
+    #social {
+        float: right;
+        margin: 10px;
+    }
+     .sharrre .button{
+         float:left;
+         width:60px;
+         margin: 0;
+     }
 </style>

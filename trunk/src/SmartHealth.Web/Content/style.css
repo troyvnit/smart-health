@@ -43,20 +43,20 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .menuTop > ul { width:934px; height:84px; float:left; margin:3px 0 0 3px; position:relative; z-index:1003;}
 
-.menuTop > ul > li { height:84px; float:left; background:url(/Content/images/me-2.jpg) no-repeat top left; padding-left:2px;}
+.menuTop > ul > li { height:84px; float:left; background:url(/Content/images/me-2.jpg) no-repeat top left; padding-left:2px;text-decoration: none;}
 .menuTop > ul > li.home { background:none;}
-.menuTop > ul > li > a { float:left; height:84px;max-width:128px;}
+.menuTop > ul > li > a { float:left; height:84px;max-width:128px;text-decoration: none;}
 .menuTop > ul > li > a > img { display:block; margin:0 auto; text-align:center; height:42px;}
-.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 15px; margin-top:5px; text-align:center;}
-
+.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 15px; margin-top:5px; text-align:center;text-decoration: none;}
+.menuTop > ul > li > a > span:hover { text-decoration: none }
 .menuTop > ul > li:hover > a, .menuTop > ul > li.active > a { float:left; background:url(/Content/images/me-1.jpg) repeat-x;}
 
-.menuTop > ul > li > ul { display:none; width:934px; position:absolute; top:81px; left:0; padding:10px 0;}
-.menuTop > ul > li:hover > ul, .menuTop > ul > li.active > ul { display:block;}
-.menuTop > ul > li > ul > li { width:auto; padding:7px 0 5px 20px; float:left;}
-.menuTop > ul > li > ul > li > a { color:#333; font-size:14px; text-transform:uppercase;}
-.menuTop > ul > li > ul > li > span { float:right; padding-left:20px;}
-.menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:bold;}
+.menuTop > ul > li > ul { display:none; width:934px; position:absolute; top:81px; left:0; padding:10px 0;text-decoration: none;}
+.menuTop > ul > li:hover > ul, .menuTop > ul > li.active > ul { display:block;text-decoration: none;}
+.menuTop > ul > li > ul > li { width:auto; padding:7px 0 5px 20px; float:left;text-decoration: none;}
+.menuTop > ul > li > ul > li > a { color:#333; font-size:14px; text-transform:uppercase;text-decoration: none;}
+.menuTop > ul > li > ul > li > span { float:right; padding-left:20px;text-decoration: none;}
+.menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:bold;text-decoration: none;}
 
 .banner { width:940px; height:370px; float:left; margin-top:10px; background:url(/Content/images/BG-Banner.png) no-repeat top; padding:0 14px; position:relative; margin-left:-15px;}
 #zalen { width:924px; height:354px; float:left; padding:7px; background:white; border:1px solid #ddd;}

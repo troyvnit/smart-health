@@ -8,25 +8,18 @@
     var typicalProducts = (List<ProductDto>)ViewBag.TypicalProducts;
     var videoLinks = (List<MediaDto>)ViewBag.VideoLinks;
     var partners = (List<MediaDto>)ViewBag.Partners; 
+    var imageSliders = (List<MediaDto>)ViewBag.ImageSliders;
 }
 
 <div class="banner">
     <div id="zalen">
-        <div class="che-1"></div>
-        <div class="che-2"></div>
-        <div class="che-3"></div>
-        <div class="che-4"></div>
         <div id="slider-wrapper">
             <div id="slider" class="nivoSlider">
-                <img  src="@Url.Content("~/Content/images/ban-1.jpg")" alt=""/>
-                <img  src="@Url.Content("~/Content/images/ban-2.jpg")" alt=""/>
-                <img  src="@Url.Content("~/Content/images/ban-1.jpg")" alt=""/>
-                <img  src="@Url.Content("~/Content/images/ban-2.jpg")" alt=""/>
+                @foreach (var imageSlider in imageSliders)
+                {
+                    <img src="@imageSlider.MediaUrl" alt=""/>
+                }
             </div>
-            <div class="banner-1"></div>
-            <div class="banner-2"></div>
-            <div class="banner-3"></div>
-            <div class="banner-4"></div>
         </div>
     </div>
 </div>
