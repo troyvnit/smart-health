@@ -53,7 +53,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .menuTop > ul > li > ul { display:none; width:934px; position:absolute; top:81px; left:0; margin:10px 0;text-decoration: none; list-style-type:square; }
 .menuTop > ul > li:hover > ul, .menuTop > ul > li.active > ul { display:block;text-decoration: none;}
-.menuTop > ul > li > ul > li {margin-left:25px !important; width:auto; padding:7px 10px 5px 0px; float:left;text-decoration: none;}
+.menuTop > ul > li > ul > li {margin-left:25px !important; width:auto; padding:7px 15px 5px 0px; float:left;text-decoration: none;}
 .menuTop > ul > li > ul > li > a { color:#333; font-size:14px; text-decoration: none;}
 .menuTop > ul > li > ul > li > span { float:right; padding-left:20px;text-decoration: none;}
 .menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:bold;text-decoration: none;}
