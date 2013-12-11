@@ -47,13 +47,13 @@ behavior: url(ie-css3.htc); /* hack for IE */
 .menuTop > ul > li.home { background:none;}
 .menuTop > ul > li > a { float:left; height:84px;max-width:128px;text-decoration: none;}
 .menuTop > ul > li > a > img { display:block; margin:0 auto; text-align:center; height:42px;}
-.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 15px; margin-top:5px; text-align:center;text-decoration: none;}
+.menuTop > ul > li > a > span { display:block; color:white; font-weight:bold; font-size:14px; text-transform:uppercase; text-shadow:1px 1px 1px #666; padding:0 15px; margin-top:5px; text-align:center;text-decoration: none; line-height: 16px}
 .menuTop > ul > li > a > span:hover { text-decoration: none }
 .menuTop > ul > li:hover > a, .menuTop > ul > li.active > a { float:left; background:url(/Content/images/me-1.jpg) repeat-x;}
 
 .menuTop > ul > li > ul { display:none; width:934px; position:absolute; top:81px; left:0; margin:10px 0;text-decoration: none; list-style-type:square; }
 .menuTop > ul > li:hover > ul, .menuTop > ul > li.active > ul { display:block;text-decoration: none;}
-.menuTop > ul > li > ul > li {margin-left:25px !important; width:auto; padding:7px 15px 5px 0px; float:left;text-decoration: none;}
+.menuTop > ul > li > ul > li {margin-left:25px !important; width:auto; padding:7px 0px 5px 0px; float:left;text-decoration: none;}
 .menuTop > ul > li > ul > li > a { color:#333; font-size:14px; text-decoration: none;}
 .menuTop > ul > li > ul > li > span { float:right; padding-left:20px;text-decoration: none;}
 .menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:bold;text-decoration: none;}
@@ -225,6 +225,7 @@ ul#mycarousel li { width:175px; height:70px; float:left; display:block;}
 .leftContent { width:700px; float:left; margin-top:20px; background:url(/Content/images/BG-Content.png) no-repeat; padding:0 15px; position:relative; margin-left:-15px;}
 .boxLeft { width:698px; float:left; border:1px solid #ddd; background:white;}
 .boxLeft img { max-width:658px;}
+
 /*sanpham*/
 /*___chitietsanpham___*/
 
@@ -303,11 +304,11 @@ ul.tabs li:hover a span, ul.tabs li.active a span { background:url(/Content/imag
 .tab_container { width:678px; border-top:none; clear:both; float:left; background:#fff;}
 .tab_content { font-size:1.2em;}
 .xanh { width:676px; float:left; border:1px solid #ddd; border-top:1px solid #7b7b7b;}
-
-.mota { width:746px; float:left; margin:10px;}
-.thuoctinh { width:746px; height:auto; float:left; margin:10px;}
-.danhgia { width:746px; height:auto; float:left; margin:10px;}
-.product-video-tab { width:746px; height:auto; float:left; margin:10px;}
+.xanh ul li {list-style: inside;}
+.mota { width:660px; float:left; padding:10px;}
+.thuoctinh { width:660px; height:auto; float:left; padding:10px;}
+.danhgia { width:660px; height:auto; float:left; padding:10px;}
+.product-video-tab { width:660px; height:auto; float:left; padding:10px;}
 
 .rightContent { width:222px; float:right;}
 
@@ -516,3 +517,72 @@ ul#thumbs img{
 #carousel img:hover {opacity: 1;}
 #carousel .flex-active-slide img {opacity: 1; cursor: default;}
 .banner #zalen .nivo-controlNav{ right:30px !important}
+
+/* ---------------------------------------------------------------------- */
+/*	Login
+ /* ---------------------------------------------------------------------- */
+
+ .main-login {
+	margin-top: 60px;
+}
+ .logo {
+	padding: 20px;
+	text-align: center;
+}
+ .box-login,  .box-forgot,  .box-register {
+	background: #FFFFFF;
+	border-radius: 5px;
+	box-shadow: -30px 30px 50px rgba(0, 0, 0, 0.32);
+	overflow: hidden;
+	padding: 15px;
+}
+ .box-forgot,  .box-register {
+	display: none;
+}
+ .form fieldset {
+	border: none;
+	margin: 0;
+	padding: 10px 0 0;
+}
+ a.forgot {
+	color: #909090;
+	font-size: 12px;
+	position: absolute;
+	right: 10px;
+	text-shadow: 1px 1px 1px #FFFFFF;
+	top: 9px;
+}
+ input.password {
+	padding-right: 130px;
+}
+ label {
+	color: #7F7F7F;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+ .copyright {
+	font-size: 11px;
+	margin: 0 auto;
+	padding: 10px 10px 0;
+	text-align: center;
+}
+ .form-actions:before,  .form-actions:after {
+	content: "";
+	display: table;
+	line-height: 0;
+}
+ .form-actions:after {
+	clear: both;
+}
+ .form-actions {
+	margin-top: 15px;
+	padding-top: 10px;
+	display: block;
+}
+ .new-account {
+	border-top: 1px dotted #EEEEEE;
+	margin-top: 15px;
+	padding-top: 10px;
+	display: block;
+}
