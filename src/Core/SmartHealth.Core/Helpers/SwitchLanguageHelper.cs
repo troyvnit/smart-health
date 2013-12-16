@@ -56,7 +56,8 @@ namespace SmartHealth.Core.Helpers
             routeValues[languageRouteName] = cultureName;
             // generate the language specify url
             var urlHelper = new UrlHelper(helper.ViewContext.RequestContext, helper.RouteCollection);
-            var url = urlHelper.RouteUrl("Localization", routeValues);
+            //var url = urlHelper.RouteUrl("Localization", routeValues);
+            var url = "/" + cultureName;
             // check whether the current thread ui culture is this language
             var current_lang_name = Thread.CurrentThread.CurrentUICulture.Name.ToLower();
             var isSelected = strictSelected ?

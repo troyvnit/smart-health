@@ -11,6 +11,10 @@ namespace SmartHealth.Core.Infrastructure.Nhibernate.Mapping
     {
         public void Override(FluentNHibernate.Automapping.AutoMapping<User> mapping)
         {
+            mapping.Map(a => a.CreatedTime).Nullable();
+            mapping.Map(a => a.DOB).Nullable();
+            mapping.Map(a => a.LastLoginTime).Nullable();
+            mapping.Map(a => a.ModifiedTime).Nullable();
         }
     }
 }

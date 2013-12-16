@@ -59,6 +59,8 @@
     <Compile Include="Domain\Dtos\MenuDto.cs" />
     <Compile Include="Domain\Dtos\MediaDto.cs" />
     <Compile Include="Domain\Dtos\FolderDto.cs" />
+    <Compile Include="Domain\Dtos\OrderDetailDto.cs" />
+    <Compile Include="Domain\Dtos\OrderDto.cs" />
     <Compile Include="Domain\Dtos\SessionDto.cs" />
     <Compile Include="Domain\Dtos\ProductGroupDto.cs" />
     <Compile Include="Domain\Dtos\ProductDto.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Domain\Models\ArticleCategory.cs" />
     <Compile Include="Domain\Models\Folder.cs" />
     <Compile Include="Domain\Models\Menu.cs" />
+    <Compile Include="Domain\Models\OrderDetail.cs" />
     <Compile Include="Domain\Models\ProductTab.cs" />
     <Compile Include="Domain\Models\ProductComment.cs" />
     <Compile Include="Domain\Models\Product.cs" />
@@ -80,13 +83,14 @@
     <Compile Include="Domain\Models\Media.cs" />
     <Compile Include="Domain\Models\ProductProperty.cs" />
     <Compile Include="Domain\Models\ProductGroup.cs" />
+    <Compile Include="Domain\Models\Order.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleCategoryRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\MenuRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\MediaRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\FolderRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\TagRepository.cs" />
-    <Compile Include="Infrastructure\Nhibernate\Mapping\ArticleCategoryMapping.cs" />
+    <Compile Include="Infrastructure\Nhibernate\Mapping\ArticleMapping.cs" />
     <Compile Include="Infrastructure\Nhibernate\Mapping\ProductMapping.cs" />
     <Compile Include="Infrastructure\Nhibernate\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

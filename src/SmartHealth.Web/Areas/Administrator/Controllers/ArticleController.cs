@@ -10,9 +10,9 @@ using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using SmartHealth.Web.Controllers;
 
-namespace SmartHealth.Web.Areas.Admin.Controllers
+namespace SmartHealth.Web.Areas.Administrator.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ArticleController : BaseController
     {
         private readonly IService<Article> articleService;

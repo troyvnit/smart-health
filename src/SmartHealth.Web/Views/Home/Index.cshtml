@@ -17,7 +17,7 @@
             <div id="slider" class="nivoSlider">
                 @foreach (var imageSlider in imageSliders)
                 {
-                    <img src="@imageSlider.MediaUrl" alt=""/>
+                    <a href="@imageSlider.MediaUrl" target="_blank"><img src="@imageSlider.ThumbnailUrl" alt="" /></a>
                 }
             </div>
         </div>

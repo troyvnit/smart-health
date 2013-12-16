@@ -27,12 +27,13 @@ namespace SmartHealth.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult SignIn(UserDto user, string returnUrl)
+        public ActionResult SignIn(UserDto userDto, string returnUrl)
         {
-            if (userService.GetAll().Any(a => a.Username == user.Username && a.Password == user.Password))
+            var user = userService.GetAll().FirstOrDefault(a => a.Username == userDto.Username && a.Password == userDto.Password && a.UserType == UserType.Admin);
+            if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
-                FormsAuthentication.RedirectFromLoginPage(user.Id.ToString(), user.RememberMe);
+                FormsAuthentication.RedirectFromLoginPage(user.Id.ToString(), true);
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                 {
@@ -47,7 +48,7 @@ namespace SmartHealth.Web.Controllers
             {
                 ModelState.AddModelError("", "The user name or password provided is incorrect.");
             }
-            return View("SignIn", user);
+            return View("SignIn", userDto);
         }
 
     }

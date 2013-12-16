@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -10,10 +9,9 @@ using Newtonsoft.Json;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
-using SmartHealth.Web.Areas.Admin.Models;
 using SmartHealth.Web.Controllers;
 
-namespace SmartHealth.Web.Areas.Admin.Controllers
+namespace SmartHealth.Web.Areas.Administrator.Controllers
 {
     public class MediaController : BaseController
     {

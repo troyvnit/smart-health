@@ -15,7 +15,7 @@
 <div class="leftContent">
     <div class="boxLeft">
         <div class="chitietsanpham">
-            <p>@productDetail.Name</p>
+            <h1>@productDetail.Name</h1>
             <div  style="width: 330px; display: inline-block; margin: 10px">
                 <div id="imageSlider" class="flexslider">
                     <ul class="slides">
@@ -72,17 +72,15 @@
                                             <p>
                                                 Hãng sản xuất:</p>@productDetail.Brand</span> <span>
                                                     <p>
-                                                        Trọng lượng:</p>@productDetail.Weight</span> <span>
+                                                        Quy cách:</p><div class="quycach">@productDetail.Weight</div></span> <span>
                                                             <p>
                                                                 Lượt xem:</p>@productDetail.ViewCount</span>
                     </li>
                     <li class="Pr2"><span>
-                        <p>
-                            SL mua:</p>
-                        <input class="slu" type="text" id="Quantity" />
+                        <p>SL mua:</p>
+                        <input class="form-control bfh-number" type="text" id="Quantity" />
                         (@productDetail.Status) </span><span>
-                            <p>
-                                Số tiền thanh toán:</p>
+                            <p>Số tiền thanh toán:</p>
                             <span id="CalculatedPrice">0 vnđ</span></span> </li>
                     <li class="Pr3"><a id="Buy" href="#">
                         <img src="/Content/images/mua.png" alt="" /></a> </li>
@@ -155,9 +153,13 @@
         <!--chitietsanpham-->
         <div class="tukhoa">
             <span>Từ khóa:</span>
-            @foreach (var tag in productDetail.Tags.Split(','))
+
+            @if (!string.IsNullOrEmpty(productDetail.Tags))
             {
-                <a href="@Url.Action("ProductList", "Home", new { search = tag })">@tag</a>
+                foreach (var tag in productDetail.Tags.Split(','))
+                {
+                    <a href="@Url.Action("ProductList", "Home", new { search = tag })">@tag</a>
+                }
             }
         </div>
     </div>
@@ -167,7 +169,7 @@
     <div class="boxRight">
         <div class="boxRightI">
             <p>
-                Sản phẩm liên quan</p>
+                Sản phẩm khuyên dùng</p>
             <ul>
                 @if (relatedProducts != null)
                 {
@@ -187,8 +189,9 @@
 
                             </table>
                         </div>
+                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span>
                         <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
-                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span> </li>
+                         </li>
                     }
                 }
             </ul>
@@ -265,8 +268,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span>
                         <p>@viewedProduct.Name<br />@viewedProduct.Weight</p>
-                        <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span> </li>
+                         </li>
                     }
                 }
             </ul>
@@ -290,7 +294,7 @@
             $("#CalculatedPrice").html();
             var quantity = parseFloat($("#Quantity").val());
             var price = parseFloat('@productDetail.SmartHealthPrice.ToString("N2").Replace(",", "")');
-            $("#CalculatedPrice").html(quantity * price);
+            $("#CalculatedPrice").html((quantity * price) + " vnđ");
         });
         //$('.flexslider').flexslider({
         //    animation: "slide",

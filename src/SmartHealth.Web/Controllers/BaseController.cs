@@ -16,7 +16,7 @@ namespace SmartHealth.Web.Controllers
 {
     public class BaseController : Controller
     {
-        private readonly UserCache currentUser;
+        protected readonly UserCache currentUser;
 
         public BaseController()
         {

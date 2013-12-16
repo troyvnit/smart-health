@@ -20,10 +20,8 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string Title { get; set; }
 
-        [StringLength(4001)]
         public virtual string Description { get; set; }
 
-        [StringLength(4001)]
         public virtual string Content { get; set; }
 
         public virtual string Author { get; set; }

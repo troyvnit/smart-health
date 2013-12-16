@@ -8,7 +8,7 @@
         @foreach(var banner in banners.Where(a => a.Type == 41))
         {
             <div class="banneritem">
-                <a href="@banner.MediaUrl" target="_blank"><img src="@banner.MediaUrl" alt="" /></a>
+                <a href="@banner.MediaUrl" target="_blank"><img src="@banner.ThumbnailUrl" alt="" /></a>
                 <div class="clr"></div>
             </div>  
         }
@@ -19,7 +19,7 @@
         @foreach(var banner in banners.Where(a => a.Type == 42))
         {
             <div class="banneritem">
-                <a href="@banner.MediaUrl" target="_blank"><img src="@banner.MediaUrl" alt="" /></a>
+                <a href="@banner.MediaUrl" target="_blank"><img src="@banner.ThumbnailUrl" alt="" /></a>
                 <div class="clr"></div>
             </div>  
         }

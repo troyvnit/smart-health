@@ -30,7 +30,7 @@ namespace SmartHealth.Infrastructure.Web.Nhibernate
                 .Conventions.Setup(GetConventions())
                 .UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>()
                 .UseOverridesFromAssemblyOf<UserMapping>()
-                .UseOverridesFromAssemblyOf<ArticleCategoryMapping>();
+                .UseOverridesFromAssemblyOf<ArticleMapping>();
         }
 
         private Action<IConventionFinder> GetConventions()

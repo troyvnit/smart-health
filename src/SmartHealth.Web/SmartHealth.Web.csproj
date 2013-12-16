@@ -157,6 +157,7 @@
     <Compile Include="Areas\Administrator\Controllers\MediaController.cs" />
     <Compile Include="Areas\Administrator\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\UserController.cs" />
     <Compile Include="Areas\Administrator\Models\FileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Helpers\EMail.cs" />
@@ -2415,6 +2416,7 @@
     <Content Include="Areas\Administrator\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administrator\Views\Shared\_ReponsiveLayout.cshtml" />
     <Content Include="Areas\Administrator\Views\Web.config" />
+    <Content Include="Areas\Administrator\Views\User\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Smart Health.pubxml" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="MailFormat.xml" />
@@ -2492,7 +2494,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="NHibernate.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2510,6 +2514,11 @@
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Home\AdvertisementBanner.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
