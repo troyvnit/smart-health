@@ -17,7 +17,7 @@
         <div class="chitietsanpham">
             <h1>@article.Title</h1>
         </div>
-        <div style="margin:10px 20px;">@Html.Raw(article.Content)</div>
+        <div class="content_wapper">@Html.Raw(article.Content)</div>
         <div id="social" data-title="sharrre" data-url="@article.FullUrl" ></div>
         @*<div style="margin:10px 20px;">
         <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="12" data-width="660"></div>
@@ -25,9 +25,12 @@
         <!--chitietsanpham-->
         <div class="tukhoa">
             <span>Từ khóa:</span>
-            @foreach (var tag in article.Tags.Split(','))
+            @if (!string.IsNullOrEmpty(article.Tags))
             {
-                <a href="@Url.Action("ArticleList", "Home", new { search = tag })">@tag</a>
+                foreach (var tag in article.Tags.Split(','))
+                {
+                    <a href="@Url.Action("ArticleList", "Home", new { search = tag })">@tag</a>
+                }
             }
         </div>
     </div>
@@ -73,8 +76,9 @@
 
                             </table>
                         </div>
+                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span> 
                         <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
-                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span> </li>
+                        </li>
                     }
                 }
             </ul>

@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+<div id="vertical">
+    <div id="top-pane">
+        <div id="horizontal" style="height: 100%; width: 100%;">
+            <div id="center-pane">
+                <div class="pane-content">
+                    <div class="box-content">
+                        <div id="grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var grid = $("#grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetUsers", "User")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateUser", "User")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    destroy: {
+                        url: '@Url.Action("DeleteUsers", "User")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateUser", "User")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 20,
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, nullable: true },
+                            Username: { validation: { required: true } },
+                            DisplayName: { validation: { required: true } },
+                            Email: { validation: { required: true } },
+                            Location: { type: "string" },
+                            Gender: { type: "string" },
+                            DOB: { type: "date" }
+                        }
+                    }
+                }
+            },
+            height: 710,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            navigatable: true,
+            //editable: true,
+            //toolbar: ["save", "cancel"],
+            columns: [{
+                field: "Id",
+                hidden: true
+            }, {
+                field: "Username",
+                title: "Tên đăng nhập"
+            }, {
+                field: "DisplayName",
+                title: "Tên hiển thị"
+            }, {
+                field: "Email",
+                title: "Email"
+            }, {
+                field: "Location",
+                title: "Địa chỉ"
+            }, {
+                field: "Gender",
+                width: 80,
+                title: "Giới tính"
+            }, {
+                field: "DOB",
+                title: "Sinh nhật",
+                type: "date",
+                format: "{0:dd/MM/yyyy}" 
+            }
+            ]
+        }).data("kendoGrid");
+
+        $("#vertical").kendoSplitter({
+            orientation: "vertical",
+            panes: [
+                { collapsible: false }
+            ]
+        });
+
+        var splitter = $("#horizontal").kendoSplitter({
+            orientation: "horizontal",
+            panes: [
+                { collapsible: true }
+            ]
+        }).data("kendoSplitter");
+    });
+</script>
+

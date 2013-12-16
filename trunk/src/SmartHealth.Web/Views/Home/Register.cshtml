@@ -1,0 +1,135 @@
+﻿@model SmartHealth.Core.Domain.Dtos.UserDto
+@using System.Web.Optimization
+@using SmartHealth.Core.Domain.Models
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css/contact")
+<div class="leftContent" style="width: 970px">
+<div class="boxLeft" style="width: 100%">
+    <div class="AboxLeft" style="width: 100%">
+        <p style="width: 920px">Đăng ký</p>
+        <div id="contact">
+            <div class="container" style="width: 940px">
+                <div class="row contact">
+                    <form action="@Url.Action("Register", "Home")" method="POST">
+                        <div class="row form">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-sm-6 row-col center">
+                                <div class="box">
+                                    <div class="form-group has-error">
+                                        @Html.ValidationMessage("error", new {@class = "help-block"})
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.Username, new {@class = "form-control", placeholder = "Username"})
+                                        @Html.ValidationMessageFor(model => model.Username)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(model => model.Password, new {@class = "form-control", placeholder = "Password"})
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Password("ConfirmPassword", "", new {@class = "form-control", placeholder = "Confirm Password"})
+                                        @Html.ValidationMessage("ConfirmPassword")
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.DisplayName, new {@class = "form-control", placeholder = "DisplayName"})
+                                        @Html.ValidationMessageFor(model => model.DisplayName)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.Email, new {@class = "form-control", placeholder = "Email"})
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.Location, new {@class = "form-control", placeholder = "Address"})
+                                        @Html.ValidationMessageFor(model => model.Location)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.DOB, new {@class = "form-control datepicker", placeholder = "Date of birth"})
+                                        @Html.ValidationMessageFor(model => model.DOB)
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(Gender))), new {@class = "form-control"}) 
+                                        @Html.ValidationMessageFor(model => model.Gender)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                        </div>
+                        <div class="row form">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6 right">
+                                <button id="submitBtn" style="float: right; margin-top: 10px" type="submit" class="btn btn-success">Đăng ký</button>
+                                <div id="submitProgress" class="progress progress-striped active" style="display: none">
+                                    <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                        <span class="sr-only">45% Hoàn tất</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    <script src="@Url.Content("~/Areas/Administrator/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js")"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+        $('form').validate({
+            rules: {
+                Username: {
+                    minlength: 3,
+                    required: true
+                },
+                Email: {
+                    minlength: 3,
+                    required: true,
+                    email: true
+                },
+                DisplayName: {
+                    minlength: 3,
+                    required: true
+                },
+                Password: {
+                    minlength: 6,
+                    required: true
+                },
+                ConfirmPassword: {
+                    minlength: 6,
+                    required: true,
+                    equalTo: "#Password"
+                },
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+                $(element).closest('.form-group').removeClass('has-success');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+                $(element).closest('.form-group').addClass('has-success');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
+</script>

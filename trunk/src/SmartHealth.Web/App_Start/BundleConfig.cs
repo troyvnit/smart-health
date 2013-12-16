@@ -38,7 +38,7 @@ namespace SmartHealth.Web
 
             bundles.Add(new ScriptBundle("~/bundles/master/js/header").Include(
                        "~/Scripts/jqueryTab.js",
-                       "~/Scripts/jquery-ui.min.js",
+                       "~/Areas/Administrator/ClipOne/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js",
                        "~/Scripts/js/cloud-zoom.1.0.2.js",
                        "~/Scripts/js/jquery.nivo.slider.pack.js",
                        "~/Scripts/js/jquery.flexslider-min.js",
@@ -46,7 +46,8 @@ namespace SmartHealth.Web
                        "~/Scripts/js/jquery.jcarousel.min_call.js",
                        "~/Scripts/jquery.lazyload.min.js",
                        "~/Scripts/jquery.sharrre.min.js",
-                       "~/Areas/Administrator/ClipOne/plugins/bootstrap/js/bootstrap.min.js"
+                       "~/Areas/Administrator/ClipOne/plugins/bootstrap/js/bootstrap.min.js",
+                       "~/Areas/Administrator/ClipOne/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/master/js/footer").Include(
@@ -70,6 +71,11 @@ namespace SmartHealth.Web
 
             bundles.Add(new StyleBundle("~/Content/css/contact").Include(
                 "~/Content/contact.css",
+                "~/Areas/Administrator/ClipOne/plugins/bootstrap/css/bootstrap.min.css",
+                "~/Areas/Administrator/ClipOne/plugins/datepicker/css/datepicker.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Content/css/bootstrap").Include(
                 "~/Areas/Administrator/ClipOne/plugins/bootstrap/css/bootstrap.min.css"
                 ));
 

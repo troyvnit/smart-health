@@ -1,0 +1,337 @@
+﻿@model SmartHealth.Core.Domain.Dtos.UserDto
+@using System.Web.Optimization
+@using SmartHealth.Box.Domain.Dtos
+@using SmartHealth.Core.Domain.Models
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
+    var newses = (List<ArticleDto>)ViewBag.Newses;
+    if (Session["SmartHealthUser"] == null)
+    {
+        Session["SmartHealthUser"] = new SessionDto();
+    }
+    var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
+    var orderDetails = ((SessionDto)Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
+    decimal totalAmount = 0;
+}
+@Styles.Render("~/Content/css/contact")
+<div class="leftContent">
+    <div class="boxLeft">
+        <div class="chitietsanpham">
+            <p>Giỏ hàng</p>
+            
+            <div class="GridCnt">
+                <table class="TblGrid">
+                    <tr>
+                        <th>
+                            STT
+                        </th>
+                        <th>
+                            Sản phẩm
+                        </th>
+                        <th>
+                            Số lượng
+                        </th>
+                        <th>
+                            Đơn giá
+                        </th>
+                        <th>
+                            Thành tiền
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                    @for (int i = 0; i < orderDetails.Count(); i++)
+                    {
+                        var orderDetail = orderDetails[i];
+                        var totalPrice = orderDetail.Product.SmartHealthPrice * orderDetail.Quantity;
+                        var id = i + 1;
+                        totalAmount += totalPrice;
+                        if (orderDetail.Quantity != 0)
+                        {
+                        <tr>
+                            <td width="40">@id</td>
+                            <td align="left">@orderDetail.Product.Name <img src="@orderDetail.Product.MediaUrl" style="max-height: 100px"/></td>
+                            <td align="left" width="100"><input type="number" style="max-width: 80px" class="productQuantity" value="@orderDetail.Quantity" index="@i"/></td>
+                            <td align="left" class="smPrice">@orderDetail.Product.SmartHealthPrice.ToString("N0").Replace(",", "")</td>
+                            <td align="left" class="totalPrice">@totalPrice.ToString("N0").Replace(",", "")</td>
+                            <td><img src="~/Areas/Administrator/KendoUI/content/web/delete.png" index="@i" class="removeOrderProduct"/></td>
+                        </tr>    
+                        }
+                    }
+                    @if (orderDetails.Count(a => a.Quantity != 0) == 0)
+                    {
+                        <tr><td align="center" colspan="6">Bạn chưa chọn mua sản phẩm nào</td></tr>
+                    }
+                    <tr>
+                        <th colspan="4" style="background: #ffc416">Tổng tiền</th>
+                        <th colspan="2" id="totalAmount" style="background: #ffc416">@totalAmount.ToString("N0").Replace(",", "")</th>
+                    </tr>
+                
+                </table>
+            </div>
+            <!-- enddiv:GridCnt  -->
+        </div>
+        @if (orderDetails.Any(a => a.Quantity != 0))
+        {
+        <div class="chitietsanpham" id="buyerInfo">
+            <p>Thông tin người mua</p>
+            <div class="row contact">
+                <form action="@Url.Action("Order", "Home")" method="POST">
+                    <div class="row form">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-sm-10 row-col center">
+                            <div class="box">
+                                <div class="form-group has-error">
+                                    @Html.ValidationMessage("error", new { @class = "help-block" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Id)
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.DisplayName, new { @class = "form-control", placeholder = "Họ tên" })
+                                    @Html.ValidationMessageFor(model => model.DisplayName)
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control", placeholder = "Địa chỉ" })
+                                    @Html.ValidationMessageFor(model => model.Location)
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Điện thoại" })
+                                    @Html.ValidationMessageFor(model => model.Phone)
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.DOB, new { @class = "form-control datepicker", placeholder = "Date of birth" })
+                                    @Html.ValidationMessageFor(model => model.DOB)
+                                </div>
+                                <div class="form-group">
+                                    @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(Gender))), new { @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(model => model.Gender)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <div class="row form">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-10 right">
+                            <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">Thanh toán</button>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            </div>
+        }
+    </div>
+</div>
+<!--leftContent-->
+<div class="rightContent">
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>
+                Sản phẩm khuyên dùng</p>
+            <ul>
+                @if (relatedProducts != null)
+                {
+                    foreach (var relatedProduct in relatedProducts)
+                    {
+                    <li>
+                        <div class="picleft">
+                            <table cellspacing="0" cellpadding="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pic_5">
+                                            <a href="@Url.Action("Product", "Home", new { id = relatedProduct.Id })">
+                                                <img src="@relatedProduct.MediaUrl" alt="" /></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span>
+                        <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
+                         </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>
+                Hỗ trợ khách hàng</p>
+            <div class="htkhachhang">
+                <ul>
+                    @if (newses != null)
+                    {
+                        foreach (var news in newses)
+                        {
+                        <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>
+                Chấp nhận thanh toán</p>
+            <div class="thanhtoan">
+                <ul>
+                    <li><a href="#">
+                        <img src="/content/images/tt-1.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-2.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-3.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-4.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-5.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-6.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-7.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-8.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="boxRightF">
+        <div class="fb-like-box" data-href="https://www.facebook.com/pages/Smart-Health/173034079568243"
+            data-width="220px" data-colorscheme="light" data-show-faces="true" data-header="true"
+            data-stream="false" data-show-border="false">
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>
+                Sản phẩm đã xem</p>
+            <ul>
+                @if (viewedProducts != null)
+                {
+                    foreach (var viewedProduct in viewedProducts)
+                    {
+                    <li>
+                        <div class="picleft">
+                            <table cellspacing="0" cellpadding="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pic_5">
+                                            <a href="@Url.Action("Product", "Home", new { id = viewedProduct.Id })">
+                                                <img src="@viewedProduct.MediaUrl" alt="" /></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span>
+                        <p>@viewedProduct.Name<br />@viewedProduct.Weight</p>
+                         </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<!--rightContent-->
+<script src="@Url.Content("~/Areas/Administrator/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js")"></script>
+<script type="text/javascript">
+    $(".productQuantity").change(function () {
+        var quantity = $(this).val();
+        var i = $(this).attr("index");
+        var price = $(this).parent().find(".smPrice").val();
+        $(this).parent().find(".totalPrice").html(parseInt(price) * parseInt(quantity));
+        $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: quantity }).done(function(result) {
+            $("#OrderProductCount").html(result);
+            return false;
+        });
+    });
+    $(".removeOrderProduct").click(function() {
+        var i = $(this).attr("index");
+        $(this).parent().parent().remove();
+        $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: 0 }).done(function (result) {
+            $("#OrderProductCount").html(result);
+            if (result == 0) {
+                $("#buyerInfo").remove();
+            }
+            return false;
+        });
+    });
+    $("#submitBtn").click(function () {
+        $.post('@Url.Action("Order", "Home")', $("form").serialize()).done(function (result) {
+            $("#OrderProductCount").html(result);
+            if (result == 0) {
+                $("#buyerInfo").remove();
+                $(".TblGrid").remove();
+                $(".GridCnt").append("<p>Thông tin đặt hàng của bạn đã được gửi tới BQT, cảm ơn bạn đã tin tưởng Smart Health!</p>");
+            }
+            return false;
+        });
+    });
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+        $('form').validate({
+            rules: {
+                Username: {
+                    minlength: 3,
+                    required: true
+                },
+                Email: {
+                    minlength: 3,
+                    required: true,
+                    email: true
+                },
+                DisplayName: {
+                    minlength: 3,
+                    required: true
+                },
+                Phone: {
+                    minlength: 10,
+                    required: true
+                },
+                Password: {
+                    minlength: 6,
+                    required: true
+                },
+                ConfirmPassword: {
+                    minlength: 6,
+                    required: true,
+                    equalTo: "#Password"
+                },
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+                $(element).closest('.form-group').removeClass('has-success');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+                $(element).closest('.form-group').addClass('has-success');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
+</script>

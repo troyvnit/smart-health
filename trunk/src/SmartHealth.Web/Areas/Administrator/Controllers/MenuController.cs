@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -10,9 +9,9 @@ using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using SmartHealth.Web.Controllers;
 
-namespace SmartHealth.Web.Areas.Admin.Controllers
+namespace SmartHealth.Web.Areas.Administrator.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class MenuController : BaseController
     {
         private readonly IService<Menu> menuService;

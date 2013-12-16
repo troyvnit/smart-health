@@ -5,8 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
+using SmartHealth.Core.Domain.Dtos;
+using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using AutoMapper;
 using SmartHealth.Web.Helpers;
@@ -22,8 +25,9 @@ namespace SmartHealth.Web.Controllers
         private readonly IService<ArticleCategory> articleCategoryService;
         private readonly IService<Menu> menuService;
         private readonly IService<Media> mediaService;
+        private readonly IService<User> userService;
 
-        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService)
+        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService,IService<User> userService)
         {
             this.productService = productService;
             this.productGroupService = productGroupService;
@@ -31,6 +35,7 @@ namespace SmartHealth.Web.Controllers
             this.articleCategoryService = articleCategoryService;
             this.menuService = menuService;
             this.mediaService = mediaService;
+            this.userService = userService;
         }
 
         public ActionResult Index()
@@ -153,16 +158,30 @@ namespace SmartHealth.Web.Controllers
             var orderCount = 0;
             if (Session["SmartHealthUser"] != null)
             {
-                var orderProducts = ((SessionDto)Session["SmartHealthUser"]).OrderProducts;
-                orderProducts.Add(Mapper.Map<Product, ProductDto>(product));
-                orderCount = orderProducts.Count;
+                var order = ((SessionDto)Session["SmartHealthUser"]).Order;
+                order.OrderDetails.Add(new OrderDetailDto{ Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity });
+                orderCount = order.OrderDetails.Count(a => a.Quantity != 0);
             }
             return Json(orderCount, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult UpdateOrderDetail(int i, int quantity)
+        {
+            var orderDetails = ((SessionDto) Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
+            orderDetails[i].Quantity = quantity;
+            return Json(orderDetails.Count(a => a.Quantity != 0), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RemoveOrderDetail(int i)
+        {
+            var orderDetails = ((SessionDto)Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
+            orderDetails = orderDetails.Where(a => a != orderDetails[i]).ToArray();
+            return Json(orderDetails.Count(), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult PublicRelation()
         {
-            var prCategories = articleCategoryService.GetAll().Where(a => a.IsDeleted != true && a.IsPublicRelation);
+            var prCategories = articleCategoryService.GetAll().Where(a => a.IsDeleted != true && a.IsPublicRelation && a.Language.CultureInfo.ToUpper() == RouteData.Values["lang"].ToString().ToUpper());
             var publicRelationCategories = new List<ArticleCategoryDto>();
             foreach (var prCategory in prCategories)
             {
@@ -205,25 +224,34 @@ namespace SmartHealth.Web.Controllers
             }
             return View();
         }
-        public ActionResult ArticleList(int id)
+        public ActionResult ArticleList(int? id, string search)
         {
-            var category = articleCategoryService.Get(id);
-            if (category != null)
+            var newses =
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
+                    Mapper.Map<Article, ArticleDto>).ToList();
+            ViewBag.Newses = newses;
+
+            if (id != null)
             {
-                var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).Select(Mapper.Map<Article, ArticleDto>).ToList();
-                ViewBag.Title = category.Name + " - " + category.Description;
-                ViewBag.CategoryName = category.Name;
-                ViewBag.Articles = articles;
+                var category = articleCategoryService.Get((int)id);
+                if (category != null)
+                {
+                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                    ViewBag.Title = category.Name + " - " + category.Description;
+                    ViewBag.CategoryName = category.Name;
+                    ViewBag.Articles = articles;
 
-                var newses =
-                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
-                        Mapper.Map<Article, ArticleDto>).ToList();
-                ViewBag.Newses = newses;
-
-                return View();
-            }
-            else {
+                    return View();
+                }
                 return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var articles = articleService.FindAll(p => p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search)).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.Title = search;
+                ViewBag.CategoryName = search;
+                ViewBag.Articles = articles;
+                return View();
             }
         }
 
@@ -261,6 +289,189 @@ namespace SmartHealth.Web.Controllers
                             };
             eMail.SendMail("Email", new String[] { "Smart Health Contact", eMail.Name, eMail.Phone, eMail.Email, eMail.Message });
             return Content("Success");
+        }
+
+        public ActionResult Login()
+        {
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                return Redirect("/" + RouteData.Values["lang"]);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Login(UserDto userDto)
+        {
+            var user = userService.GetAll().FirstOrDefault(a => a.Username == userDto.Username && a.Password == userDto.Password);
+            if (user != null)
+            {
+                FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
+                FormsAuthentication.RedirectFromLoginPage(user.Id.ToString(), true);
+                return Redirect("/" + RouteData.Values["lang"]);
+            }
+            ModelState.AddModelError("error", "The user name or password provided is incorrect.");
+            return View("Login", userDto);
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Register(UserDto user)
+        {
+            if (!userService.GetAll().Any(a => a.Username == user.Username || a.Email == user.Email))
+            {
+                var newUser = new User
+                              {
+                                  Username = user.Username,
+                                  Password = user.Password,
+                                  Email = user.Email,
+                                  DisplayName = user.DisplayName,
+                                  Location = user.Location,
+                                  DOB = user.DOB,
+                                  Gender = user.Gender,
+                                  UserType = UserType.Member,
+                                  LastName = user.DisplayName,
+                                  FirstName = user.DisplayName,
+                                  LastLoginTime = DateTime.Now,
+                                  ModifiedTime = DateTime.Now
+                              };
+                userService.SaveOrUpdate(newUser, true);
+                FormsAuthentication.SetAuthCookie(newUser.Id.ToString(), true);
+                FormsAuthentication.RedirectFromLoginPage(newUser.Id.ToString(), user.RememberMe);
+                return Redirect("/" + RouteData.Values["lang"]);
+            }
+            ModelState.AddModelError("error", "The user name or email provided is existed.");
+            return View("Register", user);
+        }
+
+        public ActionResult EditProfile(int id)
+        {
+            var user = userService.Get(id);
+            if (user != null)
+            {
+                var userDto = new UserDto
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Email = user.Email,
+                    DisplayName = user.DisplayName,
+                    Location = user.Location,
+                    DOB = user.DOB,
+                    Gender = user.Gender
+                };
+                return View(userDto);
+            }
+            return Redirect("/" + RouteData.Values["lang"]);
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(UserDto userDto)
+        {
+            var user = userService.Get(userDto.Id);
+            if (user != null)
+            {
+                user.Email = userDto.Email;
+                user.DisplayName = userDto.DisplayName;
+                user.Location = userDto.Location;
+                user.DOB = userDto.DOB;
+                user.Gender = userDto.Gender;
+                user.LastName = userDto.DisplayName;
+                user.FirstName = userDto.DisplayName;
+                user.ModifiedTime = DateTime.Now;
+                userService.SaveOrUpdate(user, true);
+                return View("EditProfile", userDto);
+            }
+            ModelState.AddModelError("error", "The account provided is not existed.");
+            return RedirectToAction("Register");
+        }
+
+        public ActionResult ChangePassword(int id)
+        {
+            var user = userService.Get(id);
+            if (user != null)
+            {
+                var userDto = new UserDto
+                {
+                    Id = user.Id,
+                    Username = user.Username
+                };
+                return View(userDto);
+            }
+            return Redirect("/" + RouteData.Values["lang"]);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(UserDto userDto)
+        {
+            var user = userService.Get(userDto.Id);
+            if (user != null)
+            {
+                if (user.Password == userDto.OldPassword)
+                {
+                    user.Password = userDto.Password;
+                    userService.SaveOrUpdate(user, true);
+                    return RedirectToAction("EditProfile", new {id=user.Id});
+                }
+                else
+                {
+                    ModelState.AddModelError("error", "The password is incorrect.");
+                    return View("ChangePassword", userDto);
+                }
+            }
+            ModelState.AddModelError("error", "The account provided is not existed.");
+            return RedirectToAction("Register");
+        }
+
+        public ActionResult Logout()
+        {
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.SignOut();
+            }
+            return Redirect("/" + RouteData.Values["lang"]);
+        }
+
+        public ActionResult Order()
+        {
+            var user = userService.Get(currentUser.Id);
+            var userDto = user != null ? Mapper.Map<User, UserDto>(user) : new UserDto();
+            return View(userDto);
+        }
+
+        [HttpPost]
+        public ActionResult Order(UserDto userDto)
+        {
+            var user = userService.Get(userDto.Id);
+            user = user ?? new User{UserType = UserType.Guest, Password = Guid.NewGuid().ToString(), Username = "Guest"};
+                user.Email = userDto.Email;
+                user.DisplayName = userDto.DisplayName;
+                user.Location = userDto.Location;
+                user.DOB = userDto.DOB;
+                user.Phone = userDto.Phone;
+                user.Gender = userDto.Gender;
+                user.LastName = userDto.DisplayName;
+                user.FirstName = userDto.DisplayName;
+                user.ModifiedTime = DateTime.Now;
+                userService.SaveOrUpdate(user, true);
+            if (Session["SmartHealthUser"] != null)
+            {
+                var orderDto = ((SessionDto) Session["SmartHealthUser"]).Order;
+                var order = Mapper.Map<OrderDto, Order>(orderDto);
+                foreach (var orderDetail in order.OrderDetails)
+                {
+                    orderDetail.Order = order;
+                }
+                order.OrderUser = user;
+                userService.SaveOrUpdate<Order>(order, true);
+                ((SessionDto) Session["SmartHealthUser"]).Order = new OrderDto();
+            }
+            return Json(0, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -10,8 +10,12 @@
 }
 /* CSS Document */ 
 html, body, div, span, h1, h2, h3, h4, h5, h6, p,a, em, img, strong, ol, ul, li 
-{ margin:0px; padding:0px; border:0px; outline:0px; vertical-align:baseline; background:transparent; text-decoration:none; font-family:arial; font-size:12px;}
+{ margin:0px; padding:0px; border:0px; outline:0px; vertical-align:baseline; background:transparent; text-decoration:none; font-family:arial; font-size:13px;color:#333333;line-height:1.3;}
 body { width:100%; background:url(/Content/images/BG-Body.jpg) repeat-x top #e9fcff;}
+
+h1{ font-size:20px;}
+h2{ font-size:16px;}
+h3{ font-size:14px;}
 
 /*________________Index________________*/
 .index { width:100%; float:left; background:url(/Content/images/BG-Index.jpg) no-repeat center top; position:relative;}
@@ -30,7 +34,7 @@ body { width:100%; background:url(/Content/images/BG-Body.jpg) repeat-x top #e9f
 .menuhead li.butdk { padding-right:10px;}
 .menuhead li.butdk a { color:#333; float:left; line-height:31px; padding-left:10px;}
 .menuhead li.butdk a:hover { color:white; text-decoration:underline;}
-.menuhead li.cart a { color:#333; float:left; line-height:31px; padding:0 10px 0 30px; background:url(/Content/images/icon-1.png) no-repeat top left; margin-left:10px;}
+.menuhead li.cart a p { color:#333; float:left; line-height:31px;height: 31px; padding:0 10px 0 30px; background:url(/Content/images/icon-1.png) no-repeat top left; margin-left:10px;}
 
 .menuTop { width:940px; height:87px; float:left; margin-top:25px; background:url(/Content/images/BG-Menu.jpg) no-repeat;
 -moz-box-shadow:2px 2px 2px #ddd; /* Firefox */
@@ -231,7 +235,7 @@ ul#mycarousel li { width:175px; height:70px; float:left; display:block;}
 
 .chitietsanpham { width:698px; float:left; position:relative;}
 .chitietsanpham > p { width:658px; height:40px; float:left; border-bottom:1px solid #ddd; font-size:16px; font-weight:bold; color:#333; line-height:40px; margin:10px 0 0 10px; padding-left:20px; background:url(/Content/images/icon_25.png) no-repeat top left;}
-.chitietsanpham > h1 { width:658px; height:40px; float:left; border-bottom:1px solid #ddd; font-size:16px; font-weight:bold; color:#333; line-height:40px; margin:10px 0 10px 10px; padding-left:20px; background:url(/Content/images/icon_25.png) no-repeat top left;}
+.chitietsanpham > h1 { width:658px; height:40px; float:left; border-bottom:1px solid #ddd;  color:#333; line-height:40px; margin:10px 0 10px 10px; padding-left:20px; background:url(/Content/images/icon_25.png) no-repeat top left;}
 .hinhsanpham { width:302px; height:auto; float:left; margin:10px;}
 
 #lofslidecontent45 { width:302px; height:auto; float:left;}
@@ -272,6 +276,7 @@ margin-top:-1px;
 .cloud-zoom-lens { border:1px solid #ddd; margin:-4px; background-color:#fff; cursor:move;}
 
 .thongtinsp { width:330px; min-height:340px; float:right; margin:10px 10px 0 0;}
+div.quycach {display:block !important;width:165px;float:left;}
 .thongtinsp ul { list-style:none;}
 .thongtinsp li { width:330px;}
 .thongtinsp li.Pr1 { height:auto; float:left; border-bottom:1px dotted #ddd; margin-bottom:10px;}
@@ -303,8 +308,25 @@ ul.tabs li:hover a span, ul.tabs li.active a span { background:url(/Content/imag
 
 .tab_container { width:678px; border-top:none; clear:both; float:left; background:#fff;}
 .tab_content { font-size:1.2em;}
+.tab_content table {
+	margin:10px;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+
+.tab_content table td {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #999999;
+	background-color: #ffffff;
+}
+
 .xanh { width:676px; float:left; border:1px solid #ddd; border-top:1px solid #7b7b7b;}
 .xanh ul li {list-style: inside;}
+.content_wapper {margin:10px 20px;}
+.content_wapper ul li {list-style: inside;}
 .mota { width:660px; float:left; padding:10px;}
 .thuoctinh { width:660px; height:auto; float:left; padding:10px;}
 .danhgia { width:660px; height:auto; float:left; padding:10px;}
@@ -335,6 +357,8 @@ behavior: url(ie-css3.htc); /* hack for IE */
 	.pic_5 img { margin:0 auto; max-width:71px; max-height:53px;}
 /*.boxRightI img { max-width:70px; max-height:70px; height:auto; float:left;}*/
 .boxRightI p { margin-top:10px; display:block; float:left;}
+.boxRightI > ul > li > p { width:86px;margin-top:0px !important;}
+.boxRightI > ul > li > span {width:86px; float:left;margin-top:10px !important;}
 .boxRightI span { color:#F60; font-size:14px; font-family:tahoma; margin-top:3px; display:block;}
 .boxRightI span.old { color:#666; margin-top:3px; display:block; text-decoration:line-through; font-size:12px; float:left; width:71px;}
 
@@ -355,6 +379,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 
 .AboxLeft { width:698px; float:left; position:relative;}
 .AboxLeft > p { width:658px; height:40px; float:left; border-bottom:1px solid #ddd; font-size:16px; font-weight:bold; color:#333; line-height:40px; margin:10px 0 0 10px; padding-left:20px; background:url(/Content/images/icon_25.png) no-repeat top left;}
+.AboxLeft > h1 { width:658px; height:40px; float:left; border-bottom:1px solid #ddd;  color:#333; line-height:40px; margin:10px 0 0 10px; padding-left:20px; background:url(/Content/images/icon_25.png) no-repeat top left;}
 .AboxLeft > a { position:absolute; top:26px; right:10px; background:url(/Content/images/icon_28.jpg) no-repeat top right; padding:2px 29px 5px 0; color:#333;}
 
 .AABoxLeft { width:638px; height:auto; float:left; margin:20px 0 0 30px; padding-bottom:20px;}
@@ -586,3 +611,14 @@ ul#thumbs img{
 	padding-top: 10px;
 	display: block;
 }
+ 
+.GridCnt { clear:left; padding:10px; }
+.GridCntSabreCommand { clear:left; padding:10px; height:350px; overflow:auto;}
+.GridCntHeightAuto { clear:left; padding:10px; height:auto;}
+.GridHeader { padding-top:10px; height:25px; text-shadow:1px 1px rgba(255,255,255,.7);}
+
+.TblGrid { clear:left; width:100%; border-collapse:collapse; border:solid 1px #1cbf34; overflow:auto;}
+.TblGrid tr th { background-color:#1cbf34; border-bottom:solid 1px #1cbf34; padding:4px; color:#fff; font-weight:bold;
+}
+.TblGrid tr:hover { background:#f3f3dd !important;}
+.TblGrid tr td { /*background-color:#f3f8fd;*/ border:dotted 1px #7699b6; padding:2px; border-right:dotted 1px #a3bdd3;}

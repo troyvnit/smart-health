@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Newtonsoft.Json;
@@ -11,9 +10,9 @@ using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using SmartHealth.Web.Controllers;
 
-namespace SmartHealth.Web.Areas.Admin.Controllers
+namespace SmartHealth.Web.Areas.Administrator.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private readonly IService<Product> productService;
@@ -31,7 +30,7 @@ namespace SmartHealth.Web.Areas.Admin.Controllers
 
         public ActionResult GetGroups()
         {
-            var groups = productGroupService.GetAll().OrderByDescending(a => a.Id).Select(Mapper.Map<ProductGroup, ProductGroupDto>).ToList();
+            var groups = productGroupService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(Mapper.Map<ProductGroup, ProductGroupDto>).ToList();
             return Json(groups, JsonRequestBehavior.AllowGet);
         }
 

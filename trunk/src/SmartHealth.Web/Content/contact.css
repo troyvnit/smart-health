@@ -49,6 +49,18 @@
         color: black;
         height: 39px;
         border-radius: 3px; }
+      #contact .form .box input[type="password"] {
+        padding-left: 39px;
+        margin-bottom: 10px;
+        color: black;
+        height: 39px;
+        border-radius: 3px; }
+      #contact .form .box select {
+        padding-left: 39px;
+        margin-bottom: 10px;
+        color: black;
+        height: 39px;
+        border-radius: 3px; }
       #contact .form .box input.name {
         background: url("/Content/images/formname.png") white no-repeat 5px; }
       #contact .form .box input.mail {

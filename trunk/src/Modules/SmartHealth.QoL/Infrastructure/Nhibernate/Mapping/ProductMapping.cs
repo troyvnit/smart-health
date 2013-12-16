@@ -13,6 +13,9 @@ namespace SmartHealth.Box.Infrastructure.Nhibernate.Mapping
     {
         public void Override(FluentNHibernate.Automapping.AutoMapping<Product> mapping)
         {
+            mapping.Map(a => a.Review).Length(4001);
+            mapping.Map(a => a.Introduction).Length(4001);
+            mapping.Map(a => a.Property).Length(4001);
         }
     }
 }

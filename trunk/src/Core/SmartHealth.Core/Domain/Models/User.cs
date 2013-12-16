@@ -40,6 +40,7 @@ namespace SmartHealth.Core.Domain.Models
         [Required]
         public virtual string Email { get; set; }
 
+        public virtual string Phone { get; set; }
 
         public virtual DateTime CreatedTime { get; set; }
 
@@ -126,10 +127,9 @@ namespace SmartHealth.Core.Domain.Models
 
     public enum UserType
     {
-        Physician,
-        Patient,
+        Guest,
         Admin,
-        Secretary
+        Member
     }
 
 }

@@ -20,13 +20,10 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string Description { get; set; }
 
-        [StringLength(4001)]
         public virtual string Introduction { get; set; }
 
-        [StringLength(4001)]
         public virtual string Property { get; set; }
 
-        [StringLength(4001)]
         public virtual string Review { get; set; }
 
         public virtual decimal MarketPrice { get; set; }

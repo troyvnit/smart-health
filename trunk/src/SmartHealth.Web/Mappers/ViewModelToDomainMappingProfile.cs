@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
+using SmartHealth.Core.Domain.Dtos;
+using SmartHealth.Core.Domain.Models;
 
 namespace SmartHealth.Web.Mappers
 {
@@ -20,6 +22,9 @@ namespace SmartHealth.Web.Mappers
             Mapper.CreateMap<FolderDto, Folder>();
             Mapper.CreateMap<MediaDto, Media>();
             Mapper.CreateMap<MenuDto, Menu>();
+            Mapper.CreateMap<UserDto, User>();
+            Mapper.CreateMap<OrderDto, Order>();
+            Mapper.CreateMap<OrderDetailDto, OrderDetail>();
         }
     }
 }

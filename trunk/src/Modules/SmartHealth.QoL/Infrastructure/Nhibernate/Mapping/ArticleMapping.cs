@@ -9,10 +9,11 @@ namespace SmartHealth.Box.Infrastructure.Nhibernate.Mapping
 {
     using SmartHealth.Box.Domain.Models;
 
-    public class ArticleCategoryMapping : IAutoMappingOverride<ArticleCategory>
+    public class ArticleMapping : IAutoMappingOverride<Article>
     {
-        public void Override(FluentNHibernate.Automapping.AutoMapping<ArticleCategory> mapping)
+        public void Override(FluentNHibernate.Automapping.AutoMapping<Article> mapping)
         {
+            mapping.Map(a => a.Content).Length(4001);
         }
     }
 }
