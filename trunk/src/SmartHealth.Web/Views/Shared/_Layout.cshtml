@@ -64,8 +64,8 @@
 	                    }
 	                </li>
                     <li><span>|</span></li>
-	                <li class="cart dropdown">@*<a href="#" data-toggle="dropdown"></a>*@
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                <li class="cart">@*<a href="#" data-toggle="dropdown"></a>*@
+                        <a href="@Url.Action("Order", "Home")">
                           <p id="OrderProductCount">@orderCount</p>
                         </a>
                         @*<ul class="dropdown-menu pull-right"style="background: none;min-height: 58px;height: auto;" role="menu" aria-labelledby="dLabel">
@@ -175,7 +175,7 @@
     ShowAdDiv();
     window.onresize = ShowAdDiv;
     $(document).ready(function() {
-        $(".dropdown-toggle").dropdown();
+        //$(".dropdown-toggle").dropdown();
     });
 </script><!-- End TAadv Floating -->
 </body>

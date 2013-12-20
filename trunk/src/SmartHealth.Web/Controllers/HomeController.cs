@@ -236,7 +236,7 @@ namespace SmartHealth.Web.Controllers
                 var category = articleCategoryService.Get((int)id);
                 if (category != null)
                 {
-                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).OrderByDescending(a => a.CreatedDate).Select(Mapper.Map<Article, ArticleDto>).ToList();
                     ViewBag.Title = category.Name + " - " + category.Description;
                     ViewBag.CategoryName = category.Name;
                     ViewBag.Articles = articles;
@@ -439,7 +439,7 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult Order()
         {
-            var user = userService.Get(currentUser.Id);
+            var user = currentUser != null ? userService.Get(currentUser.Id) : null;
             var userDto = user != null ? Mapper.Map<User, UserDto>(user) : new UserDto();
             return View(userDto);
         }
