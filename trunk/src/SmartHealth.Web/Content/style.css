@@ -624,3 +624,8 @@ ul#thumbs img{
 }
 .TblGrid tr:hover { background:#f3f3dd !important;}
 .TblGrid tr td { /*background-color:#f3f8fd;*/ border:dotted 1px #7699b6; padding:2px; border-right:dotted 1px #a3bdd3;}
+#zalen,#zalen:before, #zalen:after, .viewhomeTab,.viewhomeTab:before, .viewhomeTab:after,  .viewhomeI, .viewhomeI:before, .viewhomeI:after,.viewIIhome, .viewIIhome:before, .viewIIhome:after {
+    -moz-box-sizing: content-box !important;
+    -webkit-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
