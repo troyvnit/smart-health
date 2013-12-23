@@ -16,7 +16,7 @@
     <div class="boxLeft">
         <div class="chitietsanpham">
             <h1>@productDetail.Name</h1>
-            <div  style="width: 330px; display: inline-block; margin: 10px">
+            <div style="width: 330px; display: inline-block; margin: 10px">
                 <div id="imageSlider" class="flexslider">
                     <ul class="slides">
                         @if (productMedias != null)
@@ -24,9 +24,8 @@
                             foreach (var productImage in productMedias.Where(a => a.Type == 1))
                             {
                                 
-                                <li>
-                                    <a class="fancybox-media" href="@productImage.MediaUrl"><img src="@productImage.MediaUrl" /></a>
-                                </li>
+                            <li><a class="fancybox-media" href="@productImage.MediaUrl">
+                                <img src="@productImage.MediaUrl" /></a> </li>
                             }
                         }
                     </ul>
@@ -72,15 +71,20 @@
                                             <p>
                                                 Hãng sản xuất:</p>@productDetail.Brand</span> <span>
                                                     <p>
-                                                        Quy cách:</p><div class="quycach">@productDetail.Weight</div></span> <span>
-                                                            <p>
-                                                                Lượt xem:</p>@productDetail.ViewCount</span>
+                                                        Quy cách:</p>
+                                                    <div class="quycach">@productDetail.Weight</div>
+                                                </span><span>
+                                                    <p class="freebox"></p>
+                                                    <p>
+                                                        Lượt xem:</p>@productDetail.ViewCount</span>
                     </li>
                     <li class="Pr2"><span>
-                        <p>SL mua:</p>
+                        <p>
+                            SL mua:</p>
                         <input class="form-control bfh-number" type="text" id="Quantity" />
                         (@productDetail.Status) </span><span>
-                            <p>Số tiền thanh toán:</p>
+                            <p>
+                                Số tiền thanh toán:</p>
                             <span id="CalculatedPrice">0 vnđ</span></span> </li>
                     <li class="Pr3"><a id="Buy" href="#">
                         <img src="/Content/images/mua.png" alt="" /></a> </li>
@@ -90,7 +94,7 @@
             <div class="thongtincanbiet">
                 <div class="tabscontainer">
                     <ul class="tabs">
-                        <li><a href="#tab1"><span> Thông tin sản phẩm</span></a></li>
+                        <li><a href="#tab1"><span>Thông tin sản phẩm</span></a></li>
                         <li><a href="#tab2"><span>Chi tiết sản phẩm</span></a></li>
                         <li><a href="#tab3"><span>Đánh giá</span></a></li>
                         <li><a href="#tab4"><span>Video</span></a></li>
@@ -136,12 +140,12 @@
                                         {
                                             foreach (var productVideo in productMedias.Where(a => a.Type == 2))
                                             {
-                                                <a class="fancybox-media" href="@productVideo.MediaUrl"><img src="@productVideo.ThumbnailUrl" style="max-width:200px; max-height:100px;" alt="" /></a>
+                                            <a class="fancybox-media" href="@productVideo.MediaUrl">
+                                                <img src="@productVideo.ThumbnailUrl" style="max-width:200px; max-height:100px;" alt="" /></a>
                                             }
                                         }
                                     </p>
                                 </div>
-                                
                             </div>
                             <!--End .xanh-->
                         </div>
@@ -153,12 +157,11 @@
         <!--chitietsanpham-->
         <div class="tukhoa">
             <span>Từ khóa:</span>
-
             @if (!string.IsNullOrEmpty(productDetail.Tags))
             {
                 foreach (var tag in productDetail.Tags.Split(','))
                 {
-                    <a href="@Url.Action("ProductList", "Home", new { search = tag })">@tag</a>
+                <a href="@Url.Action("ProductList", "Home", new { search = tag })">@tag</a>
                 }
             }
         </div>
@@ -186,12 +189,11 @@
                                         </td>
                                     </tr>
                                 </tbody>
-
                             </table>
                         </div>
                         <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span>
                         <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
-                         </li>
+                    </li>
                     }
                 }
             </ul>
@@ -270,7 +272,7 @@
                         </div>
                         <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span>
                         <p>@viewedProduct.Name<br />@viewedProduct.Weight</p>
-                         </li>
+                    </li>
                     }
                 }
             </ul>
