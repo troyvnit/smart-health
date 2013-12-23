@@ -142,6 +142,7 @@ box-shadow:3px 3px 3px #ddd; /* Opera 10.5+, future browsers and IE6+ */
 .news { width:320px; height:392px; float:right;}
 .news > p { width:320px; height:48px; float:left; background:url(/Content/images/icon_7.jpg) repeat-x;}
 .news > p > span { font-weight:bold; color:white; display:block; line-height:48px; font-size:18px; font-family:"tahoma"; padding-left:60px; background:url(/Content/images/icon_8.png) no-repeat top left;}
+.news > p > span >a { font-weight:bold; color:white; display:block; line-height:48px; font-size:18px; font-family:"tahoma";}
 .news ul { list-style:none; float:left; width:300px; margin:10px 10px 0 10px; padding-bottom:10px; border-bottom:1px solid #ddd;}
 .news li.pic { max-width:95px; height:auto; float:left; border:1px solid #ddd;}
 .news li.pic > a > img { max-width:95px; float:left;}
@@ -156,6 +157,7 @@ box-shadow:3px 3px 3px #ddd; /* Opera 10.5+, future browsers and IE6+ */
 .Tprohone { width:940px; height:42px; float:left; background:url(/Content/images/icon_10.png) no-repeat;}
 .Tprohone > h3 { height:38px; float:left; background:url(/Content/images/icon_11.png) no-repeat top right; margin-left:48px; padding-right:62px;}
 .Tprohone > h3 > p { font-weight:bold; height:38px; display:block; line-height:43px; background:url(/Content/images/icon_12.jpg) repeat-x; font-size:18px; font-family:"tahoma"; color:white; padding:0 20px;}
+.Tprohone > h3 > p > a { font-weight:bold; height:38px; display:block; line-height:43px;  font-size:18px; font-family:"tahoma"; color:white; }
 .Cprohone { width:938px; height:auto; float:left; border:1px solid #ddd; padding-bottom:20px; background:url(/Content/images/icon_13.jpg) repeat-x bottom white;
 border-top-left-radius:0px;
 border-top-right-radius:0px;
