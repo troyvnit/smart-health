@@ -14,6 +14,8 @@ namespace SmartHealth.Box.Domain.Models
             Product = new Product();
         }
 
+        public virtual string Name { get; set; }
+
         public virtual string MediaUrl { get; set; }
 
         public virtual string ThumbnailUrl { get; set; }
@@ -23,6 +25,8 @@ namespace SmartHealth.Box.Domain.Models
         public virtual int Type { get; set; }
 
         public virtual Folder Folder { get; set; }
+
+        public virtual int Priority { get; set; }
 
         public virtual Product Product { get; set; }
     }

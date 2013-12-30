@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+<div id="vertical">
+    <div id="top-pane">
+        <div id="horizontal" style="height: 100%; width: 100%;">
+            <div id="center-pane">
+                <div class="pane-content">
+                    <div class="box-content">
+                        <div id="grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <script type="text/x-kendo-template" id="template">
+                <div class="tabstrip">
+                    <ul>
+                        <li class="k-state-active">
+                           Thông tin đơn hàng
+                        </li>
+                    </ul>
+                    <div>
+                        <div class='details'>
+                        </div>
+                    </div>
+                </div>
+
+            </script>
+<script>
+    $(document).ready(function () {
+        var datasource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetOrders", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                update: {
+                    url: '@Url.Action("CreateOrUpdateOrder", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                destroy: {
+                    url: '@Url.Action("DeleteOrders", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                create: {
+                    url: '@Url.Action("CreateOrUpdateOrder", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                }
+            },
+            batch: true,
+            autoSync: true,
+            pageSize: 20,
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, nullable: true },
+                        CreatedDate: { type: "date" }
+                    }
+                }
+            }
+        });
+        var grid = $("#grid").kendoGrid({
+            dataSource: datasource,
+            height: 710,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            navigatable: true,
+            editable: true,
+            //toolbar: ["save", "cancel"],
+            detailTemplate: kendo.template($("#template").html()),
+            detailInit: detailInit,
+            dataBound: function () {
+                this.expandRow(this.tbody.find("tr.k-master-row").first());
+            },
+            columns: [{
+                    field: "Id",
+                    width: 80
+                }, {
+                    field: "OrderUser.DisplayName",
+                    title: "Người đặt"
+                }, {
+                    field: "OrderUser.Email",
+                    title: "Email"
+                }, {
+                    field: "OrderUser.Phone",
+                    title: "Điện thoại"
+                }, {
+                    field: "OrderUser.Location",
+                    title: "Địa chỉ"
+                }, {
+                    field: "OrderUser.Gender",
+                    width: 80,
+                    title: "Giới tính"
+                }, {
+                    field: "TotalPrice",
+                    title: "Tổng tiền"
+                }, {
+                    field: "CreatedDate",
+                    title: "Ngày đặt hàng",
+                    format: "{0:dd/MM/yyyy HH:mm:ss}"
+                }, { command: "destroy", title: "&nbsp;", width: 90 }
+            ]
+        }).data("kendoGrid");
+
+        $("#vertical").kendoSplitter({
+            orientation: "vertical",
+            panes: [
+                { collapsible: false }
+            ]
+        });
+
+        var splitter = $("#horizontal").kendoSplitter({
+            orientation: "horizontal",
+            panes: [
+                { collapsible: true }
+            ]
+        }).data("kendoSplitter");
+    });
+    
+    function detailInit(e) {
+        var detailRow = e.detailRow;
+
+        detailRow.find(".tabstrip").kendoTabStrip({
+            animation: {
+                open: { effects: "fadeIn" }
+            }
+        });
+
+        detailRow.find(".details").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetOrderDetails", "Order")' + '?id=' + e.data.Id,
+                    type: "post",
+                    dataType: "json"
+                },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateOrder", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    destroy: {
+                        url: '@Url.Action("DeleteOrders", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateOrder", "Order")',
+                    type: "post",
+                    dataType: "json"
+                },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                pageSize: 5
+            },
+            scrollable: false,
+            sortable: true,
+            pageable: true,
+            columns: [
+                { field: "Product.Name", title: "Sản phẩm" }, 
+             {
+                 field: "Product.MarketPrice",
+                 title: "Giá bán"
+             }, {
+                 field: "Product.SmartHealthPrice",
+                 title: "Giá niêm yết"
+             }, {
+                 field: "Product.Brand",
+                 title: "Hãng sản xuất"
+             }, {
+                 field: "Product.Weight",
+                 width: 120,
+                 title: "Trọng lượng"
+             },
+                { field: "Quantity", title: "Số lượng" },
+                { title: "Thành tiền", template: "#=Quantity * Product.SmartHealthPrice#" }
+            ]
+        });
+    }
+</script>
+

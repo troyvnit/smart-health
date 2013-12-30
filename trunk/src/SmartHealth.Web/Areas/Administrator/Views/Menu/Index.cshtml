@@ -16,6 +16,7 @@
                                     <li>Banner quảng cáo</li>
                                     <li>Đối tác phân phối</li>
                                     <li>Slider trang chủ</li>
+                                    <li>Tài liệu</li>
                                 </ul>
                                 <div>
                                     <div id="grid">
@@ -48,6 +49,13 @@
                                     </div>
                                     <div id="sliderImage-listView"></div>
                                     <div id="sliderImage-pager" class="k-pager-wrap"></div>
+                                </div>
+                                <div>
+                                    <div class="box-content">
+                                        <a id="add-document" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Partner</a>
+                                    </div>
+                                    <div id="document-listView"></div>
+                                    <div id="document-pager" class="k-pager-wrap"></div>
                                 </div>
                             </div>
                         </div>
@@ -229,6 +237,46 @@
                 <dd>
                     <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
                     <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
+<script type="text/x-kendo-template" id="view-document-template">
+    <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            
+        <img width="100%" height="100%" src="#:ThumbnailUrl#" frameborder="0"/>
+        </div>
+</script>
+<script type="text/x-kendo-tmpl" id="edit-document-template">
+        <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Tên tài liệu</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
+                    <span data-for="Name" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Mô tả</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Link tải</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
+                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Hình đại diện</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
                 </dd>
             </dl>
         </div>
@@ -563,6 +611,65 @@
         });
         sliderImageListView.setDataSource(sliderImageDataSource);
         sliderImagePager.setDataSource(sliderImageDataSource);
+        
+        var documentPager = $("#document-pager").kendoPager().data("kendoPager");
+
+        var documentListView = $("#document-listView").kendoListView({
+            template: kendo.template($("#view-document-template").html()),
+            editTemplate: kendo.template($("#edit-document-template").html())
+        }).data("kendoListView");
+
+        $("#add-document").click(function (e) {
+            documentListView.add();
+            e.preventDefault();
+        });
+
+        var documentDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetDocuments", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                update: {
+                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                destroy: {
+                    url: '@Url.Action("DeleteVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                create: {
+                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 6,
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, nullable: true },
+                        ProductId: { type: "number", defaultValue: 1 },
+                        MediaUrl: { type: "string" },
+                        ThumbnailUrl: { type: "string" },
+                        Description: { type: "string", defaultValue: "" },
+                        Type: { type: "number", defaultValue: 7 }
+                    }
+                }
+            }
+        });
+        documentListView.setDataSource(documentDataSource);
+        documentPager.setDataSource(documentDataSource);
 
         $("#vertical").kendoSplitter({
             orientation: "vertical",
