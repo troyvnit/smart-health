@@ -154,6 +154,8 @@
     </Compile>
     <Compile Include="Areas\Administrator\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\MediaLogController.cs" />
     <Compile Include="Areas\Administrator\Controllers\MediaController.cs" />
     <Compile Include="Areas\Administrator\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ProductController.cs" />
@@ -2282,6 +2284,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="MailFormat_DownloadDocument.xml" />
     <Content Include="FancyBox\blank.gif" />
     <Content Include="FancyBox\fancybox_loading%402x.gif" />
     <Content Include="FancyBox\fancybox_loading.gif" />
@@ -2417,6 +2420,8 @@
     <Content Include="Areas\Administrator\Views\Shared\_ReponsiveLayout.cshtml" />
     <Content Include="Areas\Administrator\Views\Web.config" />
     <Content Include="Areas\Administrator\Views\User\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\MediaLog\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Order\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Smart Health.pubxml" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="MailFormat.xml" />
@@ -2472,6 +2477,7 @@
     <Content Include="Scripts\js\jqueryTab.js" />
     <Content Include="Scripts\js\m2xn.js" />
     <Content Include="Scripts\js\main-jquery.js" />
+    <Content Include="Scripts\js\masonry.pkgd.min.js" />
     <Content Include="Scripts\js\script.js" />
     <Content Include="Scripts\js\slider-hot.js" />
     <Content Include="Scripts\js\taadv_floating.js" />
@@ -2519,6 +2525,9 @@
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Home\Partner.cshtml" />
+    <Content Include="Views\Home\Videos.cshtml" />
+    <Content Include="Views\Home\Document.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

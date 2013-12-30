@@ -6,11 +6,15 @@ namespace SmartHealth.Box.Domain.Dtos
     {
         public virtual int? Id { get; set; }
 
+        public virtual string Name { get; set; }
+
         public virtual string MediaUrl { get; set; }
 
         public virtual string ThumbnailUrl { get; set; }
 
         public virtual string Description { get; set; }
+
+        public virtual int Priority { get; set; }
 
         public virtual int FolderId { get; set; }
 

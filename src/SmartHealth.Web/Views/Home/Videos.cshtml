@@ -1,0 +1,111 @@
+﻿@using System.Web.Optimization
+@using SmartHealth.Box.Domain.Dtos
+@{
+    ViewBag.Title = "Videos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var videos = (List<MediaDto>)ViewBag.Videos;
+}
+<script src="~/Scripts/js/masonry.pkgd.min.js"></script>
+@Styles.Render("~/Content/css/contact")
+<div class="leftContent" style="width: 970px">
+<div class="boxLeft" style="width: 100%">
+    <div class="AboxLeft" style="width: 100%">
+        <p style="width: 920px">Video sản phẩm</p>
+        <div id="contact">
+            <div class="container" style="width: 940px">
+                <div id="content">
+                    @foreach (var video in videos)
+                    {
+                        <div class="box">
+                            <a class="fancybox-media" href="@video.MediaUrl"><img  src="@video.ThumbnailUrl" style="max-width:619px; max-height:392px;" alt="" /></a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .box {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 12px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+    background-color: white;
+}
+    .box img{
+        width: 100%;
+}
+    .box p{
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+}
+    .box a:hover{
+        text-decoration: none;
+}
+     #content {
+         padding-top: 20px;
+         margin-bottom: 30px; 
+     }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Init jQuery Masonry layout
+        init_masonry();
+
+        //Select menu init
+        $("#collapsed-navbar ." + $('body').attr('class')).attr('selected', 'selected');
+
+        //Select menu onchange
+        $("#collapsed-navbar").change(function () {
+            window.location = $(this).val();
+        });
+        
+        $('.fancybox-media')
+               .attr('rel', 'media-gallery')
+               .fancybox({
+                   openEffect: 'none',
+                   closeEffect: 'none',
+                   prevEffect: 'none',
+                   nextEffect: 'none',
+
+                   arrows: false,
+                   helpers: {
+                       media: {},
+                       buttons: {}
+                   }
+               });
+    });
+
+
+    function init_masonry() {
+        var $container = $('#content');
+
+        var gutter = 12;
+        var min_width = 300;
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                itemSelector: '.box',
+                gutterWidth: gutter,
+                isAnimated: true,
+                columnWidth: function (containerWidth) {
+                    var num_of_boxes = (containerWidth / min_width | 0);
+
+                    var box_width = (((containerWidth - (num_of_boxes - 1) * gutter) / num_of_boxes) | 0);
+
+                    if (containerWidth < min_width) {
+                        box_width = containerWidth;
+                    }
+
+                    $('.box').width(box_width);
+
+                    return box_width;
+                }
+            });
+        });
+    }
+</script>

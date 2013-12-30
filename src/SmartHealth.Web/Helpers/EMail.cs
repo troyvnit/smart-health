@@ -20,10 +20,10 @@ namespace SmartHealth.Web.Helpers
         public string SMTPPort { get; set; }
         public Boolean isEnableSSL { get; set; }
 
-        public void SendMail(string messageId, string[] param)
+        public void SendMail(string messageId, string template, string[] param)
         {
             XmlDocument xdoc = new XmlDocument();
-            string mailFormatxml = HttpContext.Current.Server.MapPath("\\") + "Mailformat.xml";
+            string mailFormatxml = HttpContext.Current.Server.MapPath("\\") + template;
             string subject = "";
             string body = "";
             XmlNode mailNode = default(XmlNode);

@@ -1,0 +1,100 @@
+﻿@using System.Web.Optimization
+@using SmartHealth.Box.Domain.Dtos
+@{
+    ViewBag.Title = "Partner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var partners = (List<MediaDto>)ViewBag.Partners;
+}
+<script src="~/Scripts/js/masonry.pkgd.min.js"></script>
+@Styles.Render("~/Content/css/contact")
+<div class="leftContent" style="width: 970px">
+<div class="boxLeft" style="width: 100%">
+    <div class="AboxLeft" style="width: 100%">
+        <p style="width: 920px">Đối tác phân phối</p>
+        <div id="contact">
+            <div class="container" style="width: 940px">
+                <div id="content">
+                    @foreach (var partner in partners)
+                    {
+                        <div class="box">
+                            <a href="@partner.MediaUrl">
+                                <img src="@partner.ThumbnailUrl" alt="">
+                                <p>@partner.Description</p>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .box {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 12px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+    background-color: white;
+}
+    .box img{
+        width: 90%;
+        margin: 5%;
+}
+    .box p{
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+}
+    .box a:hover{
+        text-decoration: none;
+}
+     #content {
+         padding-top: 20px;
+         margin-bottom: 30px; 
+     }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Init jQuery Masonry layout
+        init_masonry();
+
+        //Select menu init
+        $("#collapsed-navbar ." + $('body').attr('class')).attr('selected', 'selected');
+
+        //Select menu onchange
+        $("#collapsed-navbar").change(function () {
+            window.location = $(this).val();
+        });
+    });
+
+
+    function init_masonry() {
+        var $container = $('#content');
+
+        var gutter = 12;
+        var min_width = 200;
+        $container.imagesLoaded(function () {
+            $container.masonry({
+                itemSelector: '.box',
+                gutterWidth: gutter,
+                isAnimated: true,
+                columnWidth: function (containerWidth) {
+                    var num_of_boxes = (containerWidth / min_width | 0);
+
+                    var box_width = (((containerWidth - (num_of_boxes - 1) * gutter) / num_of_boxes) | 0);
+
+                    if (containerWidth < min_width) {
+                        box_width = containerWidth;
+                    }
+
+                    $('.box').width(box_width);
+
+                    return box_width;
+                }
+            });
+        });
+    }
+</script>

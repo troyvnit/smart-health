@@ -26,8 +26,9 @@ namespace SmartHealth.Web.Controllers
         private readonly IService<Menu> menuService;
         private readonly IService<Media> mediaService;
         private readonly IService<User> userService;
+        private readonly IService<MediaLog> mediaLogService;
 
-        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService,IService<User> userService)
+        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService, IService<User> userService, IService<MediaLog> mediaLogService)
         {
             this.productService = productService;
             this.productGroupService = productGroupService;
@@ -36,6 +37,7 @@ namespace SmartHealth.Web.Controllers
             this.menuService = menuService;
             this.mediaService = mediaService;
             this.userService = userService;
+            this.mediaLogService = mediaLogService;
         }
 
         public ActionResult Index()
@@ -287,7 +289,7 @@ namespace SmartHealth.Web.Controllers
                                     System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
                                     "YES"
                             };
-            eMail.SendMail("Email", new String[] { "Smart Health Contact", eMail.Name, eMail.Phone, eMail.Email, eMail.Message });
+            eMail.SendMail("Email","Mailformat.xml", new String[] { "Smart Health Contact", eMail.Name, eMail.Phone, eMail.Email, eMail.Message });
             return Content("Success");
         }
 
@@ -472,6 +474,49 @@ namespace SmartHealth.Web.Controllers
                 ((SessionDto) Session["SmartHealthUser"]).Order = new OrderDto();
             }
             return Json(0, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Partner()
+        {
+            var partners = mediaService.GetAll().Where(a => a.Type == 5).Select(Mapper.Map<Media, MediaDto>).ToList();
+            ViewBag.Partners = partners;
+            return View();
+        }
+
+        public ActionResult Videos()
+        {
+            var videos = mediaService.GetAll().Where(a => a.Type == 3).Select(Mapper.Map<Media, MediaDto>).ToList();
+            ViewBag.Videos = videos;
+            return View();
+        }
+
+        public ActionResult Document()
+        {
+            var documents = mediaService.GetAll().Where(a => a.Type == 7).Select(Mapper.Map<Media, MediaDto>).ToList();
+            ViewBag.Documents = documents;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DownloadDocument(string email, int documentId)
+        {
+            var document = mediaService.Get(documentId);
+            var eMail = new EMail
+            {
+                FromAddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromAddress"),
+                ToAddress = email,
+                SMTPClient = System.Configuration.ConfigurationManager.AppSettings.Get("SmtpClient"),
+                UserName = System.Configuration.ConfigurationManager.AppSettings.Get("UserName"),
+                Password = System.Configuration.ConfigurationManager.AppSettings.Get("Password"),
+                ReplyTo = System.Configuration.ConfigurationManager.AppSettings.Get("ReplyTo"),
+                SMTPPort = System.Configuration.ConfigurationManager.AppSettings.Get("SMTPPort"),
+                isEnableSSL =
+                    System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
+                    "YES"
+            };
+            eMail.SendMail("Email", "MailFormat_DownloadDocument.xml", new String[] { "Smart Health Download Document", "Thông tin tài liệu: ", document.Description, document.MediaUrl });
+            mediaLogService.SaveOrUpdate(new MediaLog{Email = email, Media = mediaService.Get(documentId)}, true);
+            return Content("Success");
         }
     }
 }
