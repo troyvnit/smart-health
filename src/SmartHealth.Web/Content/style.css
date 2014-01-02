@@ -176,7 +176,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 .boxPro li.pic { width:284px; height:180px; float:left; border:1px solid #ddd;}
 	.pic_1 { width:284px; height:180px; text-align: center; vertical-align: middle;}
 	.pic_1 img { margin:0 auto; max-width:264px; max-height:160px;}
-.boxPro li.tit { width:286px; height:15px; float:left; overflow:hidden; margin-top:5px;}
+.boxPro li.tit { width:286px; height:34px; float:left; overflow:hidden; margin-top:5px;}
 .boxPro li.tit > a { font-weight:bold; color:#333; text-align:center; display:block;}
 
 .sliderproducts { width:878px; height:70px; float:left; margin:10px 30px 0 30px;}
@@ -630,3 +630,18 @@ ul#thumbs img{
     box-sizing: content-box !important;
 }
 .bfh-number{width:80px; display:inline;}
+
+.table_hasborder table
+{
+border-collapse:collapse;
+width:96%;
+margin:10px;
+}
+.table_hasborder table, .table_hasborder th, .table_hasborder td
+{
+border: 1px solid #999;
+}
+.table_hasborder th, .table_hasborder td
+{
+    padding:3px 5px;
+    }
