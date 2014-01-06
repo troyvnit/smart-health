@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using SmartHealth.Web.Helpers;
 
 namespace SmartHealth.Web
 {
@@ -9,6 +10,7 @@ namespace SmartHealth.Web
         {
            filters.Add(new HandleErrorAttribute());
            filters.Add(new AuthorizeAttribute());
+           filters.Add(new EnableCompressionAttribute());
         }
     }
 }

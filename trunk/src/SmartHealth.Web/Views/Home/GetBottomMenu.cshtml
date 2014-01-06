@@ -1,12 +1,14 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
 @{
     var newses = (List<ArticleDto>)ViewBag.Newses;
+    var newsesMenu = (MenuDto)ViewBag.NewsesMenu;
     var clientSupportArticles = (List<ArticleDto>)ViewBag.ClientSupportArticles;
+    var clientSupportArticlesMenu = (MenuDto)ViewBag.ClientSupportArticlesMenu;
 }
 <div class="boxTT">
     <ul>
         <li class="tit">
-            <p>@SmartHealth.Web.Resources.SH.News</p>
+            <p style="cursor: pointer" onclick="window.open('@newsesMenu.Url');">@newsesMenu.Name</p>
         </li>
         @if (newses != null)
         {
@@ -21,7 +23,7 @@
 <div class="boxTT">
     <ul>
         <li class="tit">
-            <p>@SmartHealth.Web.Resources.SH.ClientSupport</p>
+            <p style="cursor: pointer" onclick="window.open('@clientSupportArticlesMenu.Url');">@clientSupportArticlesMenu.Name</p>
         </li>
         @if (clientSupportArticles != null)
         {
