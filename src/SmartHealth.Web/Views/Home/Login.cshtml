@@ -13,7 +13,7 @@
         <div id="contact">
             <div class="container" style="width: 940px">
                 <div class="row contact">
-                    <form action="@Url.Action("Login", "Home")" method="POST">
+                    <form action="@Url.Action("Login", "Home", new {returnUrl = ViewBag.ReturnUrl})" method="POST">
                         <div class="row form">
                             <div class="col-md-3">
                             </div>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Globalization;
 using System.Threading;
 using System.Web;
@@ -38,6 +39,57 @@ namespace SmartHealth.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            //Get & increment visitor count
+            UserVisitCount();
+
+            DataSet tmpDs = new DataSet();
+            try
+            {
+                tmpDs.ReadXml(Server.MapPath("~/App_Data/HitCounter.xml"));
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                throw;
+            }
+            catch
+            {
+                //no need to throw exception for this
+            }
+
+            //set in Session 
+            Session["hits"] = tmpDs.Tables[0].Rows[0]["hits"].ToString();
+        }
+
+        /// <summary>
+        /// Increments visit count on every user session
+        /// </summary>
+        private void UserVisitCount()
+        {
+            try
+            {
+                DataSet tmpDs = new DataSet();
+                //read hit count
+                tmpDs.ReadXml(Server.MapPath("~/App_Data/HitCounter.xml"));
+                int hits = Int32.Parse(tmpDs.Tables[0].Rows[0]["hits"].ToString());
+
+                hits += 1;
+
+                //write hit count
+                tmpDs.Tables[0].Rows[0]["hits"] = hits.ToString();
+                tmpDs.WriteXml(Server.MapPath("~/App_Data/HitCounter.xml"));
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                throw;
+            }
+            catch
+            {
+                //no need to throw for this
+            }
         }
 
         protected void FormsAuthentication_OnAuthenticate(Object sender, FormsAuthenticationEventArgs e)

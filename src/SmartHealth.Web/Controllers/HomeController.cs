@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +17,7 @@ using SmartHealth.Web.Helpers;
 namespace SmartHealth.Web.Controllers
 {
     [AllowAnonymous]
+    [EnableCompression]
     public class HomeController : BaseController
     {
         private readonly IService<Product> productService;
@@ -90,10 +91,24 @@ namespace SmartHealth.Web.Controllers
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.Newses = newses;
 
+            var newsesMenu = Mapper.Map<Menu, MenuDto>(menuService.GetAll().FirstOrDefault(a => a.Name.ToUpper() == Resources.SH.News.ToUpper()));
+            ViewBag.NewsesMenu = newsesMenu;
+
             var clientSupportArticles =
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.ClientSupportArticles = clientSupportArticles;
+
+            var clientSupportArticlesMenu = Mapper.Map<Menu, MenuDto>(menuService.GetAll().FirstOrDefault(a => a.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper()));
+            ViewBag.ClientSupportArticlesMenu = clientSupportArticlesMenu;
+
+            return View();
+        }
+
+        public ActionResult GetCounter()
+        {
+            var userCount = userService.GetAll().Count;
+            ViewBag.UserCount = userCount;
             return View();
         }
 
@@ -293,24 +308,29 @@ namespace SmartHealth.Web.Controllers
             return Content("Success");
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
             if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 return Redirect("/" + RouteData.Values["lang"]);
             }
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(UserDto userDto)
+        public ActionResult Login(UserDto userDto, string returnUrl)
         {
             var user = userService.GetAll().FirstOrDefault(a => a.Username == userDto.Username && a.Password == userDto.Password);
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
                 FormsAuthentication.RedirectFromLoginPage(user.Id.ToString(), true);
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 return Redirect("/" + RouteData.Values["lang"]);
             }
             ModelState.AddModelError("error", "The user name or password provided is incorrect.");

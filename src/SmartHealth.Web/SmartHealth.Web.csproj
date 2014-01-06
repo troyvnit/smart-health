@@ -163,6 +163,7 @@
     <Compile Include="Areas\Administrator\Models\FileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Helpers\EMail.cs" />
+    <Compile Include="Helpers\EnableCompressionAttribute.cs" />
     <Compile Include="Resources\SH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +190,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\HitCounter.xml" />
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Areas\Administrator\ClipOne\css\main-responsive.css" />
     <Content Include="Areas\Administrator\ClipOne\css\main.css" />
@@ -2528,9 +2530,9 @@
     <Content Include="Views\Home\Partner.cshtml" />
     <Content Include="Views\Home\Videos.cshtml" />
     <Content Include="Views\Home\Document.cshtml" />
+    <Content Include="Views\Home\GetCounter.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Mood\Controllers\" />
     <Folder Include="Areas\Mood\Models\" />
     <Folder Include="Areas\Mood\Views\Shared\" />
