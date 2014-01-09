@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using SmartHealth.Box.Domain.Dtos
+@using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Partner";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,14 +11,14 @@
 <div class="leftContent" style="width: 970px">
 <div class="boxLeft" style="width: 100%">
     <div class="AboxLeft" style="width: 100%">
-        <p style="width: 920px">Đối tác phân phối</p>
+        <p style="width: 920px">@SH.Partner</p>
         <div id="contact">
             <div class="container" style="width: 940px">
                 <div id="content">
                     @foreach (var partner in partners)
                     {
                         <div class="box">
-                            <a href="@partner.MediaUrl">
+                            <a href="@partner.MediaUrl" target="_blank">
                                 <img src="@partner.ThumbnailUrl" alt="">
                                 <p>@partner.Description</p>
                             </a>

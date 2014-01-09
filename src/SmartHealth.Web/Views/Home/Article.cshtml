@@ -1,4 +1,5 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
+@using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Article";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,7 +25,7 @@
         </div>*@
         <!--chitietsanpham-->
         <div class="tukhoa">
-            <span>Từ khóa:</span>
+            <span>@SH.Tags:</span>
             @if (!string.IsNullOrEmpty(article.Tags))
             {
                 foreach (var tag in article.Tags.Split(','))
@@ -39,7 +40,7 @@
 <div class="rightContent">
     <div class="boxRight">
         <div class="boxRightI">
-            <p>Tin tức</p>
+            <p>@SH.News</p>
             <div class="htkhachhang">
                 <ul>
                     @if (newses != null)
@@ -55,8 +56,7 @@
     </div>
     <div class="boxRight">
         <div class="boxRightI">
-            <p>
-                Sản phẩm khuyên dùng</p>
+            <p>@SH.RecommendProduct</p>
             <ul>
                 @if (products != null)
                 {
@@ -86,7 +86,7 @@
     </div>
     <div class="boxRight">
         <div class="boxRightI">
-            <p>Chấp nhận thanh toán</p>
+            <p>@SH.AcceptedPayment</p>
             <div class="thanhtoan">
                 <ul>
                     <li><a href="#">
@@ -111,7 +111,7 @@
     </div>
     <div class="boxRight">
         <div class="boxRightI">
-            <p>Tin tức đã xem</p>
+            <p>@SH.ViewedNews</p>
             <div class="htkhachhang">
                 <ul>
                     @if (viewedArticles != null)

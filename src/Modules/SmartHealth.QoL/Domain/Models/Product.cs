@@ -26,6 +26,10 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string Review { get; set; }
 
+        public virtual int Rating { get; set; }
+
+        public virtual int RatingCount { get; set; }
+
         public virtual decimal MarketPrice { get; set; }
 
         public virtual decimal SmartHealthPrice { get; set; }
