@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SmartHealth.Box.Domain.Models;
 using SmartHealth.Core.Domain.Dtos;
 
 namespace SmartHealth.Box.Domain.Dtos
@@ -11,6 +12,7 @@ namespace SmartHealth.Box.Domain.Dtos
         public OrderDto()
         {
             OrderDetails = new List<OrderDetailDto>();
+            CreatedDate = DateTime.Now;
         }
 
         public virtual int Id { get; set; }
@@ -19,7 +21,17 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual UserDto OrderUser { get; set; }
 
-        public virtual decimal TotalPrice { get; set; }
+        public virtual decimal TotalAmount { get; set; }
+
+        public virtual decimal NetAmount { get; set; }
+
+        public virtual decimal FeeAmount { get; set; }
+
+        public virtual bool IsPayed { get; set; }
+
+        public int TransactionStatus { get; set; }
+
+        public virtual PayType PayType { get; set; }
         //{
         //    get
         //    {

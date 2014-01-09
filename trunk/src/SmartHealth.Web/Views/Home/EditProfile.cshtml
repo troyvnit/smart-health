@@ -1,6 +1,7 @@
 ﻿@model SmartHealth.Core.Domain.Dtos.UserDto
 @using System.Web.Optimization
 @using SmartHealth.Core.Domain.Models
+@using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Edit Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +11,7 @@
 <div class="leftContent" style="width: 970px">
 <div class="boxLeft" style="width: 100%">
     <div class="AboxLeft" style="width: 100%">
-        <p style="width: 920px">Cập nhật thông tin</p>
+        <p style="width: 920px">@SH.UpdateProfile</p>
         <div id="contact">
             <div class="container" style="width: 940px">
                 <div class="row contact">
@@ -28,23 +29,23 @@
                                         @Html.ValidationMessageFor(model => model.Username)
                                     </div>*@
                                     <div class="form-group">
-                                        @Html.HiddenFor(model => model.Id, new {@class = "form-control", placeholder = "Password"})
+                                        @Html.HiddenFor(model => model.Id, new {@class = "form-control", placeholder = SH.Password})
                                         @Html.ValidationMessageFor(model => model.Id)
                                     </div>
                                     <div class="form-group">
-                                        @Html.TextBoxFor(model => model.DisplayName, new {@class = "form-control", placeholder = "DisplayName"})
+                                        @Html.TextBoxFor(model => model.DisplayName, new {@class = "form-control", placeholder = SH.Name})
                                         @Html.ValidationMessageFor(model => model.DisplayName)
                                     </div>
                                     <div class="form-group">
-                                        @Html.TextBoxFor(model => model.Email, new {@class = "form-control", placeholder = "Email"})
+                                        @Html.TextBoxFor(model => model.Email, new {@class = "form-control", placeholder = SH.Email})
                                         @Html.ValidationMessageFor(model => model.Email)
                                     </div>
                                     <div class="form-group">
-                                        @Html.TextBoxFor(model => model.Location, new {@class = "form-control", placeholder = "Address"})
+                                        @Html.TextBoxFor(model => model.Location, new {@class = "form-control", placeholder = SH.Address})
                                         @Html.ValidationMessageFor(model => model.Location)
                                     </div>
                                     <div class="form-group">
-                                        @Html.TextBoxFor(model => model.DOB, new {@class = "form-control datepicker", placeholder = "Date of birth"})
+                                        @Html.TextBoxFor(model => model.DOB, new {@class = "form-control datepicker", placeholder = SH.DOB})
                                         @Html.ValidationMessageFor(model => model.DOB)
                                     </div>
                                     <div class="form-group">
@@ -62,13 +63,13 @@
                             <div class="col-md-6 right">
                                 @if (Model.Username == "admin")
                                 {
-                                    <a href="/backoffice/article" style="float: right; margin-top: 10px; margin-right: 10px;" class="btn btn-success">Quản trị</a>
+                                    <a href="/backoffice/article" style="float: right; margin-top: 10px; margin-right: 10px;" class="btn btn-success">@SH.Admin</a>
                                 }
                                 else
                                 {
-                                    <button id="submitBtn" style="float: right; margin-top: 10px" type="submit" class="btn btn-success">Cập nhật</button>
+                                    <button id="submitBtn" style="float: right; margin-top: 10px" type="submit" class="btn btn-success">@SH.Update</button>
                                 }
-                                <a href="@Url.Action("ChangePassword", new {id = Model.Id})" style="float: right; margin-top: 10px; margin-right: 10px; " class="btn btn-success">Đổi mật khẩu</a>
+                                <a href="@Url.Action("ChangePassword", new {id = Model.Id})" style="float: right; margin-top: 10px; margin-right: 10px; " class="btn btn-success">@SH.ChangePassword</a>
                             </div>
                             <div class="col-md-3">
                             </div>

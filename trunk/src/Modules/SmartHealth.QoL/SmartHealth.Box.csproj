@@ -56,6 +56,7 @@
     <Compile Include="ApplicationServices\SurveyService.cs" />
     <Compile Include="Domain\Dtos\ArticleCategoryDto.cs" />
     <Compile Include="Domain\Dtos\ArticleDto.cs" />
+    <Compile Include="Domain\Dtos\BaoKimOrderDto.cs" />
     <Compile Include="Domain\Dtos\MediaLogDto.cs" />
     <Compile Include="Domain\Dtos\MenuDto.cs" />
     <Compile Include="Domain\Dtos\MediaDto.cs" />

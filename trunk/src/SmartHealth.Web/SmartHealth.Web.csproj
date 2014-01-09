@@ -76,6 +76,12 @@
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="PayooBusinessAPI">
+      <HintPath>C:\Users\Troy Lee\Downloads\Compressed\smart-health\smart-health\PayooASPNetSDKDemo\PayooLib\PayooBusinessAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="PayooDotNet2xSDK">
+      <HintPath>C:\Users\Troy Lee\Downloads\Compressed\smart-health\smart-health\PayooASPNetSDKDemo\PayooLib\PayooDotNet2xSDK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -162,6 +168,7 @@
     <Compile Include="Areas\Administrator\Controllers\UserController.cs" />
     <Compile Include="Areas\Administrator\Models\FileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\BaoKimPayment.cs" />
     <Compile Include="Helpers\EMail.cs" />
     <Compile Include="Helpers\EnableCompressionAttribute.cs" />
     <Compile Include="Resources\SH.Designer.cs">
@@ -2117,6 +2124,9 @@
     <Content Include="Content\contact.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\fonts\flexslider-icon.svg" />
+    <Content Include="Content\icons\bg_jRatingInfos.png" />
+    <Content Include="Content\icons\small.png" />
+    <Content Include="Content\icons\stars.png" />
     <Content Include="Content\images\arrows.png" />
     <Content Include="Content\images\ban-1.jpg" />
     <Content Include="Content\images\ban-2.jpg" />
@@ -2212,6 +2222,7 @@
     <Content Include="Content\images\xa-1.png" />
     <Content Include="Content\images\xa-2.png" />
     <Content Include="Content\images\xa-3.png" />
+    <Content Include="Content\jRating.jquery.css" />
     <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\nivo-slider\themes\bar\arrows.png" />
     <Content Include="Content\nivo-slider\themes\bar\bar.css" />
@@ -2477,6 +2488,7 @@
     <Content Include="Scripts\js\jquery.js" />
     <Content Include="Scripts\js\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\js\jqueryTab.js" />
+    <Content Include="Scripts\js\jRating.jquery.js" />
     <Content Include="Scripts\js\m2xn.js" />
     <Content Include="Scripts\js\main-jquery.js" />
     <Content Include="Scripts\js\masonry.pkgd.min.js" />
@@ -2531,6 +2543,8 @@
     <Content Include="Views\Home\Videos.cshtml" />
     <Content Include="Views\Home\Document.cshtml" />
     <Content Include="Views\Home\GetCounter.cshtml" />
+    <Content Include="Views\Home\BaoKimPaymentSuccess.cshtml" />
+    <Content Include="Views\Home\PayooPaymentSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Mood\Controllers\" />

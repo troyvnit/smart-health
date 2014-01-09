@@ -3,6 +3,7 @@
 @using SmartHealth.Core.ApplicationServices.Caching
 @using SmartHealth.Core.Domain.Models
 @using SmartHealth.Core.Helpers
+@using SmartHealth.Web.Resources
 @{
     Layout = null;
     var orderCount = Session["SmartHealthUser"] != null ? ((SessionDto)Session["SmartHealthUser"]).Order.OrderDetails.Count(a => a.Quantity != 0) : 0;
@@ -56,7 +57,7 @@
 	                <li class="butdk">
 	                    @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
 	                    {
-	                        <a href="@Url.Action("EditProfile", "Home", new {id = ViewBag.CurrentUser.Id})">&bull; @ViewBag.CurrentUser.Username</a><a href="@Url.Action("Logout", "Home")">&bull; Đăng xuất</a>
+	                        <a href="@Url.Action("EditProfile", "Home", new {id = ViewBag.CurrentUser.Id})">&bull; @ViewBag.CurrentUser.Username</a><a href="@Url.Action("Logout", "Home")">&bull; @SH.Logout</a>
 	                    }
 	                    else
 	                    {
@@ -110,7 +111,7 @@
             <div class="boxTTT">
                 <div class="boxTT">
                     <ul>
-                        <li class="tit"><p>Cách thức thanh toán</p></li>
+                        <li class="tit"><p>@SH.AcceptedPayment</p></li>
                         <li>
                             <a href="#"><img src="@Url.Content("~/Content/images/icon_15.jpg")" alt="" /></a>
                             <a href="#"><img src="@Url.Content("~/Content/images/icon_16.jpg")" alt="" /></a>
@@ -120,7 +121,7 @@
                 </div><!--boxTT-->
                 <div class="boxTT">
                     <ul>
-                        <li class="tit"><p>Kết nối với chúng tôi</p></li>
+                        <li class="tit"><p>@SH.ConnectToUs</p></li>
                         <li>
                         	<a target="_blank" href="https://twitter.com/SmartHealthVN"><img src="@Url.Content("~/Content/images/icon_18.png")" alt="Twitter" /></a>
                             <a target="_blank" href="https://www.facebook.com/pages/Smart-Health/173034079568243"><img src="@Url.Content("~/Content/images/icon_19.png")" alt="Facebook" /></a>
@@ -131,7 +132,7 @@
                 </div><!--boxTT-->
             </div>
             <div class="boxTT0">
-            	<p>Hỗ trợ</p>
+            	<p>@SH.Support</p>
                 <ul>
                     <li class="ht-1"><a href="#">08-39972280</a></li>
                     <li class="ht-2"><a href="#">08-39972281</a></li>
@@ -146,8 +147,8 @@
                 	<li><a href="#"><img src="@Url.Content("~/Content/images/logoz.jpg")" alt="" /></a></li>
                     <li>
                     	<span>Copyright &copy; 2013 Smart Health. All rights reserved</span>
-                        <p>Smart Health Company</p>
-                        <p>402 Huỳnh Văn Bánh, Phường 14, Quận Phú Nhuận, TPHCM</p>
+                        <p>@SH.CompanyName</p>
+                        <p>@SH.AddressInfo</p>
                     </li>
                 </ul>
             </div>

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.IO.Compression;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Payoo.Lib;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
 using SmartHealth.Core.Domain.Dtos;
@@ -137,7 +139,7 @@ namespace SmartHealth.Web.Controllers
                 var productMedias = product.Medias.Select(Mapper.Map<Media, MediaDto>).ToList();
                 ViewBag.ProductMedias = productMedias;
 
-                var relatedProducts = productService.GetAll().Select(Mapper.Map<Product, ProductDto>).ToList();
+                var relatedProducts = productService.GetAll().Where(a => a.IsDeleted != true).Select(Mapper.Map<Product, ProductDto>).ToList();
                 ViewBag.RelatedProducts = relatedProducts;
 
                 var lstNews =
@@ -186,7 +188,8 @@ namespace SmartHealth.Web.Controllers
         {
             var orderDetails = ((SessionDto) Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
             orderDetails[i].Quantity = quantity;
-            return Json(orderDetails.Count(a => a.Quantity != 0), JsonRequestBehavior.AllowGet);
+            decimal totalAmount = orderDetails.Sum(orderDetailDto => orderDetailDto.Product.SmartHealthPrice*orderDetailDto.Quantity);
+            return Json(new { productCount = orderDetails.Count(a => a.Quantity != 0), totalAmount}, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RemoveOrderDetail(int i)
@@ -459,15 +462,20 @@ namespace SmartHealth.Web.Controllers
             return Redirect("/" + RouteData.Values["lang"]);
         }
 
-        public ActionResult Order()
+        public ActionResult Order(int? order_no)
         {
             var user = currentUser != null ? userService.Get(currentUser.Id) : null;
             var userDto = user != null ? Mapper.Map<User, UserDto>(user) : new UserDto();
+            if (order_no != null)
+            {
+                var order = Mapper.Map<Order, OrderDto>(userService.Get<Order>((int) order_no));
+                ViewBag.Order = order;
+            }
             return View(userDto);
         }
 
         [HttpPost]
-        public ActionResult Order(UserDto userDto)
+        public ActionResult Order(UserDto userDto, PayType payType)
         {
             var user = userService.Get(userDto.Id);
             user = user ?? new User{UserType = UserType.Guest, Password = Guid.NewGuid().ToString(), Username = "Guest"};
@@ -485,15 +493,81 @@ namespace SmartHealth.Web.Controllers
             {
                 var orderDto = ((SessionDto) Session["SmartHealthUser"]).Order;
                 var order = Mapper.Map<OrderDto, Order>(orderDto);
+                order.PayType = PayType.SmartHealth;
+                order.NetAmount = order.TotalAmount;
+                order.FeeAmount = 0;
+                var orderDetailString = "";
+                BuidDescriptionFactory builder = new BuidDescriptionFactory();
+                decimal totalAmount = 0;
                 foreach (var orderDetail in order.OrderDetails)
                 {
-                    orderDetail.Order = order;
+                    //orderDetail.Order = order;
+                    var totalPrice = orderDetail.Product.SmartHealthPrice * orderDetail.Quantity;
+                    totalAmount += totalPrice;
+                    orderDetailString += orderDetail.Product.Name + " x " + orderDetail.Quantity;
+                    builder.AddItem(new PayooOrderItem(orderDetail.Product.Name, (long) orderDetail.Product.SmartHealthPrice, orderDetail.Quantity));
                 }
                 order.OrderUser = user;
                 userService.SaveOrUpdate<Order>(order, true);
-                ((SessionDto) Session["SmartHealthUser"]).Order = new OrderDto();
+                ((SessionDto)Session["SmartHealthUser"]).Order = new OrderDto();
+
+                switch (payType)
+                {
+                    case PayType.BaoKim:
+                    {
+                        orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
+                        var payment = new BaoKimPayment();
+                        var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", totalAmount.ToString(), "0", "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home"), Url.Action("Order", "Home"), Url.Action("PaymentDetail", "Home"));
+                        return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl }, JsonRequestBehavior.AllowGet);
+                    }
+                    case PayType.Payoo:
+                    {
+                        Random r = new Random();
+                        string session = r.Next().ToString();
+                        PayooOrder payooOrder = new PayooOrder();
+                        payooOrder.Session = session;
+                        payooOrder.BusinessUsername = ConfigurationManager.AppSettings["BusinessUsername"];
+                        payooOrder.OrderCashAmount = (long) totalAmount;
+                        payooOrder.OrderNo = order.Id.ToString();
+                        payooOrder.ShippingDays = short.Parse(ConfigurationManager.AppSettings["ShippingDays"]);
+                        payooOrder.ShopBackUrl = ConfigurationManager.AppSettings["ShopBackUrl"];
+                        payooOrder.ShopDomain = ConfigurationManager.AppSettings["ShopDomain"];
+                        payooOrder.ShopID = long.Parse(ConfigurationManager.AppSettings["ShopID"]);
+                        payooOrder.ShopTitle = ConfigurationManager.AppSettings["ShopTitle"];
+                        payooOrder.StartShippingDate = DateTime.Now.ToString("dd/MM/yyyy");
+                        payooOrder.NotifyUrl = ConfigurationManager.AppSettings["NotifyUrl"];
+
+                        //You can do
+
+                        //order.OrderDescription = HttpUtility.UrlEncode("<table width='100%' border='1' cellspacing='0'><thead><tr><td width='40%' align='center'><b>Tên hàng</b></td><td width='20%' align='center'><b>Đơn giá</b></td><td width='15%' align='center'><b>Số lượng</b></td><td width='25%' align='center'><b>Thành tiền</b></td></tr></thead><tbody><tr><td align='left'>HP Pavilion DV3-3502TX</td><td align='right'>23,109,210</td><td align='center'>1</td><td align='right'>23,109,210</td></tr><tr><td align='left'>FAN Notebook (B4)</td><td align='right'>266,850</td><td align='center'>1</td><td align='right'>266,850</td></tr><tr><td align='right' colspan='3'><b>Tổng tiền:</b></td><td align='right'>23,376,060</td></tr><tr><td align='left' colspan='4'>Some notes for the order</td></tr></tbody></table>");
+
+                        //or
+                        long ShippingFee = 10000;
+                        payooOrder.OrderDescription = HttpUtility.UrlEncode(builder.GenerateDescription(ShippingFee, ""));
+
+                        string XML = PaymentXMLFactory.GetPaymentXMLWithoutSign(payooOrder);
+                        string ChecksumKey = ConfigurationManager.AppSettings["ChecksumKey"];
+                        string Checksum = SHA1encode.hash(ChecksumKey + XML);
+                        return Json(new { isSuccess = true, redirectToProviderHTML = RedirectToProvider(ConfigurationManager.AppSettings["PayooCheckout"], XML, Checksum) }, JsonRequestBehavior.AllowGet);
+                    }
+                        break;
+                    default:
+                        return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
+                }
             }
-            return Json(0, JsonRequestBehavior.AllowGet);
+            return Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
+        }
+
+        private string RedirectToProvider(string ProviderUrl, string XMLCheckout, string Checksum)
+        {
+            string redirect = "<html><head><title></title></head>";
+            redirect += "<body><form action='" + ProviderUrl + "' method='post' style='margin-top: 50px; text-align: center;'>";
+            redirect += "<noscript><input type='submit' value='Click if not redirected' /></noscript>";
+            redirect += "<div id='ContinueButton' style='display: none;'><input type='submit' value='Click if not redirected' />";
+            redirect += "</div><input type='hidden' name='OrdersForPayoo' value='" + XMLCheckout + "'/>";
+            redirect += "</div><input type='hidden' name='CheckSum' value='" + Checksum + "'/></form>";
+            redirect += "</body></html>";
+            return redirect;
         }
 
         public ActionResult Partner()
@@ -536,6 +610,84 @@ namespace SmartHealth.Web.Controllers
             };
             eMail.SendMail("Email", "MailFormat_DownloadDocument.xml", new String[] { "Smart Health Download Document", "Thông tin tài liệu: ", document.Description, document.MediaUrl });
             mediaLogService.SaveOrUpdate(new MediaLog{Email = email, Media = mediaService.Get(documentId)}, true);
+            return Content("Success");
+        }
+
+        public ActionResult Rating(int idBox, int rate)
+        {
+            var product = productService.Get(idBox);
+            if (product != null)
+            {
+                product.RatingCount = product.RatingCount + 1;
+                product.Rating = product.Rating == 0 ? product.Rating + rate : (product.Rating + rate) / 2 + ((product.Rating + rate) % 2 > 0 ? 1 : 0);
+                productService.SaveOrUpdate(product, true);
+            }
+            return Content("Success");
+        }
+
+        public ActionResult BaoKimPaymentSuccess(BaoKimOrderDto baoKimOrder)
+        {
+            if (baoKimOrder != null)
+            {
+                var order = userService.Get<Order>(Convert.ToInt32(baoKimOrder.order_id));
+                order.TotalAmount = baoKimOrder.total_amount;
+                order.NetAmount = baoKimOrder.net_amount;
+                order.FeeAmount = baoKimOrder.fee_amount;
+                order.TransactionStatus = baoKimOrder.transaction_status;
+                order.IsPayed = baoKimOrder.transaction_status == 4;
+                order.PayType = PayType.BaoKim;
+                order.OrderUser.Email = baoKimOrder.customer_email;
+                order.OrderUser.DisplayName = baoKimOrder.customer_name;
+                order.OrderUser.Location = baoKimOrder.customer_address;
+                order.OrderUser.Phone = baoKimOrder.customer_phone;
+                userService.SaveOrUpdate<Order>(order, true);
+            }
+            return View();
+        }
+
+        public ActionResult PaymentDetail()
+        {
+            return null;
+        }
+
+        public ActionResult PayooPaymentSuccess()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PayooPaymentNotifyListener(string notifyData)
+        {
+            if (!string.IsNullOrEmpty(notifyData))
+            {
+
+                PayooNotify listener = new PayooNotify(notifyData);
+
+                PaymentNotification invoice = listener.GetPaymentNotify();
+
+                //Xác thực chữ ký của payoo trong gói notify
+                PayooSignature py = new PayooSignature(Server.MapPath(@"App_Data\Certificates\payoo_public_cert.pem"));
+                if (py.Verify(listener.NotifyData, listener.Signature))
+                {
+                    //Neu trang thai don hang cua payoo là PAYMENT_RECEIVED -> tien hanh xu ly databse cap nhat don hang
+                    if (invoice.State == "PAYMENT_RECEIVED")
+                    {
+                        var order = userService.Get<Order>(Convert.ToInt32(invoice.OrderNo));
+                        order.TotalAmount = invoice.OrderCashAmount;
+                        order.NetAmount = invoice.OrderCashAmount;
+                        order.FeeAmount = 0;
+                        order.IsPayed = invoice.State == "PAYMENT_RECEIVED";
+                        order.PayType = PayType.Payoo;
+                        userService.SaveOrUpdate<Order>(order, true);
+                    }
+                }
+                else
+                {
+                    //ConfirmToPayoo fail. Log for manual investigation.
+                    string LogPath = Server.MapPath(@"App_Data\log.txt");
+                    LogWriter.WriteLog(LogPath, "ConfirmToPayoo fail. ");
+                }
+            }
             return Content("Success");
         }
     }

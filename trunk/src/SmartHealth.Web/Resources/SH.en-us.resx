@@ -117,8 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcceptedPayment" xml:space="preserve">
+    <value>Accepted payment</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AddressInfo" xml:space="preserve">
+    <value>402 Huynh Van Banh Stress, Ward 14, Phu Nhuan District, HCM City</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="BuyerInfo" xml:space="preserve">
+    <value>Buyer info</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
   <data name="ClientSupport" xml:space="preserve">
-    <value>Client Support Articles</value>
+    <value>Client Support</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Smart Health Company</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="ConnectToUs" xml:space="preserve">
+    <value>Connect to us</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ContactMessage" xml:space="preserve">
+    <value>We would like to get your commend...</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="DOB" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="DownloadDocument" xml:space="preserve">
+    <value>Download document</value>
+  </data>
+  <data name="DownloadDocumentMessage" xml:space="preserve">
+    <value>Document will be sent to your email. Please type and check your email:</value>
+  </data>
+  <data name="DownloadDocumentSuccess" xml:space="preserve">
+    <value>Document has been sent to your email. Please check your email to get download link!</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="FooterNews" xml:space="preserve">
     <value>Footer News</value>
@@ -132,11 +198,89 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="ListingPrice" xml:space="preserve">
+    <value>Listing price</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Manufacturer" xml:space="preserve">
+    <value>Manufacture</value>
+  </data>
+  <data name="MemberCount" xml:space="preserve">
+    <value>Member count</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MessagePlaceHolder" xml:space="preserve">
+    <value>Type your message...</value>
+  </data>
+  <data name="MinimumQuantity" xml:space="preserve">
+    <value>Minimum quantity is</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>News</value>
+  </data>
+  <data name="NoItemMessage" xml:space="preserve">
+    <value>No item </value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old password</value>
+  </data>
+  <data name="OrderId" xml:space="preserve">
+    <value>Order Id</value>
+  </data>
+  <data name="OrderSuccess" xml:space="preserve">
+    <value>Your order has been sent to Administrator. Thank you!</value>
+  </data>
+  <data name="Packing" xml:space="preserve">
+    <value>Packing</value>
+  </data>
+  <data name="Partner" xml:space="preserve">
+    <value>Partner</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="PayLater" xml:space="preserve">
+    <value>Pay later</value>
+  </data>
+  <data name="PaySuccess" xml:space="preserve">
+    <value>Pay success. Thank you!</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="ProductDetail" xml:space="preserve">
+    <value>Product detail</value>
+  </data>
+  <data name="ProductInfo" xml:space="preserve">
+    <value>Product info</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="RecommendProduct" xml:space="preserve">
+    <value>Recommend product</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
@@ -144,7 +288,55 @@
   <data name="SaleOff" xml:space="preserve">
     <value>Sale Off Products</value>
   </data>
+  <data name="SellingPrice" xml:space="preserve">
+    <value>Selling price</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total amount</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Total price</value>
+  </data>
   <data name="TypicalProduct" xml:space="preserve">
     <value>Typical Products</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>Unit price</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateProfile" xml:space="preserve">
+    <value>Update Profile</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="ViewedNews" xml:space="preserve">
+    <value>Viewed news</value>
+  </data>
+  <data name="ViewedProduct" xml:space="preserve">
+    <value>Viewed product</value>
+  </data>
+  <data name="Views" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="VisitorCount" xml:space="preserve">
+    <value>Visitor count</value>
+  </data>
+  <data name="VisitorStatistics" xml:space="preserve">
+    <value>Visitor statistics</value>
   </data>
 </root>

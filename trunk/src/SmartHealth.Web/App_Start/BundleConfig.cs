@@ -47,6 +47,7 @@ namespace SmartHealth.Web
                        "~/Scripts/jquery.lazyload.min.js",
                        "~/Scripts/jquery.sharrre.min.js",
                        "~/Scripts/js/masonry.pkgd.min.js",
+                       "~/Scripts/js/jRating.jquery.js",
                        "~/Areas/Administrator/ClipOne/plugins/bootstrap/js/bootstrap.min.js",
                        "~/Areas/Administrator/ClipOne/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
                         ));
@@ -65,6 +66,7 @@ namespace SmartHealth.Web
                 "~/Content/nivo-slider.css",
                 "~/Content/nivo-slider/themes/default/default.css",
                 "~/Content/flexslider.css",
+                "~/Content/jRating.jquery.css",
                 "~/FancyBox/jquery.fancybox.css",
                 "~/FancyBox/helpers/jquery.fancybox-buttons.css",
                 "~/FancyBox/helpers/jquery.fancybox-thumbs.css"

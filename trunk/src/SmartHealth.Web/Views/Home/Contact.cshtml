@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,23 +9,22 @@
 <div class="leftContent" style="width: 970px">
 <div class="boxLeft" style="width: 100%">
     <div class="AboxLeft" style="width: 100%">
-        <p style="width: 920px">Liên hệ</p>
+        <p style="width: 920px">@SH.Contact</p>
         <div id="contact">
             <div class="container" style="width: 940px">
                 <div class="row contact">
-                    <p>
-                        Chúng tôi muốn lắng nghe những góp ý của bạn để Smart Health ngày càng hoàn thiện và phục vụ tốt hơn, trở thành người bạn tin cậy cho sức khỏe mọi nhà.</p>
+                    <p>@SH.ContactMessage</p>
                     <form action="@Url.Action("SendContactMessage", "Home")" method="POST">
                         <div class="row form">
                             <div class="col-sm-6 row-col map">
                                 <div class="box_wrapp">
                                     <div class="box_cont">
                                         <div class="head">
-                                            <h6>Địa chỉ</h6>
+                                            <h6>@SH.Address</h6>
                                         </div>
                                         <ul class="street">
-                                            <li>Smart Health Company</li>
-                                            <li>402 Huỳnh Văn Bánh, Phường 14, Quận Phú Nhuận, TPHCM</li>
+                                            <li>@SH.CompanyName</li>
+                                            <li>@SH.AddressInfo</li>
                                             <li class="icon icontop">
                                                 <span class="contacticos ico1"></span>
                                                 <span class="text">08-39972280</span>
@@ -40,26 +40,26 @@
                             <div class="col-sm-6 row-col">
                                 <div class="box">
                                     <div class="form-group">
-                                        <input class="name form-control" type="text" placeholder="Name" name="Name" />
+                                        <input class="name form-control" type="text" placeholder="@SH.Name" name="Name" />
                                     </div>
                                     <div class="form-group">
-                                        <input class="mail form-control" type="text" placeholder="Email" name="Email" />
+                                        <input class="mail form-control" type="text" placeholder="@SH.Email" name="Email" />
                                     </div>
                                     <div class="form-group">
-                                        <input class="phone form-control" type="text" placeholder="Phone" name="Phone" />
+                                        <input class="phone form-control" type="text" placeholder="@SH.Phone" name="Phone" />
                                     </div>
                                     <div class="box form-group">
-                                        <textarea placeholder="Type a message here..." class="form-control" name="Message"></textarea>
+                                        <textarea placeholder="@SH.MessagePlaceHolder" class="form-control" name="Message"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row submit">
                             <div class="col-md-3 right">
-                                <button id="submitBtn" style="float: right" type="button" class="btn btn-success" onclick="submitContactForm();">Gửi tin</button>
+                                <button id="submitBtn" style="float: right" type="button" class="btn btn-success" onclick="submitContactForm();">@SH.Send</button>
                                 <div id="submitProgress" class="progress progress-striped active" style="display: none">
                                     <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                        <span class="sr-only">45% Hoàn tất</span>
+                                        <span class="sr-only">45% @SH.Complete</span>
                                     </div>
                                 </div>
                             </div>

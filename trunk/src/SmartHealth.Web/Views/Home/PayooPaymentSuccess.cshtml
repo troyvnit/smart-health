@@ -1,0 +1,139 @@
+﻿@model SmartHealth.Core.Domain.Dtos.UserDto
+@using System.Web.Optimization
+@using SmartHealth.Box.Domain.Dtos
+@using SmartHealth.Core.Domain.Models
+@using SmartHealth.Web.Resources
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
+    var newses = (List<ArticleDto>)ViewBag.Newses;
+    if (Session["SmartHealthUser"] == null)
+    {
+        Session["SmartHealthUser"] = new SessionDto();
+    }
+    var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
+}
+@Styles.Render("~/Content/css/contact")
+<div class="leftContent">
+    <div class="boxLeft">
+        <div class="chitietsanpham">
+            <p>@SH.Cart</p>
+            
+            <div class="GridCnt">
+                <p>@SH.PaySuccess</p>
+            </div>
+            <!-- enddiv:GridCnt  -->
+        </div>
+    </div>
+</div>
+<!--leftContent-->
+<div class="rightContent">
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>@SH.RecommendProduct</p>
+            <ul>
+                @if (relatedProducts != null)
+                {
+                    foreach (var relatedProduct in relatedProducts)
+                    {
+                    <li>
+                        <div class="picleft">
+                            <table cellspacing="0" cellpadding="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pic_5">
+                                            <a href="@Url.Action("Product", "Home", new { id = relatedProduct.Id })">
+                                                <img src="@relatedProduct.MediaUrl" alt="" /></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span>
+                        <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
+                         </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>@SH.ClientSupport</p>
+            <div class="htkhachhang">
+                <ul>
+                    @if (newses != null)
+                    {
+                        foreach (var news in newses)
+                        {
+                        <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>@SH.AcceptedPayment</p>
+            <div class="thanhtoan">
+                <ul>
+                    <li><a href="#">
+                        <img src="/content/images/tt-1.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-2.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-3.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-4.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-5.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-6.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-7.jpg" alt="" /></a></li>
+                    <li><a href="#">
+                        <img src="/content/images/tt-8.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="boxRightF">
+        <div class="fb-like-box" data-href="https://www.facebook.com/pages/Smart-Health/173034079568243"
+            data-width="220px" data-colorscheme="light" data-show-faces="true" data-header="true"
+            data-stream="false" data-show-border="false">
+        </div>
+    </div>
+    <div class="boxRight">
+        <div class="boxRightI">
+            <p>@SH.ViewedProduct</p>
+            <ul>
+                @if (viewedProducts != null)
+                {
+                    foreach (var viewedProduct in viewedProducts)
+                    {
+                    <li>
+                        <div class="picleft">
+                            <table cellspacing="0" cellpadding="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="pic_5">
+                                            <a href="@Url.Action("Product", "Home", new { id = viewedProduct.Id })">
+                                                <img src="@viewedProduct.MediaUrl" alt="" /></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span>
+                        <p>@viewedProduct.Name<br />@viewedProduct.Weight</p>
+                         </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<!--rightContent-->

@@ -37,7 +37,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                                        Id = order.Id,
                                        OrderUser = Mapper.Map<User, UserDto>(order.OrderUser),
                                        CreatedDate = order.CreatedDate,
-                                       TotalPrice = order.OrderDetails.Sum(orderDetailDto => orderDetailDto.Quantity*orderDetailDto.Product.SmartHealthPrice)
+                                       TotalAmount = order.OrderDetails.Sum(orderDetailDto => orderDetailDto.Quantity*orderDetailDto.Product.SmartHealthPrice)
                                    });
             return Json(orders, JsonRequestBehavior.AllowGet);
         }

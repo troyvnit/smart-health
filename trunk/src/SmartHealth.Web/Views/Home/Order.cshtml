@@ -2,6 +2,7 @@
 @using System.Web.Optimization
 @using SmartHealth.Box.Domain.Dtos
 @using SmartHealth.Core.Domain.Models
+@using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,32 +13,39 @@
         Session["SmartHealthUser"] = new SessionDto();
     }
     var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
-    var orderDetails = ((SessionDto)Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
+    if (ViewBag.Order != null) {((SessionDto) Session["SmartHealthUser"]).Order = (OrderDto) ViewBag.Order;}
+    var order = ((SessionDto)Session["SmartHealthUser"]).Order;
+    var orderDetails = order.OrderDetails.ToArray();
     decimal totalAmount = 0;
+    foreach (var orderDetailDto in orderDetails)
+    {
+        var totalPrice = orderDetailDto.Product.SmartHealthPrice * orderDetailDto.Quantity;
+        totalAmount += totalPrice;
+    }
 }
 @Styles.Render("~/Content/css/contact")
 <div class="leftContent">
     <div class="boxLeft">
         <div class="chitietsanpham">
-            <p>Giỏ hàng</p>
+            <p>@SH.Cart</p>
             
             <div class="GridCnt">
                 <table class="TblGrid">
                     <tr>
                         <th>
-                            STT
+                            @SH.OrderId
                         </th>
                         <th>
-                            Sản phẩm
+                           @SH.Product
                         </th>
                         <th>
-                            Số lượng
+                            @SH.Quantity
                         </th>
                         <th>
-                            Đơn giá
+                            @SH.UnitPrice
                         </th>
                         <th>
-                            Thành tiền
+                            @SH.TotalPrice
                         </th>
                         <th>
                         </th>
@@ -47,7 +55,6 @@
                         var orderDetail = orderDetails[i];
                         var totalPrice = orderDetail.Product.SmartHealthPrice * orderDetail.Quantity;
                         var id = i + 1;
-                        totalAmount += totalPrice;
                         if (orderDetail.Quantity != 0)
                         {
                         <tr>
@@ -62,10 +69,10 @@
                     }
                     @if (orderDetails.Count(a => a.Quantity != 0) == 0)
                     {
-                        <tr><td align="center" colspan="6">Bạn chưa chọn mua sản phẩm nào</td></tr>
+                        <tr><td align="center" colspan="6">@SH.NoItemMessage</td></tr>
                     }
                     <tr>
-                        <th colspan="4" style="background: #ffc416">Tổng tiền</th>
+                        <th colspan="4" style="background: #ffc416">@SH.TotalAmount</th>
                         <th colspan="2" id="totalAmount" style="background: #ffc416">@totalAmount.ToString("N0").Replace(",", "")</th>
                     </tr>
                 
@@ -76,7 +83,7 @@
         @if (orderDetails.Any(a => a.Quantity != 0))
         {
         <div class="chitietsanpham" id="buyerInfo">
-            <p>Thông tin người mua</p>
+            <p>@SH.BuyerInfo</p>
             <div class="row contact">
                 <form action="@Url.Action("Order", "Home")" method="POST">
                     <div class="row form">
@@ -92,23 +99,23 @@
                                     @Html.ValidationMessageFor(model => model.Id)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.DisplayName, new { @class = "form-control", placeholder = "Họ tên" })
+                                    @Html.TextBoxFor(model => model.DisplayName, new { @class = "form-control", placeholder = SH.Name })
                                     @Html.ValidationMessageFor(model => model.DisplayName)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = SH.Email })
                                     @Html.ValidationMessageFor(model => model.Email)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control", placeholder = "Địa chỉ" })
+                                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control", placeholder = SH.Address })
                                     @Html.ValidationMessageFor(model => model.Location)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Điện thoại" })
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = SH.Phone })
                                     @Html.ValidationMessageFor(model => model.Phone)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.DOB, new { @class = "form-control datepicker", placeholder = "Date of birth" })
+                                    @Html.TextBoxFor(model => model.DOB, new { @class = "form-control datepicker", placeholder = SH.DOB })
                                     @Html.ValidationMessageFor(model => model.DOB)
                                 </div>
                                 <div class="form-group">
@@ -124,7 +131,9 @@
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-10 right">
-                            <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">Thanh toán</button>
+                            <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">@SH.PayLater</button>
+                            <a id="submitBaoKimPaymentBtn" onclick="submitBaoKimPayment(); return false;" style="float: right; margin: 10px;" href="#"><img src="http://developer.baokim.vn/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn" ></a>
+                            <a id="submitPayooPaymentBtn" onclick="submitPayooPayment(); return false;" style="float: right; margin: 10px;" href="#"><img src="https://www.payoo.com.vn/img/button/PayNow.jpg" style="height: 32px; width: 90px;"></a>
                         </div>
                         <div class="col-md-1">
                         </div>
@@ -140,8 +149,7 @@
 <div class="rightContent">
     <div class="boxRight">
         <div class="boxRightI">
-            <p>
-                Sản phẩm khuyên dùng</p>
+            <p>@SH.RecommendProduct</p>
             <ul>
                 @if (relatedProducts != null)
                 {
@@ -171,8 +179,7 @@
     </div>
     <div class="boxRight">
         <div class="boxRightI">
-            <p>
-                Hỗ trợ khách hàng</p>
+            <p>@SH.ClientSupport</p>
             <div class="htkhachhang">
                 <ul>
                     @if (newses != null)
@@ -188,8 +195,7 @@
     </div>
     <div class="boxRight">
         <div class="boxRightI">
-            <p>
-                Chấp nhận thanh toán</p>
+            <p>@SH.AcceptedPayment</p>
             <div class="thanhtoan">
                 <ul>
                     <li><a href="#">
@@ -220,8 +226,7 @@
     </div>
     <div class="boxRight">
         <div class="boxRightI">
-            <p>
-                Sản phẩm đã xem</p>
+            <p>@SH.ViewedProduct</p>
             <ul>
                 @if (viewedProducts != null)
                 {
@@ -255,10 +260,11 @@
     $(".productQuantity").change(function () {
         var quantity = $(this).val();
         var i = $(this).attr("index");
-        var price = $(this).parent().find(".smPrice").val();
-        $(this).parent().find(".totalPrice").html(parseInt(price) * parseInt(quantity));
+        var price = $(this).parent().parent().find(".smPrice").text();
+        $(this).parent().parent().find(".totalPrice").html(parseInt(price) * parseInt(quantity));
         $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: quantity }).done(function(result) {
-            $("#OrderProductCount").html(result);
+            $("#OrderProductCount").html(result.productCount);
+            $("#totalAmount").html(result.totalAmount);
             return false;
         });
     });
@@ -266,24 +272,56 @@
         var i = $(this).attr("index");
         $(this).parent().parent().remove();
         $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: 0 }).done(function (result) {
-            $("#OrderProductCount").html(result);
-            if (result == 0) {
+            $("#OrderProductCount").html(result.productCount);
+            $("#totalAmount").html(result.totalAmount);
+            if (result.productCount == 0) {
                 $("#buyerInfo").remove();
             }
             return false;
         });
     });
     $("#submitBtn").click(function () {
+        if (!$("form").valid()) return false;
         $.post('@Url.Action("Order", "Home")', $("form").serialize()).done(function (result) {
-            $("#OrderProductCount").html(result);
-            if (result == 0) {
+            $("#OrderProductCount").html(0);
+            if (result.isSuccess) {
                 $("#buyerInfo").remove();
                 $(".TblGrid").remove();
-                $(".GridCnt").append("<p>Thông tin đặt hàng của bạn đã được gửi tới BQT, cảm ơn bạn đã tin tưởng Smart Health!</p>");
+                $(".GridCnt").append("<p>@SH.OrderSuccess</p>");
             }
             return false;
         });
     });
+    
+    function submitBaoKimPayment() {
+        if (!$("form").valid()) return false;
+        $.post('@Url.Action("Order", "Home")' + "?payType=BaoKim", $("form").serialize()).done(function (result) {
+            $("#OrderProductCount").html(0);
+            if (result.isSuccess) {
+                $("#buyerInfo").remove();
+                $(".TblGrid").remove();
+                $(".GridCnt").append("<p>@SH.OrderSuccess</p>");
+                window.open(result.payUrl, "_blank");
+            }
+            return false;
+        });
+    }
+    
+    function submitPayooPayment() {
+        if (!$("form").valid()) return false;
+        $.post('@Url.Action("Order", "Home")' + "?payType=Payoo", $("form").serialize()).done(function (result) {
+            $("#OrderProductCount").html(0);
+            if (result.isSuccess) {
+                $("#buyerInfo").remove();
+                $(".TblGrid").remove();
+                $(".GridCnt").append("<p>@SH.OrderSuccess</p>");
+                $(".GridCnt").append(result.redirectToProviderHTML);
+                document.location.href = '@Url.Action("Order", "Home")';
+                $("#ContinueButton input[type='submit']").trigger("click");
+            }
+            return false;
+        });
+    }
     $(document).ready(function () {
         $('.datepicker').datepicker();
         $('form').validate({

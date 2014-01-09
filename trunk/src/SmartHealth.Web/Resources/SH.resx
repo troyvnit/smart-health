@@ -117,8 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcceptedPayment" xml:space="preserve">
+    <value>Chấp nhận thanh toán</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="AddressInfo" xml:space="preserve">
+    <value>402 Huỳnh Văn Bánh, Phường 14, Quận Phú Nhuận, TPHCM</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Quản trị</value>
+  </data>
+  <data name="BuyerInfo" xml:space="preserve">
+    <value>Thông tin người mua</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Giỏ hàng</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
   <data name="ClientSupport" xml:space="preserve">
     <value>Chính sách bán hàng</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Công ty Smart Health</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Hoàn tất</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Xác nhận mật khẩu</value>
+  </data>
+  <data name="ConnectToUs" xml:space="preserve">
+    <value>Kết nối với chúng tôi</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Liên hệ</value>
+  </data>
+  <data name="ContactMessage" xml:space="preserve">
+    <value>Chúng tôi muốn lắng nghe những góp ý của bạn để Smart Health ngày càng hoàn thiện và phục vụ tốt hơn, trở thành người bạn tin cậy cho sức khỏe mọi nhà.</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="DOB" xml:space="preserve">
+    <value>Sinh nhật</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Tải về</value>
+  </data>
+  <data name="DownloadDocument" xml:space="preserve">
+    <value>Tải tài liệu</value>
+  </data>
+  <data name="DownloadDocumentMessage" xml:space="preserve">
+    <value>Tài liệu sẽ được gởi đến bạn thông qua email, xin vui lòng cung cấp và kiểm tra lại thông tin Email:</value>
+  </data>
+  <data name="DownloadDocumentSuccess" xml:space="preserve">
+    <value>Tại liệu đã được gửi đến email, vui lòng kiểm tra mail để tải tài liệu!</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Thư điện tử</value>
   </data>
   <data name="FooterNews" xml:space="preserve">
     <value>Tin tức footer</value>
@@ -132,11 +198,89 @@
   <data name="Language" xml:space="preserve">
     <value>Ngôn ngữ</value>
   </data>
+  <data name="ListingPrice" xml:space="preserve">
+    <value>Giá niêm yết</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="Manufacturer" xml:space="preserve">
+    <value>Hãng sản xuất</value>
+  </data>
+  <data name="MemberCount" xml:space="preserve">
+    <value>Số thành viên</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Thông điệp</value>
+  </data>
+  <data name="MessagePlaceHolder" xml:space="preserve">
+    <value>Nhập thông điệp của bạn...</value>
+  </data>
+  <data name="MinimumQuantity" xml:space="preserve">
+    <value>Số lượng tối thiểu là</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Tin tức</value>
+  </data>
+  <data name="NoItemMessage" xml:space="preserve">
+    <value>Bạn chưa chọn mua sản phẩm nào</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="OrderId" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="OrderSuccess" xml:space="preserve">
+    <value>Thông tin đặt hàng của bạn đã được gửi tới BQT, cảm ơn bạn đã tin tưởng Smart Health!</value>
+  </data>
+  <data name="Packing" xml:space="preserve">
+    <value>Quy cách</value>
+  </data>
+  <data name="Partner" xml:space="preserve">
+    <value>Đối tác phân phối</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Thanh toán</value>
+  </data>
+  <data name="PayLater" xml:space="preserve">
+    <value>Thanh toán sau</value>
+  </data>
+  <data name="PaySuccess" xml:space="preserve">
+    <value>Thanh toán thành công, cảm ơn bạn đã tin tưởng Smart Health!</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Điện thoại</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Sản phẩm</value>
+  </data>
+  <data name="ProductDetail" xml:space="preserve">
+    <value>Chi tiết sản phẩm</value>
+  </data>
+  <data name="ProductInfo" xml:space="preserve">
+    <value>Thông tin sản phẩm</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Số lượng</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Đánh giá</value>
+  </data>
+  <data name="RecommendProduct" xml:space="preserve">
+    <value>Sản phẩm khuyên dùng</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Đăng ký</value>
@@ -144,7 +288,55 @@
   <data name="SaleOff" xml:space="preserve">
     <value>Khuyến mãi</value>
   </data>
+  <data name="SellingPrice" xml:space="preserve">
+    <value>Giá bán</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Hỗ trợ</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Từ khóa</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Tổng tiền</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Thành tiền</value>
+  </data>
   <data name="TypicalProduct" xml:space="preserve">
     <value>Sản phẩm tiêu biểu</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>vnđ</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>Đơn giá</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="UpdateProfile" xml:space="preserve">
+    <value>Cập nhật thông tin cá nhân</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="ViewedNews" xml:space="preserve">
+    <value>Tin tức đã xem</value>
+  </data>
+  <data name="ViewedProduct" xml:space="preserve">
+    <value>Sản phẩm đã xem</value>
+  </data>
+  <data name="Views" xml:space="preserve">
+    <value>Lượt xem</value>
+  </data>
+  <data name="VisitorCount" xml:space="preserve">
+    <value>Số người truy cập</value>
+  </data>
+  <data name="VisitorStatistics" xml:space="preserve">
+    <value>Thống kê truy cập</value>
   </data>
 </root>

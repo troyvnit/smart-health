@@ -1,4 +1,5 @@
 ﻿@using SmartHealth.Box.Domain.Dtos
+@using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -60,40 +61,60 @@
             </div>
             <!--hinhsanpham-->
             <div class="thongtinsp">
+                <div class="alert alert-success" style="display: none;">
+                    <button type="button" class="close">&times;</button>
+                    Sản phẩm đã được thêm vào <a href="@Url.Action("Order", "Home")" class="alert-link">giỏ hàng</a>!
+                </div>
                 <ul>
                     <li class="Pr1">
                         <input type="hidden" value="@productDetail.Id" id="ProductId"/>
                         <span class="G-1">
                             <p>
-                                Giá bán:</p>@productDetail.SmartHealthPrice.ToString("N0") ₫</span> <span class="G-2">
-                                    <p>
-                                        Giá NY:</p>@productDetail.MarketPrice.ToString("N0") ₫</span> <span>
-                                            <p>
-                                                Hãng sản xuất:</p>@productDetail.Brand</span> <span>
-                                                    <p>
-                                                        Quy cách:</p>@productDetail.Weight</span> <span>
-                                                            <p>
-                                                                Lượt xem:</p>@productDetail.ViewCount</span>
+                                @SH.SellingPrice:
+                            </p>@productDetail.SmartHealthPrice.ToString("N0") @SH.Unit</span>
+                        <span class="G-2">
+                            <p>
+                                @SH.ListingPrice:
+                            </p>@productDetail.MarketPrice.ToString("N0") @SH.Unit</span>
+                        <span>
+                            <p>
+                                @SH.Manufacturer:
+                            </p>@productDetail.Brand</span>
+                        <span>
+                            <p>
+                                @SH.Packing:
+                            </p>@productDetail.Weight</span>
+                        <span>
+                            <p>
+                                @SH.Views:
+                            </p>@productDetail.ViewCount</span>
+                        <span>
+                            <p>
+                                @SH.Rating:
+                            </p><span class="rating" data-average="@productDetail.Rating" data-id="@productDetail.Id"></span></span>
+                        <span><p>&nbsp;</p> (@productDetail.RatingCount @SH.Rating)</span>
                     </li>
                     <li class="Pr2"><span>
-                        <p>
-                            SL mua:</p>
-                        <input class="form-control bfh-number" type="text" id="Quantity" />
-                        (@productDetail.Status) </span><span>
-                            <p>
-                                Số tiền thanh toán:</p>
-                            <span id="CalculatedPrice">0 vnđ</span></span> </li>
+                                        <p>
+                                            @SH.Quantity:
+                                        </p>
+                                        <input class="form-control bfh-number" type="text" id="Quantity" />
+                                        (@productDetail.Status) </span><span>
+                                                                           <p>
+                                                                               @SH.TotalAmount:
+                                                                           </p>
+                                                                           <span id="CalculatedPrice" style="font-size: 14px; font-weight: 600">0 @SH.Unit</span></span> </li>
                     <li class="Pr3"><a id="Buy" href="#">
-                        <img src="/Content/images/mua.png" alt="" /></a> </li>
+                                        <img src="/Content/images/mua.png" alt="" /></a> </li>
                 </ul>
             </div>
             <!--thongtinsp-->
             <div class="thongtincanbiet">
                 <div class="tabscontainer">
                     <ul class="tabs">
-                        <li><a href="#tab1"><span>Thông tin sản phẩm</span></a></li>
-                        <li><a href="#tab2"><span>Chi tiết sản phẩm</span></a></li>
-                        <li><a href="#tab3"><span>Đánh giá</span></a></li>
+                        <li><a href="#tab1"><span>@SH.ProductInfo</span></a></li>
+                        <li><a href="#tab2"><span>@SH.ProductDetail</span></a></li>
+                        <li><a href="#tab3"><span>@SH.Rating</span></a></li>
                         <li><a href="#tab4"><span>Video</span></a></li>
                     </ul>
                     <div class="tab_container">
@@ -169,7 +190,8 @@
     <div class="boxRight">
         <div class="boxRightI">
             <p>
-                Sản phẩm khuyên dùng</p>
+                @SH.RecommendProduct
+            </p>
             <ul>
                 @if (relatedProducts != null)
                 {
@@ -199,7 +221,8 @@
     <div class="boxRight">
         <div class="boxRightI">
             <p>
-                Hỗ trợ khách hàng</p>
+                @SH.ClientSupport
+            </p>
             <div class="htkhachhang">
                 <ul>
                     @if (newses != null)
@@ -216,7 +239,8 @@
     <div class="boxRight">
         <div class="boxRightI">
             <p>
-                Chấp nhận thanh toán</p>
+                @SH.AcceptedPayment
+            </p>
             <div class="thanhtoan">
                 <ul>
                     <li><a href="#">
@@ -248,7 +272,8 @@
     <div class="boxRight">
         <div class="boxRightI">
             <p>
-                Sản phẩm đã xem</p>
+               @SH.ViewedProduct
+            </p>
             <ul>
                 @if (viewedProducts != null)
                 {
@@ -279,21 +304,24 @@
 <!--rightContent-->
 <script type="text/javascript">
     $(document).ready(function () {
+        $('.close').on('click', function () { $(this).parent().hide(); });
         $("#Buy").click(function (e) {
             if ($("#Quantity").val() == '' || $("#Quantity").val() < 1) {
-                alert('Số lượng tối thiểu là 1!');
+                alert('@SH.MinimumQuantity 1!');
                 return false;
             }
             $.post('@Url.Action("AddOrderProduct", "Home")', { id: $("#ProductId").val(), quantity: $("#Quantity").val() }).done(function (result) {
                 $("#OrderProductCount").html(result);
+                $(".alert-success").fadeIn().delay(5000).fadeOut();
                 return false;
             });
+            return false;
         });
         $("#Quantity").change(function (e) {
             $("#CalculatedPrice").html();
             var quantity = parseFloat($("#Quantity").val());
             var price = parseFloat('@productDetail.SmartHealthPrice.ToString("N2").Replace(",", "")');
-            $("#CalculatedPrice").html((quantity * price) + " vnđ");
+            $("#CalculatedPrice").html((quantity * price) + " @SH.Unit");
         });
         //$('.flexslider').flexslider({
         //    animation: "slide",
@@ -333,5 +361,9 @@
 				        buttons: {}
 				    }
 				});
+        $(".rating").jRating({
+            serverPath: '@Url.Action("Rating", "Home")',
+            rateMax: 10
+        });
     });
 </script>
