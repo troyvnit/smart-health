@@ -178,7 +178,7 @@ namespace SmartHealth.Web.Controllers
             if (Session["SmartHealthUser"] != null)
             {
                 var order = ((SessionDto)Session["SmartHealthUser"]).Order;
-                order.OrderDetails.Add(new OrderDetailDto{ Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity });
+                order.OrderDetails.Add(new OrderDetailDto{ Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity, Order = order});
                 orderCount = order.OrderDetails.Count(a => a.Quantity != 0);
             }
             return Json(orderCount, JsonRequestBehavior.AllowGet);
@@ -496,19 +496,19 @@ namespace SmartHealth.Web.Controllers
                 order.PayType = PayType.SmartHealth;
                 order.NetAmount = order.TotalAmount;
                 order.FeeAmount = 0;
+                order.OrderUser = user;
+                userService.SaveOrUpdate<Order>(order, true);
                 var orderDetailString = "";
                 BuidDescriptionFactory builder = new BuidDescriptionFactory();
                 decimal totalAmount = 0;
                 foreach (var orderDetail in order.OrderDetails)
                 {
-                    //orderDetail.Order = order;
+                    userService.SaveOrUpdate(orderDetail, true);
                     var totalPrice = orderDetail.Product.SmartHealthPrice * orderDetail.Quantity;
                     totalAmount += totalPrice;
                     orderDetailString += orderDetail.Product.Name + " x " + orderDetail.Quantity;
                     builder.AddItem(new PayooOrderItem(orderDetail.Product.Name, (long) orderDetail.Product.SmartHealthPrice, orderDetail.Quantity));
                 }
-                order.OrderUser = user;
-                userService.SaveOrUpdate<Order>(order, true);
                 ((SessionDto)Session["SmartHealthUser"]).Order = new OrderDto();
 
                 switch (payType)

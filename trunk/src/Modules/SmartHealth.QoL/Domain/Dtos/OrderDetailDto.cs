@@ -7,7 +7,9 @@ namespace SmartHealth.Box.Domain.Dtos
 {
     public class OrderDetailDto
     {
-        public ProductDto Product { get; set; }
-        public int Quantity { get; set; }
+        public virtual int Id { get; set; }
+        public virtual ProductDto Product { get; set; }
+        public virtual int Quantity { get; set; }
+        public virtual OrderDto Order { get; set; }
     }
 }
