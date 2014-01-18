@@ -1,6 +1,11 @@
-﻿@model SmartHealth.Core.Domain.Dtos.UserDto
+﻿@model SmartHealth.Box.Domain.Dtos.OrderDto
+@using System.Collections
+@using System.ComponentModel
+@using System.Reflection
 @using System.Web.Optimization
+@using FluentNHibernate
 @using SmartHealth.Box.Domain.Dtos
+@using SmartHealth.Box.Domain.Models
 @using SmartHealth.Core.Domain.Models
 @using SmartHealth.Web.Resources
 @{
@@ -21,6 +26,17 @@
     {
         var totalPrice = orderDetailDto.Product.SmartHealthPrice * orderDetailDto.Quantity;
         totalAmount += totalPrice;
+    }
+    var cities = new List<string>();
+    var type = typeof (City);
+    foreach (var name in Enum.GetNames(type))
+    {
+        var field = type.GetField(name);
+        var fds = field.GetCustomAttributes(typeof(DescriptionAttribute), true);
+        foreach (DescriptionAttribute fd in fds)
+        {
+            cities.Add(fd.Description);
+        }
     }
 }
 @Styles.Render("~/Content/css/contact")
@@ -99,28 +115,20 @@
                                     @Html.ValidationMessageFor(model => model.Id)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.DisplayName, new { @class = "form-control", placeholder = SH.Name })
-                                    @Html.ValidationMessageFor(model => model.DisplayName)
+                                    @Html.TextBoxFor(model => model.ReceiverName, new { @class = "form-control", placeholder = SH.Name })
+                                    @Html.ValidationMessageFor(model => model.ReceiverName)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = SH.Email })
-                                    @Html.ValidationMessageFor(model => model.Email)
+                                    @Html.TextBoxFor(model => model.ReceiverPhone, new { @class = "form-control", placeholder = SH.Phone })
+                                    @Html.ValidationMessageFor(model => model.ReceiverPhone)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control", placeholder = SH.Address })
-                                    @Html.ValidationMessageFor(model => model.Location)
+                                    @Html.TextBoxFor(model => model.DeliveryAddress, new { @class = "form-control datepicker", placeholder = SH.Address })
+                                    @Html.ValidationMessageFor(model => model.DeliveryAddress)
                                 </div>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = SH.Phone })
-                                    @Html.ValidationMessageFor(model => model.Phone)
-                                </div>
-                                <div class="form-group">
-                                    @Html.TextBoxFor(model => model.DOB, new { @class = "form-control datepicker", placeholder = SH.DOB })
-                                    @Html.ValidationMessageFor(model => model.DOB)
-                                </div>
-                                <div class="form-group">
-                                    @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(Gender))), new { @class = "form-control" }) 
-                                    @Html.ValidationMessageFor(model => model.Gender)
+                                    @Html.DropDownListFor(model => model.DeliveryCity, new SelectList(cities), new { @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(model => model.DeliveryCity)
                                 </div>
                             </div>
                         </div>
@@ -301,7 +309,7 @@
                 $("#buyerInfo").remove();
                 $(".TblGrid").remove();
                 $(".GridCnt").append("<p>@SH.OrderSuccess</p>");
-                window.open(result.payUrl, "_blank");
+                window.location.href = result.payUrl;
             }
             return false;
         });

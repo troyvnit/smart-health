@@ -21,22 +21,22 @@
             dataSource: {
                 transport: {
                     read: {
-                        url: '@Url.Action("GetMediaLogs", "MediaLog")',
+                        url: '@Url.Action("GetDocumentLogs", "DocumentLog")',
                         type: "post",
                         dataType: "json"
                     },
                     update: {
-                        url: '@Url.Action("CreateOrUpdateMediaLog", "MediaLog")',
+                        url: '@Url.Action("CreateOrUpdateDocumentLog", "DocumentLog")',
                         type: "post",
                         dataType: "json"
                     },
                     destroy: {
-                        url: '@Url.Action("DeleteMediaLogs", "MediaLog")',
+                        url: '@Url.Action("DeleteDocumentLogs", "DocumentLog")',
                         type: "post",
                         dataType: "json"
                     },
                     create: {
-                        url: '@Url.Action("CreateOrUpdateMediaLog", "MediaLog")',
+                        url: '@Url.Action("CreateOrUpdateDocumentLog", "DocumentLog")',
                         type: "post",
                         dataType: "json"
                     },
@@ -54,7 +54,7 @@
                         fields: {
                             Id: { editable: false, nullable: true },
                             Email: { validation: { required: true } },
-                            Media: { nullable: true },
+                            Document: { nullable: true },
                             CreatedDate: { type: "date" }
                         }
                     }
@@ -71,14 +71,14 @@
                 field: "Id",
                 hidden: true
             }, {
-                field: "Media.Id",
+                field: "Document.Id",
                 title: "Id tài liệu",
                 width: 80
             }, {
-                field: "Media.Description",
+                field: "Document.Name",
                 title: "Tên tài liệu"
             }, {
-                field: "Media.MediaUrl",
+                field: "Document.DownloadUrl",
                 title: "Link"
             }, {
                 field: "Email",

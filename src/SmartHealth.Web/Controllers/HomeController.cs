@@ -29,9 +29,9 @@ namespace SmartHealth.Web.Controllers
         private readonly IService<Menu> menuService;
         private readonly IService<Media> mediaService;
         private readonly IService<User> userService;
-        private readonly IService<MediaLog> mediaLogService;
+        private readonly IService<DocumentLog> mediaLogService;
 
-        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService, IService<User> userService, IService<MediaLog> mediaLogService)
+        public HomeController(IService<Product> productService, IService<ProductGroup> productGroupService, IService<Article> articleService, IService<ArticleCategory> articleCategoryService, IService<Menu> menuService, IService<Media> mediaService, IService<User> userService, IService<DocumentLog> mediaLogService)
         {
             this.productService = productService;
             this.productGroupService = productGroupService;
@@ -466,29 +466,19 @@ namespace SmartHealth.Web.Controllers
         {
             var user = currentUser != null ? userService.Get(currentUser.Id) : null;
             var userDto = user != null ? Mapper.Map<User, UserDto>(user) : new UserDto();
+            var order = new OrderDto();
             if (order_no != null)
             {
-                var order = Mapper.Map<Order, OrderDto>(userService.Get<Order>((int) order_no));
+                order = Mapper.Map<Order, OrderDto>(userService.Get<Order>((int) order_no));
                 ViewBag.Order = order;
             }
-            return View(userDto);
+            return View(order);
         }
 
         [HttpPost]
-        public ActionResult Order(UserDto userDto, PayType payType)
+        public ActionResult Order(OrderDto deliveryInfo, PayType payType)
         {
-            var user = userService.Get(userDto.Id);
-            user = user ?? new User{UserType = UserType.Guest, Password = Guid.NewGuid().ToString(), Username = "Guest"};
-                user.Email = userDto.Email;
-                user.DisplayName = userDto.DisplayName;
-                user.Location = userDto.Location;
-                user.DOB = userDto.DOB;
-                user.Phone = userDto.Phone;
-                user.Gender = userDto.Gender;
-                user.LastName = userDto.DisplayName;
-                user.FirstName = userDto.DisplayName;
-                user.ModifiedTime = DateTime.Now;
-                userService.SaveOrUpdate(user, true);
+            var user = userService.Get(deliveryInfo.OrderUser.Id);
             if (Session["SmartHealthUser"] != null)
             {
                 var orderDto = ((SessionDto) Session["SmartHealthUser"]).Order;
@@ -497,6 +487,10 @@ namespace SmartHealth.Web.Controllers
                 order.NetAmount = order.TotalAmount;
                 order.FeeAmount = 0;
                 order.OrderUser = user;
+                order.DeliveryCity = deliveryInfo.DeliveryCity;
+                order.DeliveryAddress = deliveryInfo.DeliveryAddress;
+                order.ReceiverName = deliveryInfo.ReceiverName;
+                order.ReceiverPhone = deliveryInfo.ReceiverPhone;
                 userService.SaveOrUpdate<Order>(order, true);
                 var orderDetailString = "";
                 BuidDescriptionFactory builder = new BuidDescriptionFactory();
@@ -586,7 +580,7 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult Document()
         {
-            var documents = mediaService.GetAll().Where(a => a.Type == 7).Select(Mapper.Map<Media, MediaDto>).ToList();
+            var documents = mediaService.GetAll<Document>().Select(Mapper.Map<Document, DocumentDto>).ToList();
             ViewBag.Documents = documents;
             return View();
         }
@@ -594,7 +588,7 @@ namespace SmartHealth.Web.Controllers
         [HttpPost]
         public ActionResult DownloadDocument(string email, int documentId)
         {
-            var document = mediaService.Get(documentId);
+            var document = mediaService.Get<Document>(documentId);
             var eMail = new EMail
             {
                 FromAddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromAddress"),
@@ -608,8 +602,8 @@ namespace SmartHealth.Web.Controllers
                     System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
                     "YES"
             };
-            eMail.SendMail("Email", "MailFormat_DownloadDocument.xml", new String[] { "Smart Health Download Document", "Thông tin tài liệu: ", document.Description, document.MediaUrl });
-            mediaLogService.SaveOrUpdate(new MediaLog{Email = email, Media = mediaService.Get(documentId)}, true);
+            eMail.SendMail("Email", "MailFormat_DownloadDocument.xml", new String[] { "Smart Health Download Document", "Thông tin tài liệu: ", document.Name, document.DownloadUrl });
+            mediaLogService.SaveOrUpdate(new DocumentLog{Email = email, Document = mediaService.Get<Document>(documentId)}, true);
             return Content("Success");
         }
 

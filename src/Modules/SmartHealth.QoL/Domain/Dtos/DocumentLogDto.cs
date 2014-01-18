@@ -5,11 +5,11 @@ using System.Text;
 
 namespace SmartHealth.Box.Domain.Dtos
 {
-    public class MediaLogDto
+    public class DocumentLogDto
     {
-        public MediaLogDto()
+        public DocumentLogDto()
         {
-            Media = new MediaDto();
+            Document = new DocumentDto();
         }
         public virtual int Id { get; set; }
 
@@ -17,6 +17,6 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual DateTime CreatedDate { get; set; }
 
-        public virtual MediaDto Media { get; set; }
+        public virtual DocumentDto Document { get; set; }
     }
 }
