@@ -45,14 +45,14 @@
                                 </div>
                                 <div>
                                     <div class="box-content">
-                                        <a id="add-sliderImage" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Partner</a>
+                                        <a id="add-sliderImage" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Image</a>
                                     </div>
                                     <div id="sliderImage-listView"></div>
                                     <div id="sliderImage-pager" class="k-pager-wrap"></div>
                                 </div>
                                 <div>
                                     <div class="box-content">
-                                        <a id="add-document" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Partner</a>
+                                        <a id="add-document" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm tài liệu</a>
                                     </div>
                                     <div id="document-listView"></div>
                                     <div id="document-pager" class="k-pager-wrap"></div>
@@ -270,13 +270,18 @@
                 </dd>
                 <dt>Link tải</dt>
                 <dd>
-                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
-                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:DownloadUrl" name="DownloadUrl" required="required" validationMessage="required" />
+                    <span data-for="DownloadUrl" class="k-invalid-msg"></span>
                 </dd>
                 <dt>Hình đại diện</dt>
                 <dd>
                     <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
                     <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Id bài viết</dt>
+                <dd>
+                    <input type="number" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ArticleId" name="ArticleId" required="required" validationMessage="required" />
+                    <span data-for="ArticleId" class="k-invalid-msg"></span>
                 </dd>
             </dl>
         </div>
@@ -632,17 +637,17 @@
                     dataType: "json"
                 },
                 update: {
-                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    url: '@Url.Action("CreateOrUpdateDocument", "Media")',
                     type: "post",
                     dataType: "json"
                 },
                 destroy: {
-                    url: '@Url.Action("DeleteVideo", "Media")',
+                    url: '@Url.Action("DeleteDocument", "Media")',
                     type: "post",
                     dataType: "json"
                 },
                 create: {
-                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    url: '@Url.Action("CreateOrUpdateDocument", "Media")',
                     type: "post",
                     dataType: "json"
                 },
@@ -659,11 +664,10 @@
                     id: "Id",
                     fields: {
                         Id: { editable: false, nullable: true },
-                        ProductId: { type: "number", defaultValue: 1 },
-                        MediaUrl: { type: "string" },
+                        ArticleId: { type: "number", defaultValue: 1 },
+                        DownloadUrl: { type: "string" },
                         ThumbnailUrl: { type: "string" },
-                        Description: { type: "string", defaultValue: "" },
-                        Type: { type: "number", defaultValue: 7 }
+                        Description: { type: "string", defaultValue: "" }
                     }
                 }
             }

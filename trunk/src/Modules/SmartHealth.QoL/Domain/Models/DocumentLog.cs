@@ -7,11 +7,11 @@ using SmartHealth.Infrastructure.Domain.Models;
 namespace SmartHealth.Box.Domain.Models
 {
     [Serializable]
-    public class MediaLog : Entity
+    public class DocumentLog : Entity
     {
-        public MediaLog()
+        public DocumentLog()
         {
-            Media = new Media();
+            Document = new Document();
             CreatedDate = DateTime.Now;
         }
 
@@ -19,6 +19,6 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual DateTime CreatedDate { get; set; }
 
-        public virtual Media Media { get; set; }
+        public virtual Document Document { get; set; }
     }
 }

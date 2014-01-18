@@ -31,6 +31,14 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public int TransactionStatus { get; set; }
 
+        public virtual City DeliveryCity { get; set; }
+
+        public virtual string DeliveryAddress { get; set; }
+
+        public virtual string ReceiverName { get; set; }
+
+        public virtual string ReceiverPhone { get; set; }
+
         public virtual PayType PayType { get; set; }
         //{
         //    get

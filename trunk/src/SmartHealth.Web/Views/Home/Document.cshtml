@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Document";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var documents = (List<MediaDto>)ViewBag.Documents;
+    var documents = (List<DocumentDto>)ViewBag.Documents;
 }
 <script src="~/Scripts/js/masonry.pkgd.min.js"></script>
 @Styles.Render("~/Content/css/contact")
@@ -18,11 +18,12 @@
                     @foreach (var document in documents)
                     {
                         <div class="box">
-                            <a href="#" data-toggle="modal" data-target="#documentModal" onclick="SetDocumentInfo('@document.Id');">
+                            <a href="@Url.Action("Article", "Home", new { id = document.ArticleId})" target="_blank">
                                 <p>@document.Name</p>
                                 <img src="@document.ThumbnailUrl" alt="">
-                                <p style="margin: 10px; font-size: 12px; font-weight: normal; text-align: left">@document.Description</p>
+                            <p style="margin: 10px; font-size: 12px; font-weight: normal; text-align: left">@document.Description</p>
                             </a>
+                                <button style="margin: 10px; float: right;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="SetDocumentInfo('@document.Id');">Tải về</button>
                         </div>
                     }
                 </div>

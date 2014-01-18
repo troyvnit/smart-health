@@ -25,6 +25,7 @@ namespace SmartHealth.Web.Mappers
             Mapper.CreateMap<UserDto, User>();
             Mapper.CreateMap<OrderDto, Order>();
             Mapper.CreateMap<OrderDetailDto, OrderDetail>();
+            Mapper.CreateMap<DocumentDto, Document>();
         }
     }
 }

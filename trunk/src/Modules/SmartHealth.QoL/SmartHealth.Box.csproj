@@ -57,7 +57,8 @@
     <Compile Include="Domain\Dtos\ArticleCategoryDto.cs" />
     <Compile Include="Domain\Dtos\ArticleDto.cs" />
     <Compile Include="Domain\Dtos\BaoKimOrderDto.cs" />
-    <Compile Include="Domain\Dtos\MediaLogDto.cs" />
+    <Compile Include="Domain\Dtos\DocumentDto.cs" />
+    <Compile Include="Domain\Dtos\DocumentLogDto.cs" />
     <Compile Include="Domain\Dtos\MenuDto.cs" />
     <Compile Include="Domain\Dtos\MediaDto.cs" />
     <Compile Include="Domain\Dtos\FolderDto.cs" />
@@ -75,8 +76,9 @@
     <Compile Include="Domain\IRepository\IProductRepository.cs" />
     <Compile Include="Domain\Models\Article.cs" />
     <Compile Include="Domain\Models\ArticleCategory.cs" />
+    <Compile Include="Domain\Models\Document.cs" />
     <Compile Include="Domain\Models\Folder.cs" />
-    <Compile Include="Domain\Models\MediaLog.cs" />
+    <Compile Include="Domain\Models\DocumentLog.cs" />
     <Compile Include="Domain\Models\Menu.cs" />
     <Compile Include="Domain\Models\OrderDetail.cs" />
     <Compile Include="Domain\Models\ProductTab.cs" />

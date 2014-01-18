@@ -97,8 +97,32 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
 
         public ActionResult GetDocuments()
         {
-            var videos = mediaService.GetAll().Where(a => a.Type == 7).Select(Mapper.Map<Media, MediaDto>).ToList();
-            return Json(videos, JsonRequestBehavior.AllowGet);
+            var documents = mediaService.GetAll<Document>().Select(Mapper.Map<Document, DocumentDto>).ToList();
+            return Json(documents, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CreateOrUpdateDocument(string models)
+        {
+            var documentDto = JsonConvert.DeserializeObject<List<DocumentDto>>(models).FirstOrDefault();
+            var document = Mapper.Map<DocumentDto, Document>(documentDto);
+            if (documentDto != null) document.Article = mediaService.Get<Article>(documentDto.ArticleId);
+            mediaService.SaveOrUpdate(document, true);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteDocument(string models)
+        {
+            var documentDto = JsonConvert.DeserializeObject<List<DocumentDto>>(models).FirstOrDefault();
+            if (documentDto != null)
+            {
+                if (documentDto.Id != null)
+                {
+                    var document = mediaService.Get<Document>((int)documentDto.Id);
+                    mediaService.Delete(document, true);
+                }
+                return Json("Success", JsonRequestBehavior.AllowGet);
+            }
+            return Json("Error", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CreateOrUpdateVideo(string models)

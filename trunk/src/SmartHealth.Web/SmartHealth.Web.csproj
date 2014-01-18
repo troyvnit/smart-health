@@ -161,7 +161,7 @@
     <Compile Include="Areas\Administrator\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Administrator\Controllers\OrderController.cs" />
-    <Compile Include="Areas\Administrator\Controllers\MediaLogController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\DocumentLogController.cs" />
     <Compile Include="Areas\Administrator\Controllers\MediaController.cs" />
     <Compile Include="Areas\Administrator\Controllers\MenuController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ProductController.cs" />
@@ -2433,7 +2433,7 @@
     <Content Include="Areas\Administrator\Views\Shared\_ReponsiveLayout.cshtml" />
     <Content Include="Areas\Administrator\Views\Web.config" />
     <Content Include="Areas\Administrator\Views\User\Index.cshtml" />
-    <Content Include="Areas\Administrator\Views\MediaLog\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\DocumentLog\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Order\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Smart Health.pubxml" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
