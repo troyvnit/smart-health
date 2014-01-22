@@ -22,6 +22,8 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string Description { get; set; }
 
+        public virtual string Content { get; set; }
+
         public virtual int Priority { get; set; }
 
         public virtual Article Article { get; set; }

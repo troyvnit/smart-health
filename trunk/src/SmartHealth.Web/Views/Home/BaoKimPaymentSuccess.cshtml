@@ -1,4 +1,4 @@
-﻿@model SmartHealth.Core.Domain.Dtos.UserDto
+﻿@model SmartHealth.Box.Domain.Dtos.OrderDto
 @using System.Web.Optimization
 @using SmartHealth.Box.Domain.Dtos
 @using SmartHealth.Core.Domain.Models
@@ -21,7 +21,7 @@
             <p>@SH.Cart</p>
             
             <div class="GridCnt">
-                <p>@SH.PaySuccess</p>
+                <p>@SH.PaySuccess </p><a href="@Url.Action("Order", "Home", new {order_no = Model.Id})">@Model.Id</a>
             </div>
             <!-- enddiv:GridCnt  -->
         </div>

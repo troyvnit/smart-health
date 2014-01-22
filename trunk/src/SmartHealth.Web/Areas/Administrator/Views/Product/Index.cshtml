@@ -56,6 +56,9 @@
                                     <div class="input-row">
                                         <p>Tên sản phẩm: </p>
                                         <input type="hidden" id="Id" name="Id" />
+                                        <input type="hidden" id="Rating" name="Rating" />
+                                        <input type="hidden" id="RatingCount" name="RatingCount" />
+                                        <input type="hidden" id="ViewCount" name="ViewCount" />
                                         <input type="text" class="k-textbox" id="Name" name="Name" style="width: 520px" required validationmessage="Vui lòng nhập tên!" />
                                     </div>
                                     <div class="input-row">
@@ -598,6 +601,7 @@
         });
 
         $("#save-product").click(function (e) {
+            $("#Groups").val(groupMultiSelect.value());
             var validator = $("#product-form").kendoValidator().data("kendoValidator");
             if (validator.validate()) {
                 tinyMCE.triggerSave();

@@ -241,7 +241,7 @@
     <value>STT</value>
   </data>
   <data name="OrderSuccess" xml:space="preserve">
-    <value>Thông tin đặt hàng của bạn đã được gửi tới BQT, cảm ơn bạn đã tin tưởng Smart Health!</value>
+    <value>Thông tin đặt hàng của bạn đã được gửi tới Smart Health. Bạn có thể xem lại đơn hàng theo mã:</value>
   </data>
   <data name="Packing" xml:space="preserve">
     <value>Quy cách</value>
@@ -259,7 +259,7 @@
     <value>Thanh toán sau</value>
   </data>
   <data name="PaySuccess" xml:space="preserve">
-    <value>Thanh toán thành công, cảm ơn bạn đã tin tưởng Smart Health!</value>
+    <value>Thanh toán thành công. Bạn có thể xem lại đơn hàng theo mã:</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Điện thoại</value>
@@ -338,5 +338,8 @@
   </data>
   <data name="VisitorStatistics" xml:space="preserve">
     <value>Thống kê truy cập</value>
+  </data>
+  <data name="DeliveryInfo" xml:space="preserve">
+    <value>Thông tin giao hàng</value>
   </data>
 </root>

@@ -252,7 +252,7 @@
         </div>
 </script>
 <script type="text/x-kendo-tmpl" id="edit-document-template">
-        <div class="product-video-view k-widget">
+        <div class="document-view k-widget">
             <div class="edit-buttons">
                 <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
                 <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
@@ -260,28 +260,28 @@
             <dl>
                 <dt>Tên tài liệu</dt>
                 <dd>
-                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
+                    <input type="text" style="width: 19em; height: 2em;" class="k-textbox" data-bind="value:Name" name="Name" required="required" validationMessage="required" />
                     <span data-for="Name" class="k-invalid-msg"></span>
                 </dd>
                 <dt>Mô tả</dt>
                 <dd>
-                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <input type="text" style="width: 19em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
                     <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Nội dung</dt>
+                <dd style="height: 6.5em;">
+                    <textarea style="width: 20.4em; height: 6.4em;" class="k-textbox" data-bind="value:Content" name="Content" required="required" validationMessage="required"></textarea>
+                    <span data-for="Content" class="k-invalid-msg"></span>
                 </dd>
                 <dt>Link tải</dt>
                 <dd>
-                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:DownloadUrl" name="DownloadUrl" required="required" validationMessage="required" />
+                    <input type="text" style="width: 19em; height: 2em;" class="k-textbox" data-bind="value:DownloadUrl" name="DownloadUrl" required="required" validationMessage="required" />
                     <span data-for="DownloadUrl" class="k-invalid-msg"></span>
                 </dd>
                 <dt>Hình đại diện</dt>
                 <dd>
-                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <input type="text" style="width: 19em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
                     <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
-                </dd>
-                <dt>Id bài viết</dt>
-                <dd>
-                    <input type="number" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ArticleId" name="ArticleId" required="required" validationMessage="required" />
-                    <span data-for="ArticleId" class="k-invalid-msg"></span>
                 </dd>
             </dl>
         </div>
@@ -667,7 +667,8 @@
                         ArticleId: { type: "number", defaultValue: 1 },
                         DownloadUrl: { type: "string" },
                         ThumbnailUrl: { type: "string" },
-                        Description: { type: "string", defaultValue: "" }
+                        Description: { type: "string", defaultValue: "" },
+                        Content: { type: "string", defaultValue: "" }
                     }
                 }
             }

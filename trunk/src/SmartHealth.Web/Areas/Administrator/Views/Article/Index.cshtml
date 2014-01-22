@@ -466,6 +466,7 @@
         });
 
         $("#save-article").click(function (e) {
+            $("#Categories").val(categoryMultiSelect.value());
             var validator = $("#article-form").kendoValidator().data("kendoValidator");
             if (validator.validate()) {
                 tinyMCE.triggerSave();

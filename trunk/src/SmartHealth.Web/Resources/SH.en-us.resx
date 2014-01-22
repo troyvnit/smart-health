@@ -339,4 +339,7 @@
   <data name="VisitorStatistics" xml:space="preserve">
     <value>Visitor statistics</value>
   </data>
+  <data name="DeliveryInfo" xml:space="preserve">
+    <value>Delivery Info</value>
+  </data>
 </root>

@@ -91,6 +91,7 @@
     <Compile Include="Domain\Models\Order.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\ArticleCategoryRepository.cs" />
+    <Compile Include="Infrastructure\Nhibernate\Mapping\DocumentMapping.cs" />
     <Compile Include="Infrastructure\Nhibernate\MenuRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\MediaRepository.cs" />
     <Compile Include="Infrastructure\Nhibernate\FolderRepository.cs" />

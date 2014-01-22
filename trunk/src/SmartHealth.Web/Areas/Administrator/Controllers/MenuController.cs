@@ -34,6 +34,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             return Json(menus, JsonRequestBehavior.AllowGet);
         }
 
+        [ValidateInput(false)]
         public ActionResult CreateOrUpdateMenu(string models)
         {
             MenuDto menuDto =

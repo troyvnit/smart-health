@@ -36,6 +36,10 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                                    {
                                        Id = order.Id,
                                        OrderUser = Mapper.Map<User, UserDto>(order.OrderUser),
+                                       ReceiverName = order.ReceiverName,
+                                       ReceiverPhone = order.ReceiverPhone,
+                                       DeliveryAddress = order.DeliveryAddress,
+                                       DeliveryCity = order.DeliveryCity,
                                        CreatedDate = order.CreatedDate,
                                        TotalAmount = order.OrderDetails.Sum(orderDetailDto => orderDetailDto.Quantity*orderDetailDto.Product.SmartHealthPrice)
                                    });

@@ -5,6 +5,7 @@
     ViewBag.Title = "Document";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var documents = (List<DocumentDto>)ViewBag.Documents;
+    var i = 0;
 }
 <script src="~/Scripts/js/masonry.pkgd.min.js"></script>
 @Styles.Render("~/Content/css/contact")
@@ -15,16 +16,50 @@
         <div id="contact">
             <div class="container" style="width: 940px">
                 <div id="content">
+                    
                     @foreach (var document in documents)
                     {
                         <div class="box">
-                            <a href="@Url.Action("Article", "Home", new { id = document.ArticleId})" target="_blank">
-                                <p>@document.Name</p>
+                            <span style="float: left">
                                 <img src="@document.ThumbnailUrl" alt="">
-                            <p style="margin: 10px; font-size: 12px; font-weight: normal; text-align: left">@document.Description</p>
-                            </a>
-                                <button style="margin: 10px; float: right;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="SetDocumentInfo('@document.Id');">Tải về</button>
+                            </span>
+                            <span style="float: left">
+                                <p><strong>@document.Name</strong></p>
+                                <p>@document.Description</p>
+                                <button style="margin: 10px; float: left;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="SetDocumentInfo('@document.Id');">Tải về</button>
+                                <a style="margin: 10px 0; float: left;" class="btn btn-default btn-sm" data-toggle="modal" data-target="#documentDetailModal_@i">
+                                    Xem thêm
+                                </a>
+                            </span>
                         </div>
+                        
+                        
+                        <!-- Detail Modal -->
+                        <div class="modal fade" id="documentDetailModal_@i" tabindex="-1" role="dialog" aria-labelledby="documentDetailModalLabel_@i" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="documentDetailModalLabel_@i">Chi tiết tài liệu</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="box-detail">
+                                            <span style="float: left">
+                                                <img src="@document.ThumbnailUrl" alt="">
+                                            </span>
+                                            <span style="float: left; max-width: 335px;">
+                                                <p><strong>@document.Name</strong></p>
+                                                <p>@document.Description</p>
+                                                <span>@Html.Raw(document.Content)</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button style="margin: 10px;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="$('#documentDetailModal_@i').modal('hide');">@SH.Download</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.Detail modal -->
                     }
                 </div>
                 <!-- Modal -->
@@ -58,11 +93,12 @@
                         </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@SH.Close</button>
-                          <button id="submitBtn" type="button" class="btn btn-primary" onclick="submitDownloadDocumentForm();">@SH.Download</button>
+                          <button id="submitBtn" type="button" class="btn btn-primary">@SH.Download</button>
                       </div>
                     </div><!-- /.modal-content -->
                   </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                
             </div>
         </div>
     </div>
@@ -76,18 +112,29 @@
   border-radius: 3px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
     background-color: white;
+        width: 100%;
+}
+    .box-detail {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 12px;
+        width: 100%;
 }
     .box img{
-        width: 90%;
+        max-width: 150px;
         margin: 5%;
 }
-    .box p{
-        text-align: center;
-        font-size: 14px;
-        font-weight: bold;
-        margin-top: 10px;
+    .box-detail img{
+        max-width: 200px;
+        margin: 5%;
 }
-    .box a:hover{
+    .box p, .box-detail p{
+        margin: 10px; 
+        font-size: 12px; 
+        font-weight: normal;
+        text-align: left;
+}
+    .box a:hover, .box-detail a:hover{
         text-decoration: none;
 }
      #content {
@@ -97,23 +144,22 @@
 </style>
     <script src="@Url.Content("~/Areas/Administrator/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js")"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         //Init jQuery Masonry layout
-        init_masonry();
+        //init_masonry();
 
         //Select menu init
         $("#collapsed-navbar ." + $('body').attr('class')).attr('selected', 'selected');
 
         //Select menu onchange
-        $("#collapsed-navbar").change(function () {
+        $("#collapsed-navbar").change(function() {
             window.location = $(this).val();
         });
-
-        $('form').onsubmit(function() {
-            submitDownloadDocumentForm();
-            return false;
-        });
         
+        $("#submitBtn").click(function (e) {
+           $('form').submit();
+        });
+
         $('form').validate({
             rules: {
                 Email: {
@@ -122,52 +168,50 @@
                     email: true
                 }
             },
-            highlight: function (element) {
+            highlight: function(element) {
                 $(element).closest('.form-group').addClass('has-error');
                 $(element).closest('.form-group').removeClass('has-success');
             },
-            unhighlight: function (element) {
+            unhighlight: function(element) {
                 $(element).closest('.form-group').removeClass('has-error');
                 $(element).closest('.form-group').addClass('has-success');
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function (error, element) {
+            errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);
                 }
+            },
+            submitHandler: function(form) {
+                $('#submitBtn').hide();
+                $('#submitProgress').show();
+                $.ajax({
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                updateProgress(evt.loaded * 100 / evt.total);
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    type: 'POST',
+                    url: $('form').attr('action'),
+                    async: true,
+                    data: $('form').serialize(),
+                    success: function () {
+                        $("#contentPopup .alert-info").hide();
+                        $("#contentPopup .alert-success").show();
+                        $("#contentPopup .input-group").hide();
+                        $('#submitProgress').hide();
+                    }
+                });
             }
         });
     });
-
-    function submitDownloadDocumentForm() {
-        if ($('form').valid()) {
-            $('#submitBtn').hide();
-            $('#submitProgress').show();
-            $.ajax({
-                xhr: function () {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.addEventListener("progress", function (evt) {
-                        if (evt.lengthComputable) {
-                            updateProgress(evt.loaded * 100 / evt.total);
-                        }
-                    }, false);
-                    return xhr;
-                },
-                type: 'POST',
-                url: $('form').attr('action'),
-                async: true,
-                data: $('form').serialize(),
-                success: function () {
-                    $("#contentPopup .alert-info").hide();
-                    $("#contentPopup .alert-success").show();
-                    $("#contentPopup .input-group").hide();
-                }
-            });
-        }
-    }
     
     function updateProgress(percentage) {
         if (percentage > 100) percentage = 100;

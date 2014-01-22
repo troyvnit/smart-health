@@ -17,6 +17,8 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual string Description { get; set; }
 
+        public virtual string Content { get; set; }
+
         public virtual int Priority { get; set; }
 
         public virtual int ArticleId { get; set; }

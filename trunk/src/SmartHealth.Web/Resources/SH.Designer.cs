@@ -196,6 +196,15 @@ namespace SmartHealth.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thông tin giao hàng.
+        /// </summary>
+        public static string DeliveryInfo {
+            get {
+                return ResourceManager.GetString("DeliveryInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chi tiết.
         /// </summary>
         public static string Detail {
@@ -430,7 +439,7 @@ namespace SmartHealth.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thông tin đặt hàng của bạn đã được gửi tới BQT, cảm ơn bạn đã tin tưởng Smart Health!.
+        ///   Looks up a localized string similar to Thông tin đặt hàng của bạn đã được gửi tới Smart Health. Bạn có thể xem lại đơn hàng theo mã:.
         /// </summary>
         public static string OrderSuccess {
             get {
@@ -484,7 +493,7 @@ namespace SmartHealth.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thanh toán thành công, cảm ơn bạn đã tin tưởng Smart Health!.
+        ///   Looks up a localized string similar to Thanh toán thành công. Bạn có thể xem lại đơn hàng theo mã:.
         /// </summary>
         public static string PaySuccess {
             get {

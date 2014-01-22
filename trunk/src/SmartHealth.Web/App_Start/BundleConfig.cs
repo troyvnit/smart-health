@@ -48,6 +48,7 @@ namespace SmartHealth.Web
                        "~/Scripts/jquery.sharrre.min.js",
                        "~/Scripts/js/masonry.pkgd.min.js",
                        "~/Scripts/js/jRating.jquery.js",
+                       "~/Scripts/js/accounting.min.js",
                        "~/Areas/Administrator/ClipOne/plugins/bootstrap/js/bootstrap.min.js",
                        "~/Areas/Administrator/ClipOne/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
                         ));
