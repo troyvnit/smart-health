@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using NHibernate.Mapping;
 using Payoo.Lib;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
@@ -122,7 +123,7 @@ namespace SmartHealth.Web.Controllers
                 product.ViewCount += 1;
                 productService.SaveOrUpdate(product, true);
 
-                var productGroups = productGroupService.GetAll().Where(a => a.Products.Contains(product));
+                //var productGroups = productGroupService.GetAll().Where(a => a.Products.Contains(product));
 
                 var productDetail = Mapper.Map<Product, ProductDto>(product);
                 ViewBag.ProductDetail = productDetail;
@@ -146,6 +147,13 @@ namespace SmartHealth.Web.Controllers
                     articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                         Mapper.Map<Article, ArticleDto>).ToList();
                 ViewBag.Newses = lstNews;
+                if (Session["SmartHealthUser"] == null)
+                {
+                    Session["SmartHealthUser"] = new SessionDto();
+                }
+                var sessionDto = (SessionDto)Session["SmartHealthUser"];
+                sessionDto.UserId = currentUser != null ? currentUser.Id : 0;
+                Session["SmartHealthUser"] = sessionDto;
                 return View();
             }
             else {
@@ -178,17 +186,42 @@ namespace SmartHealth.Web.Controllers
             if (Session["SmartHealthUser"] != null)
             {
                 var order = ((SessionDto)Session["SmartHealthUser"]).Order;
-                order.OrderDetails.Add(new OrderDetailDto{ Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity, Order = order});
+                order.OrderDetails.Add(new OrderDetailDto{ Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity, OrderId = order.Id});
                 orderCount = order.OrderDetails.Count(a => a.Quantity != 0);
             }
             return Json(orderCount, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult UpdateOrderDetail(int i, int quantity)
+        public ActionResult UpdateOrderDetail(int i, int quantity, int? orderId)
         {
-            var orderDetails = ((SessionDto) Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
-            orderDetails[i].Quantity = quantity;
-            decimal totalAmount = orderDetails.Sum(orderDetailDto => orderDetailDto.Product.SmartHealthPrice*orderDetailDto.Quantity);
+            var orderDetails = ((SessionDto)Session["SmartHealthUser"]).Order.OrderDetails.ToArray();
+            if (orderId != null)
+            {
+                var order = userService.Get<Order>((int) orderId);
+                if (order != null)
+                {
+                    order.OrderDetails.ToArray()[i].Quantity = quantity;
+                    userService.SaveOrUpdate(order, true);
+                    var orderDto = Mapper.Map<Order, OrderDto>(order);
+                    orderDetails = orderDto.OrderDetails.ToArray();
+                }
+                else
+                {
+                    orderDetails[i].Quantity = quantity;
+                }
+            }
+            else
+            {
+                orderDetails[i].Quantity = quantity;
+            }
+            decimal totalAmount = 0;
+            var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
+            var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
+            foreach (var orderDetailDto in orderDetails)
+            {
+                var discountPercent = orderDetailDto.Quantity > 1 ? discountPercentForMany : discountPercentForOne;
+                totalAmount += orderDetailDto.Product.SmartHealthPrice * 100/95 * orderDetailDto.Quantity * (100 - discountPercent) / 100;
+            }
             return Json(new { productCount = orderDetails.Count(a => a.Quantity != 0), totalAmount}, JsonRequestBehavior.AllowGet);
         }
 
@@ -464,54 +497,56 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult Order(int? order_no)
         {
-            var user = currentUser != null ? userService.Get(currentUser.Id) : null;
-            var userDto = user != null ? Mapper.Map<User, UserDto>(user) : new UserDto();
             var order = new OrderDto();
             if (order_no != null)
             {
                 order = Mapper.Map<Order, OrderDto>(userService.Get<Order>((int) order_no));
-                ViewBag.Order = order;
             }
             return View(order);
         }
 
         [HttpPost]
-        public ActionResult Order(OrderDto deliveryInfo, PayType payType)
+        public ActionResult Order(OrderDto deliveryInfo)
         {
-            var user = userService.Get(deliveryInfo.OrderUser.Id);
             if (Session["SmartHealthUser"] != null)
             {
-                var orderDto = ((SessionDto) Session["SmartHealthUser"]).Order;
-                var order = Mapper.Map<OrderDto, Order>(orderDto);
+                var user = userService.Get(((SessionDto)Session["SmartHealthUser"]).UserId);
+                var orderDto =((SessionDto)Session["SmartHealthUser"]).Order;
+                var order = userService.Get<Order>(deliveryInfo.Id) ?? Mapper.Map<OrderDto, Order>(orderDto);
                 order.PayType = PayType.SmartHealth;
-                order.NetAmount = order.TotalAmount;
                 order.FeeAmount = 0;
                 order.OrderUser = user;
                 order.DeliveryCity = deliveryInfo.DeliveryCity;
                 order.DeliveryAddress = deliveryInfo.DeliveryAddress;
                 order.ReceiverName = deliveryInfo.ReceiverName;
                 order.ReceiverPhone = deliveryInfo.ReceiverPhone;
-                userService.SaveOrUpdate<Order>(order, true);
+                order.CompanyAddress = deliveryInfo.CompanyAddress;
+                order.CompanyName = deliveryInfo.CompanyName;
+                order.TaxCode = deliveryInfo.TaxCode;
                 var orderDetailString = "";
                 BuidDescriptionFactory builder = new BuidDescriptionFactory();
                 decimal totalAmount = 0;
+                var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
+                var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
                 foreach (var orderDetail in order.OrderDetails)
                 {
-                    userService.SaveOrUpdate(orderDetail, true);
-                    var totalPrice = orderDetail.Product.SmartHealthPrice * orderDetail.Quantity;
+                    orderDetail.Order = order;
+                    var discountPercent = orderDetail.Quantity > 1 ? discountPercentForMany : discountPercentForOne;
+                    var totalPrice = orderDetail.Product.SmartHealthPrice * 100 / 95 * orderDetail.Quantity * (100 - discountPercent) / 100;
                     totalAmount += totalPrice;
                     orderDetailString += orderDetail.Product.Name + " x " + orderDetail.Quantity;
                     builder.AddItem(new PayooOrderItem(orderDetail.Product.Name, (long) orderDetail.Product.SmartHealthPrice, orderDetail.Quantity));
                 }
-                ((SessionDto)Session["SmartHealthUser"]).Order = new OrderDto();
+                order.NetAmount = order.TotalAmount = totalAmount;
+                userService.SaveOrUpdate<Order>(order, true);
 
-                switch (payType)
+                switch (deliveryInfo.PayType)
                 {
                     case PayType.BaoKim:
                     {
                         orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
                         var payment = new BaoKimPayment();
-                        var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", totalAmount.ToString(), "0", "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home"), Url.Action("Order", "Home"), Url.Action("PaymentDetail", "Home"));
+                        var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", order.TotalAmount.ToString(), "0", "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home", null, this.Request.Url.Scheme), Url.Action("Order", "Home", null, this.Request.Url.Scheme), Url.Action("PaymentDetail", "Home", null, this.Request.Url.Scheme));
                         return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl }, JsonRequestBehavior.AllowGet);
                     }
                     case PayType.Payoo:
@@ -544,9 +579,9 @@ namespace SmartHealth.Web.Controllers
                         string Checksum = SHA1encode.hash(ChecksumKey + XML);
                         return Json(new { isSuccess = true, redirectToProviderHTML = RedirectToProvider(ConfigurationManager.AppSettings["PayooCheckout"], XML, Checksum) }, JsonRequestBehavior.AllowGet);
                     }
-                        break;
                     default:
-                        return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
+                        ((SessionDto)Session["SmartHealthUser"]).Order = new OrderDto();
+                        return Json(new { isSuccess = true, orderId = order.Id }, JsonRequestBehavior.AllowGet);
                 }
             }
             return Json(new { isSuccess = false }, JsonRequestBehavior.AllowGet);
@@ -621,22 +656,26 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult BaoKimPaymentSuccess(BaoKimOrderDto baoKimOrder)
         {
-            if (baoKimOrder != null)
-            {
                 var order = userService.Get<Order>(Convert.ToInt32(baoKimOrder.order_id));
+                if (order != null)
+                {
                 order.TotalAmount = baoKimOrder.total_amount;
                 order.NetAmount = baoKimOrder.net_amount;
                 order.FeeAmount = baoKimOrder.fee_amount;
                 order.TransactionStatus = baoKimOrder.transaction_status;
-                order.IsPayed = baoKimOrder.transaction_status == 4;
+                order.IsPayed = baoKimOrder.transaction_status == 4 || baoKimOrder.transaction_status == 13;
                 order.PayType = PayType.BaoKim;
-                order.OrderUser.Email = baoKimOrder.customer_email;
-                order.OrderUser.DisplayName = baoKimOrder.customer_name;
-                order.OrderUser.Location = baoKimOrder.customer_address;
-                order.OrderUser.Phone = baoKimOrder.customer_phone;
+                    if (order.OrderUser.UserType == UserType.Guest)
+                    {
+                        order.OrderUser.Email = baoKimOrder.customer_email;
+                        order.OrderUser.DisplayName = baoKimOrder.customer_name;
+                        order.OrderUser.Location = baoKimOrder.customer_address;
+                        order.OrderUser.Phone = baoKimOrder.customer_phone;
+                    }
                 userService.SaveOrUpdate<Order>(order, true);
+                return View(Mapper.Map<Order, OrderDto>(order));
             }
-            return View();
+            return RedirectToAction("Order");
         }
 
         public ActionResult PaymentDetail()
@@ -683,6 +722,53 @@ namespace SmartHealth.Web.Controllers
                 }
             }
             return Content("Success");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult LoginForOrder(UserDto userDto, bool isMember)
+        {
+            if (isMember)
+            {
+                if (!string.IsNullOrEmpty(userDto.Username) && !string.IsNullOrEmpty(userDto.Username))
+                {
+                    var user = userService.GetAll().FirstOrDefault(a => a.Username == userDto.Username && a.Password == userDto.Password);
+                    if (user != null)
+                    {
+                        FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
+                        ((SessionDto) Session["SmartHealthUser"]).UserId = user.Id;
+                        return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
+                    }
+                    return Json(new { isSuccess = false, errorMessage = "Tên đăng nhập và mật khẩu không đúng!" }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { isSuccess = false, errorMessage = "Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(userDto.Email))
+                {
+                    var user = new User { UserType = UserType.Guest, Password = Guid.NewGuid().ToString(), Username = "Guest" + Guid.NewGuid()};
+                    user.Email = userDto.Email;
+                    user.DisplayName = user.Email;
+                    user.Location = "update later";
+                    user.DOB = userDto.DOB;
+                    user.Phone = "update later";
+                    user.Gender = Gender.Male;
+                    user.LastName = user.DisplayName;
+                    user.FirstName = user.DisplayName;
+                    user.ModifiedTime = DateTime.Now;
+                    userService.SaveOrUpdate(user, true);
+                    ((SessionDto)Session["SmartHealthUser"]).UserId = user.Id;
+                    return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { isSuccess = false, errorMessage = "Bạn phải nhập email!" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult OpenUrlNewTab(string url)
+        {
+            ViewBag.Url = url;
+            return View();
         }
     }
 }

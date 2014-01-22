@@ -19,6 +19,8 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual DateTime CreatedDate { get; set; }
 
+        public virtual int UserId { get; set; }
+
         public virtual UserDto OrderUser { get; set; }
 
         public virtual decimal TotalAmount { get; set; }
@@ -38,6 +40,12 @@ namespace SmartHealth.Box.Domain.Dtos
         public virtual string ReceiverName { get; set; }
 
         public virtual string ReceiverPhone { get; set; }
+
+        public virtual string CompanyName { get; set; }
+
+        public virtual string CompanyAddress { get; set; }
+
+        public virtual string TaxCode { get; set; }
 
         public virtual PayType PayType { get; set; }
         //{

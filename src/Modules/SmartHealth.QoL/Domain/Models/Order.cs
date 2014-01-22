@@ -39,6 +39,12 @@ namespace SmartHealth.Box.Domain.Models
 
         public virtual string ReceiverPhone { get; set; }
 
+        public virtual string CompanyName { get; set; }
+
+        public virtual string CompanyAddress { get; set; }
+
+        public virtual string TaxCode { get; set; }
+
         public virtual IList<OrderDetail> OrderDetails { get; set; }
     }
 
@@ -54,6 +60,10 @@ namespace SmartHealth.Box.Domain.Models
 
     public enum City
     {
+        [Description("TP HCM")]
+        HCM,
+        [Description("Hà Nội")]
+        HN,
         [Description("An Giang")]
         AG,
         [Description("Bà Rịa - Vũng Tàu")]
@@ -176,9 +186,7 @@ namespace SmartHealth.Box.Domain.Models
         DNG,
         [Description("Hải Phòng")]
         HP,
-        [Description("Hà Nội")]
-        HN,
-        [Description("TP HCM")]
-        HCM
+        [Description("")]
+        Select
     }
 }

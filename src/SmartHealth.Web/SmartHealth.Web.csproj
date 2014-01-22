@@ -2124,6 +2124,7 @@
     <Content Include="Content\contact.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\fonts\flexslider-icon.svg" />
+    <Content Include="Content\icons\back.png" />
     <Content Include="Content\icons\bg_jRatingInfos.png" />
     <Content Include="Content\icons\small.png" />
     <Content Include="Content\icons\stars.png" />
@@ -2461,6 +2462,7 @@
     <Content Include="Scripts\jquery.easing.js" />
     <Content Include="Scripts\jquery.sharrre.js" />
     <Content Include="Scripts\jquery.sharrre.min.js" />
+    <Content Include="Scripts\js\accounting.min.js" />
     <Content Include="Scripts\js\jquery.flexslider-min.js" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Scripts\jquery.jcarousel.min_call.js" />
@@ -2545,6 +2547,7 @@
     <Content Include="Views\Home\GetCounter.cshtml" />
     <Content Include="Views\Home\BaoKimPaymentSuccess.cshtml" />
     <Content Include="Views\Home\PayooPaymentSuccess.cshtml" />
+    <Content Include="Views\Home\OpenUrlNewTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Mood\Controllers\" />

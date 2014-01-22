@@ -107,7 +107,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             var document = Mapper.Map<DocumentDto, Document>(documentDto);
             if (documentDto != null) document.Article = mediaService.Get<Article>(documentDto.ArticleId);
             mediaService.SaveOrUpdate(document, true);
-            return Json("Success", JsonRequestBehavior.AllowGet);
+            return Json(Mapper.Map<Document, DocumentDto>(document), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteDocument(string models)
@@ -131,7 +131,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             var media = Mapper.Map<MediaDto, Media>(mediaDto);
             if (mediaDto != null) media.Product = mediaService.Get<Product>(mediaDto.ProductId);
             mediaService.SaveOrUpdate(media, true);
-            return Json("Success", JsonRequestBehavior.AllowGet);
+            return Json(Mapper.Map<Media, MediaDto>(media), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteVideo(string models)

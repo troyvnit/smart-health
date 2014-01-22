@@ -91,7 +91,21 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
         [ValidateInput(false)]
         public ActionResult CreateOrUpdateProduct(ProductDto productDto)
         {
-            var product = Mapper.Map<ProductDto, Product>(productDto);
+            var product = productService.Get(productDto.Id) ?? new Product();
+            product.Brand = productDto.Brand;
+            product.Description = productDto.Description;
+            product.Introduction = productDto.Introduction;
+            product.IsActived = productDto.IsActived;
+            product.MarketPrice = productDto.MarketPrice;
+            product.MediaUrl = productDto.MediaUrl;
+            product.Name = productDto.Name;
+            product.Property = productDto.Property;
+            product.Review = productDto.Review;
+            product.Status = productDto.Status;
+            product.SmartHealthPrice = productDto.SmartHealthPrice;
+            product.Tags = productDto.Tags;
+            product.Weight = productDto.Weight;
+            product.Groups = new List<ProductGroup>();
             if (!string.IsNullOrEmpty(productDto.Groups))
             {
                 string[] groupIds = productDto.Groups.Split(',');

@@ -1,4 +1,5 @@
-﻿@using SmartHealth.Box.Domain.Dtos
+﻿@using System.Configuration
+@using SmartHealth.Box.Domain.Dtos
 @using SmartHealth.Web.Resources
 @{
     ViewBag.Title = "Product";
@@ -12,6 +13,9 @@
         Session["SmartHealthUser"] = new SessionDto();
     }
     var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
+    var userId = ((SessionDto)Session["SmartHealthUser"]).UserId;
+    var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
+    var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
 }
 <div class="leftContent">
     <div class="boxLeft">
@@ -91,23 +95,97 @@
                         <span>
                             <p>
                                 @SH.Rating:
-                            </p><span class="rating" data-average="@productDetail.Rating" data-id="@productDetail.Id"></span></span>
-                        <span><p>&nbsp;</p> (@productDetail.RatingCount @SH.Rating)</span>
+                            </p>
+                            <span class="rating" data-average="@productDetail.Rating" data-id="@productDetail.Id"></span></span>
+                        <span>
+                            <p>&nbsp;</p>
+                            (@productDetail.RatingCount @SH.Rating)</span>
                     </li>
                     <li class="Pr2"><span>
                                         <p>
                                             @SH.Quantity:
                                         </p>
-                                        <input class="form-control bfh-number" type="text" id="Quantity" />
+                                        <input class="form-control bfh-number" type="number" id="Quantity" />
                                         (@productDetail.Status) </span><span>
                                                                            <p>
                                                                                @SH.TotalAmount:
                                                                            </p>
                                                                            <span id="CalculatedPrice" style="font-size: 14px; font-weight: 600">0 @SH.Unit</span></span> </li>
-                    <li class="Pr3"><a id="Buy" href="#">
-                                        <img src="/Content/images/mua.png" alt="" /></a> </li>
+                    <li>
+                        <span>
+                            <p style="color: #1cbf34; font-weight: 600;">Giảm 5% với số lượng 1, giảm 10% từ 2 sản phẩm trở lên!</p></span></li>
+                    <li class="Pr3"><button type="button" class="btn btn-warning" id="Buy">Mua ngay</button> </li>
                 </ul>
             </div>
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="documentModalLabel">@SH.DownloadDocument</h4>
+                        </div>
+                        <div class="modal-body">
+                                <div class="col-lg-12" id="contentPopup">
+                                    <div class="alert alert-warning" style="display: none"></div>
+                                    <div class="input-group">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="isMember" id="isMember" value="true" checked />
+                                                Bạn đã là thành viên Smart Health
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="isMember" id="isNotMember" value="false" />
+                                                Thanh toán không cần đăng nhập
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isNotMemberForm">
+                                        <div class="form-group email-form" style="display: none">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">@@</span>
+                                                <input class="mail form-control" type="text" placeholder="Email" id="Email" name="Email" />
+                                            </div>
+                                            <!-- /input-group -->
+                                        </div>
+                                        <div class="form-group email-form" style="display: none">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">BD</span>
+                                                <input class="form-control" type="date" id="DOB" name="DOB" />
+                                            </div>
+                                            <!-- /input-group -->
+                                        </div>
+                                    </form>
+                                    <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isMemberForm">
+                                    <div class="form-group login-form">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">U</span>
+                                            <input class="form-control" type="text" placeholder="Username" id="Username" name="Username" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group login-form">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">P</span>
+                                            <input class="form-control" type="password" placeholder="Password" id="Password" name="Password" />
+                                        </div>
+                                    </div>
+                                        
+                            </form>
+                                </div>
+                                <!-- /.col-lg-6 -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">@SH.Close</button>
+                            <button id="submitBtn" type="submit" class="btn btn-primary">@SH.Pay</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
             <!--thongtinsp-->
             <div class="thongtincanbiet">
                 <div class="tabscontainer">
@@ -272,7 +350,7 @@
     <div class="boxRight">
         <div class="boxRightI">
             <p>
-               @SH.ViewedProduct
+                @SH.ViewedProduct
             </p>
             <ul>
                 @if (viewedProducts != null)
@@ -302,9 +380,19 @@
     </div>
 </div>
 <!--rightContent-->
+    <script src="@Url.Content("~/Areas/Administrator/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js")"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('.close').on('click', function () { $(this).parent().hide(); });
+        $("input[name=isMember]").on("change", function () {
+            if ($(this).attr('value') == 'true') {
+                $(".email-form").hide();
+                $(".login-form").show();
+            } else {
+                $(".email-form").show();
+                $(".login-form").hide();
+            }
+        });
         $("#Buy").click(function (e) {
             if ($("#Quantity").val() == '' || $("#Quantity").val() < 1) {
                 alert('@SH.MinimumQuantity 1!');
@@ -312,16 +400,49 @@
             }
             $.post('@Url.Action("AddOrderProduct", "Home")', { id: $("#ProductId").val(), quantity: $("#Quantity").val() }).done(function (result) {
                 $("#OrderProductCount").html(result);
-                $(".alert-success").fadeIn().delay(5000).fadeOut();
-                return false;
+                if (parseInt('@userId') > 0) {
+                    window.location.href = '@Url.Action("Order", "Home")';
+                } else {
+                    $('#loginModal').modal('show');
+                }
             });
             return false;
         });
+        $("#submitBtn").click(function (e) {
+            if ($('input[name="isMember"]:checked').val() == 'true') {
+                $('#isMemberForm').submit();
+            } else {
+                $('#isNotMemberForm').submit();
+            }
+            return false;
+        });
+        @*$("#submitBtn").click(function (e) {
+            if ($('form').valid()) {
+                $.post('@Url.Action("LoginForOrder", "Home")', { email: $("input[name=Email]").val(), username: $("input[name=Username]").val(), password: $("input[name=Password]").val(), isMember: $('input[name="isMember"]:checked').val() }).done(function (result) {
+                    if (result.isSuccess) {
+
+                    } else {
+                        $(".alert-warning").html(result.errorMessage);
+                        $(".alert-warning").show();
+                    }
+                    return false;
+                });
+            }
+            return false;
+        });*@
+        var options = {
+            symbol: "VND",
+            decimal: ".",
+            thousand: ",",
+            precision: 0,
+            format: "%v %s"
+        };
         $("#Quantity").change(function (e) {
             $("#CalculatedPrice").html();
             var quantity = parseFloat($("#Quantity").val());
+            var discountPercent = parseInt(quantity) > 1 ? parseInt('@discountPercentForMany') : parseInt('@discountPercentForOne');
             var price = parseFloat('@productDetail.SmartHealthPrice.ToString("N2").Replace(",", "")');
-            $("#CalculatedPrice").html((quantity * price) + " @SH.Unit");
+            $("#CalculatedPrice").html(accounting.formatMoney(quantity * 100 / 95 * price * (100 - discountPercent) / 100, options));
         });
         //$('.flexslider').flexslider({
         //    animation: "slide",
@@ -364,6 +485,99 @@
         $(".rating").jRating({
             serverPath: '@Url.Action("Rating", "Home")',
             rateMax: 10
+        });
+        $('.datepicker').datepicker();
+        $('#isMemberForm').validate({
+            rules: {
+                Username: {
+                    minlength: 3,
+                    required: true
+                },
+                Password: {
+                    minlength: 6,
+                    required: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+                $(element).closest('.form-group').removeClass('has-success');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+                $(element).closest('.form-group').addClass('has-success');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function (form) {
+            $.ajax({
+                url: form.action + "?isMember=" + $('input[name="isMember"]:checked').val(),
+                type: form.method,
+                data: $(form).serialize(),
+                success: function (result) {
+                    if (result.isSuccess) {
+                        window.location.href = '@Url.Action("Order", "Home")';
+                        } else {
+                            $(".alert-warning").html(result.errorMessage);
+                            $(".alert-warning").show();
+                        }
+                        return false;
+                }            
+            });
+        }
+        });
+        
+        $('#isNotMemberForm').validate({
+            rules: {
+                DOB: {
+                    minlength: 3,
+                    required: true
+                },
+                Email: {
+                    minlength: 6,
+                    required: true,
+                    email: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+                $(element).closest('.form-group').removeClass('has-success');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+                $(element).closest('.form-group').addClass('has-success');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: form.action + "?isMember=" + $('input[name="isMember"]:checked').val(),
+                    type: form.method,
+                    data: $(form).serialize(),
+                    success: function (result) {
+                        if (result.isSuccess) {
+                            window.location.href = '@Url.Action("Order", "Home")';
+                        } else {
+                            $(".alert-warning").html(result.errorMessage);
+                            $(".alert-warning").show();
+                        }
+                        return false;
+                    }
+                });
+            }
         });
     });
 </script>
