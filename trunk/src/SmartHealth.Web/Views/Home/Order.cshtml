@@ -12,26 +12,26 @@
 @{
     ViewBag.Title = "Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
-    var newses = (List<ArticleDto>)ViewBag.Newses;
+    var relatedProducts = (List<ProductDto>) ViewBag.RelatedProducts;
+    var newses = (List<ArticleDto>)ViewBag.ClientSupportArticles;
     if (Session["SmartHealthUser"] == null)
     {
         Session["SmartHealthUser"] = new SessionDto();
     }
-    var viewedProducts = ((SessionDto)Session["SmartHealthUser"]).ViewedProducts;
-    var order = Model.OrderDetails.Count(a => a.Quantity > 0) == 0 ? ((SessionDto)Session["SmartHealthUser"]).Order : Model;
+    var viewedProducts = ((SessionDto) Session["SmartHealthUser"]).ViewedProducts;
+    var order = Model.OrderDetails.Count(a => a.Quantity > 0) == 0 ? ((SessionDto) Session["SmartHealthUser"]).Order : Model;
     var orderDetails = order.OrderDetails.ToArray();
     decimal totalAmount = 0;
     var cities = new List<object>();
-    var type = typeof(City);
+    var type = typeof (City);
     foreach (var name in Enum.GetNames(type))
     {
         var field = type.GetField(name);
-        var fds = field.GetCustomAttributes(typeof(DescriptionAttribute), true);
+        var fds = field.GetCustomAttributes(typeof (DescriptionAttribute), true);
         foreach (DescriptionAttribute fd in fds)
         {
             string description = fd.Description;
-            var selectItem = new { Text = description, Value = name };
+            var selectItem = new {Text = description, Value = name};
             cities.Add(selectItem);
         }
     }
@@ -42,9 +42,20 @@
 <div class="leftContent">
     <div class="boxLeft">
         <div class="chitietsanpham">
-            <p>@SH.Cart</p>
+            <p>@(order.Id == 0 ? SH.Cart : "Thông tin đơn hàng #" + order.Id)</p>
             <div id="three_step_checkout">
                 <div class="new_cart new_ajax_cart">
+                    @if (order.Id != 0)
+                    {
+                        if (order.IsPayed)
+                        {
+                            <div class="alert alert-success">Đã thanh toán</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">Chưa thanh toán</div>
+                        }
+                    }
                     <span class="cartintro">Có tất cả <span id="orderDetailCount">@orderDetails.Count(a => a.Quantity != 0)</span> sản phẩm trong đơn hàng</span>
                     @if (orderDetails.Count(a => a.Quantity != 0) > 0)
                     {
@@ -72,7 +83,7 @@
                                         <tbody>
                                             <tr>
                                                 <td class="width_20">
-                                                    <a href="@Url.Action("Product", "Home", new {id = orderDetail.Product.Id})">
+                                                    <a href="@Url.Action("Product", "Home", new { id = orderDetail.Product.Id })">
                                                         <img src="@orderDetail.Product.MediaUrl" width="117" height="117">
                                                     </a>
                                                 </td>
@@ -112,11 +123,18 @@
                                 <tbody>
                                     <tr class="sub">
                                         <td colspan="2" rowspan="3" class="bdo width_60">
-                                <a style="float: left; margin: 10px 0;" class="btn btn-default" href="@Url.Action("ProductList", "Home", new {id = 4})">
-                                    <img src="~/Content/icons/back.png" /> Tiếp tục mua sắm</a></td>
+                                            <a style="float: left; margin: 10px 0;" class="btn btn-default" href="@Url.Action("ProductList", "Home", new { id = 4 })">
+                                                <img src="~/Content/icons/back.png" />
+                                                Tiếp tục mua sắm</a></td>
                                         <td class="width_15">Tổng cộng</td>
                                         <td class="width_30 right_align lastcolumn">
                                             <div id="totalAmount">@totalAmount.ToString("N0") VND</div>
+                                        </td>
+                                    </tr>
+                                    <tr class="sub">
+                                        <td class="width_15">Phí vận chuyển</td>
+                                        <td class="width_30 right_align lastcolumn">
+                                            <div id="shippingFee">0 VND</div>
                                         </td>
                                     </tr>
                                     <tr class="total">
@@ -129,7 +147,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        @*<div class="cart_btn_row">
+@*<div class="cart_btn_row">
                             <div class="proceedtocheckout">
                                 <a href="@Url.Action("Product", "Home")" class="submit_btn mtssel-cart-checkout-button">
                                     <span class="cart_submit_text">► Tiếp tục mua sắm</span>
@@ -194,7 +212,7 @@
             </div>
             <!-- enddiv:GridCnt  -->*@
         </div>
-        @if (orderDetails.Any(a => a.Quantity != 0) && !order.IsPayed)
+        @if (orderDetails.Any(a => a.Quantity != 0))
         {
             <div class="chitietsanpham" id="buyerInfo">
                 <p>@SH.DeliveryInfo</p>
@@ -229,23 +247,23 @@
                                     </div>
                                     <div class="form-group">
                                         <label>
-                                                <input type="checkbox" id="isBilling" />
-                                                Xuất hóa đơn tài chính
-                                            </label>
+                                            <input type="checkbox" id="isBilling"/>
+                                            Xuất hóa đơn tài chính
+                                        </label>
                                     </div>
-                                        <div class="form-group billing">
-                                            @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "Tên công ty" })
-                                            @Html.ValidationMessageFor(model => model.ReceiverName)
-                                        </div>
-                                        <div class="form-group billing">
-                                            @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control", placeholder = "Địa chỉ công ty" })
-                                            @Html.ValidationMessageFor(model => model.ReceiverPhone)
-                                        </div>
-                                        <div class="form-group billing">
-                                            @Html.TextBoxFor(model => model.TaxCode, new { @class = "form-control", placeholder = "Mã số thuế" })
-                                            @Html.ValidationMessageFor(model => model.DeliveryAddress)
-                                        </div>
+                                    <div class="form-group billing">
+                                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "Tên công ty" })
+                                        @Html.ValidationMessageFor(model => model.ReceiverName)
                                     </div>
+                                    <div class="form-group billing">
+                                        @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control", placeholder = "Địa chỉ công ty" })
+                                        @Html.ValidationMessageFor(model => model.ReceiverPhone)
+                                    </div>
+                                    <div class="form-group billing">
+                                        @Html.TextBoxFor(model => model.TaxCode, new { @class = "form-control", placeholder = "Mã số thuế" })
+                                        @Html.ValidationMessageFor(model => model.DeliveryAddress)
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-1">
                             </div>
@@ -254,11 +272,18 @@
                             <div class="col-md-1">
                             </div>
                             <div class="col-md-10 right">
-                                <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">Thanh toán khi nhận hàng</button>
-                                <a id="submitBaoKimPaymentBtn" onclick="submitBaoKimPayment(); return false;" style="float: right; margin: 10px;" href="#">
+                                @if (!order.IsPayed)
+                                {
+                                    if (order.Id == 0)
+                                    {
+                                        <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">Thanh toán khi nhận hàng</button>
+                                    }
+                                <a id="submitBaoKimPaymentBtn" onclick=" submitBaoKimPayment(); return false; " style="float: right; margin: 10px;" href="#">
                                     <img src="http://developer.baokim.vn/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
-                                <a id="submitPayooPaymentBtn" onclick="submitPayooPayment(); return false;" style="float: right; margin: 10px 0;" href="#">
+                                <a id="submitPayooPaymentBtn" onclick=" submitPayooPayment(); return false; " style="float: right; margin: 10px 0;" href="#">
                                     <img src="https://www.payoo.com.vn/img/button/PayNow.jpg" style="height: 32px; width: 90px;"></a>
+                                <button id="popover" style="float: right; margin: 10px 10px 10px 0;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
+                                }
                             </div>
                             <div class="col-md-1">
                             </div>
@@ -280,23 +305,23 @@
                 {
                     foreach (var relatedProduct in relatedProducts)
                     {
-                    <li>
-                        <div class="picleft">
-                            <table cellspacing="0" cellpadding="0" width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td class="pic_5">
-                                            <a href="@Url.Action("Product", "Home", new { id = relatedProduct.Id })">
-                                                <img src="@relatedProduct.MediaUrl" alt="" /></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                        <li>
+                            <div class="picleft">
+                                <table cellspacing="0" cellpadding="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td class="pic_5">
+                                                <a href="@Url.Action("Product", "Home", new { id = relatedProduct.Id })">
+                                                    <img src="@relatedProduct.MediaUrl" alt="" /></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
 
-                            </table>
-                        </div>
-                        <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span>
-                        <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
-                    </li>
+                                </table>
+                            </div>
+                            <span>@relatedProduct.SmartHealthPrice.ToString("N0") đ</span>
+                            <p>@relatedProduct.Name<br />@relatedProduct.Weight</p>
+                        </li>
                     }
                 }
             </ul>
@@ -311,7 +336,7 @@
                     {
                         foreach (var news in newses)
                         {
-                        <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
+                            <li><a href="@Url.Action("Article", "Home", new { id = news.Id })">@news.Title</a></li>
                         }
                     }
                 </ul>
@@ -324,29 +349,29 @@
             <div class="thanhtoan">
                 <ul>
                     <li><a href="#">
-                        <img src="/content/images/tt-1.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-1.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-2.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-2.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-3.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-3.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-4.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-4.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-5.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-5.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-6.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-6.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-7.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-7.jpg" alt="" /></a></li>
                     <li><a href="#">
-                        <img src="/content/images/tt-8.jpg" alt="" /></a></li>
+                            <img src="/content/images/tt-8.jpg" alt="" /></a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="boxRightF">
         <div class="fb-like-box" data-href="https://www.facebook.com/pages/Smart-Health/173034079568243"
-            data-width="220px" data-colorscheme="light" data-show-faces="true" data-header="true"
-            data-stream="false" data-show-border="false">
+             data-width="220px" data-colorscheme="light" data-show-faces="true" data-header="true"
+             data-stream="false" data-show-border="false">
         </div>
     </div>
     <div class="boxRight">
@@ -357,22 +382,22 @@
                 {
                     foreach (var viewedProduct in viewedProducts)
                     {
-                    <li>
-                        <div class="picleft">
-                            <table cellspacing="0" cellpadding="0" width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td class="pic_5">
-                                            <a href="@Url.Action("Product", "Home", new { id = viewedProduct.Id })">
-                                                <img src="@viewedProduct.MediaUrl" alt="" /></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span>
-                        <p>@viewedProduct.Name<br />@viewedProduct.Weight</p>
-                    </li>
+                        <li>
+                            <div class="picleft">
+                                <table cellspacing="0" cellpadding="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td class="pic_5">
+                                                <a href="@Url.Action("Product", "Home", new { id = viewedProduct.Id })">
+                                                    <img src="@viewedProduct.MediaUrl" alt="" /></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span>@viewedProduct.SmartHealthPrice.ToString("N0") đ</span>
+                            <p>@viewedProduct.Name<br />@viewedProduct.Weight</p>
+                        </li>
                     }
                 }
             </ul>
@@ -389,31 +414,36 @@
         precision: 0,
         format: "%v %s"
     };
-    $(".productQuantity").change(function () {
+    var totalAmount = 0;
+    $(".productQuantity").change(function() {
         var quantity = $(this).val();
         var i = $(this).attr("index");
-        var price = $(this).parent().parent().find(".smPrice").text().replace(',', ''); 
+        var price = $(this).parent().parent().find(".smPrice").text().replace(',', '');
         var discountPercent = parseInt(quantity) > 1 ? parseInt('@discountPercentForMany') : parseInt('@discountPercentForOne');
         $(this).parent().parent().find(".discountPercent").html("Giảm giá " + discountPercent + "%");
         $(this).parent().parent().find(".totalPrice").html(accounting.formatMoney(parseInt(price) * 100 / 95 * parseInt(quantity) * (100 - discountPercent) / 100, options));
-        $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: quantity, orderid: '@order.Id' }).done(function (result) {
-            $("#OrderProductCount").html(result.productCount); 
+        $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: quantity, orderid: '@order.Id' }).done(function(result) {
+            if ('@order.Id' == '0') {
+                $("#OrderProductCount").html(result.productCount);
+            }
             $("#orderDetailCount").html(result.productCount);
-            result.totalAmount = accounting.formatMoney(result.totalAmount, options);
-            $("#totalAmount").html(result.totalAmount);
-            $("#totalAmountVAT").html(result.totalAmount);
+            totalAmount = result.totalAmount;
+            $("#totalAmount").html(accounting.formatMoney(totalAmount));
+            $("#totalAmountVAT").html(accounting.formatMoney(result.totalAmount + shippingFee));
             return false;
         });
     });
-    $(".removeOrderProduct").click(function () {
+    $(".removeOrderProduct").click(function() {
         var i = $(this).attr("index");
         $("#producttable_" + i).remove();
-        $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: 0, orderid: '@order.Id' }).done(function (result) {
-            $("#OrderProductCount").html(result.productCount);
+        $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: 0, orderid: '@order.Id' }).done(function(result) {
+            if ('@order.Id' == '0') {
+                $("#OrderProductCount").html(result.productCount);
+            }
             $("#orderDetailCount").html(result.productCount);
-            result.totalAmount = accounting.formatMoney(result.totalAmount, options);
-            $("#totalAmount").html(result.totalAmount);
-            $("#totalAmountVAT").html(result.totalAmount);
+            totalAmount = result.totalAmount;
+            $("#totalAmount").html(accounting.formatMoney(totalAmount));
+            $("#totalAmountVAT").html(accounting.formatMoney(result.totalAmount + shippingFee));
             if (result.productCount == 0) {
                 $("#tableheader").remove();
                 $(".scrollable").remove();
@@ -424,19 +454,34 @@
             return false;
         });
     });
-    $("#submitBtn").click(function () {
+    var shippingFee = 0;
+    $("#DeliveryCity").change(function() {
+        if ($(this).val() == "HN" || $(this).val() == "HCM") {
+            $("#shippingFee").html(accounting.formatMoney(0, options));
+            shippingFee = 0;
+            $("#totalAmount").html(accounting.formatMoney(totalAmount));
+            $("#totalAmountVAT").html(accounting.formatMoney(totalAmount + shippingFee));
+        } else {
+            $("#shippingFee").html(accounting.formatMoney(30000, options));
+            shippingFee = 30000;
+            $("#totalAmount").html(accounting.formatMoney(totalAmount));
+            $("#totalAmountVAT").html(accounting.formatMoney(totalAmount + shippingFee));
+        }
+    });
+    $("#submitBtn").click(function() {
         $("form").submit();
     });
-    $("#isBilling").click(function () {
+    $("#isBilling").click(function() {
         if ($("#isBilling")[0].checked) {
             $(".billing").show();
         } else {
             $(".billing").hide();
         }
     });
+
     function submitBaoKimPayment() {
         if (!$("form").valid()) return false;
-        $.post('@Url.Action("Order", "Home")' + "?payType=BaoKim", $("form").serialize()).done(function (result) {
+        $.post('@Url.Action("Order", "Home")' + "?payType=BaoKim", $("form").serialize()).done(function(result) {
             $("#OrderProductCount").html(0);
             if (result.isSuccess) {
                 $("#tableheader").remove();
@@ -444,7 +489,7 @@
                 $("#subtotal").remove();
                 $("#buyerInfo").remove();
                 $(".TblGrid").remove();
-                $(".cartintro").append("<p>@SH.OrderSuccess</p>");
+                $(".cartintro").html("<p>@SH.OrderSuccess " + "<a href='@Url.Action("Order", "Home")?order_no=" + result.orderId + "'>" + result.orderId + "</a>" + "</p>");
                 window.location.href = result.payUrl;
             }
             return false;
@@ -453,7 +498,7 @@
 
     function submitPayooPayment() {
         if (!$("form").valid()) return false;
-        $.post('@Url.Action("Order", "Home")' + "?payType=Payoo", $("form").serialize()).done(function (result) {
+        $.post('@Url.Action("Order", "Home")' + "?payType=Payoo", $("form").serialize()).done(function(result) {
             $("#OrderProductCount").html(0);
             if (result.isSuccess) {
                 $("#tableheader").remove();
@@ -461,16 +506,37 @@
                 $("#subtotal").remove();
                 $("#buyerInfo").remove();
                 $(".TblGrid").remove();
-                $(".cartintro").append("<p>@SH.OrderSuccess</p>");
+                $(".cartintro").html("<p>@SH.OrderSuccess " + "<a href='@Url.Action("Order", "Home")?order_no=" + result.orderId + "'>" + result.orderId + "</a>" + "</p>");
                 $(".cartintro").append(result.redirectToProviderHTML);
                 $("#ContinueButton input[type='submit']").trigger("click");
             }
             return false;
         });
     }
-    $(document).ready(function () {
+
+    $(document).ready(function() {
         $(".billing").hide();
         $('.datepicker').datepicker();
+        $(".productQuantity").trigger("change");
+        $("#DeliveryCity").trigger("change");
+        if ($("#TaxCode").val() != "") {
+            $("#isBilling").trigger("click");
+        }
+        $("#popover").popover({ trigger: "manual", placement: 'top', html: true })
+            .on("mouseenter", function() {
+                var _this = this;
+                $(this).popover("show");
+                $(".popover").on("mouseleave", function() {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function() {
+                var _this = this;
+                setTimeout(function() {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 100);
+            });
         $('form').validate({
             rules: {
                 ReceiverName: {
@@ -489,25 +555,25 @@
                     required: true
                 }
             },
-            highlight: function (element) {
+            highlight: function(element) {
                 $(element).closest('.form-group').addClass('has-error');
                 $(element).closest('.form-group').removeClass('has-success');
             },
-            unhighlight: function (element) {
+            unhighlight: function(element) {
                 $(element).closest('.form-group').removeClass('has-error');
                 $(element).closest('.form-group').addClass('has-success');
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function (error, element) {
+            errorPlacement: function(error, element) {
                 if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);
                 }
             },
-            submitHandler: function (form) {
-                $.post('@Url.Action("Order", "Home")' + "?payType=SmartHealth", $("form").serialize()).done(function (result) {
+            submitHandler: function(form) {
+                $.post('@Url.Action("Order", "Home")' + "?payType=SmartHealth", $("form").serialize()).done(function(result) {
                     $("#OrderProductCount").html(0);
                     if (result.isSuccess) {
                         $("#tableheader").remove();

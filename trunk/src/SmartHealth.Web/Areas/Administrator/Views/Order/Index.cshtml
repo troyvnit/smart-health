@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-            <script type="text/x-kendo-template" id="template">
+<script type="text/x-kendo-template" id="template">
                 <div class="tabstrip">
                     <ul>
                         <li class="k-state-active">
@@ -29,6 +29,15 @@
                 </div>
 
             </script>
+<script id="payTypeTemplate" type="text/x-kendo-tmpl">
+        # if (PayType == 1) { #
+            Bảo Kim
+        # } else if (PayType == 2){ #
+            Payoo
+        # } else {#
+            Thanh toán khi nhận hàng
+        # } #
+    </script>
 <script>
     $(document).ready(function () {
         var datasource = new kendo.data.DataSource({
@@ -67,6 +76,7 @@
                     id: "Id",
                     fields: {
                         Id: { editable: false, nullable: true },
+                        PayType: { type: "number" },
                         CreatedDate: { type: "date" }
                     }
                 }
@@ -96,10 +106,13 @@
                     field: "ReceiverPhone",
                     title: "Điện thoại"
                 }, {
+                    field: "OrderUser.Email",
+                    title: "Email"
+                }, {
                     field: "DeliveryAddress",
                     title: "Địa chỉ"
                 }, {
-                    field: "DeliveryCity",
+                    field: "DeliveryCityName",
                     title: "Thành phố"
                 }, {
                     field: "TotalAmount",
@@ -112,7 +125,8 @@
                     title: "Phí"
                 }, {
                     field: "PayType",
-                    title: "Hình thức thanh toán"
+                    title: "Hình thức thanh toán",
+                    template: $("#payTypeTemplate").html()
                 }, {
                     field: "CreatedDate",
                     title: "Ngày tạo",

@@ -153,7 +153,7 @@
         min-width: 0;
     }
 
-    .document-view dt, dd {
+    .document-view dt, .document-view dd {
         float: left;
         margin: 0;
         padding: 3px;

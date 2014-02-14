@@ -21,10 +21,10 @@ h3{ font-size:14px;}
 .index { width:100%; float:left; background:url(/Content/images/BG-Index.jpg) no-repeat center top; position:relative;}
 .mainindex { width:940px; height:auto; margin:0 auto;}
 
-.header { width:940px; height:auto; float:left;}
+.header { width:940px; height:auto; float:left;position: relative;}
 .logo { float:left; margin: 29px 0 0 33px;}
 .titcom { float:left; margin: 75px 0 0 20px;}
-.menuhead { float:right; padding-left:9px; height:35px; background:url(/Content/images/menuhead-1.png) no-repeat top left;}
+.menuhead { float:right; padding-left:9px; height:35px; background:url(/Content/images/menuhead-1.png) no-repeat top left;position: absolute;right: 0;}
 .menuhead ul { float:left; padding-right:9px; height:35px; background:url(/Content/images/menuhead-2.png) no-repeat top right; list-style:none;}
 .menuhead li { float:left; height:35px; background:url(/Content/images/menuhead.png) repeat-x;}
 .menuhead span { color:#333; line-height:30px; display:block;}
@@ -354,7 +354,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 .boxRightI > p { width:190px; height:40px; float:left; margin:10px 0 0 15px; font-weight:bold; color:#F30; font-size:14px; text-transform:uppercase; font-family:"tahoma"; border-bottom:1px solid #ddd; line-height:40px;}
 .boxRightI ul { list-style:none;}
 .boxRightI li { width:190px; float:left;}
-.picleft { width:71px; height:53px; border:1px solid #ddd; float:left; padding:5px; margin:10px 0 0 15px; margin-right:5px;}
+.picleft { width:71px; height:71px; border:1px solid #ddd; float:left; padding:5px; margin:10px 0 0 15px; margin-right:5px;}
 	.pic_5 { width:71px; height:53px; text-align: center; vertical-align: middle;}
 	.pic_5 img { margin:0 auto; max-width:71px; max-height:53px;}
 /*.boxRightI img { max-width:70px; max-height:70px; height:auto; float:left;}*/

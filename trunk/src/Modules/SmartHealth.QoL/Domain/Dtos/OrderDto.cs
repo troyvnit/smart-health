@@ -23,6 +23,8 @@ namespace SmartHealth.Box.Domain.Dtos
 
         public virtual UserDto OrderUser { get; set; }
 
+        public virtual string Email { get; set; }
+
         public virtual decimal TotalAmount { get; set; }
 
         public virtual decimal NetAmount { get; set; }
@@ -34,6 +36,8 @@ namespace SmartHealth.Box.Domain.Dtos
         public int TransactionStatus { get; set; }
 
         public virtual City DeliveryCity { get; set; }
+
+        public virtual string DeliveryCityName { get; set; }
 
         public virtual string DeliveryAddress { get; set; }
 

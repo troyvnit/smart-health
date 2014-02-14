@@ -68,7 +68,8 @@ namespace SmartHealth.Web.Controllers
             var partners = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 5).ToList();
             ViewBag.Partners = partners;
 
-            var imageSliders = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 6).ToList();
+            var lanuageId = RouteData.Values["lang"].ToString().ToUpper() == "VI-VN" ? 1 : 2;
+            var imageSliders = mediaService.GetAll().Where(a => a.Type == 6 && a.Folder.Id == lanuageId).Select(Mapper.Map<Media, MediaDto>).ToList();
             ViewBag.ImageSliders = imageSliders;
             return View();
         }
@@ -143,10 +144,10 @@ namespace SmartHealth.Web.Controllers
                 var relatedProducts = productService.GetAll().Where(a => a.IsDeleted != true).Select(Mapper.Map<Product, ProductDto>).ToList();
                 ViewBag.RelatedProducts = relatedProducts;
 
-                var lstNews =
-                    articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
-                        Mapper.Map<Article, ArticleDto>).ToList();
-                ViewBag.Newses = lstNews;
+                var clientSupportArticles =
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                    Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.ClientSupportArticles = clientSupportArticles;
                 if (Session["SmartHealthUser"] == null)
                 {
                     Session["SmartHealthUser"] = new SessionDto();
@@ -397,7 +398,8 @@ namespace SmartHealth.Web.Controllers
                                   LastName = user.DisplayName,
                                   FirstName = user.DisplayName,
                                   LastLoginTime = DateTime.Now,
-                                  ModifiedTime = DateTime.Now
+                                  ModifiedTime = DateTime.Now,
+                                  IsAcceptedReceiveEmail = user.IsAcceptedReceiveEmail
                               };
                 userService.SaveOrUpdate(newUser, true);
                 FormsAuthentication.SetAuthCookie(newUser.Id.ToString(), true);
@@ -502,6 +504,12 @@ namespace SmartHealth.Web.Controllers
             {
                 order = Mapper.Map<Order, OrderDto>(userService.Get<Order>((int) order_no));
             }
+            var relatedProducts = productService.GetAll().Where(a => a.IsDeleted != true).Select(Mapper.Map<Product, ProductDto>).ToList();
+            ViewBag.RelatedProducts = relatedProducts;
+            var clientSupportArticles =
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                    Mapper.Map<Article, ArticleDto>).ToList();
+            ViewBag.ClientSupportArticles = clientSupportArticles;
             return View(order);
         }
 
@@ -514,7 +522,7 @@ namespace SmartHealth.Web.Controllers
                 var orderDto =((SessionDto)Session["SmartHealthUser"]).Order;
                 var order = userService.Get<Order>(deliveryInfo.Id) ?? Mapper.Map<OrderDto, Order>(orderDto);
                 order.PayType = PayType.SmartHealth;
-                order.FeeAmount = 0;
+                order.FeeAmount = deliveryInfo.DeliveryCity == City.HCM || deliveryInfo.DeliveryCity == City.HN ? 0 : 30000;
                 order.OrderUser = user;
                 order.DeliveryCity = deliveryInfo.DeliveryCity;
                 order.DeliveryAddress = deliveryInfo.DeliveryAddress;
@@ -537,7 +545,7 @@ namespace SmartHealth.Web.Controllers
                     orderDetailString += orderDetail.Product.Name + " x " + orderDetail.Quantity;
                     builder.AddItem(new PayooOrderItem(orderDetail.Product.Name, (long) orderDetail.Product.SmartHealthPrice, orderDetail.Quantity));
                 }
-                order.NetAmount = order.TotalAmount = totalAmount;
+                order.NetAmount = order.TotalAmount = totalAmount + order.FeeAmount;
                 userService.SaveOrUpdate<Order>(order, true);
 
                 switch (deliveryInfo.PayType)
@@ -546,7 +554,7 @@ namespace SmartHealth.Web.Controllers
                     {
                         orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
                         var payment = new BaoKimPayment();
-                        var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", order.TotalAmount.ToString(), "0", "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home", null, this.Request.Url.Scheme), Url.Action("Order", "Home", null, this.Request.Url.Scheme), Url.Action("PaymentDetail", "Home", null, this.Request.Url.Scheme));
+                        var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", order.TotalAmount.ToString(), order.FeeAmount.ToString(), "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home", null, this.Request.Url.Scheme), Url.Action("Order", "Home", null, this.Request.Url.Scheme), Url.Action("PaymentDetail", "Home", null, this.Request.Url.Scheme));
                         return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl }, JsonRequestBehavior.AllowGet);
                     }
                     case PayType.Payoo:
@@ -758,6 +766,7 @@ namespace SmartHealth.Web.Controllers
                     user.FirstName = user.DisplayName;
                     user.ModifiedTime = DateTime.Now;
                     userService.SaveOrUpdate(user, true);
+                    FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
                     ((SessionDto)Session["SmartHealthUser"]).UserId = user.Id;
                     return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
                 }

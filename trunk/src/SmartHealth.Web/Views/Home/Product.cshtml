@@ -7,7 +7,7 @@
     var productDetail = (ProductDto)ViewBag.ProductDetail;
     var productMedias = (List<MediaDto>)ViewBag.ProductMedias;
     var relatedProducts = (List<ProductDto>)ViewBag.RelatedProducts;
-    var newses = (List<ArticleDto>)ViewBag.Newses;
+    var newses = (List<ArticleDto>)ViewBag.ClientSupportArticles;
     if (Session["SmartHealthUser"] == null)
     {
         Session["SmartHealthUser"] = new SessionDto();
