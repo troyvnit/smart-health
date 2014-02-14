@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using AutoMapper;
 using Newtonsoft.Json;
@@ -40,17 +42,45 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                                        ReceiverPhone = order.ReceiverPhone,
                                        DeliveryAddress = order.DeliveryAddress,
                                        DeliveryCity = order.DeliveryCity,
+                                       DeliveryCityName = ToDescription(order.DeliveryCity),
                                        CreatedDate = order.CreatedDate,
-                                       TotalAmount = order.OrderDetails.Sum(orderDetailDto => orderDetailDto.Quantity*orderDetailDto.Product.SmartHealthPrice)
+                                       TotalAmount = order.TotalAmount,
+                                       NetAmount = order.NetAmount,
+                                       FeeAmount = order.FeeAmount
                                    });
             return Json(orders, JsonRequestBehavior.AllowGet);
+        }
+
+        public static string ToDescription(Enum en) //ext method
+        {
+
+            Type type = en.GetType();
+
+            MemberInfo[] memInfo = type.GetMember(en.ToString());
+
+            if (memInfo != null && memInfo.Length > 0)
+            {
+
+                object[] attrs = memInfo[0].GetCustomAttributes(
+                                              typeof(DescriptionAttribute),
+
+                                              false);
+
+                if (attrs != null && attrs.Length > 0)
+
+                    return ((DescriptionAttribute)attrs[0]).Description;
+
+            }
+
+            return en.ToString();
+
         }
 
         public ActionResult GetOrderDetails(int id)
         {
             var order = orderService.Get(id);
             if (order == null) return Json(null, JsonRequestBehavior.AllowGet);
-            var orderDetails = Mapper.Map<IList<OrderDetail>, IList<OrderDetailDto>>(order.OrderDetails);
+            var orderDetails = Mapper.Map<IList<OrderDetail>, IList<OrderDetailDto>>(order.OrderDetails.Where(a => a.Quantity > 0).ToList());
             return Json(orderDetails, JsonRequestBehavior.AllowGet);
         }
 

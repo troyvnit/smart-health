@@ -129,7 +129,10 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
         {
             var mediaDto = JsonConvert.DeserializeObject<List<MediaDto>>(models).FirstOrDefault();
             var media = Mapper.Map<MediaDto, Media>(mediaDto);
-            if (mediaDto != null) media.Product = mediaService.Get<Product>(mediaDto.ProductId);
+            if (mediaDto != null) {
+                media.Product = mediaService.Get<Product>(mediaDto.ProductId);
+                media.Folder = mediaService.Get<Folder>(mediaDto.FolderId);
+            }
             mediaService.SaveOrUpdate(media, true);
             return Json(Mapper.Map<Media, MediaDto>(media), JsonRequestBehavior.AllowGet);
         }

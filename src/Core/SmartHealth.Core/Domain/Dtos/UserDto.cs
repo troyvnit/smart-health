@@ -26,5 +26,6 @@ namespace SmartHealth.Core.Domain.Dtos
         public virtual string Phone { get; set; }
         public virtual DateTime? DOB { get; set; }
         public virtual Gender? Gender { get; set; }
+        public virtual bool IsAcceptedReceiveEmail { get; set; }
     }
 }

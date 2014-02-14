@@ -238,6 +238,14 @@
                     <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
                     <span data-for="Description" class="k-invalid-msg"></span>
                 </dd>
+                <dt>Ngôn ngữ</dt>
+                <dd>
+                    <select data-role="dropdownlist" data-bind="value:FolderId" name="FolderId" required="required" validationMessage="không được trống">  
+                       <option value="1">Tiếng Việt</option>  
+                       <option value="2">English</option>
+                    </select>
+                    <span data-for="FolderId" class="k-invalid-msg"></span>
+                </dd>
             </dl>
         </div>
 </script>
@@ -609,6 +617,7 @@
                         MediaUrl: { type: "string" },
                         ThumbnailUrl: { type: "string" },
                         Description: { type: "string", defaultValue: "" },
+                        FolderId: { type: "number", defaultValue: 1 },
                         Type: { type: "number", defaultValue: 6 }
                     }
                 }

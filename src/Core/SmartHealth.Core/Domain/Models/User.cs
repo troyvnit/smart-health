@@ -72,6 +72,7 @@ namespace SmartHealth.Core.Domain.Models
 
         public virtual bool HasAvatar { get; set; }
 
+        public virtual bool IsAcceptedReceiveEmail { get; set; }
         
         public virtual int MyPhysicianId { get; set; }
         
