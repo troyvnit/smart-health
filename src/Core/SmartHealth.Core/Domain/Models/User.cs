@@ -47,7 +47,8 @@ namespace SmartHealth.Core.Domain.Models
         public virtual DateTime? ModifiedTime { get; set; }
 
         public virtual DateTime? LastLoginTime { get; set; }
-
+        
+        public virtual int Point { get; set; }
 
         public virtual UserType UserType { get; set; }
 

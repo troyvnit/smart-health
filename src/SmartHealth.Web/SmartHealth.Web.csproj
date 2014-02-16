@@ -2144,6 +2144,7 @@
     <Content Include="Content\images\formmail.png" />
     <Content Include="Content\images\formname.png" />
     <Content Include="Content\images\formphone.png" />
+    <Content Include="Content\images\gold.jpg" />
     <Content Include="Content\images\icon-1.png" />
     <Content Include="Content\images\icon_1.jpg" />
     <Content Include="Content\images\icon_10.png" />
@@ -2200,14 +2201,17 @@
     <Content Include="Content\images\na-3.png" />
     <Content Include="Content\images\next-horizontal.png" />
     <Content Include="Content\images\no-image.jpg" />
+    <Content Include="Content\images\normal.jpg" />
     <Content Include="Content\images\pic-1.jpg" />
     <Content Include="Content\images\pic-2.jpg" />
+    <Content Include="Content\images\platinum.jpg" />
     <Content Include="Content\images\prev-horizontal.png" />
     <Content Include="Content\images\pro-1.jpg" />
     <Content Include="Content\images\pro-2.jpg" />
     <Content Include="Content\images\pro-3.jpg" />
     <Content Include="Content\images\qc-left.jpg" />
     <Content Include="Content\images\qc-right.jpg" />
+    <Content Include="Content\images\silver.jpg" />
     <Content Include="Content\images\themes.gif" />
     <Content Include="Content\images\title.png" />
     <Content Include="Content\images\tt-1.jpg" />

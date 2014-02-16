@@ -423,8 +423,11 @@ namespace SmartHealth.Web.Controllers
                     DisplayName = user.DisplayName,
                     Location = user.Location,
                     DOB = user.DOB,
-                    Gender = user.Gender
+                    Gender = user.Gender,
+                    Point = user.Point,
+                    UserType = user.UserType
                 };
+                ViewBag.Orders = userService.GetAll<Order>().Where(a => a.OrderUser.Id == user.Id).OrderByDescending(a => a.CreatedDate).ToList();
                 return View(userDto);
             }
             return Redirect("/" + RouteData.Values["lang"]);
@@ -680,6 +683,7 @@ namespace SmartHealth.Web.Controllers
                         order.OrderUser.Location = baoKimOrder.customer_address;
                         order.OrderUser.Phone = baoKimOrder.customer_phone;
                     }
+                order.OrderUser.Point += (int)order.TotalAmount/1000;
                 userService.SaveOrUpdate<Order>(order, true);
                 return View(Mapper.Map<Order, OrderDto>(order));
             }
@@ -719,6 +723,7 @@ namespace SmartHealth.Web.Controllers
                         order.FeeAmount = 0;
                         order.IsPayed = invoice.State == "PAYMENT_RECEIVED";
                         order.PayType = PayType.Payoo;
+                        order.OrderUser.Point += (int)order.TotalAmount / 1000;
                         userService.SaveOrUpdate<Order>(order, true);
                     }
                 }
