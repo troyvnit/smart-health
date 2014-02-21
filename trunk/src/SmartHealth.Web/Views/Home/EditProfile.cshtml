@@ -8,6 +8,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var level = Model.Point > 10000 ? "Platinum" : Model.Point > 5000 ? "Gold" : Model.Point > 2000 ? "Silver" : "Normal";
     var orders = (List<Order>)ViewBag.Orders;
+    var days = new List<object>();
+    for (var d = 1; d < 32; d++ )
+    {
+        days.Add(new {Text = d, Value = d});
+    }
+    var months = new List<object>();
+    for (var m = 1; m < 13; m++)
+    {
+        months.Add(new { Text = m, Value = m });
+    }
+    var years = new List<object>();
+    for (var y = 1900; y <= DateTime.Now.Year; y++)
+    {
+        years.Add(new { Text = y, Value = y });
+    }
 }
 
 @Styles.Render("~/Content/css/contact")
@@ -115,51 +130,59 @@
                                             </div>
                                             <div class="tab-pane" id="panel_tab2_example2">
                                                 
-                    <form action="@Url.Action("EditProfile", "Home")" method="POST">
+                    <form action="@Url.Action("EditProfile", "Home", new {id = Model.Id})" method="POST">
                         
                         <div class="row form">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-sm-6 row-col center">
-                                <div class="box">
                                     <div class="form-group has-error">
                                         @Html.ValidationMessage("error", new {@class = "help-block"})
                                     </div>
+                            <div class="col-md-6">
                                     @*<div class="form-group">
                                         @Html.TextBoxFor(model => model.Username, new {@class = "form-control", placeholder = "Username", disabled = "disabled"})
                                         @Html.ValidationMessageFor(model => model.Username)
                                     </div>*@
                                     <div class="form-group">
-                                        @Html.HiddenFor(model => model.Id, new {@class = "form-control", placeholder = SH.Password})
-                                        @Html.ValidationMessageFor(model => model.Id)
-                                    </div>
-                                    <div class="form-group">
+                                        <label class="control-label">Tên</label>
                                         @Html.TextBoxFor(model => model.DisplayName, new {@class = "form-control", placeholder = SH.Name})
                                         @Html.ValidationMessageFor(model => model.DisplayName)
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label">Thư điện tử</label>
                                         @Html.TextBoxFor(model => model.Email, new {@class = "form-control", placeholder = SH.Email})
                                         @Html.ValidationMessageFor(model => model.Email)
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label">Địa chỉ</label>
                                         @Html.TextBoxFor(model => model.Location, new {@class = "form-control", placeholder = SH.Address})
                                         @Html.ValidationMessageFor(model => model.Location)
                                     </div>
+                            </div>
+                            <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.TextBoxFor(model => model.DOB, String.Format("{0:yyyy-MM-dd}", Model.DOB), new {@class = "form-control", placeholder = SH.DOB, type = "date"})
+                                        <label class="control-label">Sinh nhật</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("Day", new SelectList(days, "Value", "Text", Model.DOB != null ? ((DateTime)Model.DOB).Day : 1), new {@class = "form-control DOB"})
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("Month", new SelectList(months, "Value", "Text", Model.DOB != null ? ((DateTime)Model.DOB).Month : 1), new {@class = "form-control DOB"})
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.DropDownList("Year", new SelectList(years, "Value", "Text", Model.DOB != null ? ((DateTime)Model.DOB).Year : 1900), new {@class = "form-control DOB"})
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(model => model.DOB)
                                         @Html.ValidationMessageFor(model => model.DOB)
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label">Giới tính</label>
                                         @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(Gender))), new {@class = "form-control"}) 
                                         @Html.ValidationMessageFor(model => model.Gender)
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
                             </div>
                         </div>
                         <div class="row form">
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                             </div>
                             <div class="col-md-6 right">
                                 <button id="submitBtn" style="float: right; margin-top: 10px; margin-left: 10px;" type="submit" class="btn btn-success">@SH.Update</button>
@@ -168,8 +191,6 @@
                                 {
                                     <a href="/backoffice/article" style="float: right; margin-top: 10px; margin-left: 10px;" class="btn btn-warning">@SH.Admin</a>
                                 }
-                            </div>
-                            <div class="col-md-3">
                             </div>
                         </div>
 
@@ -220,6 +241,9 @@
     <script src="@Url.Content("~/Areas/Administrator/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js")"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('.DOB').change(function () {
+            $('#DOB').val($('#Month').val() + '/' + $('#Day').val() + '/' + $('#Year').val() + ' 12:00:00 AM');
+        });
         $('.datepicker').datepicker();
         $('form').validate({
             rules: {

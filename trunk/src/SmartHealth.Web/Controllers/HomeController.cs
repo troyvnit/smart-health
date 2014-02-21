@@ -448,7 +448,7 @@ namespace SmartHealth.Web.Controllers
                 user.FirstName = userDto.DisplayName;
                 user.ModifiedTime = DateTime.Now;
                 userService.SaveOrUpdate(user, true);
-                return View("EditProfile", userDto);
+                return View(userDto);
             }
             ModelState.AddModelError("error", "The account provided is not existed.");
             return RedirectToAction("Register");
