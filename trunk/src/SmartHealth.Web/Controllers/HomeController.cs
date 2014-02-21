@@ -187,7 +187,15 @@ namespace SmartHealth.Web.Controllers
             if (Session["SmartHealthUser"] != null)
             {
                 var order = ((SessionDto)Session["SmartHealthUser"]).Order;
-                order.OrderDetails.Add(new OrderDetailDto{ Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity, OrderId = order.Id});
+                var orderDetail = order.OrderDetails.SingleOrDefault(a => a.Product.Id == product.Id);
+                if(orderDetail != null)
+                {
+                    orderDetail.Quantity += quantity;
+                }
+                else
+                {
+                    order.OrderDetails.Add(new OrderDetailDto { Product = Mapper.Map<Product, ProductDto>(product), Quantity = quantity, OrderId = order.Id });
+                }
                 orderCount = order.OrderDetails.Count(a => a.Quantity != 0);
             }
             return Json(orderCount, JsonRequestBehavior.AllowGet);
@@ -290,7 +298,7 @@ namespace SmartHealth.Web.Controllers
                 var category = articleCategoryService.Get((int)id);
                 if (category != null)
                 {
-                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id)).OrderByDescending(a => a.CreatedDate).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id) && p.IsDeleted != true && p.IsActived).OrderByDescending(a => a.CreatedDate).Select(Mapper.Map<Article, ArticleDto>).ToList();
                     ViewBag.Title = category.Name + " - " + category.Description;
                     ViewBag.CategoryName = category.Name;
                     ViewBag.Articles = articles;
