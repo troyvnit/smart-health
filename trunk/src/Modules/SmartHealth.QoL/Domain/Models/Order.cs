@@ -55,7 +55,9 @@ namespace SmartHealth.Box.Domain.Models
         [Display(Name = "Bao Kim")]
         BaoKim,
         [Display(Name = "Payoo")]
-        Payoo
+        Payoo,
+        [Display(Name = "Ngan Luong")]
+        NganLuong
     }
 
     public enum City

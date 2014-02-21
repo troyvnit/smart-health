@@ -278,8 +278,9 @@
                                     {
                                         <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">Thanh toán khi nhận hàng</button>
                                     }
-                                <a id="submitBaoKimPaymentBtn" onclick=" submitBaoKimPayment(); return false; " style="float: right; margin: 10px;" href="#">
-                                    <img src="http://developer.baokim.vn/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
+                                    <a id="submitBaoKimPaymentBtn" onclick=" submitBaoKimPayment(); return false; " style="float: right; margin: 10px;" href="#">
+                                        <img src="http://developer.baokim.vn/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
+                                    <a target="_blank" onclick=" submitNganLuongPayment(); return false; " style="float: right; margin: 10px;" href="#" ><img src="https://www.nganluong.vn/data/images/buttons/11.gif"  border="0" /></a> 
                                 <a id="submitPayooPaymentBtn" onclick=" submitPayooPayment(); return false; " style="float: right; margin: 10px 0;" href="#">
                                     <img src="https://www.payoo.com.vn/img/button/PayNow.jpg" style="height: 32px; width: 90px;"></a>
                                 <button id="popover" style="float: right; margin: 10px 10px 10px 0;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
@@ -482,6 +483,23 @@
     function submitBaoKimPayment() {
         if (!$("form").valid()) return false;
         $.post('@Url.Action("Order", "Home")' + "?payType=BaoKim", $("form").serialize()).done(function(result) {
+            $("#OrderProductCount").html(0);
+            if (result.isSuccess) {
+                $("#tableheader").remove();
+                $(".scrollable").remove();
+                $("#subtotal").remove();
+                $("#buyerInfo").remove();
+                $(".TblGrid").remove();
+                $(".cartintro").html("<p>@SH.OrderSuccess " + "<a href='@Url.Action("Order", "Home")?order_no=" + result.orderId + "'>" + result.orderId + "</a>" + "</p>");
+                window.location.href = result.payUrl;
+            }
+            return false;
+        });
+    }
+    
+    function submitNganLuongPayment() {
+        if (!$("form").valid()) return false;
+        $.post('@Url.Action("Order", "Home")' + "?payType=NganLuong", $("form").serialize()).done(function(result) {
             $("#OrderProductCount").html(0);
             if (result.isSuccess) {
                 $("#tableheader").remove();

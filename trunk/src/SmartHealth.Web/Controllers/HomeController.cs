@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using API_NganLuong;
 using NHibernate.Mapping;
 using Payoo.Lib;
 using SmartHealth.Box.Domain.Dtos;
@@ -562,11 +563,18 @@ namespace SmartHealth.Web.Controllers
                 switch (deliveryInfo.PayType)
                 {
                     case PayType.BaoKim:
+                        {
+                            orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
+                            var payment = new BaoKimPayment();
+                            var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", order.TotalAmount.ToString(), order.FeeAmount.ToString(), "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home", null, this.Request.Url.Scheme), Url.Action("Order", "Home", null, this.Request.Url.Scheme), Url.Action("PaymentDetail", "Home", null, this.Request.Url.Scheme));
+                            return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl }, JsonRequestBehavior.AllowGet);
+                        }
+                    case PayType.NganLuong:
                     {
                         orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
-                        var payment = new BaoKimPayment();
-                        var payUrl = payment.createRequestUrl(order.Id.ToString(), "smarthealth.vn@gmail.com", order.TotalAmount.ToString(), order.FeeAmount.ToString(), "0", orderDetailString, Url.Action("BaoKimPaymentSuccess", "Home", null, this.Request.Url.Scheme), Url.Action("Order", "Home", null, this.Request.Url.Scheme), Url.Action("PaymentDetail", "Home", null, this.Request.Url.Scheme));
-                        return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl }, JsonRequestBehavior.AllowGet);
+                        var payment = new APICheckoutV3();
+                        var payUrl = payment.GetUrlCheckout(new RequestInfo { Merchant_id = "32739", Merchant_password = "suckhoe123!@#", Buyer_email = order.OrderUser.Email, Buyer_fullname = order.ReceiverName, Receiver_email = "smarthealth.vn@gmail.com", order_description = orderDetailString, Order_code = order.Id.ToString(), Buyer_mobile = order.ReceiverPhone, Total_amount = order.TotalAmount.ToString(), return_url = Url.Action("NganLuongPaymentSuccess", "Home", null, this.Request.Url.Scheme), Payment_method = "NL"});
+                        return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl = payUrl.Checkout_url }, JsonRequestBehavior.AllowGet);
                     }
                     case PayType.Payoo:
                     {
@@ -696,6 +704,11 @@ namespace SmartHealth.Web.Controllers
                 return View(Mapper.Map<Order, OrderDto>(order));
             }
             return RedirectToAction("Order");
+        }
+
+        public ActionResult NganLuongPaymentSuccess()
+        {
+            return null;
         }
 
         public ActionResult PaymentDetail()
