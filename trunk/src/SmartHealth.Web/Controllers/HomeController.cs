@@ -573,7 +573,7 @@ namespace SmartHealth.Web.Controllers
                     {
                         orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
                         var payment = new APICheckoutV3();
-                        var payUrl = payment.GetUrlCheckout(new RequestInfo { Merchant_id = "32739", Merchant_password = "suckhoe123!@#", Buyer_email = order.OrderUser.Email, Buyer_fullname = order.ReceiverName, Receiver_email = "smarthealth.vn@gmail.com", order_description = orderDetailString, Order_code = order.Id.ToString(), Buyer_mobile = order.ReceiverPhone, Total_amount = order.TotalAmount.ToString(), return_url = Url.Action("NganLuongPaymentSuccess", "Home", null, this.Request.Url.Scheme), Payment_method = "NL"});
+                        var payUrl = payment.GetUrlCheckout(new RequestInfo { Merchant_id = "32739", Merchant_password = "suckhoe123!@#", Buyer_email = order.OrderUser.Email, Buyer_fullname = order.ReceiverName, Receiver_email = "smarthealth.vn@gmail.com", order_description = orderDetailString, Order_code = order.Id.ToString(), Buyer_mobile = order.ReceiverPhone, Total_amount = "10000", return_url = Url.Action("NganLuongPaymentSuccess", "Home", null, this.Request.Url.Scheme), Payment_method = "NL"});
                         return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl = payUrl.Checkout_url }, JsonRequestBehavior.AllowGet);
                     }
                     case PayType.Payoo:
@@ -706,9 +706,31 @@ namespace SmartHealth.Web.Controllers
             return RedirectToAction("Order");
         }
 
-        public ActionResult NganLuongPaymentSuccess()
+        public ActionResult NganLuongPaymentSuccess(string error_code, string token)
         {
-            return null;
+            var payment = new APICheckoutV3();
+            if (error_code == "00")
+            {
+                var result = payment.GetTransactionDetail(new RequestCheckOrder { Merchant_id = "32739", Merchant_password = "suckhoe123!@#", Token = token});
+                var order = userService.Get<Order>(Convert.ToInt32(result.order_code));
+                if (order != null)
+                {
+                    order.TotalAmount = Convert.ToDecimal(result.paymentAmount);
+                    order.TransactionStatus = Convert.ToInt32(result.transactionStatus);
+                    order.IsPayed = order.TransactionStatus == 0;
+                    order.PayType = PayType.NganLuong;
+                    if (order.OrderUser.UserType == UserType.Guest)
+                    {
+                        order.OrderUser.Email = result.payerEmail;
+                        order.OrderUser.DisplayName = result.payerName;
+                        order.OrderUser.Phone = result.payerMobile;
+                    }
+                    order.OrderUser.Point += (int) order.TotalAmount/1000;
+                    userService.SaveOrUpdate<Order>(order, true);
+                }
+                return Content("Success");
+            }
+            return Content(payment.GetErrorMessage(error_code));
         }
 
         public ActionResult PaymentDetail()

@@ -10,8 +10,4 @@ var pY = document.documentElement.scrollTop; else if (document.body)
 var pY = document.body.scrollTop; if (document.body.scrollTop > 30){startLY = 3;startRY = 3;} else {startLY = TopAdjust;startRY = TopAdjust;}; ftlObj.y += (pY+startRY-ftlObj.y)/16; ftlObj.sP(ftlObj.x, ftlObj.y); ftlObj2.y += (pY+startLY-ftlObj2.y)/16; ftlObj2.sP(ftlObj2.x, ftlObj2.y); setTimeout("stayTopLeft()", 1);}
 ftlObj = ml("divAdRight"); ftlObj2 = m2("divAdLeft"); stayTopLeft();}
 function ShowAdDiv()
-{ var objAdDivRight = document.getElementById("divAdRight"); var objAdDivLeft = document.getElementById("divAdLeft"); if (document.body.clientWidth < (MainContentW+LeftBoxW+RightBoxW))
-{ objAdDivRight.style.display = "none"; objAdDivLeft.style.display = "none";}
-else
-{ objAdDivRight.style.display = "block"; objAdDivLeft.style.display = "block"; FloatTopDiv();}
-}
+{ var objAdDivRight = document.getElementById("divAdRight"); var objAdDivLeft = document.getElementById("divAdLeft"); objAdDivRight.style.display = "block"; objAdDivLeft.style.display = "block"; FloatTopDiv();}
