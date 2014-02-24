@@ -182,7 +182,7 @@ namespace API_NganLuong
             return sb.ToString();
         }
 
-        private static String GetErrorMessage(string _ErrorCode)
+        public String GetErrorMessage(string _ErrorCode)
         {
             String _Message = "";
             switch (_ErrorCode)

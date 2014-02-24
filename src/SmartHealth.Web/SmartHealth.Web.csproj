@@ -168,6 +168,7 @@
     <Compile Include="Areas\Administrator\Controllers\UserController.cs" />
     <Compile Include="Areas\Administrator\Models\FileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\APICheckoutV3.cs" />
     <Compile Include="Helpers\BaoKimPayment.cs" />
     <Compile Include="Helpers\EMail.cs" />
     <Compile Include="Helpers\EnableCompressionAttribute.cs" />
