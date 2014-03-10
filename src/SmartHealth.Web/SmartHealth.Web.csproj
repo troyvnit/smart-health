@@ -77,10 +77,10 @@
       <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="PayooBusinessAPI">
-      <HintPath>C:\Users\Troy Lee\Downloads\Compressed\smart-health\smart-health\PayooASPNetSDKDemo\PayooLib\PayooBusinessAPI.dll</HintPath>
+      <HintPath>C:\Users\trile\Downloads\smart-health (1)\smart-health\PayooASPNetSDKDemo\PayooLib\PayooBusinessAPI.dll</HintPath>
     </Reference>
     <Reference Include="PayooDotNet2xSDK">
-      <HintPath>C:\Users\Troy Lee\Downloads\Compressed\smart-health\smart-health\PayooASPNetSDKDemo\PayooLib\PayooDotNet2xSDK.dll</HintPath>
+      <HintPath>C:\Users\trile\Downloads\smart-health (1)\smart-health\PayooASPNetSDKDemo\PayooLib\PayooDotNet2xSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
