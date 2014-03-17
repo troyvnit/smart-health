@@ -230,7 +230,7 @@ namespace SmartHealth.Web.Controllers
             foreach (var orderDetailDto in orderDetails)
             {
                 var discountPercent = orderDetailDto.Quantity > 1 ? discountPercentForMany : discountPercentForOne;
-                totalAmount += orderDetailDto.Product.SmartHealthPrice * 100/95 * orderDetailDto.Quantity * (100 - discountPercent) / 100;
+                totalAmount += orderDetailDto.Product.SmartHealthPrice * 100 / (100 - discountPercentForOne) * orderDetailDto.Quantity * (100 - discountPercent) / 100;
             }
             return Json(new { productCount = orderDetails.Count(a => a.Quantity != 0), totalAmount}, JsonRequestBehavior.AllowGet);
         }
@@ -573,7 +573,7 @@ namespace SmartHealth.Web.Controllers
                     {
                         orderDetailString = orderDetailString.Length > 300 ? orderDetailString.Substring(0, 300) : orderDetailString;
                         var payment = new APICheckoutV3();
-                        var payUrl = payment.GetUrlCheckout(new RequestInfo { Merchant_id = "32739", Merchant_password = "suckhoe123!@#", Buyer_email = order.OrderUser.Email, Buyer_fullname = order.ReceiverName, Receiver_email = "smarthealth.vn@gmail.com", order_description = orderDetailString, Order_code = order.Id.ToString(), Buyer_mobile = order.ReceiverPhone, Total_amount = "10000", return_url = Url.Action("NganLuongPaymentSuccess", "Home", null, this.Request.Url.Scheme), Payment_method = "NL"});
+                        var payUrl = payment.GetUrlCheckout(new RequestInfo { Merchant_id = "32739", Merchant_password = "suckhoe123!@#", Buyer_email = order.OrderUser.Email, Buyer_fullname = order.ReceiverName, Receiver_email = "smarthealth.vn@gmail.com", order_description = orderDetailString, Order_code = order.Id.ToString(), Buyer_mobile = order.ReceiverPhone, Total_amount = order.TotalAmount.ToString(), return_url = Url.Action("NganLuongPaymentSuccess", "Home", null, this.Request.Url.Scheme), Payment_method = "NL"});
                         return Json(new { isSuccess = true, productCount = 0, orderId = order.Id, payUrl = payUrl.Checkout_url }, JsonRequestBehavior.AllowGet);
                     }
                     case PayType.Payoo:

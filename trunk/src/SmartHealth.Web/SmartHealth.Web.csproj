@@ -2493,6 +2493,7 @@
     <Content Include="Scripts\js\jquery.jcarousel.min.js" />
     <Content Include="Scripts\js\jquery.jcarousel.min_call.js" />
     <Content Include="Scripts\js\jquery.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
     <Content Include="Scripts\js\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\js\jqueryTab.js" />
     <Content Include="Scripts\js\jRating.jquery.js" />
