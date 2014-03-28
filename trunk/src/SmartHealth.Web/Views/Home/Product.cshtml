@@ -2,7 +2,7 @@
 @using SmartHealth.Box.Domain.Dtos
 @using SmartHealth.Web.Resources
 @{
-    ViewBag.Title = "Product";
+    ViewBag.Title = ViewBag.ProductDetail.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productDetail = (ProductDto)ViewBag.ProductDetail;
     var productMedias = (List<MediaDto>)ViewBag.ProductMedias;
