@@ -75,7 +75,7 @@
                             {
                                 var orderDetail = orderDetails[i];
                                 var discountPercent = orderDetail.Quantity > 1 ? discountPercentForMany : discountPercentForOne;
-                                var totalPrice = (orderDetail.Product.SmartHealthPrice * 100 / 95) * orderDetail.Quantity * (100 - discountPercent) / 100;
+                                var totalPrice = (orderDetail.Product.SmartHealthPrice * 100 / (100 - discountPercentForOne)) * orderDetail.Quantity * (100 - discountPercent) / 100;
                                 totalAmount += totalPrice;
                                 if (orderDetail.Quantity != 0)
                                 {
@@ -422,7 +422,7 @@
         var price = $(this).parent().parent().find(".smPrice").text().replace(',', '');
         var discountPercent = parseInt(quantity) > 1 ? parseInt('@discountPercentForMany') : parseInt('@discountPercentForOne');
         $(this).parent().parent().find(".discountPercent").html("Giảm giá " + discountPercent + "%");
-        $(this).parent().parent().find(".totalPrice").html(accounting.formatMoney(parseInt(price) * 100 / 95 * parseInt(quantity) * (100 - discountPercent) / 100, options));
+        $(this).parent().parent().find(".totalPrice").html(accounting.formatMoney(parseInt(price) * 100 / (100 - parseInt('@discountPercentForOne')) * parseInt(quantity) * (100 - discountPercent) / 100, options));
         $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: quantity, orderid: '@order.Id' }).done(function(result) {
             if ('@order.Id' == '0') {
                 $("#OrderProductCount").html(result.productCount);
