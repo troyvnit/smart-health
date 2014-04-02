@@ -16,6 +16,21 @@
     var userId = ((SessionDto)Session["SmartHealthUser"]).UserId;
     var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
     var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
+    var days = new List<object>();
+    for (var d = 1; d < 32; d++)
+    {
+        days.Add(new { Text = d, Value = d });
+    }
+    var months = new List<object>();
+    for (var m = 1; m < 13; m++)
+    {
+        months.Add(new { Text = m, Value = m });
+    }
+    var years = new List<object>();
+    for (var y = 1900; y <= DateTime.Now.Year; y++)
+    {
+        years.Add(new { Text = y, Value = y });
+    }
 }
 <div class="leftContent">
     <div class="boxLeft">
@@ -152,8 +167,19 @@
                                         </div>
                                         <div class="form-group email-form" style="display: none">
                                             <div class="input-group">
-                                                <span class="input-group-addon">BD</span>
-                                                <input class="form-control" type="date" id="DOB" name="DOB" />
+                                                <input class="form-control" type="hidden" id="DOB" name="DOB" />
+                                                <span class="input-group-addon">Ngày sinh</span>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("Day", new SelectList(days, "Value", "Text"), new {@class = "form-control DOB"})
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("Month", new SelectList(months, "Value", "Text"), new {@class = "form-control DOB"})
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("Year", new SelectList(years, "Value", "Text"), new {@class = "form-control DOB"})
+                                                    </div>
+                                                </div>
                                             </div>
                                             <!-- /input-group -->
                                         </div>
@@ -383,6 +409,9 @@
     <script src="@Url.Content("~/Areas/Administrator/ClipOne/plugins/jquery-validation/dist/jquery.validate.min.js")"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('.DOB').change(function () {
+            $('#DOB').val($('#Month').val() + '/' + $('#Day').val() + '/' + $('#Year').val() + ' 12:00:00 AM');
+        });
         $('.close').on('click', function () { $(this).parent().hide(); });
         $("input[name=isMember]").on("change", function () {
             if ($(this).attr('value') == 'true') {

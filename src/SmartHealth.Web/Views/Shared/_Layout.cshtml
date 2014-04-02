@@ -55,7 +55,7 @@
                     </li>
                     <li><span>|</span></li>
 	                <li class="butdk">
-	                    @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+	                    @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated && ViewBag.CurrentUser.UserType != UserType.Guest)
 	                    {
 	                        <a href="@Url.Action("EditProfile", "Home", new {id = ViewBag.CurrentUser.Id})">&bull; @ViewBag.CurrentUser.Username</a><a href="@Url.Action("Logout", "Home")">&bull; @SH.Logout</a>
 	                    }
