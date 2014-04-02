@@ -34,8 +34,21 @@
             Bảo Kim
         # } else if (PayType == 2){ #
             Payoo
+        # } else if (PayType == 3){ #
+            Ngân Lượng
         # } else {#
             Thanh toán khi nhận hàng
+        # } #
+    </script>
+<script id="statusTemplate" type="text/x-kendo-tmpl">
+        # if (TransactionStatus == 1) { #
+            Đơn hàng chờ xử lý
+        # } else if (TransactionStatus == 2){ #
+            Đang giao hàng
+        # } else if (TransactionStatus == 3){ #
+            Đã giao hàng
+        # } else {#
+            Chưa thanh toán
         # } #
     </script>
 <script>
@@ -76,7 +89,10 @@
                     id: "Id",
                     fields: {
                         Id: { editable: false, nullable: true },
-                        PayType: { type: "number" },
+                        TotalAmount: { editable: false, nullable: true },
+                        NetAmount: { editable: false, nullable: true },
+                        FeeAmount: { editable: false, nullable: true },
+                        PayType: { editable: false, type: "number" },
                         CreatedDate: { type: "date" }
                     }
                 }
@@ -126,7 +142,13 @@
                 }, {
                     field: "PayType",
                     title: "Hình thức thanh toán",
-                    template: $("#payTypeTemplate").html()
+                    template: $("#payTypeTemplate").html(),
+                    editable: false,
+                }, {
+                    field: "TransactionStatus",
+                    title: "Trạng thái",
+                    template: $("#statusTemplate").html(),
+                    editor: statusDropDownEditor
                 }, {
                     field: "CreatedDate",
                     title: "Ngày tạo",
@@ -149,6 +171,21 @@
             ]
         }).data("kendoSplitter");
     });
+    var statusData = [
+        { text: "Chưa thanh toán", value: "0" },
+        { text: "Đơn hàng đang xử lý", value: "1" },
+        { text: "Đang giao hàng", value: "2" },
+        { text: "Đã giao hàng", value: "3" }
+    ];
+    function statusDropDownEditor(container, options) {
+        $('<input required data-text-field="text" data-value-field="value" data-bind="value:' + options.field + '"/>')
+            .appendTo(container)
+            .kendoDropDownList({
+                dataTextField: "text",
+                dataValueField: "value",
+                dataSource: statusData
+            });
+    }
     
     function detailInit(e) {
         var detailRow = e.detailRow;

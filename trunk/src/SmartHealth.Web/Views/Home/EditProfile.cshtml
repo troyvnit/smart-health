@@ -204,6 +204,7 @@
                                                       <th>Nội dung</th>
                                                       <th>Ngày đặt</th>
                                                       <th>Giá tiền</th>
+                                                      <th>Thanh toán?</th>
                                                       <th>Trạng thái</th>
                                                     </tr>
                                                   </thead>
@@ -219,6 +220,14 @@
                                                                     <td>@String.Format("{0:dd/MM/yyyy hh:mm:ss}", order.CreatedDate)</td>
                                                                     <td>@order.TotalAmount.ToString("N0")</td>
                                                                     <td>@(order.IsPayed ? Html.Raw("<span class='label label-sm label-success'>Đã thanh toán</span>") : Html.Raw("<span class='label label-sm label-warning'>Chưa thanh toán</span>"))</td>
+                                                                    <td>@switch (order.TransactionStatus)
+                                                                        {
+                                                                            case 0: break;
+                                                                            case 1: <span class='label label-sm label-info'>Đơn hàng đang xử lý</span> break;
+                                                                            case 2: <span class='label label-sm label-info'>Đang giao hàng</span> break;
+                                                                            case 3: <span class='label label-sm label-success'>Đã giao hàng</span> break;
+                                                                        }
+                                                                    </td>
                                                                 </tr>
                                                             }
                                                         }
