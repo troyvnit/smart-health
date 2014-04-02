@@ -2139,6 +2139,7 @@
     <Content Include="Content\images\BG-Menu.jpg" />
     <Content Include="Content\images\bullets.png" />
     <Content Include="Content\images\contact_icos.png" />
+    <Content Include="Content\images\ellipsis_bg.png" />
     <Content Include="Content\images\facebook.jpg" />
     <Content Include="Content\images\flag-en.jpg" />
     <Content Include="Content\images\flag-vn.jpg" />
