@@ -47,13 +47,13 @@
                 <div class="new_cart new_ajax_cart">
                     @if (order.Id != 0)
                     {
-                        if (order.IsPayed)
+                        switch (order.TransactionStatus)
                         {
-                            <div class="alert alert-success">Đã thanh toán</div>
-                        }
-                        else
-                        {
-                            <div class="alert alert-warning">Chưa thanh toán</div>
+                            case 0: <div class="alert alert-warning">Chưa thanh toán</div> break;
+                            case 1: <div class="alert alert-info">Đã thanh toán! Đơn hàng đang xử lý</div> break;
+                            case 2: <div class="alert alert-info">Đã thanh toán! Đang giao hàng</div> break;
+                            case 3: <div class="alert alert-success">Đã thanh toán! Đã giao hàng</div> break;
+                            default: <div class="alert alert-warning">Chưa thanh toán</div> break;
                         }
                     }
                     <span class="cartintro">Có tất cả <span id="orderDetailCount">@orderDetails.Count(a => a.Quantity != 0)</span> sản phẩm trong đơn hàng</span>

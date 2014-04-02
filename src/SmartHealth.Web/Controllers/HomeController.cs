@@ -356,7 +356,7 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult Login(string returnUrl)
         {
-            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated && currentUser.UserType != UserType.Guest)
             {
                 return Redirect("/" + RouteData.Values["lang"]);
             }
@@ -543,6 +543,7 @@ namespace SmartHealth.Web.Controllers
                 order.CompanyAddress = deliveryInfo.CompanyAddress;
                 order.CompanyName = deliveryInfo.CompanyName;
                 order.TaxCode = deliveryInfo.TaxCode;
+                order.TransactionStatus = 0;
                 var orderDetailString = "";
                 BuidDescriptionFactory builder = new BuidDescriptionFactory();
                 decimal totalAmount = 0;
@@ -689,8 +690,8 @@ namespace SmartHealth.Web.Controllers
                 order.TotalAmount = baoKimOrder.total_amount;
                 order.NetAmount = baoKimOrder.net_amount;
                 order.FeeAmount = baoKimOrder.fee_amount;
-                order.TransactionStatus = baoKimOrder.transaction_status;
                 order.IsPayed = baoKimOrder.transaction_status == 4 || baoKimOrder.transaction_status == 13;
+                order.TransactionStatus = order.IsPayed ? order.TransactionStatus = 1 : 0;
                 order.PayType = PayType.BaoKim;
                     if (order.OrderUser.UserType == UserType.Guest)
                     {
@@ -701,7 +702,7 @@ namespace SmartHealth.Web.Controllers
                     }
                 order.OrderUser.Point += (int)order.TotalAmount/1000;
                 userService.SaveOrUpdate<Order>(order, true);
-                return View(Mapper.Map<Order, OrderDto>(order));
+                return RedirectToAction("Order", new { order_no = order.Id });
             }
             return RedirectToAction("Order");
         }
@@ -716,8 +717,8 @@ namespace SmartHealth.Web.Controllers
                 if (order != null)
                 {
                     order.TotalAmount = Convert.ToDecimal(result.paymentAmount);
-                    order.TransactionStatus = Convert.ToInt32(result.transactionStatus);
-                    order.IsPayed = order.TransactionStatus == 0;
+                    order.IsPayed = Convert.ToInt32(result.transactionStatus) == 0;
+                    order.TransactionStatus = order.IsPayed ? order.TransactionStatus = 1 : 0;
                     order.PayType = PayType.NganLuong;
                     if (order.OrderUser.UserType == UserType.Guest)
                     {
@@ -727,8 +728,8 @@ namespace SmartHealth.Web.Controllers
                     }
                     order.OrderUser.Point += (int) order.TotalAmount/1000;
                     userService.SaveOrUpdate<Order>(order, true);
+                    return RedirectToAction("Order", new { order_no = order.Id });
                 }
-                return Content("Success");
             }
             return Content(payment.GetErrorMessage(error_code));
         }
@@ -765,9 +766,11 @@ namespace SmartHealth.Web.Controllers
                         order.NetAmount = invoice.OrderCashAmount;
                         order.FeeAmount = 0;
                         order.IsPayed = invoice.State == "PAYMENT_RECEIVED";
+                        order.TransactionStatus = order.IsPayed ? order.TransactionStatus = 1 : 0;
                         order.PayType = PayType.Payoo;
                         order.OrderUser.Point += (int)order.TotalAmount / 1000;
                         userService.SaveOrUpdate<Order>(order, true);
+                        return RedirectToAction("Order", new { order_no = order.Id });
                     }
                 }
                 else
@@ -777,7 +780,7 @@ namespace SmartHealth.Web.Controllers
                     LogWriter.WriteLog(LogPath, "ConfirmToPayoo fail. ");
                 }
             }
-            return Content("Success");
+            return RedirectToAction("Order");
         }
 
         [HttpPost]

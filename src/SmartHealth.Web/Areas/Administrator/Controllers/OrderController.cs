@@ -46,7 +46,9 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                                        CreatedDate = order.CreatedDate,
                                        TotalAmount = order.TotalAmount,
                                        NetAmount = order.NetAmount,
-                                       FeeAmount = order.FeeAmount
+                                       FeeAmount = order.FeeAmount,
+                                       TransactionStatus = order.TransactionStatus,
+                                       PayType = order.PayType
                                    });
             return Json(orders, JsonRequestBehavior.AllowGet);
         }
@@ -91,6 +93,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             var orderDto =
                 JsonConvert.DeserializeObject<List<OrderDto>>(models).FirstOrDefault();
             Order order = Mapper.Map<OrderDto, Order>(orderDto);
+            order.IsPayed = order.TransactionStatus != 0;
             orderService.SaveOrUpdate(order, true);
             return Json(Mapper.Map<Order, OrderDto>(order), JsonRequestBehavior.AllowGet);
         }
