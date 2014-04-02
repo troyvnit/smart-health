@@ -242,9 +242,10 @@
                                         @Html.ValidationMessageFor(model => model.DeliveryAddress)
                                     </div>
                                     <div class="form-group">
-                                        @Html.DropDownListFor(model => model.DeliveryCity, new SelectList(cities, "Value", "Text"), new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.DeliveryCity)
-                                    </div>
+                                            @Html.DropDownListFor(model => model.DeliveryCity, new SelectList(cities, "Value", "Text"), new { @class = "form-control", @style = "float: left; width: 535px; margin-bottom: 15px;" })
+                                            @Html.ValidationMessageFor(model => model.DeliveryCity)
+                                            <button id="popover" style="float: right;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
+                                        </div>
                                     <div class="form-group">
                                         <label>
                                             <input type="checkbox" id="isBilling"/>
@@ -276,14 +277,20 @@
                                 {
                                     if (order.Id == 0)
                                     {
-                                        <button id="submitBtn" style="float: right; margin: 10px 0;" type="button" class="btn btn-success">COD</button>
+                                        <button id="submitBtn" style="float: right; margin: 35px 0;" type="button" class="btn btn-success">Thanh toán khi nhận hàng</button>
                                     }
                                     <a id="submitBaoKimPaymentBtn" onclick=" submitBaoKimPayment(); return false; " style="float: right; margin: 10px 10px 10px 0;" href="#">
-                                        <img src="http://developer.baokim.vn/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
-                                    <a target="_blank" onclick=" submitNganLuongPayment(); return false; " style="float: right; margin: 10px 10px 10px 0;" href="#" ><img src="https://www.nganluong.vn/data/images/buttons/11.gif"  border="0" /></a> 
-                                <a id="submitPayooPaymentBtn" onclick=" submitPayooPayment(); return false; " style="float: right; margin: 10px 10px 10px 0;" href="#">
-                                    <img src="https://www.payoo.com.vn/img/button/PayNow.jpg" style="height: 32px; width: 90px;"></a>
-                                <button id="popover" style="float: right; margin: 10px 10px 10px 0;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
+                                        <p style="text-align: center; font-weight: bold; color: green">Bảo Kim</p>
+                                        <img src="http://developer.baokim.vn/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn">
+                                    </a>
+                                    <a target="_blank" onclick=" submitNganLuongPayment(); return false; " style="float: right; margin: 10px 10px 10px 0;" href="#" >
+                                        <p style="text-align: center; font-weight: bold; color: orange">Ngân Lượng</p>
+                                        <img src="https://www.nganluong.vn/data/images/buttons/11.gif"  border="0" />
+                                    </a> 
+                                    <a id="submitPayooPaymentBtn" onclick=" submitPayooPayment(); return false; " style="float: right; margin: 10px 10px 10px 0;" href="#">
+                                        <p style="text-align: center; font-weight: bold; color: blue">Payoo</p>
+                                        <img src="https://www.payoo.com.vn/img/button/PayNow.jpg" style="height: 32px; width: 90px;">
+                                    </a>
                                 }
                             </div>
                             <div class="col-md-1">
