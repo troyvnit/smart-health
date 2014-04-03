@@ -18,7 +18,7 @@ namespace SmartHealth.Web.Mappers
             Mapper.CreateMap<ArticleCategory, ArticleCategoryDto>();
             Mapper.CreateMap<Article, ArticleDto>().ForMember(a => a.Categories, o => o.Ignore()).ForMember(a => a.Products, o => o.Ignore());
             Mapper.CreateMap<ProductGroup, ProductGroupDto>();
-            Mapper.CreateMap<Product, ProductDto>().ForMember(a => a.Groups, o => o.Ignore());
+            Mapper.CreateMap<Product, ProductDto>().ForMember(a => a.Groups, o => o.Ignore()).ForMember(a => a.Products, o => o.Ignore());
             Mapper.CreateMap<Folder, FolderDto>();
             Mapper.CreateMap<Media, MediaDto>();
             Mapper.CreateMap<Menu, MenuDto>();

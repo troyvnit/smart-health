@@ -44,5 +44,7 @@ namespace SmartHealth.Box.Domain.Dtos
         public virtual string Groups { get; set; }
 
         public virtual string Tags { get; set; }
+
+        public virtual string Products { get; set; }
     }
 }
