@@ -16,6 +16,11 @@ namespace SmartHealth.Box.Infrastructure.Nhibernate.Mapping
             mapping.Map(a => a.Review).Length(4001);
             mapping.Map(a => a.Introduction).Length(4001);
             mapping.Map(a => a.Property).Length(4001);
+            mapping.HasManyToMany(a => a.RelatedProducts)
+                .ParentKeyColumn("ProductId")
+                .ChildKeyColumn("RelatedProductId")
+                .Table("ProductsToRelatedProducts")
+                .Cascade.All();
         }
     }
 }

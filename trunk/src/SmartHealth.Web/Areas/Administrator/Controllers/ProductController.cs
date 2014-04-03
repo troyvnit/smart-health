@@ -67,6 +67,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                 Brand = product.Brand,
                 Tags = product.Tags,
                 Groups = string.Join(",", product.Groups.Select(a => a.Id)),
+                Products = string.Join(",", product.RelatedProducts.Select(a => a.Id)),
                 Description = product.Description,
                 Id = product.Id,
                 MediaUrl = product.MediaUrl,
@@ -79,6 +80,14 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                 Quantity = product.Quantity,
                 Status = product.Status
             }).ToList();
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetProductsForMultiSelect()
+        {
+            List<ProductDto> products =
+                productService.GetAll().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(
+                    Mapper.Map<Product, ProductDto>).ToList();
             return Json(products, JsonRequestBehavior.AllowGet);
         }
 
@@ -106,6 +115,7 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             product.Tags = productDto.Tags;
             product.Weight = productDto.Weight;
             product.Groups = new List<ProductGroup>();
+            product.RelatedProducts = new List<Product>();
             if (!string.IsNullOrEmpty(productDto.Groups))
             {
                 string[] groupIds = productDto.Groups.Split(',');
@@ -113,6 +123,15 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                 {
                     var group = productGroupService.Get(Convert.ToInt32(groupId));
                     product.Groups.Add(group);
+                }
+            }
+            if (!string.IsNullOrEmpty(productDto.Products))
+            {
+                string[] productIds = productDto.Products.Split(',');
+                foreach (string productId in productIds)
+                {
+                    var relatedProduct = productService.Get(Convert.ToInt32(productId));
+                    product.RelatedProducts.Add(relatedProduct);
                 }
             }
             productService.SaveOrUpdate(product, true);

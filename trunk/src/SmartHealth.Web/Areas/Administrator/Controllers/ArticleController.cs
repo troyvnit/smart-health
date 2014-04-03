@@ -51,14 +51,6 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetProducts()
-        {
-            List<ProductDto> products =
-                articleCategoryService.GetAll<Product>().Where(a => a.IsDeleted != true).OrderByDescending(a => a.Id).Select(
-                    Mapper.Map<Product, ProductDto>).ToList();
-            return Json(products, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult CreateOrUpdateCategory(string models)
         {
             ArticleCategoryDto categoryDto =

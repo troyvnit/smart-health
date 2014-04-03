@@ -142,7 +142,7 @@ namespace SmartHealth.Web.Controllers
                 var productMedias = product.Medias.Select(Mapper.Map<Media, MediaDto>).ToList();
                 ViewBag.ProductMedias = productMedias;
 
-                var relatedProducts = productService.GetAll().Where(a => a.IsDeleted != true).Select(Mapper.Map<Product, ProductDto>).ToList();
+                var relatedProducts = product.RelatedProducts.Where(a => a.IsDeleted != true).Select(Mapper.Map<Product, ProductDto>).ToList();
                 ViewBag.RelatedProducts = relatedProducts;
 
                 var clientSupportArticles =
@@ -511,12 +511,20 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult Order(int? order_no)
         {
-            var order = new OrderDto();
+            OrderDto order;
             if (order_no != null)
             {
                 order = Mapper.Map<Order, OrderDto>(userService.Get<Order>((int) order_no));
             }
-            var relatedProducts = productService.GetAll().Where(a => a.IsDeleted != true).Select(Mapper.Map<Product, ProductDto>).ToList();
+            else
+            {
+                order = Session["SmartHealthUser"] != null ? ((SessionDto)Session["SmartHealthUser"]).Order : new OrderDto();
+            }
+            var relatedProducts = new List<ProductDto>();
+            foreach (var relatedProductDto in order.OrderDetails.SelectMany(orderDetail => userService.Get<Product>(orderDetail.Product.Id).RelatedProducts.Select(Mapper.Map<Product, ProductDto>).Where(relatedProductDto => !relatedProducts.Contains(relatedProductDto))))
+            {
+                relatedProducts.Add(relatedProductDto);
+            }
             ViewBag.RelatedProducts = relatedProducts;
             var clientSupportArticles =
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(

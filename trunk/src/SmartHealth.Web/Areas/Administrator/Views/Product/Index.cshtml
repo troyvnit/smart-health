@@ -79,6 +79,11 @@
                                         <textarea class="k-textbox" id="Description" name="Description" rows="3" cols="1" style="width: 520px"></textarea>
                                     </div>
                                     <div class="input-row">
+                                        <p>Sản phẩm liên quan: </p>
+                                        <select id="Product" name="Product"></select>
+                                        <input type="hidden" id="Products" name="Products" />
+                                    </div>
+                                    <div class="input-row">
                                         <p>Từ khóa: </p>
                                         <input type="text" class="k-textbox" style="width: 520px" id="Tags" name="Tags"></input>
                                     </div>
@@ -391,6 +396,7 @@
             $("#Tags").val('');
             $("#IsActived").prop('checked', false);
             groupMultiSelect.value('');
+            productMultiSelect.value('');
             marketPriceNumeric.value('');
             smartHealthPriceNumeric.value('');
             quantityNumeric.value('');
@@ -436,6 +442,7 @@
                     $("#Tags").val(dataItem.Tags);
                     $("#IsActived").prop('checked', dataItem.IsActived);
                     groupMultiSelect.value(dataItem.Groups.toString().split(','));
+                    productMultiSelect.value(dataItem.Products.toString().split(','));
                     marketPriceNumeric.value(dataItem.MarketPrice);
                     smartHealthPriceNumeric.value(dataItem.SmartHealthPrice);
                     quantityNumeric.value(dataItem.Quantity);
@@ -710,6 +717,28 @@
         var smartHealthPriceNumeric = $("#SmartHealthPrice").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
 
         var quantityNumeric = $("#Quantity").width(150).kendoNumericTextBox().data("kendoNumericTextBox");
+
+        var productMultiSelect = $("#Product").kendoMultiSelect({
+            placeholder: "Chọn sản phẩm liên quan...",
+            dataTextField: "Name",
+            dataValueField: "Id",
+            autoBind: false,
+            dataSource: {
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetProductsForMultiSelect", "Product")',
+                        type: "post",
+                        dataType: "json"
+                    }
+                }
+            },
+            change: onChangeProduct
+        }).data("kendoMultiSelect");
+
+        function onChangeProduct() {
+            $("#Products").val(productMultiSelect.value());
+        }
 
         var languageDropDownList = $("#LanguageId").width(120).kendoDropDownList({
             dataTextField: "text",

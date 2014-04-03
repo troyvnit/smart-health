@@ -14,6 +14,7 @@ namespace SmartHealth.Box.Domain.Models
             CreatedDate = DateTime.UtcNow;
             Medias = new List<Media>();
             Groups = new List<ProductGroup>();
+            RelatedProducts = new List<Product>();
         }
 
         public virtual string Name { get; set; }
@@ -61,5 +62,7 @@ namespace SmartHealth.Box.Domain.Models
         public virtual IList<ProductGroup> Groups { get; set; } 
 
         public virtual IList<Article> Articles { get; set; } 
+
+        public virtual IList<Product> RelatedProducts { get; set; } 
     }
 }
