@@ -94,6 +94,10 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                 JsonConvert.DeserializeObject<List<OrderDto>>(models).FirstOrDefault();
             Order order = Mapper.Map<OrderDto, Order>(orderDto);
             order.IsPayed = order.TransactionStatus != 0;
+            if (order.IsPayed)
+            {
+                order.OrderUser.Point += (int) order.TotalAmount/1000;
+            }
             orderService.SaveOrUpdate(order, true);
             return Json(Mapper.Map<Order, OrderDto>(order), JsonRequestBehavior.AllowGet);
         }

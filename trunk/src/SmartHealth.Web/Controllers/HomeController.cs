@@ -710,6 +710,7 @@ namespace SmartHealth.Web.Controllers
                     }
                 order.OrderUser.Point += (int)order.TotalAmount/1000;
                 userService.SaveOrUpdate<Order>(order, true);
+                SendConfirmOrderEmail(order);
                 return RedirectToAction("Order", new { order_no = order.Id });
             }
             return RedirectToAction("Order");
@@ -736,6 +737,7 @@ namespace SmartHealth.Web.Controllers
                     }
                     order.OrderUser.Point += (int) order.TotalAmount/1000;
                     userService.SaveOrUpdate<Order>(order, true);
+                    SendConfirmOrderEmail(order);
                     return RedirectToAction("Order", new { order_no = order.Id });
                 }
             }
@@ -778,6 +780,7 @@ namespace SmartHealth.Web.Controllers
                         order.PayType = PayType.Payoo;
                         order.OrderUser.Point += (int)order.TotalAmount / 1000;
                         userService.SaveOrUpdate<Order>(order, true);
+                        SendConfirmOrderEmail(order);
                         return RedirectToAction("Order", new { order_no = order.Id });
                     }
                 }
@@ -837,6 +840,26 @@ namespace SmartHealth.Web.Controllers
         {
             ViewBag.Url = url;
             return View();
+        }
+
+        public void SendConfirmOrderEmail(Order order)
+        {
+
+            var eMail = new EMail
+            {
+                FromAddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromAddress"),
+                ToAddress = order.OrderUser.Email,
+                SMTPClient = System.Configuration.ConfigurationManager.AppSettings.Get("SmtpClient"),
+                UserName = System.Configuration.ConfigurationManager.AppSettings.Get("UserName"),
+                Password = System.Configuration.ConfigurationManager.AppSettings.Get("Password"),
+                ReplyTo = System.Configuration.ConfigurationManager.AppSettings.Get("ReplyTo"),
+                SMTPPort = System.Configuration.ConfigurationManager.AppSettings.Get("SMTPPort"),
+                isEnableSSL =
+                    System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
+                    "YES"
+            };
+            var orderDetails = order.OrderDetails.Where(a => a.Quantity > 0).Select(a => a.Quantity + " x " + a.Product.Name).ToList();
+            eMail.SendMail("Email", "MailFormat_ConfirmOrder.xml", new String[] { "Smart Health Confirm Order", "Thông tin đơn hàng: <br/> Tên khách hàng: " + order.ReceiverName + "<br/> Mã đơn hàng: <a href='" + Url.Action("Order", new { order_no = order.Id }) + "'>" + order.Id + "</a><br/> Chi tiết đơn hàng: " + String.Join(", ", orderDetails) });
         }
     }
 }

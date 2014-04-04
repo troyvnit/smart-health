@@ -2304,6 +2304,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="MailFormat_ConfirmOrder.xml" />
     <Content Include="MailFormat_DownloadDocument.xml" />
     <Content Include="FancyBox\blank.gif" />
     <Content Include="FancyBox\fancybox_loading%402x.gif" />

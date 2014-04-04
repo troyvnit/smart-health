@@ -14,24 +14,26 @@
 <div class="leftContent">
     <div class="boxLeft">
         <div class="AboxLeft">
-                <h1>@ViewBag.CategoryName</h1>
-                            @foreach (var article in articles)
-                            {
-                <div class="AABoxLeft">
-                                <div class="boxTin">
-                                    <ul>
-                                        <li class="pic">
-                                            <a href="@Url.Action("Article", "Home", new {id = article.Id})"><img src="@article.MediaUrl" alt="" /></a>
-                                        </li>
-                                        <li class="tit"><a href="@Url.Action("Article", "Home", new {id = article.Id})">@article.Title</a></li>
-                                        <li>
-                                            @Html.Raw(article.Description)
-                                        </li>
-                                    </ul>
-                                </div>
-                </div>
-                            }
+            <div class="Tprohone">
+                <h3><p>@ViewBag.CategoryName</p></h3>
             </div>
+            @foreach (var article in articles)
+            {
+                <div class="AABoxLeft">
+                    <div class="boxTin">
+                        <ul>
+                            <li class="pic">
+                                <a href="@Url.Action("Article", "Home", new {id = article.Id})"><img src="@article.MediaUrl" alt="" /></a>
+                            </li>
+                            <li class="tit"><a href="@Url.Action("Article", "Home", new {id = article.Id})">@article.Title</a></li>
+                            <li>
+                                @Html.Raw(article.Description)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 <!--leftContent-->
