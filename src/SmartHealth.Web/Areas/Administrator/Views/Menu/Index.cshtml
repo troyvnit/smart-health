@@ -17,6 +17,7 @@
                                     <li>Đối tác phân phối</li>
                                     <li>Slider trang chủ</li>
                                     <li>Tài liệu</li>
+                                    <li>Cài đặt thông số</li>
                                 </ul>
                                 <div>
                                     <div id="grid">
@@ -56,6 +57,10 @@
                                     </div>
                                     <div id="document-listView"></div>
                                     <div id="document-pager" class="k-pager-wrap"></div>
+                                </div>
+                                <div>
+                                    <div id="appSettingGrid">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -698,6 +703,79 @@
                 { collapsible: true, size: "100%" }
             ]
         }).data("kendoSplitter");
+        
+        $("#appSettingGrid").kendoGrid({
+            dataSource: {
+                autoSync: true,
+                transport: {
+                    read: {
+                        url: '@Url.Action("GetAppSettings", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: '@Url.Action("CreateOrUpdateAppSetting", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    destroy: {
+                        url: '@Url.Action("DeleteAppSetting", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    create: {
+                        url: '@Url.Action("CreateOrUpdateAppSetting", "Menu")',
+                        type: "post",
+                        dataType: "json"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                batch: true,
+                pageSize: 20,
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, nullable: true },
+                            KeyWord: { validation: { required: true } },
+                            StringValue: { type: "string" },
+                            IntValue: { type: "number" },
+                            Description: { type: "string" }
+                        }
+                    }
+                }
+            },
+            height: 710,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            toolbar: ["create"],
+            columns: [{
+                editable: false,
+                width: 50,
+                field: "Id"
+            }, {
+                field: "KeyWord",
+                width: 200,
+                title: "Từ khóa"
+            }, {
+                field: "StringValue",
+                title: "Giá trị chuỗi"
+            }, {
+                field: "IntValue",
+                title: "Giá trị số"
+            }, {
+                field: "Description",
+                title: "Mô tả"
+            },
+            { command: "destroy", title: "&nbsp;", width: 120 }
+            ],
+            editable: true
+        }).data("kendoGrid");
     });
     
     function languageDropDownEditor(container, options) {

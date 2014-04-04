@@ -5,6 +5,7 @@ using AutoMapper;
 using Newtonsoft.Json;
 using SmartHealth.Box.Domain.Dtos;
 using SmartHealth.Box.Domain.Models;
+using SmartHealth.Core.Domain.Dtos;
 using SmartHealth.Core.Domain.Models;
 using SmartHealth.Infrastructure.Bussiness;
 using SmartHealth.Web.Controllers;
@@ -62,6 +63,41 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
                 menuDto.Id = menu.Id;
             }
             return Json(menuDto, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetAppSettings()
+        {
+            List<AppSettingDto> appSettingDtos =
+                menuService.GetAll<AppSetting>().OrderByDescending(a => a.Id).Select(
+                    Mapper.Map<AppSetting, AppSettingDto>).ToList();
+            return Json(appSettingDtos, JsonRequestBehavior.AllowGet);
+        }
+
+        [ValidateInput(false)]
+        public ActionResult CreateOrUpdateAppSetting(string models)
+        {
+            AppSettingDto appSettingDto =
+                JsonConvert.DeserializeObject<List<AppSettingDto>>(models).FirstOrDefault();
+            if (appSettingDto != null)
+            {
+                AppSetting appSetting = Mapper.Map<AppSettingDto, AppSetting>(appSettingDto);
+                menuService.SaveOrUpdate(appSetting, true);
+                appSettingDto.Id = appSetting.Id;
+            }
+            return Json(appSettingDto, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteAppSetting(string models)
+        {
+            AppSettingDto appSettingDto =
+                JsonConvert.DeserializeObject<List<AppSettingDto>>(models).FirstOrDefault();
+            if (appSettingDto != null)
+            {
+                AppSetting appSetting = Mapper.Map<AppSettingDto, AppSetting>(appSettingDto);
+                menuService.Delete(appSetting, true);
+                appSettingDto.Id = appSetting.Id;
+            }
+            return Json(appSettingDto, JsonRequestBehavior.AllowGet);
         }
     }
 }

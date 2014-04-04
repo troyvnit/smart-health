@@ -4,6 +4,11 @@
     ViewBag.Title = ViewBag.CategoryName;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var articles = (List<ArticleDto>)ViewBag.Articles;
+    var totalArticle = (int) ViewBag.TotalArticle;
+    var totalPage = totalArticle/4 + (totalArticle%4 > 0 ? 1 : 0);
+    var page = Request.QueryString["page"] != null ? Int32.Parse(Request.QueryString["page"]) : 1;
+    var id = Request.QueryString["id"];
+    var search = Request.QueryString["search"];
     var newses = (List<ArticleDto>)ViewBag.Newses;
     if (Session["SmartHealthUser"] == null)
     {
@@ -33,6 +38,24 @@
                     </div>
                 </div>
             }
+                <div class="AABoxLeft">
+                    <ul class="pagination" style="margin:0; float: right">
+                        <li class="@(page == 1 ? "disabled" : "")"><a href="@Url.Action("ArticleList", new { id, search, page = page - 1 })">«</a></li>
+                        @for (int i = 1; i <= totalPage; i++)
+                        {
+                            var active = (i == page) ? "active" : "";
+                            <li class="@active">
+                                <a href="@Url.Action("ArticleList", new { id, search, page = i })">@i
+                                @if(i == page)
+                                    {
+                                        <span class="sr-only">(current)</span>
+                                    } 
+                                    </a> 
+                            </li>
+                        }
+                      <li class="@(page == totalPage ? "disabled" : "")"><a href="@Url.Action("ArticleList", new { id, search, page = page + 1 })">»</a></li>
+                   </ul>
+                </div>
         </div>
     </div>
 </div>

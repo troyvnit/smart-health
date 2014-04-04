@@ -156,6 +156,14 @@ namespace SmartHealth.Web.Controllers
                 var sessionDto = (SessionDto)Session["SmartHealthUser"];
                 sessionDto.UserId = currentUser != null ? currentUser.Id : 0;
                 Session["SmartHealthUser"] = sessionDto;
+                var discountPercentForOneAppSetting =
+                productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForOne");
+                var discountPercentForOne = discountPercentForOneAppSetting != null ? discountPercentForOneAppSetting.IntValue : 0;
+                var discountPercentForManyAppSetting =
+                    productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForMany");
+                var discountPercentForMany = discountPercentForManyAppSetting != null ? discountPercentForManyAppSetting.IntValue : 0;
+                ViewBag.DiscountPercentForOne = discountPercentForOne;
+                ViewBag.DiscountPercentForMany = discountPercentForMany;
                 return View();
             }
             else {
@@ -225,8 +233,12 @@ namespace SmartHealth.Web.Controllers
                 orderDetails[i].Quantity = quantity;
             }
             decimal totalAmount = 0;
-            var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
-            var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
+            var discountPercentForOneAppSetting =
+                productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForOne");
+            var discountPercentForOne = discountPercentForOneAppSetting != null ? discountPercentForOneAppSetting.IntValue : 0;
+            var discountPercentForManyAppSetting =
+                productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForMany");
+            var discountPercentForMany = discountPercentForManyAppSetting != null ? discountPercentForManyAppSetting.IntValue : 0;
             foreach (var orderDetailDto in orderDetails)
             {
                 var discountPercent = orderDetailDto.Quantity > 1 ? discountPercentForMany : discountPercentForOne;
@@ -287,8 +299,9 @@ namespace SmartHealth.Web.Controllers
             }
             return View();
         }
-        public ActionResult ArticleList(int? id, string search)
+        public ActionResult ArticleList(int? id, string search, int? page)
         {
+            page = page ?? 1;
             var newses =
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
@@ -299,21 +312,22 @@ namespace SmartHealth.Web.Controllers
                 var category = articleCategoryService.Get((int)id);
                 if (category != null)
                 {
-                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id) && p.IsDeleted != true && p.IsActived).OrderByDescending(a => a.CreatedDate).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id) && p.IsDeleted != true && p.IsActived).OrderByDescending(a => a.CreatedDate);
                     ViewBag.Title = category.Name + " - " + category.Description;
                     ViewBag.CategoryName = category.Name;
-                    ViewBag.Articles = articles;
-
+                    ViewBag.Articles = articles.Skip(((int)page - 1) * 4).Take(4).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                    ViewBag.TotalArticle = articles.Count();
                     return View();
                 }
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                var articles = articleService.FindAll(p => p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search)).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                var articles = articleService.FindAll(p => p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search));
                 ViewBag.Title = search;
                 ViewBag.CategoryName = search;
-                ViewBag.Articles = articles;
+                ViewBag.Articles = articles.Skip(((int)page - 1) * 4).Take(4).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.TotalArticle = articles.Count;
                 return View();
             }
         }
@@ -530,6 +544,14 @@ namespace SmartHealth.Web.Controllers
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.ClientSupportArticles = clientSupportArticles;
+            var discountPercentForOneAppSetting =
+                productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForOne");
+                var discountPercentForOne = discountPercentForOneAppSetting != null ? discountPercentForOneAppSetting.IntValue : 0;
+                var discountPercentForManyAppSetting =
+                    productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForMany");
+                var discountPercentForMany = discountPercentForManyAppSetting != null ? discountPercentForManyAppSetting.IntValue : 0;
+            ViewBag.DiscountPercentForOne = discountPercentForOne;
+            ViewBag.DiscountPercentForMany = discountPercentForMany;
             return View(order);
         }
 
@@ -555,8 +577,12 @@ namespace SmartHealth.Web.Controllers
                 var orderDetailString = "";
                 BuidDescriptionFactory builder = new BuidDescriptionFactory();
                 decimal totalAmount = 0;
-                var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
-                var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
+                var discountPercentForOneAppSetting =
+                productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForOne");
+                var discountPercentForOne = discountPercentForOneAppSetting != null ? discountPercentForOneAppSetting.IntValue : 0;
+                var discountPercentForManyAppSetting =
+                    productService.GetAll<AppSetting>().FirstOrDefault(a => a.KeyWord == "DiscountPercentForMany");
+                var discountPercentForMany = discountPercentForManyAppSetting != null ? discountPercentForManyAppSetting.IntValue : 0;
                 foreach (var orderDetail in order.OrderDetails)
                 {
                     orderDetail.Order = order;
