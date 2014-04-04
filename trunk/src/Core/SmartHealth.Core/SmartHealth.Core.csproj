@@ -66,9 +66,11 @@
     </Compile>
     <Compile Include="ApplicationServices\Caching\CacheKeys.cs" />
     <Compile Include="ApplicationServices\Caching\UserCache.cs" />
+    <Compile Include="Domain\Dtos\AppSettingDto.cs" />
     <Compile Include="Domain\Dtos\LanguageDto.cs" />
     <Compile Include="Domain\Dtos\UserDto.cs" />
     <Compile Include="Domain\IRepository\IUserRepository.cs" />
+    <Compile Include="Domain\Models\AppSetting.cs" />
     <Compile Include="Domain\Models\Language.cs" />
     <Compile Include="Domain\Models\User.cs" />
     <Compile Include="Helpers\SwitchLanguageHelper.cs" />

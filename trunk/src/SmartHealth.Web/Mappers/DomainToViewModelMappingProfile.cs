@@ -22,6 +22,7 @@ namespace SmartHealth.Web.Mappers
             Mapper.CreateMap<Folder, FolderDto>();
             Mapper.CreateMap<Media, MediaDto>();
             Mapper.CreateMap<Menu, MenuDto>();
+            Mapper.CreateMap<AppSetting, AppSettingDto>();
             Mapper.CreateMap<User, UserDto>();
             Mapper.CreateMap<Order, OrderDto>();
             Mapper.CreateMap<OrderDetail, OrderDetailDto>().ForMember(a => a.OrderId, o => o.MapFrom(a => a.Order.Id));

@@ -35,8 +35,8 @@
             cities.Add(selectItem);
         }
     }
-    var discountPercentForOne = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForOne"));
-    var discountPercentForMany = Int32.Parse(ConfigurationManager.AppSettings.Get("DiscountPercentForMany"));
+    var discountPercentForOne = Int32.Parse(ViewBag.DiscountPercentForOne);
+    var discountPercentForMany = Int32.Parse(ViewBag.DiscountPercentForMany);
 }
 @Styles.Render("~/Content/css/contact")
 <div class="leftContent">
