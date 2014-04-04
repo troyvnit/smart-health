@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MailFormats>
+  <MailFormat Id="Email">
+    <Subject>0?</Subject>
+    <Body>
+      <![CDATA[ 
+      1?
+     ]]>
+    </Body>
+  </MailFormat>
+</MailFormats>

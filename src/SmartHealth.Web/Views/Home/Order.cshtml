@@ -41,8 +41,10 @@
 @Styles.Render("~/Content/css/contact")
 <div class="leftContent">
     <div class="boxLeft">
-        <div class="chitietsanpham">
-            <p>@(order.Id == 0 ? SH.Cart : "Thông tin đơn hàng #" + order.Id)</p>
+        <div class="AboxLeft">
+            <div class="Tprohone">
+                <h3><p>@(order.Id == 0 ? SH.Cart : "Thông tin đơn hàng #" + order.Id)</p></h3>
+            </div>
             <div id="three_step_checkout">
                 <div class="new_cart new_ajax_cart">
                     @if (order.Id != 0)
@@ -214,8 +216,10 @@
         </div>
         @if (orderDetails.Any(a => a.Quantity != 0))
         {
-            <div class="chitietsanpham" id="buyerInfo">
-                <p>@SH.DeliveryInfo</p>
+            <div class="AboxLeft" id="buyerInfo">
+                <div class="Tprohone">
+                    <h3><p>@SH.DeliveryInfo</p></h3>
+                </div>
                 <div class="row contact">
                     <form action="@Url.Action("Order", "Home")" method="POST">
                         <div class="row form">
@@ -242,10 +246,10 @@
                                         @Html.ValidationMessageFor(model => model.DeliveryAddress)
                                     </div>
                                     <div class="form-group">
-                                            @Html.DropDownListFor(model => model.DeliveryCity, new SelectList(cities, "Value", "Text"), new { @class = "form-control", @style = "float: left; width: 535px; margin-bottom: 15px;" })
-                                            @Html.ValidationMessageFor(model => model.DeliveryCity)
-                                            <button id="popover" style="float: right;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
-                                        </div>
+                                        @Html.DropDownListFor(model => model.DeliveryCity, new SelectList(cities, "Value", "Text"), new { @class = "form-control", @style = "float: left; width: 535px; margin-bottom: 15px;" })
+                                        @Html.ValidationMessageFor(model => model.DeliveryCity)
+                                        <button id="popover" style="float: right;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
+                                    </div>
                                     <div class="form-group">
                                         <label>
                                             <input type="checkbox" id="isBilling"/>

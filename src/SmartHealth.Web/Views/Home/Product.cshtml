@@ -34,8 +34,10 @@
 }
 <div class="leftContent">
     <div class="boxLeft">
-        <div class="chitietsanpham">
-            <h1>@productDetail.Name</h1>
+        <div class="AboxLeft">
+            <div class="Tprohone">
+                <h3><p>@productDetail.Name</p></h3>
+            </div>
             <div style="width: 330px; display: inline-block; margin: 10px">
                 <div id="imageSlider" class="flexslider">
                     <ul class="slides">
@@ -44,8 +46,8 @@
                             foreach (var productImage in productMedias.Where(a => a.Type == 1))
                             {
                                 
-                            <li><a class="fancybox-media" href="@productImage.MediaUrl">
-                                <img src="@productImage.MediaUrl" /></a> </li>
+                                <li><a class="fancybox-media" href="@productImage.MediaUrl">
+                                        <img src="@productImage.MediaUrl" /></a> </li>
                             }
                         }
                     </ul>
@@ -57,9 +59,9 @@
                             foreach (var productImage in productMedias.Where(a => a.Type == 1))
                             {
                                 
-                            <li>
-                                <img src="@productImage.MediaUrl" />
-                            </li>
+                                <li>
+                                    <img src="@productImage.MediaUrl" />
+                                </li>
                             }
                         }
                     </ul>
@@ -140,51 +142,51 @@
                             <h4 class="modal-title" id="documentModalLabel">@SH.DownloadDocument</h4>
                         </div>
                         <div class="modal-body">
-                                <div class="col-lg-12" id="contentPopup">
-                                    <div class="alert alert-warning" style="display: none"></div>
-                                    <div class="input-group">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="isMember" id="isMember" value="true" checked />
-                                                Bạn đã là thành viên Smart Health
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="isMember" id="isNotMember" value="false" />
-                                                Thanh toán không cần đăng nhập
-                                            </label>
-                                        </div>
+                            <div class="col-lg-12" id="contentPopup">
+                                <div class="alert alert-warning" style="display: none"></div>
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="isMember" id="isMember" value="true" checked />
+                                            Bạn đã là thành viên Smart Health
+                                        </label>
                                     </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="isMember" id="isNotMember" value="false" />
+                                            Thanh toán không cần đăng nhập
+                                        </label>
+                                    </div>
+                                </div>
                                     
-                                    <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isNotMemberForm">
-                                        <div class="form-group email-form" style="display: none">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">@@</span>
-                                                <input class="mail form-control" type="text" placeholder="Email" id="Email" name="Email" />
-                                            </div>
-                                            <!-- /input-group -->
+                                <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isNotMemberForm">
+                                    <div class="form-group email-form" style="display: none">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">@@</span>
+                                            <input class="mail form-control" type="text" placeholder="Email" id="Email" name="Email" />
                                         </div>
-                                        <div class="form-group email-form" style="display: none">
-                                            <div class="input-group">
-                                                <input class="form-control" type="hidden" id="DOB" name="DOB" />
-                                                <span class="input-group-addon">Ngày sinh</span>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        @Html.DropDownList("Day", new SelectList(days, "Value", "Text"), new {@class = "form-control DOB"})
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        @Html.DropDownList("Month", new SelectList(months, "Value", "Text"), new {@class = "form-control DOB"})
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        @Html.DropDownList("Year", new SelectList(years, "Value", "Text"), new {@class = "form-control DOB"})
-                                                    </div>
+                                        <!-- /input-group -->
+                                    </div>
+                                    <div class="form-group email-form" style="display: none">
+                                        <div class="input-group">
+                                            <input class="form-control" type="hidden" id="DOB" name="DOB" />
+                                            <span class="input-group-addon">Ngày sinh</span>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    @Html.DropDownList("Day", new SelectList(days, "Value", "Text"), new {@class = "form-control DOB"})
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.DropDownList("Month", new SelectList(months, "Value", "Text"), new {@class = "form-control DOB"})
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.DropDownList("Year", new SelectList(years, "Value", "Text"), new {@class = "form-control DOB"})
                                                 </div>
                                             </div>
-                                            <!-- /input-group -->
                                         </div>
-                                    </form>
-                                    <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isMemberForm">
+                                        <!-- /input-group -->
+                                    </div>
+                                </form>
+                                <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isMemberForm">
                                     <div class="form-group login-form">
                                         <div class="input-group">
                                             <span class="input-group-addon">U</span>
@@ -198,9 +200,9 @@
                                         </div>
                                     </div>
                                         
-                            </form>
-                                </div>
-                                <!-- /.col-lg-6 -->
+                                </form>
+                            </div>
+                            <!-- /.col-lg-6 -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">@SH.Close</button>
@@ -262,8 +264,8 @@
                                         {
                                             foreach (var productVideo in productMedias.Where(a => a.Type == 2))
                                             {
-                                            <a class="fancybox-media" href="@productVideo.MediaUrl">
-                                                <img src="@productVideo.ThumbnailUrl" style="max-width:200px; max-height:100px;" alt="" /></a>
+                                                <a class="fancybox-media" href="@productVideo.MediaUrl">
+                                                    <img src="@productVideo.ThumbnailUrl" style="max-width:200px; max-height:100px;" alt="" /></a>
                                             }
                                         }
                                     </p>
