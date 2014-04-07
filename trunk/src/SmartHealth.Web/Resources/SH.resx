@@ -342,4 +342,112 @@
   <data name="DeliveryInfo" xml:space="preserve">
     <value>Thông tin giao hàng</value>
   </data>
+  <data name="AddToCartMessage1" xml:space="preserve">
+    <value>Sản phẩm đã được thêm vào</value>
+  </data>
+  <data name="AddToCartMessage2" xml:space="preserve">
+    <value>giỏ hàng</value>
+  </data>
+  <data name="BeingDelivered" xml:space="preserve">
+    <value>Đang giao hàng</value>
+  </data>
+  <data name="BeingProcessed" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
+  <data name="BuyNow" xml:space="preserve">
+    <value>Mua ngay</value>
+  </data>
+  <data name="ChangePassword_Incorrect" xml:space="preserve">
+    <value>Mật khẩu không đúng</value>
+  </data>
+  <data name="COD" xml:space="preserve">
+    <value>Thanh toán khi nhận hàng</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="Delivered" xml:space="preserve">
+    <value>Đã giao hàng</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Giảm giá</value>
+  </data>
+  <data name="EditProfile_NotExisted" xml:space="preserve">
+    <value>Tài khoản không tồn tại</value>
+  </data>
+  <data name="Email_ConfirmOrderTitle" xml:space="preserve">
+    <value>Xác nhận đơn hàng Smart Health</value>
+  </data>
+  <data name="Email_ContactTitle" xml:space="preserve">
+    <value>Liên hệ Smart Health</value>
+  </data>
+  <data name="Email_DownloadDocumentTitle" xml:space="preserve">
+    <value>Tải tài liệu Smart Health</value>
+  </data>
+  <data name="ExportFinanceInvoice" xml:space="preserve">
+    <value>Xuất hóa đơn tài chính</value>
+  </data>
+  <data name="FinanceInvoice_CompanyAddress" xml:space="preserve">
+    <value>Địa chỉ công ty</value>
+  </data>
+  <data name="FinanceInvoice_CompanyName" xml:space="preserve">
+    <value>Tên công ty</value>
+  </data>
+  <data name="FinanceInvoice_TaxNumber" xml:space="preserve">
+    <value>Mã số thuế</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Bao gồm</value>
+  </data>
+  <data name="IntoMoney" xml:space="preserve">
+    <value>Thành tiền</value>
+  </data>
+  <data name="Login_AreAlreadyMember" xml:space="preserve">
+    <value>Bạn đã là thành viên Smart Health</value>
+  </data>
+  <data name="Login_Incorrect" xml:space="preserve">
+    <value>Tài khoản hoặc mật khẩu không đúng.</value>
+  </data>
+  <data name="Login_MustTypeUsernameAndPassword" xml:space="preserve">
+    <value>Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Lưu ý</value>
+  </data>
+  <data name="OrderInfo" xml:space="preserve">
+    <value>Thông tin đơn hàng</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Đã thanh toán</value>
+  </data>
+  <data name="PaymentWithoutLogin" xml:space="preserve">
+    <value>Thanh toán không cần đăng nhập</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Xem thêm</value>
+  </data>
+  <data name="Register_Existed" xml:space="preserve">
+    <value>Tài khoản hoặc email đã tồn tại</value>
+  </data>
+  <data name="Register_MustTypeEmail" xml:space="preserve">
+    <value>Bạn phải nhập email!</value>
+  </data>
+  <data name="ShippingFee" xml:space="preserve">
+    <value>Phí vận chuyển</value>
+  </data>
+  <data name="ShippingNote" xml:space="preserve">
+    <value>Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND.</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalProductCountMessage1" xml:space="preserve">
+    <value>Có tất cả</value>
+  </data>
+  <data name="TotalProductCountMessage2" xml:space="preserve">
+    <value>sản phẩm trong đơn hàng</value>
+  </data>
+  <data name="Unpaid" xml:space="preserve">
+    <value>Chưa thanh toán</value>
+  </data>
 </root>

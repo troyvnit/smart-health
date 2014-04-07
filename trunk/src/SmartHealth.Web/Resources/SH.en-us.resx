@@ -342,4 +342,112 @@
   <data name="DeliveryInfo" xml:space="preserve">
     <value>Delivery Info</value>
   </data>
+  <data name="AddToCartMessage1" xml:space="preserve">
+    <value>Product has been added to</value>
+  </data>
+  <data name="AddToCartMessage2" xml:space="preserve">
+    <value>cart</value>
+  </data>
+  <data name="BeingDelivered" xml:space="preserve">
+    <value>Being delivered</value>
+  </data>
+  <data name="BeingProcessed" xml:space="preserve">
+    <value>Being processed</value>
+  </data>
+  <data name="BuyNow" xml:space="preserve">
+    <value>Buy now</value>
+  </data>
+  <data name="ChangePassword_Incorrect" xml:space="preserve">
+    <value>The password is incorrect.</value>
+  </data>
+  <data name="COD" xml:space="preserve">
+    <value>Cash on delivery</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delivered" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="EditProfile_NotExisted" xml:space="preserve">
+    <value>The account provided is not existed.</value>
+  </data>
+  <data name="Email_ConfirmOrderTitle" xml:space="preserve">
+    <value>Smart Health Confirm Order</value>
+  </data>
+  <data name="Email_ContactTitle" xml:space="preserve">
+    <value>Smart Health Contact</value>
+  </data>
+  <data name="Email_DownloadDocumentTitle" xml:space="preserve">
+    <value>Smart Health Download Document</value>
+  </data>
+  <data name="ExportFinanceInvoice" xml:space="preserve">
+    <value>Export finance invoice</value>
+  </data>
+  <data name="FinanceInvoice_CompanyAddress" xml:space="preserve">
+    <value>Company address</value>
+  </data>
+  <data name="FinanceInvoice_CompanyName" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="FinanceInvoice_TaxNumber" xml:space="preserve">
+    <value>Tax number</value>
+  </data>
+  <data name="Included" xml:space="preserve">
+    <value>Included</value>
+  </data>
+  <data name="IntoMoney" xml:space="preserve">
+    <value>Into money</value>
+  </data>
+  <data name="Login_AreAlreadyMember" xml:space="preserve">
+    <value>You are already a Smart Health member</value>
+  </data>
+  <data name="Login_Incorrect" xml:space="preserve">
+    <value>The user name or password provided is incorrect.</value>
+  </data>
+  <data name="Login_MustTypeUsernameAndPassword" xml:space="preserve">
+    <value>You must input both username and password!</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="OrderInfo" xml:space="preserve">
+    <value>Order info of ID</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="PaymentWithoutLogin" xml:space="preserve">
+    <value>Payment without login</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="Register_Existed" xml:space="preserve">
+    <value>The user name or email provided is existed.</value>
+  </data>
+  <data name="Register_MustTypeEmail" xml:space="preserve">
+    <value>You must input email!</value>
+  </data>
+  <data name="ShippingFee" xml:space="preserve">
+    <value>Shipping fee</value>
+  </data>
+  <data name="ShippingNote" xml:space="preserve">
+    <value>Free shipping to Ha Noi and Ho Chi Minh city. Please plus 30.000 VND shipping fee to another areas.</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalProductCountMessage1" xml:space="preserve">
+    <value>Have total</value>
+  </data>
+  <data name="TotalProductCountMessage2" xml:space="preserve">
+    <value>products in this order</value>
+  </data>
+  <data name="Unpaid" xml:space="preserve">
+    <value>Unpaid</value>
+  </data>
 </root>

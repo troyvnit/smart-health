@@ -84,7 +84,7 @@
             <div class="thongtinsp">
                 <div class="alert alert-success" style="display: none;">
                     <button type="button" class="close">&times;</button>
-                    Sản phẩm đã được thêm vào <a href="@Url.Action("Order", "Home")" class="alert-link">giỏ hàng</a>!
+                    @SH.AddToCartMessage1 <a href="@Url.Action("Order", "Home")" class="alert-link">@SH.AddToCartMessage2</a>!
                 </div>
                 <ul>
                     <li class="Pr1">
@@ -131,7 +131,7 @@
                     @*<li>
                         <span>
                             <p style="color: #1cbf34; font-weight: 600;">Giảm 5% với số lượng 1, giảm 10% từ 2 sản phẩm trở lên!</p></span></li>*@
-                    <li class="Pr3"><button type="button" class="btn btn-warning" id="Buy">Mua ngay</button> </li>
+                    <li class="Pr3"><button type="button" class="btn btn-warning" id="Buy">@SH.BuyNow</button> </li>
                 </ul>
             </div>
             <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
@@ -148,13 +148,13 @@
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="isMember" id="isMember" value="true" checked />
-                                            Bạn đã là thành viên Smart Health
+                                            @SH.Login_AreAlreadyMember
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="isMember" id="isNotMember" value="false" />
-                                            Thanh toán không cần đăng nhập
+                                            @SH.PaymentWithoutLogin
                                         </label>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@
                                     <div class="form-group email-form" style="display: none">
                                         <div class="input-group">
                                             <input class="form-control" type="hidden" id="DOB" name="DOB" />
-                                            <span class="input-group-addon">Ngày sinh</span>
+                                            <span class="input-group-addon">@SH.DOB</span>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     @Html.DropDownList("Day", new SelectList(days, "Value", "Text"), new {@class = "form-control DOB"})
@@ -189,13 +189,13 @@
                                 <form action="@Url.Action("LoginForOrder", "Home")" method="POST" id="isMemberForm">
                                     <div class="form-group login-form">
                                         <div class="input-group">
-                                            <span class="input-group-addon">U</span>
+                                            <span class="input-group-addon">@SH.Username</span>
                                             <input class="form-control" type="text" placeholder="Username" id="Username" name="Username" />
                                         </div>
                                     </div>
                                     <div class="form-group login-form">
                                         <div class="input-group">
-                                            <span class="input-group-addon">P</span>
+                                            <span class="input-group-addon">@SH.Password</span>
                                             <input class="form-control" type="password" placeholder="Password" id="Password" name="Password" />
                                         </div>
                                     </div>
