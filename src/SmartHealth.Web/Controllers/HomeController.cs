@@ -364,7 +364,7 @@ namespace SmartHealth.Web.Controllers
                                     System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
                                     "YES"
                             };
-            eMail.SendMail("Email","Mailformat.xml", new String[] { "Smart Health Contact", eMail.Name, eMail.Phone, eMail.Email, eMail.Message });
+            eMail.SendMail("Email","Mailformat.xml", new String[] { Resources.SH.Email_ContactTitle, eMail.Name, eMail.Phone, eMail.Email, eMail.Message });
             return Content("Success");
         }
 
@@ -393,7 +393,7 @@ namespace SmartHealth.Web.Controllers
                 }
                 return Redirect("/" + RouteData.Values["lang"]);
             }
-            ModelState.AddModelError("error", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("error", Resources.SH.Login_Incorrect);
             return View("Login", userDto);
         }
 
@@ -429,7 +429,7 @@ namespace SmartHealth.Web.Controllers
                 FormsAuthentication.RedirectFromLoginPage(newUser.Id.ToString(), user.RememberMe);
                 return Redirect("/" + RouteData.Values["lang"]);
             }
-            ModelState.AddModelError("error", "The user name or email provided is existed.");
+            ModelState.AddModelError("error", Resources.SH.Register_Existed);
             return View("Register", user);
         }
 
@@ -473,7 +473,7 @@ namespace SmartHealth.Web.Controllers
                 userService.SaveOrUpdate(user, true);
                 return View(userDto);
             }
-            ModelState.AddModelError("error", "The account provided is not existed.");
+            ModelState.AddModelError("error", Resources.SH.EditProfile_NotExisted);
             return RedirectToAction("Register");
         }
 
@@ -506,11 +506,11 @@ namespace SmartHealth.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("error", "The password is incorrect.");
+                    ModelState.AddModelError("error", Resources.SH.ChangePassword_Incorrect);
                     return View("ChangePassword", userDto);
                 }
             }
-            ModelState.AddModelError("error", "The account provided is not existed.");
+            ModelState.AddModelError("error", Resources.SH.EditProfile_NotExisted);
             return RedirectToAction("Register");
         }
 
@@ -699,7 +699,7 @@ namespace SmartHealth.Web.Controllers
                     System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
                     "YES"
             };
-            eMail.SendMail("Email", "MailFormat_DownloadDocument.xml", new String[] { "Smart Health Download Document", "Thông tin tài liệu: ", document.Name, document.DownloadUrl });
+            eMail.SendMail("Email", "MailFormat_DownloadDocument.xml", new String[] { Resources.SH.Email_DownloadDocumentTitle, "Thông tin tài liệu: ", document.Name, document.DownloadUrl });
             mediaLogService.SaveOrUpdate(new DocumentLog{Email = email, Document = mediaService.Get<Document>(documentId)}, true);
             return Content("Success");
         }
@@ -835,9 +835,9 @@ namespace SmartHealth.Web.Controllers
                         ((SessionDto) Session["SmartHealthUser"]).UserId = user.Id;
                         return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
                     }
-                    return Json(new { isSuccess = false, errorMessage = "Tên đăng nhập và mật khẩu không đúng!" }, JsonRequestBehavior.AllowGet);
+                    return Json(new { isSuccess = false, errorMessage = Resources.SH.Login_Incorrect }, JsonRequestBehavior.AllowGet);
                 }
-                return Json(new { isSuccess = false, errorMessage = "Bạn phải nhập đầy đủ tên đăng nhập và mật khẩu!" }, JsonRequestBehavior.AllowGet);
+                return Json(new { isSuccess = false, errorMessage = Resources.SH.Login_MustTypeUsernameAndPassword }, JsonRequestBehavior.AllowGet);
             }
             else
             {
@@ -858,7 +858,7 @@ namespace SmartHealth.Web.Controllers
                     ((SessionDto)Session["SmartHealthUser"]).UserId = user.Id;
                     return Json(new { isSuccess = true }, JsonRequestBehavior.AllowGet);
                 }
-                return Json(new { isSuccess = false, errorMessage = "Bạn phải nhập email!" }, JsonRequestBehavior.AllowGet);
+                return Json(new { isSuccess = false, errorMessage = Resources.SH.Register_MustTypeEmail }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -885,7 +885,7 @@ namespace SmartHealth.Web.Controllers
                     "YES"
             };
             var orderDetails = order.OrderDetails.Where(a => a.Quantity > 0).Select(a => a.Quantity + " x " + a.Product.Name).ToList();
-            eMail.SendMail("Email", "MailFormat_ConfirmOrder.xml", new String[] { "Smart Health Confirm Order", "Thông tin đơn hàng: <br/> Tên khách hàng: " + order.ReceiverName + "<br/> Mã đơn hàng: <a href='" + Url.Action("Order", new { order_no = order.Id }) + "'>" + order.Id + "</a><br/> Chi tiết đơn hàng: " + String.Join(", ", orderDetails) });
+            eMail.SendMail("Email", "MailFormat_ConfirmOrder.xml", new String[] { Resources.SH.Email_ConfirmOrderTitle, "Thông tin đơn hàng: <br/> Tên khách hàng: " + order.ReceiverName + "<br/> Mã đơn hàng: <a href='" + Url.Action("Order", new { order_no = order.Id }) + "'>" + order.Id + "</a><br/> Chi tiết đơn hàng: " + String.Join(", ", orderDetails) });
         }
     }
 }

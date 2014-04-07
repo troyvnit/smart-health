@@ -43,7 +43,7 @@
     <div class="boxLeft">
         <div class="AboxLeft">
             <div class="Tprohone">
-                <h3><p>@(order.Id == 0 ? SH.Cart : "Thông tin đơn hàng #" + order.Id)</p></h3>
+                <h3><p>@(order.Id == 0 ? SH.Cart : SH.OrderInfo + " #" + order.Id)</p></h3>
             </div>
             <div id="three_step_checkout">
                 <div class="new_cart new_ajax_cart">
@@ -51,14 +51,14 @@
                     {
                         switch (order.TransactionStatus)
                         {
-                            case 0: <div class="alert alert-warning">Chưa thanh toán</div> break;
-                            case 1: <div class="alert alert-info">Đã thanh toán! Đơn hàng đang xử lý</div> break;
-                            case 2: <div class="alert alert-info">Đã thanh toán! Đang giao hàng</div> break;
-                            case 3: <div class="alert alert-success">Đã thanh toán! Đã giao hàng</div> break;
-                            default: <div class="alert alert-warning">Chưa thanh toán</div> break;
+                            case 0: <div class="alert alert-warning">@SH.Unpaid</div> break;
+                            case 1: <div class="alert alert-info">@SH.Paid! @SH.BeingProcessed</div> break;
+                            case 2: <div class="alert alert-info">@SH.Paid! @SH.BeingDelivered</div> break;
+                            case 3: <div class="alert alert-success">@SH.Paid! @SH.Delivered</div> break;
+                            default: <div class="alert alert-warning">@SH.Unpaid</div> break;
                         }
                     }
-                    <span class="cartintro">Có tất cả <span id="orderDetailCount">@orderDetails.Count(a => a.Quantity != 0)</span> sản phẩm trong đơn hàng</span>
+                    <span class="cartintro">@SH.TotalProductCountMessage1 <span id="orderDetailCount">@orderDetails.Count(a => a.Quantity != 0)</span> @SH.TotalProductCountMessage2</span>
                     @if (orderDetails.Count(a => a.Quantity != 0) > 0)
                     {
                         <table class="width_100" id="tableheader">
@@ -96,7 +96,7 @@
                                                     @if (!order.IsPayed)
                                                     {
                                                         <span class="productlink">
-                                                            <a index="@i" class="removeOrderProduct">Xóa</a>
+                                                            <a index="@i" class="removeOrderProduct">@SH.Delete</a>
                                                         </span>
                                                     }
                                                 </td>
@@ -105,7 +105,7 @@
                                                     <span class="mbs cart-product-oldprice-value">
                                                         <span>@orderDetail.Product.MarketPrice.ToString("N0") VND</span>
                                                     </span>
-                                                    <span><strong class="discountPercent" style="color: #093">Giảm giá @discountPercent%</strong></span>
+                                                    <span><strong class="discountPercent" style="color: #093">@SH.Discount @discountPercent%</strong></span>
                                                 </td>
                                                 <td class="width_10 price center">
                                                     <input type="number" style="max-width: 80px;" class="productQuantity form-control" value="@orderDetail.Quantity" index="@i" @(order.IsPayed ? "disabled" : "")/>
@@ -128,22 +128,22 @@
                                             <a style="float: left; margin: 10px 0;" class="btn btn-default" href="@Url.Action("ProductList", "Home", new { id = 4 })">
                                                 <img src="~/Content/icons/back.png" />
                                                 Tiếp tục mua sắm</a></td>
-                                        <td class="width_15">Tổng cộng</td>
+                                        <td class="width_15">@SH.Total</td>
                                         <td class="width_30 right_align lastcolumn">
                                             <div id="totalAmount">@totalAmount.ToString("N0") VND</div>
                                         </td>
                                     </tr>
                                     <tr class="sub">
-                                        <td class="width_15">Phí vận chuyển</td>
+                                        <td class="width_15">@SH.ShippingFee</td>
                                         <td class="width_30 right_align lastcolumn">
                                             <div id="shippingFee">0 VND</div>
                                         </td>
                                     </tr>
                                     <tr class="total">
-                                        <td class="width_15">Thành tiền</td>
+                                        <td class="width_15">@SH.IntoMoney</td>
                                         <td class="width_30 right_align lastcolumn">
                                             <div id="totalAmountVAT">@totalAmount.ToString("N0") VND</div>
-                                            <div class="vatinclude">Bao gồm VAT</div>
+                                            <div class="vatinclude">@SH.Included VAT</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -248,24 +248,24 @@
                                     <div class="form-group">
                                         @Html.DropDownListFor(model => model.DeliveryCity, new SelectList(cities, "Value", "Text"), new { @class = "form-control", @style = "float: left; width: 535px; margin-bottom: 15px;" })
                                         @Html.ValidationMessageFor(model => model.DeliveryCity)
-                                        <button id="popover" style="float: right;" type="button" class="btn btn-default" data-toggle="popover" title="Lưu ý" data-content="Miễn phí giao hàng ở Hà Nội và Thành Phố Hồ Chí Minh. Các tỉnh khác quý khách vui lòng cộng phí 30.000 VND. <a href='@Url.Action("Article", "Home", new { id = 41 })'>Xem thêm</a>">Lưu ý</button>
+                                        <button id="popover" style="float: right;" type="button" class="btn btn-default" data-toggle="popover" title="@SH.Note" data-content="@SH.ShippingNote <a href='@Url.Action("Article", "Home", new { id = 41 })'>@SH.ReadMore</a>">@SH.Note</button>
                                     </div>
                                     <div class="form-group">
                                         <label>
                                             <input type="checkbox" id="isBilling"/>
-                                            Xuất hóa đơn tài chính
+                                            @SH.ExportFinanceInvoice
                                         </label>
                                     </div>
                                     <div class="form-group billing">
-                                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "Tên công ty" })
+                                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = SH.FinanceInvoice_CompanyName })
                                         @Html.ValidationMessageFor(model => model.ReceiverName)
                                     </div>
                                     <div class="form-group billing">
-                                        @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control", placeholder = "Địa chỉ công ty" })
+                                        @Html.TextBoxFor(model => model.CompanyAddress, new { @class = "form-control", placeholder = SH.FinanceInvoice_CompanyAddress })
                                         @Html.ValidationMessageFor(model => model.ReceiverPhone)
                                     </div>
                                     <div class="form-group billing">
-                                        @Html.TextBoxFor(model => model.TaxCode, new { @class = "form-control", placeholder = "Mã số thuế" })
+                                        @Html.TextBoxFor(model => model.TaxCode, new { @class = "form-control", placeholder = SH.FinanceInvoice_TaxNumber })
                                         @Html.ValidationMessageFor(model => model.DeliveryAddress)
                                     </div>
                                 </div>
@@ -281,7 +281,7 @@
                                 {
                                     if (order.Id == 0)
                                     {
-                                        <button id="submitBtn" style="float: right; margin: 35px 0;" type="button" class="btn btn-success">Thanh toán khi nhận hàng</button>
+                                        <button id="submitBtn" style="float: right; margin: 35px 0;" type="button" class="btn btn-success">@SH.COD</button>
                                     }
                                     <a id="submitBaoKimPaymentBtn" onclick=" submitBaoKimPayment(); return false; " style="float: right; margin: 10px 10px 10px 0;" href="#">
                                         <p style="text-align: center; font-weight: bold; color: green">Bảo Kim</p>
@@ -432,7 +432,7 @@
         var i = $(this).attr("index");
         var price = $(this).parent().parent().find(".smPrice").text().replace(',', '');
         var discountPercent = parseInt(quantity) > 1 ? parseInt('@discountPercentForMany') : parseInt('@discountPercentForOne');
-        $(this).parent().parent().find(".discountPercent").html("Giảm giá " + discountPercent + "%");
+        $(this).parent().parent().find(".discountPercent").html("@SH.Discount " + discountPercent + "%");
         $(this).parent().parent().find(".totalPrice").html(accounting.formatMoney(parseInt(price) * 100 / (100 - parseInt('@discountPercentForOne')) * parseInt(quantity) * (100 - discountPercent) / 100, options));
         $.post('@Url.Action("UpdateOrderDetail", "Home")', { i: i, quantity: quantity, orderid: '@order.Id' }).done(function(result) {
             if ('@order.Id' == '0') {
