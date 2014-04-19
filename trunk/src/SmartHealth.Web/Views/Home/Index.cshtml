@@ -10,8 +10,8 @@
     var videoLinks = (List<MediaDto>)ViewBag.VideoLinks;
     var partners = (List<MediaDto>)ViewBag.Partners; 
     var imageSliders = (List<MediaDto>)ViewBag.ImageSliders;
+    var imageDiscountSliders = (List<MediaDto>)ViewBag.ImageDiscountSliders;
 }
-
 <div class="banner">
     <div id="zalen">
         <div id="slider-wrapper">
@@ -158,19 +158,19 @@
                                 foreach (var partner in partners)
                                 {
                                 
-                                <li>
+                                    <li>
                                     
-                                <table cellspacing="0" cellpadding="0" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="pic_2">
-                                                <a target="_blank" href="@partner.MediaUrl">
-                                                    <img  src="@partner.ThumbnailUrl" style="width: auto;" alt=""/></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </li>
+                                        <table cellspacing="0" cellpadding="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pic_2">
+                                                        <a target="_blank" href="@partner.MediaUrl">
+                                                            <img  src="@partner.ThumbnailUrl" style="width: auto;" alt=""/></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
                                 }
                             }
                         </ul>
@@ -180,9 +180,33 @@
         </div>
     </div>
 </div>
+    
+<div id="fancybox-content" style="display: none">
+    @foreach (var imageDiscountSlider in imageDiscountSliders)
+                {
+                    <a class="fancybox" rel="gallery1" href="@imageDiscountSlider.ThumbnailUrl" target="_blank"><img src="@imageDiscountSlider.ThumbnailUrl" alt="" /></a>
+                }
+</div>
+
 <script>
     // You can also use "$(window).load(function() {"
-    $(function () {
+    $(document).ready(function () {
+        $(".fancybox").fancybox({
+            openEffect: 'fade',
+            closeEffect: 'fade',
+            autoScale: false,
+            autoSize: false,
+            width: 680,
+            height: 450,
+            padding: 0,
+            overlayShow: true,
+            scrolling: 'no',
+            autoPlay: true
+        });
+        $(".fancybox:last-child img").load(function () {
+            $(".fancybox").eq(0).trigger("click");
+        });
+        //$(".fancybox").eq(0).trigger("click");
         //$("#videoSlide").responsiveSlides({
         //    auto: true,
         //    pager: false,
@@ -210,18 +234,18 @@
             itemMargin: 15
         });
         $('.fancybox-media')
-				.attr('rel', 'media-gallery')
-				.fancybox({
-				    openEffect: 'none',
-				    closeEffect: 'none',
-				    prevEffect: 'none',
-				    nextEffect: 'none',
+            .attr('rel', 'media-gallery')
+            .fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                prevEffect: 'none',
+                nextEffect: 'none',
 
-				    arrows: false,
-				    helpers: {
-				        media: {},
-				        buttons: {}
-				    }
-				});
+                arrows: false,
+                helpers: {
+                    media: {},
+                    buttons: {}
+                }
+            });
     });
-  </script>
+</script>
