@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var articles = (List<ArticleDto>)ViewBag.Articles;
     var totalArticle = (int) ViewBag.TotalArticle;
-    var totalPage = totalArticle/4 + (totalArticle%4 > 0 ? 1 : 0);
+    var totalPage = totalArticle/10 + (totalArticle%10 > 0 ? 1 : 0);
     var page = Request.QueryString["page"] != null ? Int32.Parse(Request.QueryString["page"]) : 1;
     var id = Request.QueryString["id"];
     var search = Request.QueryString["search"];
