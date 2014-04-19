@@ -72,6 +72,8 @@ namespace SmartHealth.Web.Controllers
             var lanuageId = RouteData.Values["lang"].ToString().ToUpper() == "VI-VN" ? 1 : 2;
             var imageSliders = mediaService.GetAll().Where(a => a.Type == 6 && a.Folder.Id == lanuageId).Select(Mapper.Map<Media, MediaDto>).ToList();
             ViewBag.ImageSliders = imageSliders;
+            var imageDiscountSliders = mediaService.GetAll().Where(a => a.Type == 8 && a.Folder.Id == lanuageId).Select(Mapper.Map<Media, MediaDto>).ToList();
+            ViewBag.ImageDiscountSliders = imageDiscountSliders;
             return View();
         }
 

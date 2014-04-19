@@ -16,6 +16,7 @@
                                     <li>Banner quảng cáo</li>
                                     <li>Đối tác phân phối</li>
                                     <li>Slider trang chủ</li>
+                                    <li>Slider khuyến mãi</li>
                                     <li>Tài liệu</li>
                                     <li>Cài đặt thông số</li>
                                 </ul>
@@ -50,6 +51,13 @@
                                     </div>
                                     <div id="sliderImage-listView"></div>
                                     <div id="sliderImage-pager" class="k-pager-wrap"></div>
+                                </div>
+                                <div>
+                                    <div class="box-content">
+                                        <a id="add-sliderDiscountImage" class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Thêm Image</a>
+                                    </div>
+                                    <div id="sliderDiscountImage-listView"></div>
+                                    <div id="sliderDiscountImage-pager" class="k-pager-wrap"></div>
                                 </div>
                                 <div>
                                     <div class="box-content">
@@ -630,6 +638,66 @@
         });
         sliderImageListView.setDataSource(sliderImageDataSource);
         sliderImagePager.setDataSource(sliderImageDataSource);
+        
+        var sliderDiscountImagePager = $("#sliderDiscountImage-pager").kendoPager().data("kendoPager");
+
+        var sliderDiscountImageListView = $("#sliderDiscountImage-listView").kendoListView({
+            template: kendo.template($("#view-sliderImage-template").html()),
+            editTemplate: kendo.template($("#edit-sliderImage-template").html())
+        }).data("kendoListView");
+
+        $("#add-sliderDiscountImage").click(function (e) {
+            sliderDiscountImageListView.add();
+            e.preventDefault();
+        });
+
+        var sliderDiscountImageDataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("GetSliderDiscountImages", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                update: {
+                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                destroy: {
+                    url: '@Url.Action("DeleteVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                create: {
+                    url: '@Url.Action("CreateOrUpdateVideo", "Media")',
+                    type: "post",
+                    dataType: "json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models), page: options.page, pageSize: 6 };
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 6,
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, nullable: true },
+                        ProductId: { type: "number", defaultValue: 1 },
+                        MediaUrl: { type: "string" },
+                        ThumbnailUrl: { type: "string" },
+                        Description: { type: "string", defaultValue: "" },
+                        FolderId: { type: "number", defaultValue: 1 },
+                        Type: { type: "number", defaultValue: 8 }
+                    }
+                }
+            }
+        });
+        sliderDiscountImageListView.setDataSource(sliderDiscountImageDataSource);
+        sliderDiscountImagePager.setDataSource(sliderDiscountImageDataSource);
         
         var documentPager = $("#document-pager").kendoPager().data("kendoPager");
 

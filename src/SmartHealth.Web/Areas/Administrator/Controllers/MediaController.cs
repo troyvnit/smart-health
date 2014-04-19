@@ -95,6 +95,12 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             return Json(videos, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetSliderDiscountImages()
+        {
+            var videos = mediaService.GetAll().Where(a => a.Type == 8).Select(Mapper.Map<Media, MediaDto>).ToList();
+            return Json(videos, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetDocuments()
         {
             var documents = mediaService.GetAll<Document>().Select(Mapper.Map<Document, DocumentDto>).ToList();
