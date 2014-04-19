@@ -315,7 +315,7 @@ namespace SmartHealth.Web.Controllers
                     var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id) && p.IsDeleted != true && p.IsActived).OrderByDescending(a => a.CreatedDate);
                     ViewBag.Title = category.Name + " - " + category.Description;
                     ViewBag.CategoryName = category.Name;
-                    ViewBag.Articles = articles.Skip(((int)page - 1) * 4).Take(4).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                    ViewBag.Articles = articles.Skip(((int)page - 1) * 10).Take(10).Select(Mapper.Map<Article, ArticleDto>).ToList();
                     ViewBag.TotalArticle = articles.Count();
                     return View();
                 }
@@ -326,7 +326,7 @@ namespace SmartHealth.Web.Controllers
                 var articles = articleService.FindAll(p => p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search));
                 ViewBag.Title = search;
                 ViewBag.CategoryName = search;
-                ViewBag.Articles = articles.Skip(((int)page - 1) * 4).Take(4).Select(Mapper.Map<Article, ArticleDto>).ToList();
+                ViewBag.Articles = articles.Skip(((int)page - 1) * 10).Take(10).Select(Mapper.Map<Article, ArticleDto>).ToList();
                 ViewBag.TotalArticle = articles.Count;
                 return View();
             }
