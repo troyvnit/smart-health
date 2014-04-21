@@ -184,7 +184,9 @@
 <div id="fancybox-content" style="display: none">
     @foreach (var imageDiscountSlider in imageDiscountSliders)
                 {
-                    <a class="fancybox" rel="gallery1" href="@imageDiscountSlider.ThumbnailUrl" target="_blank"><img src="@imageDiscountSlider.ThumbnailUrl" alt="" /></a>
+                    <a class="fancybox" rel="gallery1" href="@imageDiscountSlider.ThumbnailUrl" target="_blank">
+                        <img src="@imageDiscountSlider.ThumbnailUrl" alt="" />
+                    </a>
                 }
 </div>
 
