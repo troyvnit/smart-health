@@ -35,8 +35,8 @@
             cities.Add(selectItem);
         }
     }
-    var discountPercentForOne = Int32.Parse(ViewBag.DiscountPercentForOne);
-    var discountPercentForMany = Int32.Parse(ViewBag.DiscountPercentForMany);
+    var discountPercentForOne = ViewBag.DiscountPercentForOne;
+    var discountPercentForMany = ViewBag.DiscountPercentForMany;
 }
 @Styles.Render("~/Content/css/contact")
 <div class="leftContent">
@@ -101,11 +101,11 @@
                                                     }
                                                 </td>
                                                 <td class="width_15 price center">
-                                                    <span class="smPrice">@orderDetail.Product.SmartHealthPrice.ToString("N0")</span><span> VND</span><br>
-                                                    <span class="mbs cart-product-oldprice-value">
+                                                    <div class="smPrice">@orderDetail.Product.SmartHealthPrice.ToString("N0") VND</div>
+                                                    <div class="mbs cart-product-oldprice-value">
                                                         <span>@orderDetail.Product.MarketPrice.ToString("N0") VND</span>
-                                                    </span>
-                                                    <span><strong class="discountPercent" style="color: #093">@SH.Discount @discountPercent%</strong></span>
+                                                    </div>
+                                                    <div><strong class="discountPercent" style="color: #093">@SH.Discount @discountPercent%</strong></div>
                                                 </td>
                                                 <td class="width_10 price center">
                                                     <input type="number" style="max-width: 80px;" class="productQuantity form-control" value="@orderDetail.Quantity" index="@i" @(order.IsPayed ? "disabled" : "")/>

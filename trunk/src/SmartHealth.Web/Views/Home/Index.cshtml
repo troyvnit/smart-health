@@ -184,7 +184,7 @@
 <div id="fancybox-content" style="display: none">
     @foreach (var imageDiscountSlider in imageDiscountSliders)
                 {
-                    <a class="fancybox" rel="gallery1" href="@imageDiscountSlider.ThumbnailUrl" target="_blank">
+                    <a class="imageDiscount" rel="gallery1" href="@imageDiscountSlider.ThumbnailUrl" title="@imageDiscountSlider.MediaUrl">
                         <img src="@imageDiscountSlider.ThumbnailUrl" alt="" />
                     </a>
                 }
@@ -193,7 +193,7 @@
 <script>
     // You can also use "$(window).load(function() {"
     $(document).ready(function () {
-        $(".fancybox").fancybox({
+        $(".imageDiscount").fancybox({
             openEffect: 'fade',
             closeEffect: 'fade',
             autoScale: false,
@@ -203,10 +203,14 @@
             padding: 0,
             overlayShow: true,
             scrolling: 'no',
-            autoPlay: true
+            autoPlay: true,
+            helpers: { title: false },
+            beforeShow: function () {
+                $(".fancybox-image").wrap('<a target="_blank" href="' + this.title + '" />')
+            }
         });
-        $(".fancybox:last-child img").load(function () {
-            $(".fancybox").eq(0).trigger("click");
+        $(".imageDiscount:last-child img").load(function () {
+            $(".imageDiscount").eq(0).trigger("click");
         });
         //$(".fancybox").eq(0).trigger("click");
         //$("#videoSlide").responsiveSlides({

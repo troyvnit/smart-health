@@ -20,8 +20,8 @@ h3{ font-size:14px;}
 .mainindex { width:940px; height:auto; margin:0 auto;}
 
 .header { width:940px; height:auto; float:left;position: relative;}
-.logo { float:left; margin: 29px 0 0 33px;}
-.titcom { float:left; margin: 75px 0 0 20px;}
+.logo { float:left; margin: 14px 0 0 10px;}
+.titcom { float:left; margin: 56px 0 0 10px;}
 .menuhead { float:right; padding-left:9px; height:35px; background:url(/Content/images/menuhead-1.png) no-repeat top left;position: absolute;right: 0;}
 .menuhead ul { float:left; padding-right:9px; height:35px; background:url(/Content/images/menuhead-2.png) no-repeat top right; list-style:none;}
 .menuhead li { float:left; height:35px; background:url(/Content/images/menuhead.png) repeat-x;}
@@ -34,7 +34,7 @@ h3{ font-size:14px;}
 .menuhead li.butdk a:hover { color:white; text-decoration:underline;}
 .menuhead li.cart a p { color:#333; float:left; line-height:31px;height: 31px; padding:0 10px 0 30px; background:url(/Content/images/icon-1.png) no-repeat top left; margin-left:10px;}
 
-.menuTop { width:940px; height:87px; float:left; margin-top:25px; background:url(/Content/images/BG-Menu.jpg) no-repeat;
+.menuTop { width:940px; height:87px; float:left; margin-top:10px; background:url(/Content/images/BG-Menu.jpg) no-repeat;
 -moz-box-shadow:2px 2px 2px #ddd; /* Firefox */
 -webkit-box-shadow:2px 2px 2px #ddd; /* Safari and Chrome */
 box-shadow:2px 2px 2px #ddd; /* Opera 10.5+, future browsers and IE6+ */
