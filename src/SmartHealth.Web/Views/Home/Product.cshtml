@@ -473,7 +473,7 @@
             var quantity = parseFloat($("#Quantity").val());
             var discountPercent = parseInt(quantity) > 1 ? parseInt('@discountPercentForMany') : parseInt('@discountPercentForOne');
             var price = parseFloat('@productDetail.SmartHealthPrice.ToString("N2").Replace(",", "")');
-            $("#CalculatedPrice").html(accounting.formatMoney(quantity * 100 / 95 * price * (100 - discountPercent) / 100, options));
+            $("#CalculatedPrice").html(accounting.formatMoney(quantity * 100 / (100 - parseInt('@discountPercentForOne')) * price * (100 - discountPercent) / 100, options));
         });
         //$('.flexslider').flexslider({
         //    animation: "slide",
