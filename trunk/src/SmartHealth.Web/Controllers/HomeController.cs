@@ -589,7 +589,7 @@ namespace SmartHealth.Web.Controllers
                 {
                     orderDetail.Order = order;
                     var discountPercent = orderDetail.Quantity > 1 ? discountPercentForMany : discountPercentForOne;
-                    var totalPrice = orderDetail.Product.SmartHealthPrice * 100 / 95 * orderDetail.Quantity * (100 - discountPercent) / 100;
+                    var totalPrice = orderDetail.Product.SmartHealthPrice * 100 / (100 - discountPercentForOne) * orderDetail.Quantity * (100 - discountPercent) / 100;
                     totalAmount += totalPrice;
                     orderDetailString += orderDetail.Product.Name + " x " + orderDetail.Quantity;
                     builder.AddItem(new PayooOrderItem(orderDetail.Product.Name, (long) orderDetail.Product.SmartHealthPrice, orderDetail.Quantity));
