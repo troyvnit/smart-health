@@ -60,7 +60,12 @@ namespace SmartHealth.Web.Controllers
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.News.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Select(a => new ArticleDto { Id = a.Id, Description = a.Description, Title = a.Title, MediaUrl = a.MediaUrl }).Take(6).ToList();
             ViewBag.Newses = newses;
 
-            var typicalProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(productGroupService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.TypicalProduct.ToUpper()))).OrderByDescending(a => a.CreatedDate).Select(a => new ProductDto { Id = a.Id, MediaUrl = a.MediaUrl, Name = a.Name }).Take(6).ToList();
+            var typicalProductGroup =
+                productGroupService.GetAll()
+                    .FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.TypicalProduct.ToUpper());
+            ViewBag.TypicalProductGroupId = typicalProductGroup != null ? typicalProductGroup.Id : 0;
+
+            var typicalProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(typicalProductGroup)).OrderByDescending(a => a.CreatedDate).Select(a => new ProductDto { Id = a.Id, MediaUrl = a.MediaUrl, Name = a.Name }).Take(6).ToList();
             ViewBag.TypicalProducts = typicalProducts;
 
             var videoLinks = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 3).ToList();
@@ -325,7 +330,7 @@ namespace SmartHealth.Web.Controllers
             }
             else
             {
-                var articles = articleService.FindAll(p => p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search));
+                var articles = articleService.FindAll(p => (p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search)) && p.Categories.Count(c => c.Language.CultureInfo.ToUpper() == RouteData.Values["lang"].ToString().ToUpper()) > 0);
                 ViewBag.Title = search;
                 ViewBag.CategoryName = search;
                 ViewBag.Articles = articles.Skip(((int)page - 1) * 10).Take(10).Select(Mapper.Map<Article, ArticleDto>).ToList();
