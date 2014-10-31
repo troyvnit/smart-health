@@ -307,6 +307,49 @@
             </dl>
         </div>
 </script>
+<script type="text/x-kendo-template" id="view-video-template">
+    <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-edit-button" href="\\#"><span class="k-icon k-edit"></span></a>
+                <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-delete"></span></a>
+            </div>
+            
+        <img width="100%" height="100%" src="#:ThumbnailUrl#" frameborder="0"/>
+        </div>
+</script>
+<script type="text/x-kendo-tmpl" id="edit-video-template">
+        <div class="product-video-view k-widget">
+            <div class="edit-buttons">
+                <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
+                <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
+            </div>
+            <dl>
+                <dt>Url</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:MediaUrl" name="MediaUrl" required="required" validationMessage="required" />
+                    <span data-for="MediaUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Thumbnail</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:ThumbnailUrl" name="ThumbnailUrl" required="required" validationMessage="required" />
+                    <span data-for="ThumbnailUrl" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Mô tả</dt>
+                <dd>
+                    <input type="text" style="width: 9em; height: 2em;" class="k-textbox" data-bind="value:Description" name="Description" required="required" validationMessage="required" />
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </dd>
+                <dt>Ngôn ngữ</dt>
+                <dd>
+                    <select data-role="dropdownlist" data-bind="value:FolderId" name="FolderId" required="required" validationMessage="không được trống">  
+                       <option value="1">Tiếng Việt</option>  
+                       <option value="2">English</option>
+                    </select>
+                    <span data-for="FolderId" class="k-invalid-msg"></span>
+                </dd>
+            </dl>
+        </div>
+</script>
 <script>
     $(document).ready(function () {
         var grid = $("#grid").kendoGrid({
@@ -405,8 +448,8 @@
         var productVideoPager = $("#product-video-pager").kendoPager().data("kendoPager");
 
         var productVideoListView = $("#product-video-listView").kendoListView({
-            template: kendo.template($("#view-template").html()),
-            editTemplate: kendo.template($("#edit-template").html())
+            template: kendo.template($("#view-video-template").html()),
+            editTemplate: kendo.template($("#edit-video-template").html())
         }).data("kendoListView");
 
         $("#add-video").click(function (e) {
@@ -453,6 +496,7 @@
                         MediaUrl: { type: "string" },
                         ThumbnailUrl: { type: "string" },
                         Description: { type: "string" },
+                        FolderId: { type: "number", defaultValue: 1 },
                         Type: { type: "number", defaultValue: 3 }
                     }
                 }

@@ -51,7 +51,9 @@ namespace SmartHealth.Web.Controllers
             {
                 Session["SmartHealthUser"] = new SessionDto();
             }
-            
+
+            var lanuageId = RouteData.Values["lang"].ToString().ToUpper() == "VI-VN" ? 1 : 2;
+
             var introductions =
                 articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.HomeShortCut.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Select(a => new ArticleDto{ Id = a.Id, Description = a.Description, Title = a.Title, MediaUrl = a.MediaUrl}).Take(3).ToList();
             ViewBag.Introductions = introductions;
@@ -68,13 +70,12 @@ namespace SmartHealth.Web.Controllers
             var typicalProducts = productService.GetAll().Where(a => a.IsActived && a.IsDeleted != true && a.Groups.Contains(typicalProductGroup)).OrderByDescending(a => a.CreatedDate).Select(a => new ProductDto { Id = a.Id, MediaUrl = a.MediaUrl, Name = a.Name }).Take(6).ToList();
             ViewBag.TypicalProducts = typicalProducts;
 
-            var videoLinks = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 3).ToList();
+            var videoLinks = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 3 && a.FolderId == lanuageId).ToList();
             ViewBag.VideoLinks = videoLinks;
 
             var partners = mediaService.GetAll().Select(Mapper.Map<Media, MediaDto>).Where(a => a.Type == 5).ToList();
             ViewBag.Partners = partners;
 
-            var lanuageId = RouteData.Values["lang"].ToString().ToUpper() == "VI-VN" ? 1 : 2;
             var imageSliders = mediaService.GetAll().Where(a => a.Type == 6 && a.Folder.Id == lanuageId).Select(Mapper.Map<Media, MediaDto>).ToList();
             ViewBag.ImageSliders = imageSliders;
             var imageDiscountSliders = mediaService.GetAll().Where(a => a.Type == 8 && a.Folder.Id == lanuageId).Select(Mapper.Map<Media, MediaDto>).ToList();

@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptedPayment" xml:space="preserve">
-    <value>Accepted payment</value>
+    <value>Payment method</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
   <data name="AddressInfo" xml:space="preserve">
-    <value>402 Huynh Van Banh Stress, Ward 14, Phu Nhuan District, HCM City</value>
+    <value>402 Huynh Van Banh Stress, Ward 14, Phu Nhuan District, Ho Chi Minh City</value>
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
@@ -139,13 +139,13 @@
     <value>Change password</value>
   </data>
   <data name="ClientSupport" xml:space="preserve">
-    <value>Client Support</value>
+    <value>Sales Policies</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value>Smart Health Company</value>
+    <value>Smart Health Co., Ltd</value>
   </data>
   <data name="Complete" xml:space="preserve">
     <value>Complete</value>
@@ -154,7 +154,7 @@
     <value>Confirm password</value>
   </data>
   <data name="ConnectToUs" xml:space="preserve">
-    <value>Connect to us</value>
+    <value>Connect with us</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -449,5 +449,23 @@
   </data>
   <data name="Unpaid" xml:space="preserve">
     <value>Unpaid</value>
+  </data>
+  <data name="CODButtonText" xml:space="preserve">
+    <value>&lt;p style="
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    width: 100px;
+    font-size: 11px;
+    text-align: center;
+    right: 2px;
+    top: 9px;
+"&gt;Cash On Delivery&lt;/p&gt;</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright &amp;copy; 2014 Smart Health. All rights reserved</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Smart Health Co., Ltd</value>
   </data>
 </root>

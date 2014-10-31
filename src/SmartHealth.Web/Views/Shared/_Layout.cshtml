@@ -115,7 +115,7 @@
                         <li>
                             <a href="#"><img src="@Url.Content("~/Content/images/icon_15.jpg")" alt="" /></a>
                             <a href="#"><img src="@Url.Content("~/Content/images/icon_16.jpg")" alt="" /></a>
-                            <a href="#"><img src="@Url.Content("~/Content/images/icon_17.png")" alt="" /></a>
+                            <a href="#" style="position: relative;">@Html.Raw(SH.CODButtonText)<img src="@Url.Content("~/Content/images/icon_17.png")" alt="" /></a>
                         </li>
                     </ul>
                 </div><!--boxTT-->
@@ -132,11 +132,11 @@
                 </div><!--boxTT-->
             </div>
             <div class="boxTT0">
-            	<p>@SH.Support</p>
+            	<p style="color: #5ac84e">@SH.Support</p>
                 <ul>
-                    <li class="ht-1"><a href="#">08-39972280</a></li>
-                    <li class="ht-2"><a href="#">08-39972281</a></li>
-                    <li class="ht-3"><a href="#">Smart-Health</a></li>
+                    <li class="ht-1"><a href="#" style="color: #d64136">08-39972280</a></li>
+                    <li class="ht-2"><a href="#" style="color: #fbb32f">08-39972281</a></li>
+                    <li class="ht-3"><a href="#" style="color: #4ed8ee">Smart-Health</a></li>
                 </ul>
                 @{Html.RenderAction("GetCounter", "Home");}
             </div><!--boxTT0-->
@@ -146,7 +146,7 @@
             	<ul>
                 	<li><a href="#"><img style="margin:5px;" src="@Url.Content("~/Content/images/logoz.png")" alt="" /></a></li>
                     <li>
-                    	<span>Copyright &copy; 2014 Smart Health. All rights reserved</span>
+                    	<span>@Html.Raw(SH.Copyright)</span>
                         <p>@SH.CompanyName</p>
                         <p>@SH.AddressInfo</p>
                     </li>
