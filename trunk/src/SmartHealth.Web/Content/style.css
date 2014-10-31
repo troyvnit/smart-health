@@ -144,9 +144,9 @@ box-shadow:3px 3px 3px #ddd; /* Opera 10.5+, future browsers and IE6+ */
 .news ul { list-style:none; float:left; width:300px; margin:10px 10px 0 10px; padding-bottom:10px; border-bottom:1px solid #ddd;}
 .news li.pic { max-width:95px; height:auto; float:left; border:1px solid #ddd;}
 .news li.pic > a > img { max-width:95px; float:left;}
-.news li.tit { width:190px; height:30px; float:right; overflow:hidden;}
+.news li.tit { width:190px; height:32px; float:right; overflow:hidden;}
 .news li.tit > a { font-weight:bold; text-align:justify; color:#333;}
-.news li.con { width:190px; float:right; margin-top:3px; overflow:hidden;position:relative;line-height:1.4em;height:4.2em;}
+.news li.con { width:190px; float:right; margin-top:3px; overflow:hidden;position:relative;line-height:1.4em;height:4.15em;}
 .news li.con::after {
     content:"...";
     font-weight:bold;
@@ -157,7 +157,7 @@ box-shadow:3px 3px 3px #ddd; /* Opera 10.5+, future browsers and IE6+ */
     background:url(/Content/images/ellipsis_bg.png) repeat-y;
 }
 .news li.con > p { text-align:justify; color:#333;}
-.news > a { font-weight:bold; color:#666; margin:10px 0 0 15px; float:left; width:280px; height:30px; overflow:hidden; padding-left:15px; background:url(/Content/images/icon_9.png) no-repeat top left;}
+.news > a { font-weight:bold; color:#666; margin:10px 0 0 15px; float:left; width:280px; height:32px; overflow:hidden; padding-left:15px; background:url(/Content/images/icon_9.png) no-repeat top left;}
 .news > a:hover { text-decoration:underline;}
 
 .prohome { width:940px; height:auto; float:left; margin-top:40px;}
