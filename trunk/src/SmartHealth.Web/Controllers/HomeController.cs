@@ -602,7 +602,28 @@ namespace SmartHealth.Web.Controllers
                 }
                 order.NetAmount = order.TotalAmount = totalAmount + order.FeeAmount;
                 userService.SaveOrUpdate<Order>(order, true);
+                try
+                {
 
+                    var eMail = new EMail
+                    {
+                        FromAddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromAddress"),
+                        ToAddress = System.Configuration.ConfigurationManager.AppSettings.Get("ToAddress"),
+                        SMTPClient = System.Configuration.ConfigurationManager.AppSettings.Get("SmtpClient"),
+                        UserName = System.Configuration.ConfigurationManager.AppSettings.Get("UserName"),
+                        Password = System.Configuration.ConfigurationManager.AppSettings.Get("Password"),
+                        ReplyTo = System.Configuration.ConfigurationManager.AppSettings.Get("ReplyTo"),
+                        SMTPPort = System.Configuration.ConfigurationManager.AppSettings.Get("SMTPPort"),
+                        isEnableSSL =
+                            System.Configuration.ConfigurationManager.AppSettings.Get("EnableSSL").ToUpper() ==
+                            "YES"
+                    };
+                    var orderDetails = order.OrderDetails.Where(a => a.Quantity > 0).Select(a => a.Quantity + " x " + a.Product.Name).ToList();
+                    eMail.SendMail("Email", "MailFormat_ConfirmOrder.xml", new String[] { "Đặt hàng mới", "Thông tin đơn hàng: <br/> Tên khách hàng: " + order.ReceiverName + "<br/> Điện thoại: " + order.ReceiverPhone + "<br/> Địa chỉ: " + order.DeliveryAddress + "<br/>  Mã đơn hàng: <a href='" + Url.Action("Order", new { order_no = order.Id }) + "'>" + order.Id + "</a><br/> Chi tiết đơn hàng: " + String.Join(", ", orderDetails) });
+                }
+                catch
+                {
+                }
                 switch (deliveryInfo.PayType)
                 {
                     case PayType.BaoKim:
@@ -626,7 +647,7 @@ namespace SmartHealth.Web.Controllers
                         PayooOrder payooOrder = new PayooOrder();
                         payooOrder.Session = session;
                         payooOrder.BusinessUsername = ConfigurationManager.AppSettings["BusinessUsername"];
-                        payooOrder.OrderCashAmount = (long) totalAmount;
+                        payooOrder.OrderCashAmount = (long) order.TotalAmount;
                         payooOrder.OrderNo = order.Id.ToString();
                         payooOrder.ShippingDays = short.Parse(ConfigurationManager.AppSettings["ShippingDays"]);
                         payooOrder.ShopBackUrl = ConfigurationManager.AppSettings["ShopBackUrl"];
