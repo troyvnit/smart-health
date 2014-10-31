@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptedPayment" xml:space="preserve">
-    <value>Chấp nhận thanh toán</value>
+    <value>Phương thức thanh toán</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Địa chỉ</value>
   </data>
   <data name="AddressInfo" xml:space="preserve">
-    <value>402 Huỳnh Văn Bánh, Phường 14, Quận Phú Nhuận, TPHCM</value>
+    <value>402 Huỳnh Văn Bánh, Phường 14, Quận Phú Nhuận, Thành Phố Hồ Chí Minh</value>
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Quản trị</value>
@@ -145,7 +145,7 @@
     <value>Đóng</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value>Công ty Smart Health</value>
+    <value>Công ty TNHH Sức Khỏe Thông Minh</value>
   </data>
   <data name="Complete" xml:space="preserve">
     <value>Hoàn tất</value>
@@ -449,5 +449,23 @@
   </data>
   <data name="Unpaid" xml:space="preserve">
     <value>Chưa thanh toán</value>
+  </data>
+  <data name="CODButtonText" xml:space="preserve">
+    <value>&lt;p style="
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    width: 100px;
+    font-size: 12px;
+    text-align: center;
+    right: 5px;
+    top: 2px;
+"&gt;Thanh toán khi nhận hàng&lt;/p&gt;</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Bản quyền thuộc Công ty TNHH Sức Khỏe Thông Minh</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Công ty TNHH Sức Khỏe Thông Minh</value>
   </data>
 </root>
