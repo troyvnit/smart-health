@@ -100,7 +100,7 @@ namespace SmartHealth.Web.Controllers
         public ActionResult GetBottomMenu()
         {
             var newses =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.FooterNews.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.FooterNews.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.Newses = newses;
 
@@ -108,7 +108,7 @@ namespace SmartHealth.Web.Controllers
             ViewBag.NewsesMenu = newsesMenu;
 
             var clientSupportArticles =
-                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(8).Select(
+                articleService.GetAll().Where(a => a.Categories.Contains(articleCategoryService.GetAll().FirstOrDefault(b => b.Name.ToUpper() == Resources.SH.ClientSupport.ToUpper())) && a.IsActived && a.IsDeleted != true).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate).Take(6).Select(
                     Mapper.Map<Article, ArticleDto>).ToList();
             ViewBag.ClientSupportArticles = clientSupportArticles;
 
@@ -120,8 +120,13 @@ namespace SmartHealth.Web.Controllers
 
         public ActionResult GetCounter()
         {
+            ViewBag.VisitorCount = RouteData.Values["lang"].ToString().ToUpper() == "VI-VN"
+                ? String.Format("{0:#,#}", Int32.Parse(Session["hits"].ToString())).Replace(',', '.')
+                : String.Format("{0:#,#}", Int32.Parse(Session["hits"].ToString()));
             var userCount = userService.GetAll().Count;
-            ViewBag.UserCount = userCount;
+            ViewBag.UserCount = RouteData.Values["lang"].ToString().ToUpper() == "VI-VN"
+                ? String.Format("{0:#,#}", userCount).Replace(',', '.')
+                : String.Format("{0:#,#}", userCount);
             return View();
         }
 

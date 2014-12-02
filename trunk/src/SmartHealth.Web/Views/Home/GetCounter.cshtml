@@ -2,7 +2,7 @@
 <div class="boxTT" style="margin:0px">
                     <ul>
                         <li class="tit"><p>@SH.VisitorStatistics</p></li>
-                        <li><span>@SH.VisitorCount:</span><p>@String.Format("{0:#,#}", Session["hits"])</p></li>                        
-                        <li><span>@SH.MemberCount:</span><p>@String.Format("{0:#,#}", (float)ViewBag.UserCount)</p></li>                        
+                        <li><span>@SH.VisitorCount:</span><p>@ViewBag.VisitorCount</p></li>                        
+                        <li><span>@SH.MemberCount:</span><p>@ViewBag.UserCount</p></li>                        
                     </ul>
                 </div><!--boxTT-->

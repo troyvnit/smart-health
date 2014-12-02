@@ -19,6 +19,7 @@
     $(document).ready(function () {
         var grid = $("#grid").kendoGrid({
             dataSource: {
+                autoSync: true,
                 transport: {
                     read: {
                         url: '@Url.Action("GetUsers", "User")',
@@ -53,7 +54,7 @@
                         id: "Id",
                         fields: {
                             Id: { editable: false, nullable: true },
-                            Username: { validation: { required: true } },
+                            Username: { validation: { required: true }, editable: false },
                             DisplayName: { validation: { required: true } },
                             Email: { validation: { required: true } },
                             Location: { type: "string" },
@@ -68,8 +69,7 @@
             sortable: true,
             pageable: true,
             navigatable: true,
-            //editable: true,
-            //toolbar: ["save", "cancel"],
+            editable: true,
             columns: [{
                 field: "Id",
                 hidden: true
@@ -94,7 +94,8 @@
                 title: "Sinh nhật",
                 type: "date",
                 format: "{0:dd/MM/yyyy}" 
-            }
+            },
+            { command: "destroy", title: "&nbsp;", width: 100 }
             ]
         }).data("kendoGrid");
 
