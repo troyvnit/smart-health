@@ -58,10 +58,18 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             return Json(Mapper.Map<User, UserDto>(user), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeleteUsers(string ids)
+        public ActionResult DeleteUsers(string models)
         {
-            foreach (User user in ids.Split(',').Select(id => userService.Get(Convert.ToInt32(id))))
+            var userDto =
+                JsonConvert.DeserializeObject<List<UserDto>>(models).FirstOrDefault();
+            if (userDto != null)
             {
+                var orders = userService.GetAll<Order>().Where(a => a.OrderUser.Id == userDto.Id);
+                foreach (var order in orders)
+                {
+                    userService.Delete(order, true);
+                }
+                User user = userService.Get(userDto.Id);
                 userService.Delete(user, true);
             }
             return Json("Success", JsonRequestBehavior.AllowGet);

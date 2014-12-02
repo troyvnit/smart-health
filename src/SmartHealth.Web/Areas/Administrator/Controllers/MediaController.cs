@@ -123,6 +123,11 @@ namespace SmartHealth.Web.Areas.Administrator.Controllers
             {
                 if (documentDto.Id != null)
                 {
+                    var documentLogs = mediaService.GetAll<DocumentLog>().Where(a => a.Document.Id == documentDto.Id);
+                    foreach (var documentLog in documentLogs)
+                    {
+                        mediaService.Delete(documentLog, true);
+                    }
                     var document = mediaService.Get<Document>((int)documentDto.Id);
                     mediaService.Delete(document, true);
                 }

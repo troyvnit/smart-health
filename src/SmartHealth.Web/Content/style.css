@@ -58,7 +58,7 @@ behavior: url(ie-css3.htc); /* hack for IE */
 .menuTop > ul > li > ul > li {margin-left:25px !important; width:auto; padding:7px 0px 5px 0px; float:left;text-decoration: none;}
 .menuTop > ul > li > ul > li > a { color:#333; font-size:14px; text-decoration: none;}
 .menuTop > ul > li > ul > li > span { float:right; padding-left:20px;text-decoration: none;}
-.menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:bold;text-decoration: none;}
+.menuTop > ul > li > ul > li:hover > a, .menuTop > ul > li > ul > li.active > a { color:white; font-weight:normal;text-decoration: none;}
 
 .banner { width:940px; height:370px; float:left; margin-top:10px; background:url(/Content/images/BG-Banner.png) no-repeat top; padding:0 14px; position:relative; margin-left:-15px;}
 #zalen { width:924px; height:354px; float:left; padding:7px; background:white; border:1px solid #ddd;}
@@ -207,7 +207,7 @@ ul#mycarousel li { width:175px; height:70px; float:left; display:block;}
 .boxTT { width:200px; height:auto; float:left; margin:10px 35px 0 0;}
 .boxTT > ul { list-style:none;}
 .boxTT > ul > li.tit { width:200px; height:30px; float:left; border-bottom:1px solid #545d64;}
-.boxTT > ul > li.tit > p { color:#b5bbbf; font-weight:bold; line-height:30px; font-size:14px;}
+.boxTT > ul > li.tit > p { color:#b5bbbf; font-weight:bold; line-height:30px; font-size:14px;width: 100%;}
 .boxTT > ul > li { width:200px; height:auto; float:left; margin-top:5px;}
 .boxTT > ul > li > a { color:white; margin-top:8px; margin-right:5px; display:block; float:left;}
 .boxTT > ul > li > a:hover { text-decoration:underline;}
