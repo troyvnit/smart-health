@@ -37,9 +37,9 @@
                                             </li>
                                         </ul>
                                         <br />
-                                        <b>Sales Office:</b>
+                                        <b>@SH.SalesOffice:</b>
                                         <ul class="street">
-                                            <li>27/13 Hau Giang Street, Ward 4,  Tan Binh District, Ho Chi Minh City, Vietnam</li>
+                                            <li>@SH.SalesOfficeAddress</li>
                                             <li class="icon icontop">
                                                 <span class="contacticos ico1"></span>
                                                 <span class="text">08-3997 2280</span>
@@ -50,9 +50,9 @@
                                             </li>											
                                         </ul>
                                         <br />
-                                        <b>Hanoi Office:</b>
+                                        <b>@SH.HaNoiOffice:</b>
                                         <ul class="street">
-                                            <li>Suite 508, TALICO Building, 22 Ho Giam, Dong Da District, Ha Noi, Vietnam</li>
+                                            <li>@SH.HaNoiOfficeAddress</li>
                                             <li class="icon icontop">
                                                 <span class="contacticos ico1"></span>
                                                 <span class="text">04-3724 6609</span>
@@ -77,6 +77,7 @@
                                         <textarea placeholder="@SH.MessagePlaceHolder" class="form-control" name="Message"></textarea>
                                     </div>
                                 </div>
+                                <div id="submitAlert" class="alert alert-success" role="alert" style="display: none; margin-top: 20px;">@SH.Complete</div>
                             </div>
                         </div>
                         <div class="row submit">
@@ -122,14 +123,8 @@
             $('#submitBtn').hide();
             $('#submitProgress').show();
             $.ajax({
-                xhr: function () {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.addEventListener("progress", function (evt) {
-                        if (evt.lengthComputable) {
-                            updateProgress(evt.loaded * 100 / evt.total);
-                        }
-                    }, false);
-                    return xhr;
+                success: function () {
+                    updateProgress(100);
                 },
                 type: 'POST',
                 url: $('form').attr('action'),
@@ -144,8 +139,8 @@
         $('.progress-bar').html(percentage + '% Hoàn tất');
         if (percentage == 100) {
             $('form')[0].reset();
-            $('#submitProgress').delay(3000).hide();
-            $('#submitBtn').delay(3000).show();
+            $('#submitProgress').delay(3000).hide(0);
+            $('#submitBtn').delay(3000).show(0);
         }
     }
 

@@ -169,7 +169,7 @@
     <value>Date of birth</value>
   </data>
   <data name="Document" xml:space="preserve">
-    <value>Document</value>
+    <value>Documents</value>
   </data>
   <data name="Download" xml:space="preserve">
     <value>Download</value>
@@ -247,7 +247,7 @@
     <value>Packing</value>
   </data>
   <data name="Partner" xml:space="preserve">
-    <value>Partner</value>
+    <value>Partners</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -467,5 +467,17 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Smart Health Co., Ltd</value>
+  </data>
+  <data name="HaNoiOffice" xml:space="preserve">
+    <value>Hanoi Office</value>
+  </data>
+  <data name="HaNoiOfficeAddress" xml:space="preserve">
+    <value>Suite 508, TALICO Building, 22 Ho Giam, Dong Da District, Ha Noi, Vietnam</value>
+  </data>
+  <data name="SalesOffice" xml:space="preserve">
+    <value>Sales Office</value>
+  </data>
+  <data name="SalesOfficeAddress" xml:space="preserve">
+    <value>27/13 Hau Giang Street, Ward 4,  Tan Binh District, Ho Chi Minh City, Vietnam</value>
   </data>
 </root>
