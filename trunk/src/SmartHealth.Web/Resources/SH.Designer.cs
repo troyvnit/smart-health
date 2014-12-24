@@ -475,6 +475,24 @@ namespace SmartHealth.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Văn phòng Hà Nội.
+        /// </summary>
+        public static string HaNoiOffice {
+            get {
+                return ResourceManager.GetString("HaNoiOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phòng 508, Tòa nhà TALICO, 22 Hồ Giám, Quận Đống Đa, Hà Nội, Việt Nam.
+        /// </summary>
+        public static string HaNoiOfficeAddress {
+            get {
+                return ResourceManager.GetString("HaNoiOfficeAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đường tắt trang chủ.
         /// </summary>
         public static string HomeShortCut {
@@ -876,6 +894,24 @@ namespace SmartHealth.Web.Resources {
         public static string SaleOff {
             get {
                 return ResourceManager.GetString("SaleOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Văn phòng Kinh doanh.
+        /// </summary>
+        public static string SalesOffice {
+            get {
+                return ResourceManager.GetString("SalesOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 27/13 Hậu Giang, Phường 4,  Quận Tân Bình, Thành Phố Hồ Chí Minh, Việt Nam.
+        /// </summary>
+        public static string SalesOfficeAddress {
+            get {
+                return ResourceManager.GetString("SalesOfficeAddress", resourceCulture);
             }
         }
         
