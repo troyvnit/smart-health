@@ -50,7 +50,11 @@ namespace SmartHealth.Web.Helpers
              
                 dynamic MailMessage = new MailMessage();
                 MailMessage.From = new MailAddress(FromAddress);
-                MailMessage.To.Add(ToAddress);
+                var addresses = ToAddress.Split(',');
+                foreach (var address in addresses)
+                {
+                    MailMessage.To.Add(address);
+                }
                 MailMessage.Subject = subject;
                 MailMessage.IsBodyHtml = true;
                 MailMessage.Body = body;
