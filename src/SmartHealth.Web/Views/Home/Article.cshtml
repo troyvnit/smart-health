@@ -10,7 +10,7 @@
     {
         Session["SmartHealthUser"] = new SessionDto();
     }
-    var viewedArticles = ((SessionDto)Session["SmartHealthUser"]).ViewedArticles;
+    var viewedArticles = ((SessionDto)Session["SmartHealthUser"]).ViewedArticles.Take(6);
 }
 
 <div class="leftContent">

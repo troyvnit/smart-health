@@ -21,7 +21,9 @@
                     {
                         <div class="box">
                             <a href="@partner.MediaUrl" target="_blank">
-                                <img src="@partner.ThumbnailUrl" alt="">
+                                <div>
+                                    <span></span><img src="@partner.ThumbnailUrl" alt="">
+                                    </div>
                                 <p>@partner.Description</p>
                             </a>
                         </div>
@@ -41,10 +43,17 @@
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
     background-color: white;
 }
-    .box img{
-        width: 90%;
+    .box div{
         margin: 5%;
 }
+    .box img {
+        width: 100%;
+    }
+    .box span {
+         display: inline-block;
+    height: 115px;
+    vertical-align: middle;
+    }
     .box p{
         text-align: center;
         font-size: 14px;

@@ -325,7 +325,7 @@ namespace SmartHealth.Web.Controllers
                 var category = articleCategoryService.Get((int)id);
                 if (category != null)
                 {
-                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id) && p.IsDeleted != true && p.IsActived).OrderByDescending(a => a.CreatedDate);
+                    var articles = articleService.FindAll(p => p.Categories.Any(c => c.Id == id) && p.IsDeleted != true && p.IsActived).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate);
                     ViewBag.Title = category.Name + " - " + category.Description;
                     ViewBag.CategoryName = category.Name;
                     ViewBag.Articles = articles.Skip(((int)page - 1) * 10).Take(10).Select(Mapper.Map<Article, ArticleDto>).ToList();
@@ -336,11 +336,11 @@ namespace SmartHealth.Web.Controllers
             }
             else
             {
-                var articles = articleService.FindAll(p => (p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search)) && p.Categories.Count(c => c.Language.CultureInfo.ToUpper() == RouteData.Values["lang"].ToString().ToUpper()) > 0);
+                var articles = articleService.FindAll(p => (p.Title.Contains(search) || p.Description.Contains(search) || p.Content.Contains(search) || string.IsNullOrEmpty(search)) && p.Categories.Count(c => c.Language.CultureInfo.ToUpper() == RouteData.Values["lang"].ToString().ToUpper()) > 0).OrderByDescending(a => a.Priority).ThenByDescending(a => a.CreatedDate);
                 ViewBag.Title = search;
                 ViewBag.CategoryName = search;
                 ViewBag.Articles = articles.Skip(((int)page - 1) * 10).Take(10).Select(Mapper.Map<Article, ArticleDto>).ToList();
-                ViewBag.TotalArticle = articles.Count;
+                ViewBag.TotalArticle = articles.Count();
                 return View();
             }
         }
