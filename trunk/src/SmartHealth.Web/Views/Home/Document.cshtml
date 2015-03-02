@@ -5,7 +5,6 @@
     ViewBag.Title = "Document";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var documents = (List<DocumentDto>)ViewBag.Documents;
-    var i = 0;
 }
 <script src="~/Scripts/js/masonry.pkgd.min.js"></script>
 @Styles.Render("~/Content/css/contact")
@@ -29,7 +28,7 @@
                                 <p><strong>@document.Name</strong></p>
                                 <p>@document.Description</p>
                                 <button style="margin: 10px; float: left;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="SetDocumentInfo('@document.Id');">Tải về</button>
-                                <a style="margin: 10px 0; float: left;" class="btn btn-default btn-sm" data-toggle="modal" data-target="#documentDetailModal_@i">
+                                <a style="margin: 10px 0; float: left;" class="btn btn-default btn-sm" data-toggle="modal" data-target="#documentDetailModal_@document.Id">
                                     Xem thêm
                                 </a>
                             </span>
@@ -37,12 +36,12 @@
                         
                         
                         <!-- Detail Modal -->
-                        <div class="modal fade" id="documentDetailModal_@i" tabindex="-1" role="dialog" aria-labelledby="documentDetailModalLabel_@i" aria-hidden="true">
+                        <div class="modal fade" id="documentDetailModal_@document.Id" tabindex="-1" role="dialog" aria-labelledby="documentDetailModalLabel_@document.Id" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="documentDetailModalLabel_@i">Chi tiết tài liệu</h4>
+                                        <h4 class="modal-title" id="documentDetailModalLabel_@document.Id">Chi tiết tài liệu</h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="box-detail">
@@ -57,7 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button style="margin: 10px;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="$('#documentDetailModal_@i').modal('hide');">@SH.Download</button>
+                                        <button style="margin: 10px;" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#documentModal" onclick="$('#documentDetailModal_@document.Id').modal('hide');">@SH.Download</button>
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
