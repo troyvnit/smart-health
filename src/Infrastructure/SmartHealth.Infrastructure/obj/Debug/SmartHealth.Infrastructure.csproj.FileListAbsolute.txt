@@ -56,3 +56,13 @@ W:\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\M
 W:\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 W:\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.dll
 W:\Working\Projects\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.pdb
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.pdb
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll.CodeAnalysisLog.xml
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\SmartHealth.Infrastructure.dll.lastcodeanalysissucceeded
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.dll
+C:\Users\troyv\Documents\SourceTree\SH\src\Infrastructure\SmartHealth.Infrastructure\obj\Debug\SmartHealth.Infrastructure.pdb

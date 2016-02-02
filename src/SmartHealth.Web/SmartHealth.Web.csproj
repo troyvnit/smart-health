@@ -23,6 +23,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2325,8 +2326,6 @@
     <Content Include="Content\font\vhe\vhe.eot" />
     <Content Include="Content\font\vhe\vhe.TTF" />
     <Content Include="Content\font\vhe\vhe.woff" />
-    <Content Include="Content\nivo-slider\themes\.DS_Store" />
-    <Content Include="Content\nivo-slider\themes\dark\.DS_Store" />
     <Content Include="Content\fonts\flexslider-icon.eot" />
     <Content Include="Content\fonts\flexslider-icon.ttf" />
     <Content Include="Content\fonts\flexslider-icon.woff" />

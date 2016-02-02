@@ -463,7 +463,7 @@ namespace SmartHealth.Web.Controllers
                     Point = user.Point,
                     UserType = user.UserType
                 };
-                ViewBag.Orders = userService.GetAll<Order>().Where(a => a.OrderUser.Id == user.Id).OrderByDescending(a => a.CreatedDate).ToList();
+                ViewBag.Orders = userService.GetAll<Order>().Where(a => a.OrderUser != null && a.OrderUser.Id == user.Id).OrderByDescending(a => a.CreatedDate).ToList();
                 return View(userDto);
             }
             return Redirect("/" + RouteData.Values["lang"]);
